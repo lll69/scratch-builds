@@ -3,6 +3,8 @@ name: lll69-turbowarp
 on:
   schedule:
     - cron: '30 5 * * 3,6'
+  push:
+    branches: [ master ]
 
 jobs:
   build:

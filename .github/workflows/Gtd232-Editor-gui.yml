@@ -3,6 +3,8 @@ name: Gtd232-Editor-gui
 on:
   schedule:
     - cron: '30 0 * * 3,6'
+  push:
+    branches: [ master ]
 
 jobs:
   build:

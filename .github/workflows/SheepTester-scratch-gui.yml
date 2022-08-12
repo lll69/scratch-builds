@@ -3,6 +3,8 @@ name: SheepTester-scratch-gui
 on:
   schedule:
     - cron: '30 0 * * 3,6'
+  push:
+    branches: [ master ]
 
 jobs:
   build:
