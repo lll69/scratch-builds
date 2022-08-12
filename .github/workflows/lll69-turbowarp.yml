@@ -1,0 +1,35 @@
+name: lll69-turbowarp
+
+on:
+  schedule:
+    - cron: '30 5 * * 3,6'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 10.x
+    - name: Clone
+      run: |
+        git clone https://github.com/lll69/turbo-warp-scratch-gui
+    - name: Build
+      run: |
+        cd turbo-warp-scratch-gui
+        npm install
+        npm run build
+        cd ..
+    - name: Upload
+      uses: crazy-max/ghaction-github-pages@v2.6.0
+      with:
+        build_dir: turbo-warp-scratch-gui/build
+        target_branch: lll69/turbo-warp-scratch-gui
+        verbose: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+ 
