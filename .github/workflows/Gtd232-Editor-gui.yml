@@ -1,0 +1,35 @@
+name: Gtd232-Editor-gui
+
+on:
+  schedule:
+    - cron: '30 0 * * 3,6'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 10.x
+    - name: Clone
+      run: |
+        git clone https://github.com/Gtd232/AxolotlEditor-gui
+    - name: Build
+      run: |
+        cd AxolotlEditor-gui
+        npm install
+        npm run build
+        cd ..
+    - name: Upload
+      uses: crazy-max/ghaction-github-pages@v2.6.0
+      with:
+        build_dir: scratch-gui/build
+        target_branch: Gtd232/AxolotlEditor-gui
+        verbose: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
