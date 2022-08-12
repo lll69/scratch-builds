@@ -23,13 +23,14 @@ jobs:
     - name: Build
       run: |
         cd TurboWarp-scratch-gui
+        npm i git+https://github.com/52black/scratch-vm
         npm install
         npm run build
         cd ..
     - name: Upload
       uses: crazy-max/ghaction-github-pages@v2.6.0
       with:
-        build_dir: scratch-gui/build
+        build_dir: TurboWarp-scratch-gui/build
         target_branch: 52black/TurboWarp-scratch-gui
         verbose: true
       env:
