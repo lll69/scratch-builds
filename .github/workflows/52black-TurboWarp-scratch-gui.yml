@@ -23,6 +23,7 @@ jobs:
     - name: Build
       run: |
         cd TurboWarp-scratch-gui
+        rm package-lock.json
         npm i git+https://github.com/52black/scratch-vm
         npm install
         npm run build

@@ -1,1 +1,2 @@
 # Scratch自动构建
+master之外所有分支均由GitHub Actions自动构建，与作者无关

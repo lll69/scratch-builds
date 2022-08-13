@@ -23,6 +23,7 @@ jobs:
     - name: Build
       run: |
         cd AxolotlEditor-gui
+        rm package-lock.json
         npm install
         npm run build
         cd ..
