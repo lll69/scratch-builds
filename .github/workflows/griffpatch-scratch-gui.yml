@@ -1,0 +1,38 @@
+name: griffpatch-scratch-gui
+
+on:
+  schedule:
+    - cron: '30 0 * * 3,6'
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 14.x
+    - name: Clone
+      run: |
+        git clone https://github.com/griffpatch/scratch-gui
+    - name: Build
+      run: |
+        cd scratch-gui
+        rm package-lock.json
+        npm install
+        npm run build
+        cd ..
+    - name: Upload
+      uses: crazy-max/ghaction-github-pages@v2.6.0
+      with:
+        build_dir: scratch-gui/build
+        target_branch: griffpatch/scratch-gui
+        verbose: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
