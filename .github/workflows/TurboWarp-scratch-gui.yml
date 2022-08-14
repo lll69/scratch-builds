@@ -33,6 +33,8 @@ jobs:
         build_dir: scratch-gui/build
         target_branch: TurboWarp/scratch-gui
         verbose: true
+        commit_message: Upload
+        keep_history: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
  

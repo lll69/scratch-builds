@@ -34,6 +34,8 @@ jobs:
         build_dir: AxolotlEditor-gui/build
         target_branch: Gtd232/AxolotlEditor-gui
         verbose: true
+        commit_message: Upload
+        keep_history: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         

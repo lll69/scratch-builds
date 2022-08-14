@@ -30,6 +30,8 @@ jobs:
         build_dir: TurboWarp-scratch-gui/build
         target_branch: 52black/TurboWarp-scratch-gui
         verbose: true
+        commit_message: Upload
+        keep_history: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
