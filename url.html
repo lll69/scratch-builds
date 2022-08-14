@@ -1,0 +1,137 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Set URL</title>
+    <link rel="icon" href="https://lll69.github.io/turbo-warp-scratch-gui/favicon.ico" />
+</head>
+
+<body onbeforeunload="return status()">
+    <style>
+        .span {
+            -webkit-user-modify: read-write-plaintext-only;
+            -moz-user-modify: read-write-plaintext-only;
+            user-modify: read-write-plaintext-only;
+        }
+
+        span {
+            border-style: inset;
+            word-break: break-all;
+            white-space: nowrap;
+        }
+    </style>
+    <fieldset>
+        <legend>Asset URL<img id="imgA" referrerpolicy="no-referrer" height="30"
+                onerror="this.src='static/assets/76b6cb627b95d79705c0b41664064f0e.svg'">
+        </legend>
+        <span id="a" contenteditable class="span"></span>
+        image.png
+        <span id="b" contenteditable class="span"></span>
+        <br>
+        <input type="submit" value="Save" onclick="setA()">
+        <button onclick="dA()">Reset</button>
+        <br>
+        <span id="asset-url" style="user-select:all"></span>
+        <script>
+            var src = "$";
+            var a = document.querySelector("#a");
+            var b = document.querySelector("#b");
+            var asset_url = document.querySelector("#asset-url");
+            var imgA = document.querySelector("#imgA");
+            function press() {
+                a.textContent = a.textContent.replaceAll("\n", "").replaceAll("\r", "").replaceAll("$", "");
+                b.textContent = b.textContent.replaceAll("\n", "").replaceAll("\r", "").replaceAll("$", "");
+                aa.textContent = aa.textContent.replaceAll("\n", "").replaceAll("\r", "").replaceAll("$", "");
+                bb.textContent = bb.textContent.replaceAll("\n", "").replaceAll("\r", "").replaceAll("$", "");
+            }
+            function setA() {
+                press();
+                localStorage.setItem("res-url", a.textContent + "$" + b.textContent);
+                alert("Success:" + localStorage.getItem("res-url"));
+            }
+            function getA() {
+                var u = localStorage.getItem("res-url");
+                if (u) {
+                    u = u.split("$");
+                    a.textContent = u[0];
+                    b.textContent = u[1];
+                } else {
+                    dA();
+                }
+            }
+            function dA() {
+                localStorage.removeItem("res-url");
+                var u = "https://assets.scratch.mit.edu/internalapi/asset/$/get/";
+                if (u) {
+                    u = u.split("$");
+                    a.textContent = u[0];
+                    b.textContent = u[1];
+                }
+            }
+            function image() {
+                const s = `${a.textContent}71ced7c192168c7b221d16b4eaff440e.svg${b.textContent}`;
+                if (src != s)
+                    imgA.src = src = s;
+                asset_url.textContent = "https://turbo-warp-scratch-gui.vercel.app/?res-url=" + a.textContent + "%24" + b.textContent;
+            }
+        </script>
+    </fieldset>
+    <fieldset>
+        <legend>Project URL</legend>
+        <span id="aa"></span>
+        1
+        <span id="bb"></span>
+        <br>
+        <input type="submit" value="Save" onclick="setB()" disabled hidden>
+        <button onclick="dB()">Reset</button>
+        <script>
+            var aa = document.querySelector("#aa");
+            var bb = document.querySelector("#bb");
+            function setB() {
+                press();
+                localStorage.setItem("project-url", aa.textContent + "$" + bb.textContent);
+                alert("Success:" + localStorage.getItem("project-url"));
+            }
+            function getB() {
+                u = localStorage.getItem("project-url");
+                if (!u) u = "$"
+                if (u) {
+                    u = u.split("$");
+                    aa.textContent = u[0];
+                    bb.textContent = u[1];
+                } else {
+                    dB();
+                }
+            }
+            function get() {
+                getA();
+                getB();
+            }
+            function dB() {
+                localStorage.removeItem("project-url");
+                var u = "https://projects.scratch.mit.edu/$";
+                if (u) {
+                    u = u.split("$");
+                    aa.textContent = u[0];
+                    bb.textContent = u[1];
+                }
+            }
+            get();
+            dB();
+            setInterval(press, 100);
+            image();
+            setInterval(image, 100);
+        </script>
+    </fieldset>
+    <script>
+        function status() {
+            if ((localStorage.getItem("res-url") || "$") != `${a.textContent}$${b.textContent})`)
+                return "";
+            else //if ((localStorage.getItem("project-url") || "https://projects.scratch.mit.edu/$") != `${aa.textContent}$${bb.textContent}`)
+                return null;
+        }
+    </script>
+    <script defer async src="https://lll69.github.io/tools/track.js"></script>
+</body>
+
+</html>

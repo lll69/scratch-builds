@@ -1,0 +1,9 @@
+(window.webpackJsonpGUI=window.webpackJsonpGUI||[]).push([["addon-entry-initialise-sprite-position"],{"./src/addons/addons/initialise-sprite-position/_runtime_entry.js":
+/*!************************************************************************!*\
+  !*** ./src/addons/addons/initialise-sprite-position/_runtime_entry.js ***!
+  \************************************************************************/
+/*! exports provided: resources */function(t,s,e){"use strict";e.r(s),e.d(s,"resources",(function(){return i}));const i={"userscript.js":e(/*! ./userscript.js */"./src/addons/addons/initialise-sprite-position/userscript.js").default}},"./src/addons/addons/initialise-sprite-position/userscript.js":
+/*!********************************************************************!*\
+  !*** ./src/addons/addons/initialise-sprite-position/userscript.js ***!
+  \********************************************************************/
+/*! exports provided: default */function(t,s,e){"use strict";e.r(s),s.default=async function({addon:t}){const s=t.tab.traps.vm,e=s.constructor.prototype.addSprite;s.constructor.prototype.addSprite=function(s){var i,n;let r,o=!0;"object"==typeof s?[r,o]=[s,!1]:r=JSON.parse(s);const c="cd21514d0531fdffb22204e0ec5ed84a.svg"===(null===(i=r.costumes)||void 0===i||null===(n=i[0])||void 0===n?void 0:n.baseLayerMD5);return t.self.disabled||!c&&r.tags&&t.settings.get("library")||(r.scratchX&&(r.scratchX=t.settings.get("x"),r.scratchY=t.settings.get("y")),r.x&&(r.x=t.settings.get("x"),r.y=t.settings.get("y"))),e.call(this,o?JSON.stringify(r):r)};const i=()=>{const e=s.runtime.getTargetForStage().constructor.prototype,i=e.duplicate;e.duplicate=function(){return i.call(this).then(s=>{if(!t.self.disabled)switch(t.settings.get("duplicate")){case"custom":s.setXY(t.settings.get("x"),t.settings.get("y"));break;case"keep":s.setXY(this.x,this.y)}return s})}};s.runtime.getTargetForStage()?i():s.runtime.once("PROJECT_LOADED",i)}}}]);

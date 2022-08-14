@@ -1,0 +1,9 @@
+(window.webpackJsonpGUI=window.webpackJsonpGUI||[]).push([["addon-entry-block-count"],{"./src/addons/addons/block-count/_runtime_entry.js":
+/*!*********************************************************!*\
+  !*** ./src/addons/addons/block-count/_runtime_entry.js ***!
+  \*********************************************************/
+/*! exports provided: resources */function(e,n,t){"use strict";t.r(n),t.d(n,"resources",(function(){return o}));const o={"blockcount.js":t(/*! ./blockcount.js */"./src/addons/addons/block-count/blockcount.js").default}},"./src/addons/addons/block-count/blockcount.js":
+/*!*****************************************************!*\
+  !*** ./src/addons/addons/block-count/blockcount.js ***!
+  \*****************************************************/
+/*! exports provided: default */function(e,n,t){"use strict";t.r(n),n.default=async function({addon:e,console:n,msg:t}){const o=e.tab.traps.vm,s=()=>{let e=0,n=0,t=new Set(o.runtime.targets.map(e=>e.sprite.blocks._blocks));return t.forEach((t,o)=>{n+=Object.values(t).filter(e=>!e.parent).length,e+=Object.values(t).filter(e=>!e.shadow).length}),{blockCount:e,scriptCount:n,spriteCount:t.size-1}},c=async()=>{if(o.editingTarget){let n=null;for(;;){let c,a=(await e.tab.waitForElement("[class^='menu-bar_main-menu']",{markAsSeen:!0,reduxEvents:["scratch-gui/mode/SET_PLAYER","fontsLoaded/SET_FONTS_LOADED","scratch-gui/locales/SELECT_LOCALE"],reduxCondition:e=>!e.scratchGui.mode.isPlayerOnly})).appendChild(document.createElement("span"));e.tab.displayNoneWhileDisabled(a),a.style.order=1,a.style.padding="9px",a.innerText=t("blocks",{num:s().blockCount}),n&&(o.off("PROJECT_CHANGED",n),o.runtime.off("PROJECT_LOADED",n)),n=async()=>{clearTimeout(c),c=setTimeout(async()=>{a.innerText=t("blocks",{num:s().blockCount})},1e3)},o.on("PROJECT_CHANGED",n),o.runtime.on("PROJECT_LOADED",n)}}else{let e=setTimeout((function(){c(),clearTimeout(e)}),1e3)}};c()}}}]);

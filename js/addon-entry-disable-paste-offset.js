@@ -1,0 +1,9 @@
+(window.webpackJsonpGUI=window.webpackJsonpGUI||[]).push([["addon-entry-disable-paste-offset"],{"./src/addons/addons/disable-paste-offset/_runtime_entry.js":
+/*!******************************************************************!*\
+  !*** ./src/addons/addons/disable-paste-offset/_runtime_entry.js ***!
+  \******************************************************************/
+/*! exports provided: resources */function(t,a,e){"use strict";e.r(a),e.d(a,"resources",(function(){return s}));const s={"userscript.js":e(/*! ./userscript.js */"./src/addons/addons/disable-paste-offset/userscript.js").default}},"./src/addons/addons/disable-paste-offset/userscript.js":
+/*!**************************************************************!*\
+  !*** ./src/addons/addons/disable-paste-offset/userscript.js ***!
+  \**************************************************************/
+/*! exports provided: default */function(t,a,e){"use strict";e.r(a),a.default=async function({addon:t,console:a}){t.tab.redux.initialize(),t.tab.redux.addEventListener("statechanged",({detail:a})=>{t.self.disabled||"scratch-paint/clipboard/SET"!==a.action.type&&"scratch-paint/clipboard/INCREMENT_PASTE_OFFSET"!==a.action.type||t.tab.redux.dispatch({type:"scratch-paint/clipboard/CLEAR_PASTE_OFFSET"})}),t.self.addEventListener("disabled",()=>{t.tab.redux.dispatch({type:"scratch-paint/clipboard/CLEAR_PASTE_OFFSET"}),t.tab.redux.dispatch({type:"scratch-paint/clipboard/INCREMENT_PASTE_OFFSET"})}),t.self.addEventListener("reenabled",()=>{t.tab.redux.dispatch({type:"scratch-paint/clipboard/CLEAR_PASTE_OFFSET"})}),t.self.enabledLate&&t.tab.redux.dispatch({type:"scratch-paint/clipboard/CLEAR_PASTE_OFFSET"})}}}]);
