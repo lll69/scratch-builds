@@ -26,6 +26,7 @@ jobs:
         rm package-lock.json
         npm install
         npm run build
+        cp LICENSE build/LICENSE
         cd ..
     - name: Upload
       uses: crazy-max/ghaction-github-pages@v2.6.0

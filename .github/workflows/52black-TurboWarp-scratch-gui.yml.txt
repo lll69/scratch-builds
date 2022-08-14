@@ -22,6 +22,7 @@ jobs:
         npm i git+https://github.com/52black/scratch-vm
         npm install
         npm run build
+        cp LICENSE build/LICENSE
         cd ..
     - name: Upload
       uses: crazy-max/ghaction-github-pages@v2.6.0
