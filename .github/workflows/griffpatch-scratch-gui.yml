@@ -20,6 +20,8 @@ jobs:
     - name: Clone
       run: |
         git clone https://github.com/griffpatch/scratch-gui
+        curl https://github.com/LLK/scratch-gui/raw/develop/src/lib/default-project/project-data.js
+        cp -f project-data.js scratch-gui/src/lib/default-project/project-data.js
     - name: Build
       run: |
         cd scratch-gui
