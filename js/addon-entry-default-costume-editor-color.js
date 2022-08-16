@@ -81,7 +81,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
   const MIXED = "scratch-paint/style-path/mixed";
-  const SCRATCH_DEFAULT_FILL = parseColor("#9966FF");
+  const SCRATCH_DEFAULT_FILL = parseColor("#000000");
   const SCRATCH_DEFAULT_STROKE = parseColor("#000000");
   const TOOL_INFO = Object.assign(Object.create(null), {
     // Tool names and gradient info defined in https://github.com/LLK/scratch-paint/blob/develop/src/lib/modes.js
