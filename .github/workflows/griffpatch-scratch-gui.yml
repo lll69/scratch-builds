@@ -20,7 +20,8 @@ jobs:
     - name: Clone
       run: |
         git clone https://github.com/griffpatch/scratch-gui
-        curl https://github.com/LLK/scratch-gui/raw/develop/src/lib/default-project/project-data.js > scratch-gui/src/lib/default-project/project-data.js
+        curl https://assets.scratch.mit.edu/internalapi/asset/b7853f557e4426412e64bb3da6531a99.svg/get/ > src/lib/default-project/b7853f557e4426412e64bb3da6531a99.svg
+        curl https://assets.scratch.mit.edu/internalapi/asset/e6ddc55a6ddd9cc9d84fe0b4c21e016f.svg/get/ > src/lib/default-project/e6ddc55a6ddd9cc9d84fe0b4c21e016f.svg
     - name: Build
       run: |
         cd scratch-gui
