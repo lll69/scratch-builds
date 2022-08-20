@@ -1,0 +1,124 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>URL Parameters | TurboWarp Documentation</title>
+    <meta data-react-helmet="true" name="twitter:card" content="summary_large_image">
+    <meta data-react-helmet="true" property="og:url" content="https://docs.turbowarp.org/url-parameters">
+    <meta data-react-helmet="true" property="og:title" content="URL Parameters | TurboWarp Documentation">
+    <meta data-react-helmet="true" name="description" content="Only &quot;hidden&quot; URL parameters are listed here">
+    <meta data-react-helmet="true" property="og:description"
+        content="Only &quot;hidden&quot; URL parameters are listed here">
+    <link data-react-helmet="true" rel="canonical" href="https://docs.turbowarp.org/url-parameters">
+    <link data-react-helmet="true" rel="alternate" href="https://docs.turbowarp.org/url-parameters" hreflang="en">
+    <link data-react-helmet="true" rel="alternate" href="https://docs.turbowarp.org/url-parameters"
+        hreflang="x-default">
+    <link rel="stylesheet" href="https://docs.turbowarp.org/assets/css/styles.13a68460.css">
+    <link rel="preload" href="https://docs.turbowarp.org/assets/js/runtime~main.5400105a.js" as="script">
+    <link rel="preload" href="https://docs.turbowarp.org/assets/js/main.ccfbf14a.js" as="script">
+</head>
+
+<body>
+    <article class="container padding-top--md padding-bottom--lg">
+        <div class="theme-doc-markdown markdown">
+            <header>
+                <h1>URL Parameters</h1>
+            </header>
+            <div class="admonition admonition-note alert alert--secondary">
+                <div class="admonition-heading">
+                    <h5><span class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="16"
+                                viewBox="0 0 14 16">
+                                <path fill-rule="evenodd"
+                                    d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z">
+                                </path>
+                            </svg></span>note</h5>
+                </div>
+                <div class="admonition-content">
+                    <h2 class="anchor anchorWithStickyNavbar_31ik" id="only-hidden-url-parameters-are-listed-here">Only
+                        "hidden" URL parameters are listed here<a class="hash-link"
+                            href="#only-hidden-url-parameters-are-listed-here" title="Direct link to heading">​</a></h2>
+                    <p>TurboWarp will automatically store settings such as turbo mode, 60 FPS, high quality pen, etc. in
+                        the URL, but some advanced options still need to be manually applied. This page only documents
+                        these advanced options.</p>
+                </div>
+            </div>
+            <h2 class="anchor anchorWithStickyNavbar_31ik" id="username">Username<a class="hash-link" href="#username"
+                    title="Direct link to heading">​</a></h2>
+            <p>The <code>username</code> option controls the value of the username block.</p>
+            <p><a href="https://turbowarp.org/443603478?username=ExampleUsername" target="_blank"
+                    rel="noopener noreferrer">https://turbowarp.org/443603478?username=ExampleUsername</a></p>
+            <h2 class="anchor anchorWithStickyNavbar_31ik" id="res-url">Res URL<a class="hash-link" href="#res-url"
+                    title="Direct link to heading">​</a></h2>
+            <p>The <code>res-url</code> option rewrites asset URL.</p>
+            <p><a href="https://turbo-warp-scratch-gui.vercel.app/url.html" target="_blank"
+                    rel="noopener noreferrer">https://turbo-warp-scratch-gui.vercel.app/url.html</a></p>
+            <h2 class="anchor anchorWithStickyNavbar_31ik" id="cloud_host">Cloud host<a class="hash-link"
+                    href="#cloud_host" title="Direct link to heading">​</a></h2>
+            <p>The <code>cloud_host</code> option lets you change the cloud variable server that TurboWarp will connect
+                to, for example:</p>
+            <p><a href="https://turbowarp.org/12785898?cloud_host=wss://clouddata.turbowarp.org" target="_blank"
+                    rel="noopener noreferrer">https://turbowarp.org/12785898?cloud_host=wss://clouddata.turbowarp.org</a>
+            </p>
+            <p>Inclusion of <code>ws://</code> or <code>wss://</code> is optional but recommended.
+                <code>wss://clouddata.turbowarp.org</code> is the default cloud data server used by TurboWarp, so this
+                example doesn't actually change anything. Insecure ws:// servers may not work because TurboWarp uses
+                HTTPS.</p>
+            <p>It is not possible to use this to connect to Scratch's cloud variable server as it requires account
+                credentials which TurboWarp can't support.</p>
+            <h2 class="anchor anchorWithStickyNavbar_31ik" id="extension">Custom extensions<a class="hash-link"
+                    href="#extension" title="Direct link to heading">​</a></h2>
+            <p>The <code>extension</code> option loads a custom extension from a URL. See <a
+                    href="https://docs.turbowarp.org/development/custom-extensions">Custom Extensions</a>.</p>
+            <h2 class="anchor anchorWithStickyNavbar_31ik" id="nocompile">Disable compiler<a class="hash-link"
+                    href="#nocompile" title="Direct link to heading">​</a></h2>
+            <p>The <code>nocompile</code> option turns off the compiler. You probably shouldn't enable this.</p>
+            <p><a href="https://turbowarp.org/?nocompile" target="_blank"
+                    rel="noopener noreferrer">https://turbowarp.org/?nocompile</a></p>
+            <h2 class="anchor anchorWithStickyNavbar_31ik" id="project_url">Project URL<a class="hash-link"
+                    href="#project_url" title="Direct link to heading">​</a></h2>
+            <p>The <code>project_url</code> option tells TurboWarp to download project data from an arbitrary URL. Do
+                not use together with a regular project ID.</p>
+            <p><a href="https://turbowarp.org/?project_url=projects.scratch.mit.edu/10128407" target="_blank"
+                    rel="noopener noreferrer">https://turbowarp.org/?project_url=projects.scratch.mit.edu/10128407</a>
+            </p>
+            <p>This works with any URL that supports CORS, not just projects.scratch.mit.edu. https:// is optional, but
+                it is recommended to not put it for brevity. http:// URLs generally will generally not work for security
+                reasons. Note that the URL needs to be a direct download and must support CORS
+                (<code>Access-Control-Allow-Origin: *</code>). <a href="https://pages.github.com/" target="_blank"
+                    rel="noopener noreferrer">GitHub Pages</a> will do this automatically and is known to work well.</p>
+            <h2 class="anchor anchorWithStickyNavbar_31ik" id="token">Project token<a class="hash-link" href="#token"
+                    title="Direct link to heading">​</a></h2>
+            <p>The <code>token</code> option tells TurboWarp what it should use as the project token when it fetches a
+                project from Scratch. This is an experimental feature related to the <a
+                    href="https://docs.turbowarp.org/unshared-projects">upcoming unshared project changes</a> to possibly allow the creator of a
+                project to share their own unshared projects.</p>
+            <p>The process to obtain a project token is not described here.</p>
+            <p>Note that tokens seem to be designed to expire after five minutes as the tokens returned from Scratch
+                contain a timestamp 300 seconds in the future, so links that use this feature should be expected to stop
+                working very quickly.</p>
+            <p>Some may be uncomfortable putting the project token in the URL because it will be sent to TurboWarp's
+                servers. <strong>We do not log project tokens specified using a URL parameter in any way.</strong> If
+                this promise isn't enough for you, you can also put the token in the fragment or hash part of the URL
+                which won't be sent to our server. For example:
+                <code>https://turbowarp.org/1#?token=1234567_abcdef...</code> You can examine the requests made by the
+                website to verify that this token is only ever used to download the project directly from Scratch.</p>
+        </div>
+        <footer class="theme-doc-footer docusaurus-mt-lg">
+            <div class="theme-doc-footer-edit-meta-row row">
+                <div class="col"><a href="https://github.com/TurboWarp/docs/edit/master/docs/website/url-parameters.md"
+                        target="_blank" rel="noreferrer noopener" class="theme-edit-this-page"><svg fill="currentColor"
+                            height="20" width="20" viewBox="0 0 40 40" class="iconEdit_2_ui" aria-hidden="true">
+                            <g>
+                                <path
+                                    d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z">
+                                </path>
+                            </g>
+                        </svg>Edit this page</a></div>
+                <div class="col lastUpdated_13-_"></div>
+            </div>
+        </footer>
+    </article>
+</body>
+
+</html>
