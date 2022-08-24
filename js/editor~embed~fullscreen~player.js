@@ -35849,17 +35849,12 @@ const SBFileUploaderHOC = function SBFileUploaderHOC(WrappedComponent) {
             const file = await handle.getFile();
             this.handleChange({
               target: {
-                files: [file]
+                files: [file],
+                handle: handle
               }
             });
-
-            if (file.name.endsWith('.sb3')) {
-              this.props.onSetFileHandle(handle);
-            } else {
-              this.props.onSetFileHandle(null);
-            }
           } catch (err) {
-            // If user aborted process, do not show an error.
+            // If the user aborted it, that's not an error.
             if (err && err.name === 'AbortError') {
               return;
             } // eslint-disable-next-line no-console
@@ -35909,7 +35904,18 @@ const SBFileUploaderHOC = function SBFileUploaderHOC(WrappedComponent) {
         }
 
         if (uploadAllowed) {
-          // cues step 4
+          // Don't update file handle until after confirming replace.
+          const handle = thisFileInput.handle;
+
+          if (handle) {
+            if (this.fileToUpload.name.endsWith('.sb3')) {
+              this.props.onSetFileHandle(handle);
+            } else {
+              this.props.onSetFileHandle(null);
+            }
+          } // cues step 4
+
+
           this.props.requestProjectUpload(loadingState);
         } else {
           // skips ahead to step 7
