@@ -32476,6 +32476,8 @@ const costumeUpload = function costumeUpload(fileData, fileType, vm, handleCostu
   switch (fileType) {
     case 'image/svg+xml':
       {
+        // run svg bytes through scratch-svg-renderer's sanitization code
+        fileData = scratch_svg_renderer__WEBPACK_IMPORTED_MODULE_0__["sanitizeSvg"].sanitizeByteStream(fileData);
         costumeFormat = storage.DataFormat.SVG;
         assetType = storage.AssetType.ImageVector;
         fileData = Object(_tw_svg_fixer__WEBPACK_IMPORTED_MODULE_4__["default"])(fileData);
