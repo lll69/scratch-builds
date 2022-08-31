@@ -2222,7 +2222,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "/* make sure to keep these in sync with other constants,\ne.g. STAGE_DIMENSION_DEFAULTS in lib/screen-utils.js */\n\n/* layout contants from `layout-constants.js` */\n\n/* #E5F0FF */\n\n/* #E9F1FC */\n\n/* #D9E3F2 */\n\n/* 90% transparent version of motion-primary */\n\n/* #FFFFFF */\n\n/* 25% transparent version of ui-white */\n\n/* 25% transparent version of ui-white */\n\n/* 25% transparent version of ui-white */\n\n/* 15% transparent version of black */\n\n/* #575E75 */\n\n/* 35% transparent version of motion-primary */\n\n/* 15% transparent version of motion-primary */\n\n/* opt-in theme overrides */\n\n/* #FF661A */\n\n/* #E64D00 */\n\n/* #CF63CF */\n\n/* #BD42BD */\n\n/* #FFAB19 */\n\n/* #FF8C1A */\n\n/* #0FBD8C */\n\n/* #0FBD8C */\n\n/* #FF8C1A */\n\n/* #FFB366 */\n\n/* #FF8C1A */\n\n/* 35% transparent version of extensions-primary */\n\n/* opaque version of extensions-transparent, on white bg */\n\n/* lighter than motion-primary */\n\n/*\n    Contains constants for the z-index values of elements that are part of the global stack context.\n    In other words, z-index values that are \"inside\" a component are not added here.\n    This prevents conflicts between identical z-index values in different components.\n*/\n\n/* Toolbox z-index: 40; set in scratch-blocks */\n\n/* tooltips should go over add buttons if they overlap */\n\n/* monitors go over add buttons */\n\n/* \"ask\" block text input goes above monitors */\n\n/* menu-bar should go over monitors, alerts and tutorials */\n\n/* tw: show below menu bar normally */\n\n/* Block drag z-index: 1000; default 50 is overriden in blocks.css */\n\n/* so it is draggable into other panes */\n\n/* in most interfaces, the context menu is always on top */\n\n.stage_stage_1fD7k {\n    /*\n        Fixes a few extra pixels of margin/padding, that adds on to the bottom\n        of the element, which messes up the chrome padding consistency\n    */\n    display: block;\n\n    border-radius: 0.5rem;\n    border: 0.0625rem solid var(--ui-black-transparent, hsla(0, 0%, 0%, 0.15));\n    overflow: hidden;\n\n    /* @todo: This is for overriding the value being set somewhere. Where is it being set? */\n    background-color: transparent;\n\n    /* Allow custom touch handling to prevent scrolling on Edge */\n    touch-action: none;\n\n    /* Make sure border is not included in size calculation */\n    box-sizing: content-box !important;\n\n    /* enforce overflow + reset position of absolutely-positioned children */\n    position: relative;\n\n    /* anything in the stage such as monitor scrollbars should always use light theme */\n    color-scheme: light;\n}\n\n.stage_stage_1fD7k.stage_full-screen_ZO7xi {\n    /* tw: remove fullscreen border */\n}\n\n.stage_with-color-picker_1lNd5 {\n    cursor: none;\n    z-index: 2010;\n}\n\n.stage_color-picker-background_2wCVq {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, 0.55);\n    display: block;\n    z-index: 2000;\n    top: 0;\n    left: 0;\n}\n\n.stage_stage-wrapper_eRRuk {\n    position: relative;\n}\n\n/* we want stage overlays to all be positioned in the same spot as the stage, but can't put them inside the border\nbecause we want their overflow to be visible, and the bordered element must have overflow: hidden set so that the\nstage doesn't \"spill\" out from under its rounded corners. instead, shift these over by the border width. */\n\n.stage_stage-overlays_eE14L {\n    position: absolute;\n    top: 0.0625rem;\n    left: 0.0625rem;\n\n    /* the overlay itself should not capture pointer events; only its child elements can do that */\n    pointer-events: none;\n}\n\n.stage_stage-overlays_eE14L.stage_full-screen_ZO7xi {\n    top: 0.1875rem;\n    left: 0.1875rem;\n}\n\n.stage_monitor-wrapper_2w6m8,\n.stage_frame-wrapper_1JaS_,\n.stage_green-flag-overlay-wrapper_2hUi_ {\n    position: absolute;\n    top: 0;\n    left: 0;\n    pointer-events: none;\n}\n\n.stage_dragging-sprite_pxcJj {\n    position: absolute;\n    top: 0;\n    left: 0;\n    z-index: 1020;\n    filter: drop-shadow(5px 5px 5px hsla(0, 0%, 0%, 0.15));\n}\n\n.stage_stage-bottom-wrapper_KIBfo {\n    position: absolute;\n    display: flex;\n    flex-direction: column;\n    justify-content: flex-end;\n    top: 0;\n    left: 0;\n    overflow: hidden;\n    pointer-events: none;\n}\n\n.stage_mic-indicator_3AvN8 {\n    transform-origin: bottom right;\n    z-index: 45;\n    pointer-events: none;\n    align-self: flex-end;\n}\n\n.stage_question-wrapper_3ukB4 {\n    z-index: 49;\n    pointer-events: auto;\n}\n\n.stage_frame_OVq5G {\n    background: hsla(0, 100%, 65%, 0.35);\n    border: 2px solid hsla(0, 100%, 65%, 1);\n    border-radius: 0.5rem;\n    animation-name: stage_flash_iuAnU;\n    animation-duration: 0.75s;\n    animation-fill-mode: forwards; /* Leave at 0 opacity after animation */\n}\n\n.stage_green-flag-overlay-wrapper_2hUi_ {\n    width: 100%;\n    height: 100%;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    background: rgba(0,0,0,0.25);\n    border-radius: 0.5rem;\n    pointer-events: all;\n    cursor: pointer;\n}\n\n.stage_green-flag-overlay_gNXnv {\n    padding: 1rem;\n    border-radius: 100%;\n    background: rgba(255,255,255,0.75);\n    border: 3px solid hsla(0, 100%, 100%, 1);\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    box-sizing: border-box;\n    width: 5rem;\n    height: 5rem;\n}\n\n.stage_green-flag-overlay_gNXnv > img {\n    width: 100%;\n    object-fit: contain;\n}\n\n@keyframes stage_flash_iuAnU {\n    0% { opacity: 1; }\n    100% { opacity: 0; }\n}\n", ""]);
+exports.push([module.i, "/* make sure to keep these in sync with other constants,\ne.g. STAGE_DIMENSION_DEFAULTS in lib/screen-utils.js */\n\n/* layout contants from `layout-constants.js` */\n\n/* #E5F0FF */\n\n/* #E9F1FC */\n\n/* #D9E3F2 */\n\n/* 90% transparent version of motion-primary */\n\n/* #FFFFFF */\n\n/* 25% transparent version of ui-white */\n\n/* 25% transparent version of ui-white */\n\n/* 25% transparent version of ui-white */\n\n/* 15% transparent version of black */\n\n/* #575E75 */\n\n/* 35% transparent version of motion-primary */\n\n/* 15% transparent version of motion-primary */\n\n/* opt-in theme overrides */\n\n/* #FF661A */\n\n/* #E64D00 */\n\n/* #CF63CF */\n\n/* #BD42BD */\n\n/* #FFAB19 */\n\n/* #FF8C1A */\n\n/* #0FBD8C */\n\n/* #0FBD8C */\n\n/* #FF8C1A */\n\n/* #FFB366 */\n\n/* #FF8C1A */\n\n/* 35% transparent version of extensions-primary */\n\n/* opaque version of extensions-transparent, on white bg */\n\n/* lighter than motion-primary */\n\n/*\n    Contains constants for the z-index values of elements that are part of the global stack context.\n    In other words, z-index values that are \"inside\" a component are not added here.\n    This prevents conflicts between identical z-index values in different components.\n*/\n\n/* Toolbox z-index: 40; set in scratch-blocks */\n\n/* tooltips should go over add buttons if they overlap */\n\n/* monitors go over add buttons */\n\n/* \"ask\" block text input goes above monitors */\n\n/* menu-bar should go over monitors, alerts and tutorials */\n\n/* tw: show below menu bar normally */\n\n/* Block drag z-index: 1000; default 50 is overriden in blocks.css */\n\n/* so it is draggable into other panes */\n\n/* in most interfaces, the context menu is always on top */\n\n.stage_stage_1fD7k {\n    /*\n        Fixes a few extra pixels of margin/padding, that adds on to the bottom\n        of the element, which messes up the chrome padding consistency\n    */\n    display: block;\n\n    border-radius: 0.5rem;\n    border: 0.0625rem solid var(--ui-black-transparent, hsla(0, 0%, 0%, 0.15));\n    overflow: hidden;\n\n    /* @todo: This is for overriding the value being set somewhere. Where is it being set? */\n    background-color: transparent;\n\n    /* Allow custom touch handling to prevent scrolling on Edge */\n    touch-action: none;\n\n    /* Make sure border is not included in size calculation */\n    box-sizing: content-box !important;\n\n    /* enforce overflow + reset position of absolutely-positioned children */\n    position: relative;\n\n    /* anything in the stage such as monitor scrollbars should always use light theme */\n    color-scheme: light;\n}\n\n.stage_stage_1fD7k.stage_full-screen_ZO7xi {\n    /* tw: remove fullscreen border */\n}\n\n.stage_with-color-picker_1lNd5 {\n    cursor: none;\n    z-index: 2010;\n}\n\n.stage_color-picker-background_2wCVq {\n    position: fixed;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, 0.55);\n    display: block;\n    z-index: 2000;\n    top: 0;\n    left: 0;\n}\n\n.stage_stage-wrapper_eRRuk {\n    position: relative;\n}\n\n/* we want stage overlays to all be positioned in the same spot as the stage, but can't put them inside the border\nbecause we want their overflow to be visible, and the bordered element must have overflow: hidden set so that the\nstage doesn't \"spill\" out from under its rounded corners. instead, shift these over by the border width. */\n\n.stage_stage-overlays_eE14L {\n    position: absolute;\n    top: 0.0625rem;\n    left: 0.0625rem;\n\n    /* the overlay itself should not capture pointer events; only its child elements can do that */\n    pointer-events: none;\n}\n\n.stage_stage-overlays_eE14L.stage_full-screen_ZO7xi {\n    top: 0.1875rem;\n    left: 0.1875rem;\n}\n\n.stage_monitor-wrapper_2w6m8,\n.stage_frame-wrapper_1JaS_,\n.stage_green-flag-overlay-wrapper_2hUi_ {\n    position: absolute;\n    top: 0;\n    left: 0;\n    pointer-events: none;\n}\n\n.stage_dragging-sprite_pxcJj {\n    position: absolute;\n    top: 0;\n    left: 0;\n    z-index: 1020;\n    filter: drop-shadow(5px 5px 5px hsla(0, 0%, 0%, 0.15));\n}\n\n.stage_stage-bottom-wrapper_KIBfo {\n    position: absolute;\n    display: flex;\n    flex-direction: column;\n    justify-content: flex-end;\n    top: 0;\n    left: 0;\n    overflow: hidden;\n    pointer-events: none;\n}\n\n.stage_mic-indicator_3AvN8 {\n    transform-origin: bottom right;\n    z-index: 45;\n    pointer-events: none;\n    align-self: flex-end;\n}\n\n.stage_question-wrapper_3ukB4 {\n    z-index: 49;\n    pointer-events: auto;\n}\n\n.stage_frame_OVq5G {\n    background: hsla(0, 100%, 65%, 0.35);\n    border: 2px solid hsla(0, 100%, 65%, 1);\n    border-radius: 0.5rem;\n    animation-name: stage_flash_iuAnU;\n    animation-duration: 0.75s;\n    animation-fill-mode: forwards; /* Leave at 0 opacity after animation */\n}\n\n.stage_green-flag-overlay-wrapper_2hUi_ {\n    width: 100%;\n    height: 100%;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    background: rgba(0,0,0,0.25);\n    border-radius: 0.5rem;\n    pointer-events: all;\n    cursor: pointer;\n}\n\n.stage_green-flag-overlay_gNXnv {\n    padding: 1rem;\n    border-radius: 100%;\n    background: rgba(255,255,255,0.75);\n    border: 3px solid hsla(0, 100%, 100%, 1);\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    box-sizing: border-box;\n    width: 5rem;\n    height: 5rem;\n}\n\n.stage_green-flag-overlay_gNXnv > img {\n    width: 100%;\n    object-fit: contain;\n}\n\n@keyframes stage_flash_iuAnU {\n    0% { opacity: 1; }\n    100% { opacity: 0; }\n}\n", ""]);
 
 // exports
 exports.locals = {
@@ -11175,19 +11175,10 @@ class MenuBar extends react__WEBPACK_IMPORTED_MODULE_7___default.a.Component {
     })) : this.props.enableSeeInside ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_tw_see_inside_jsx__WEBPACK_IMPORTED_MODULE_48__["default"], {
       className: _menu_bar_css__WEBPACK_IMPORTED_MODULE_36___default.a.menuBarButton,
       onClick: this.handleClickSeeInside
-    }) : []), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-      className: _menu_bar_css__WEBPACK_IMPORTED_MODULE_36___default.a.menuBarItem
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("a", {
-      className: _menu_bar_css__WEBPACK_IMPORTED_MODULE_36___default.a.feedbackLink,
-      href: "https://scratch.mit.edu/users/GarboMuffin/#comments",
-      rel: "noopener noreferrer",
-      target: "_blank"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_button_button_jsx__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      className: _menu_bar_css__WEBPACK_IMPORTED_MODULE_36___default.a.feedbackButton
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_3__["FormattedMessage"], {
-      defaultMessage: "TurboWarp Feedback",
-      id: "tw.feedbackButton"
-    }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+    }) : [])), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+      id: "fade",
+      class: "black_overlay"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
       className: _menu_bar_css__WEBPACK_IMPORTED_MODULE_36___default.a.accountInfoGroup
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
       className: _menu_bar_css__WEBPACK_IMPORTED_MODULE_36___default.a.menuBarItem
@@ -32733,6 +32724,8 @@ const costumeUpload = function costumeUpload(fileData, fileType, vm, handleCostu
   switch (fileType) {
     case 'image/svg+xml':
       {
+        // run svg bytes through scratch-svg-renderer's sanitization code
+        fileData = scratch_svg_renderer__WEBPACK_IMPORTED_MODULE_0__["sanitizeSvg"].sanitizeByteStream(fileData);
         costumeFormat = storage.DataFormat.SVG;
         assetType = storage.AssetType.ImageVector;
         fileData = Object(_tw_svg_fixer__WEBPACK_IMPORTED_MODULE_4__["default"])(fileData);
@@ -33465,72 +33458,6 @@ module.exports = __webpack_require__.p + "static/assets/3d9e2585d6ed12b9fb994438
 
 /***/ }),
 
-/***/ "./src/lib/libraries/extensions/boost/boost.png":
-/*!******************************************************!*\
-  !*** ./src/lib/libraries/extensions/boost/boost.png ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "static/assets/bf3ee9d7d91a231cde773f88f6799425.png";
-
-/***/ }),
-
-/***/ "./src/lib/libraries/extensions/canvas/canvas-small.svg":
-/*!**************************************************************!*\
-  !*** ./src/lib/libraries/extensions/canvas/canvas-small.svg ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "static/assets/e5ff64a98d0da32e7f4c7d6bbe1f5bbb.svg";
-
-/***/ }),
-
-/***/ "./src/lib/libraries/extensions/canvas/canvas.png":
-/*!********************************************************!*\
-  !*** ./src/lib/libraries/extensions/canvas/canvas.png ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "static/assets/d0dde355e3216d57854338057c6d56cf.png";
-
-/***/ }),
-
-/***/ "./src/lib/libraries/extensions/community/community-small.svg":
-/*!********************************************************************!*\
-  !*** ./src/lib/libraries/extensions/community/community-small.svg ***!
-  \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "static/assets/a700f54657116913a53638b35baddf19.svg";
-
-/***/ }),
-
-/***/ "./src/lib/libraries/extensions/community/community.png":
-/*!**************************************************************!*\
-  !*** ./src/lib/libraries/extensions/community/community.png ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "static/assets/88e3d0b119e0bf654df91fe79d278b51.png";
-
-/***/ }),
-
-/***/ "./src/lib/libraries/extensions/custom/custom.svg":
-/*!********************************************************!*\
-  !*** ./src/lib/libraries/extensions/custom/custom.svg ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "static/assets/4f4d22594d26b423831ddbbc3bf0d8ad.svg";
-
-/***/ }),
-
 /***/ "./src/lib/libraries/extensions/ev3/ev3-hub-illustration.svg":
 /*!*******************************************************************!*\
   !*** ./src/lib/libraries/extensions/ev3/ev3-hub-illustration.svg ***!
@@ -33553,50 +33480,6 @@ module.exports = __webpack_require__.p + "static/assets/3286e2838658ebdb82f62d06
 
 /***/ }),
 
-/***/ "./src/lib/libraries/extensions/ev3/ev3.png":
-/*!**************************************************!*\
-  !*** ./src/lib/libraries/extensions/ev3/ev3.png ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "static/assets/6608d56b3dce2738b2b137569d305d3b.png";
-
-/***/ }),
-
-/***/ "./src/lib/libraries/extensions/gdxfor/gdxfor-illustration.svg":
-/*!*********************************************************************!*\
-  !*** ./src/lib/libraries/extensions/gdxfor/gdxfor-illustration.svg ***!
-  \*********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "static/assets/60fc7acc624571cfa9d250d7d5cff041.svg";
-
-/***/ }),
-
-/***/ "./src/lib/libraries/extensions/gdxfor/gdxfor-small.svg":
-/*!**************************************************************!*\
-  !*** ./src/lib/libraries/extensions/gdxfor/gdxfor-small.svg ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "static/assets/7b6399d516d5921bb199f57cdd8bbbbe.svg";
-
-/***/ }),
-
-/***/ "./src/lib/libraries/extensions/gdxfor/gdxfor.png":
-/*!********************************************************!*\
-  !*** ./src/lib/libraries/extensions/gdxfor/gdxfor.png ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "static/assets/5a70df361bb00fa62b9338d89c92f377.png";
-
-/***/ }),
-
 /***/ "./src/lib/libraries/extensions/index.jsx":
 /*!************************************************!*\
   !*** ./src/lib/libraries/extensions/index.jsx ***!
@@ -33609,107 +33492,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-intl */ "./node_modules/react-intl/lib/index.es.js");
-/* harmony import */ var _music_music_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./music/music.png */ "./src/lib/libraries/extensions/music/music.png");
-/* harmony import */ var _music_music_png__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_music_music_png__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _music_music_small_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./music/music-small.svg */ "./src/lib/libraries/extensions/music/music-small.svg");
-/* harmony import */ var _music_music_small_svg__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_music_music_small_svg__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _pen_pen_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pen/pen.png */ "./src/lib/libraries/extensions/pen/pen.png");
-/* harmony import */ var _pen_pen_png__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_pen_pen_png__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _pen_pen_small_svg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pen/pen-small.svg */ "./src/lib/libraries/extensions/pen/pen-small.svg");
-/* harmony import */ var _pen_pen_small_svg__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_pen_pen_small_svg__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _videoSensing_video_sensing_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./videoSensing/video-sensing.png */ "./src/lib/libraries/extensions/videoSensing/video-sensing.png");
-/* harmony import */ var _videoSensing_video_sensing_png__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_videoSensing_video_sensing_png__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _videoSensing_video_sensing_small_svg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./videoSensing/video-sensing-small.svg */ "./src/lib/libraries/extensions/videoSensing/video-sensing-small.svg");
-/* harmony import */ var _videoSensing_video_sensing_small_svg__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_videoSensing_video_sensing_small_svg__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _text2speech_text2speech_png__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./text2speech/text2speech.png */ "./src/lib/libraries/extensions/text2speech/text2speech.png");
-/* harmony import */ var _text2speech_text2speech_png__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_text2speech_text2speech_png__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _text2speech_text2speech_small_svg__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./text2speech/text2speech-small.svg */ "./src/lib/libraries/extensions/text2speech/text2speech-small.svg");
-/* harmony import */ var _text2speech_text2speech_small_svg__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_text2speech_text2speech_small_svg__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _translate_translate_png__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./translate/translate.png */ "./src/lib/libraries/extensions/translate/translate.png");
-/* harmony import */ var _translate_translate_png__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_translate_translate_png__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _translate_translate_small_png__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./translate/translate-small.png */ "./src/lib/libraries/extensions/translate/translate-small.png");
-/* harmony import */ var _translate_translate_small_png__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_translate_translate_small_png__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _makeymakey_makeymakey_png__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./makeymakey/makeymakey.png */ "./src/lib/libraries/extensions/makeymakey/makeymakey.png");
-/* harmony import */ var _makeymakey_makeymakey_png__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_makeymakey_makeymakey_png__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var _makeymakey_makeymakey_small_svg__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./makeymakey/makeymakey-small.svg */ "./src/lib/libraries/extensions/makeymakey/makeymakey-small.svg");
-/* harmony import */ var _makeymakey_makeymakey_small_svg__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_makeymakey_makeymakey_small_svg__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var _microbit_microbit_png__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./microbit/microbit.png */ "./src/lib/libraries/extensions/microbit/microbit.png");
-/* harmony import */ var _microbit_microbit_png__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_microbit_microbit_png__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var _microbit_microbit_small_svg__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./microbit/microbit-small.svg */ "./src/lib/libraries/extensions/microbit/microbit-small.svg");
-/* harmony import */ var _microbit_microbit_small_svg__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_microbit_microbit_small_svg__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var _microbit_microbit_illustration_svg__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./microbit/microbit-illustration.svg */ "./src/lib/libraries/extensions/microbit/microbit-illustration.svg");
-/* harmony import */ var _microbit_microbit_illustration_svg__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(_microbit_microbit_illustration_svg__WEBPACK_IMPORTED_MODULE_16__);
-/* harmony import */ var _ev3_ev3_png__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./ev3/ev3.png */ "./src/lib/libraries/extensions/ev3/ev3.png");
-/* harmony import */ var _ev3_ev3_png__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(_ev3_ev3_png__WEBPACK_IMPORTED_MODULE_17__);
-/* harmony import */ var _ev3_ev3_small_svg__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./ev3/ev3-small.svg */ "./src/lib/libraries/extensions/ev3/ev3-small.svg");
-/* harmony import */ var _ev3_ev3_small_svg__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(_ev3_ev3_small_svg__WEBPACK_IMPORTED_MODULE_18__);
-/* harmony import */ var _ev3_ev3_hub_illustration_svg__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./ev3/ev3-hub-illustration.svg */ "./src/lib/libraries/extensions/ev3/ev3-hub-illustration.svg");
-/* harmony import */ var _ev3_ev3_hub_illustration_svg__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(_ev3_ev3_hub_illustration_svg__WEBPACK_IMPORTED_MODULE_19__);
-/* harmony import */ var _wedo2_wedo_png__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./wedo2/wedo.png */ "./src/lib/libraries/extensions/wedo2/wedo.png");
-/* harmony import */ var _wedo2_wedo_png__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(_wedo2_wedo_png__WEBPACK_IMPORTED_MODULE_20__);
-/* harmony import */ var _wedo2_wedo_small_svg__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./wedo2/wedo-small.svg */ "./src/lib/libraries/extensions/wedo2/wedo-small.svg");
-/* harmony import */ var _wedo2_wedo_small_svg__WEBPACK_IMPORTED_MODULE_21___default = /*#__PURE__*/__webpack_require__.n(_wedo2_wedo_small_svg__WEBPACK_IMPORTED_MODULE_21__);
-/* harmony import */ var _wedo2_wedo_illustration_svg__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./wedo2/wedo-illustration.svg */ "./src/lib/libraries/extensions/wedo2/wedo-illustration.svg");
-/* harmony import */ var _wedo2_wedo_illustration_svg__WEBPACK_IMPORTED_MODULE_22___default = /*#__PURE__*/__webpack_require__.n(_wedo2_wedo_illustration_svg__WEBPACK_IMPORTED_MODULE_22__);
-/* harmony import */ var _wedo2_wedo_button_illustration_svg__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./wedo2/wedo-button-illustration.svg */ "./src/lib/libraries/extensions/wedo2/wedo-button-illustration.svg");
-/* harmony import */ var _wedo2_wedo_button_illustration_svg__WEBPACK_IMPORTED_MODULE_23___default = /*#__PURE__*/__webpack_require__.n(_wedo2_wedo_button_illustration_svg__WEBPACK_IMPORTED_MODULE_23__);
-/* harmony import */ var _boost_boost_png__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./boost/boost.png */ "./src/lib/libraries/extensions/boost/boost.png");
-/* harmony import */ var _boost_boost_png__WEBPACK_IMPORTED_MODULE_24___default = /*#__PURE__*/__webpack_require__.n(_boost_boost_png__WEBPACK_IMPORTED_MODULE_24__);
-/* harmony import */ var _boost_boost_small_svg__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./boost/boost-small.svg */ "./src/lib/libraries/extensions/boost/boost-small.svg");
-/* harmony import */ var _boost_boost_small_svg__WEBPACK_IMPORTED_MODULE_25___default = /*#__PURE__*/__webpack_require__.n(_boost_boost_small_svg__WEBPACK_IMPORTED_MODULE_25__);
-/* harmony import */ var _boost_boost_illustration_svg__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./boost/boost-illustration.svg */ "./src/lib/libraries/extensions/boost/boost-illustration.svg");
-/* harmony import */ var _boost_boost_illustration_svg__WEBPACK_IMPORTED_MODULE_26___default = /*#__PURE__*/__webpack_require__.n(_boost_boost_illustration_svg__WEBPACK_IMPORTED_MODULE_26__);
-/* harmony import */ var _boost_boost_button_illustration_svg__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./boost/boost-button-illustration.svg */ "./src/lib/libraries/extensions/boost/boost-button-illustration.svg");
-/* harmony import */ var _boost_boost_button_illustration_svg__WEBPACK_IMPORTED_MODULE_27___default = /*#__PURE__*/__webpack_require__.n(_boost_boost_button_illustration_svg__WEBPACK_IMPORTED_MODULE_27__);
-/* harmony import */ var _gdxfor_gdxfor_png__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./gdxfor/gdxfor.png */ "./src/lib/libraries/extensions/gdxfor/gdxfor.png");
-/* harmony import */ var _gdxfor_gdxfor_png__WEBPACK_IMPORTED_MODULE_28___default = /*#__PURE__*/__webpack_require__.n(_gdxfor_gdxfor_png__WEBPACK_IMPORTED_MODULE_28__);
-/* harmony import */ var _gdxfor_gdxfor_small_svg__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./gdxfor/gdxfor-small.svg */ "./src/lib/libraries/extensions/gdxfor/gdxfor-small.svg");
-/* harmony import */ var _gdxfor_gdxfor_small_svg__WEBPACK_IMPORTED_MODULE_29___default = /*#__PURE__*/__webpack_require__.n(_gdxfor_gdxfor_small_svg__WEBPACK_IMPORTED_MODULE_29__);
-/* harmony import */ var _gdxfor_gdxfor_illustration_svg__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./gdxfor/gdxfor-illustration.svg */ "./src/lib/libraries/extensions/gdxfor/gdxfor-illustration.svg");
-/* harmony import */ var _gdxfor_gdxfor_illustration_svg__WEBPACK_IMPORTED_MODULE_30___default = /*#__PURE__*/__webpack_require__.n(_gdxfor_gdxfor_illustration_svg__WEBPACK_IMPORTED_MODULE_30__);
-/* harmony import */ var _canvas_canvas_png__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./canvas/canvas.png */ "./src/lib/libraries/extensions/canvas/canvas.png");
-/* harmony import */ var _canvas_canvas_png__WEBPACK_IMPORTED_MODULE_31___default = /*#__PURE__*/__webpack_require__.n(_canvas_canvas_png__WEBPACK_IMPORTED_MODULE_31__);
-/* harmony import */ var _canvas_canvas_small_svg__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./canvas/canvas-small.svg */ "./src/lib/libraries/extensions/canvas/canvas-small.svg");
-/* harmony import */ var _canvas_canvas_small_svg__WEBPACK_IMPORTED_MODULE_32___default = /*#__PURE__*/__webpack_require__.n(_canvas_canvas_small_svg__WEBPACK_IMPORTED_MODULE_32__);
-/* harmony import */ var _community_community_png__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./community/community.png */ "./src/lib/libraries/extensions/community/community.png");
-/* harmony import */ var _community_community_png__WEBPACK_IMPORTED_MODULE_33___default = /*#__PURE__*/__webpack_require__.n(_community_community_png__WEBPACK_IMPORTED_MODULE_33__);
-/* harmony import */ var _community_community_small_svg__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./community/community-small.svg */ "./src/lib/libraries/extensions/community/community-small.svg");
-/* harmony import */ var _community_community_small_svg__WEBPACK_IMPORTED_MODULE_34___default = /*#__PURE__*/__webpack_require__.n(_community_community_small_svg__WEBPACK_IMPORTED_MODULE_34__);
-/* harmony import */ var _tw_tw_svg__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./tw/tw.svg */ "./src/lib/libraries/extensions/tw/tw.svg");
-/* harmony import */ var _tw_tw_svg__WEBPACK_IMPORTED_MODULE_35___default = /*#__PURE__*/__webpack_require__.n(_tw_tw_svg__WEBPACK_IMPORTED_MODULE_35__);
-/* harmony import */ var _custom_custom_svg__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./custom/custom.svg */ "./src/lib/libraries/extensions/custom/custom.svg");
-/* harmony import */ var _custom_custom_svg__WEBPACK_IMPORTED_MODULE_36___default = /*#__PURE__*/__webpack_require__.n(_custom_custom_svg__WEBPACK_IMPORTED_MODULE_36__);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- // TODO: Rename file names to match variable/prop names?
-
-
-
-
-
-
-
-
+/* harmony import */ var _microbit_microbit_illustration_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./microbit/microbit-illustration.svg */ "./src/lib/libraries/extensions/microbit/microbit-illustration.svg");
+/* harmony import */ var _microbit_microbit_illustration_svg__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_microbit_microbit_illustration_svg__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _microbit_microbit_small_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./microbit/microbit-small.svg */ "./src/lib/libraries/extensions/microbit/microbit-small.svg");
+/* harmony import */ var _microbit_microbit_small_svg__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_microbit_microbit_small_svg__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _ev3_ev3_hub_illustration_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ev3/ev3-hub-illustration.svg */ "./src/lib/libraries/extensions/ev3/ev3-hub-illustration.svg");
+/* harmony import */ var _ev3_ev3_hub_illustration_svg__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_ev3_ev3_hub_illustration_svg__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _ev3_ev3_small_svg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ev3/ev3-small.svg */ "./src/lib/libraries/extensions/ev3/ev3-small.svg");
+/* harmony import */ var _ev3_ev3_small_svg__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_ev3_ev3_small_svg__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wedo2_wedo_illustration_svg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./wedo2/wedo-illustration.svg */ "./src/lib/libraries/extensions/wedo2/wedo-illustration.svg");
+/* harmony import */ var _wedo2_wedo_illustration_svg__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wedo2_wedo_illustration_svg__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _wedo2_wedo_small_svg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./wedo2/wedo-small.svg */ "./src/lib/libraries/extensions/wedo2/wedo-small.svg");
+/* harmony import */ var _wedo2_wedo_small_svg__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wedo2_wedo_small_svg__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _wedo2_wedo_button_illustration_svg__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./wedo2/wedo-button-illustration.svg */ "./src/lib/libraries/extensions/wedo2/wedo-button-illustration.svg");
+/* harmony import */ var _wedo2_wedo_button_illustration_svg__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_wedo2_wedo_button_illustration_svg__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _boost_boost_illustration_svg__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./boost/boost-illustration.svg */ "./src/lib/libraries/extensions/boost/boost-illustration.svg");
+/* harmony import */ var _boost_boost_illustration_svg__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_boost_boost_illustration_svg__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _boost_boost_small_svg__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./boost/boost-small.svg */ "./src/lib/libraries/extensions/boost/boost-small.svg");
+/* harmony import */ var _boost_boost_small_svg__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_boost_boost_small_svg__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _boost_boost_button_illustration_svg__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./boost/boost-button-illustration.svg */ "./src/lib/libraries/extensions/boost/boost-button-illustration.svg");
+/* harmony import */ var _boost_boost_button_illustration_svg__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_boost_boost_button_illustration_svg__WEBPACK_IMPORTED_MODULE_11__);
 
 
 
@@ -33729,8 +33531,6 @@ __webpack_require__.r(__webpack_exports__);
   }),
   extensionId: 'music',
   collaborator: 'Scratch',
-  iconURL: _music_music_png__WEBPACK_IMPORTED_MODULE_2___default.a,
-  insetIconURL: _music_music_small_svg__WEBPACK_IMPORTED_MODULE_3___default.a,
   description: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__["FormattedMessage"], {
     defaultMessage: "Play instruments and drums.",
     id: "gui.extension.music.description"
@@ -33743,8 +33543,6 @@ __webpack_require__.r(__webpack_exports__);
   }),
   extensionId: 'pen',
   collaborator: 'Scratch',
-  iconURL: _pen_pen_png__WEBPACK_IMPORTED_MODULE_4___default.a,
-  insetIconURL: _pen_pen_small_svg__WEBPACK_IMPORTED_MODULE_5___default.a,
   description: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__["FormattedMessage"], {
     defaultMessage: "Draw with your sprites.",
     id: "gui.extension.pen.description"
@@ -33757,8 +33555,6 @@ __webpack_require__.r(__webpack_exports__);
   }),
   extensionId: 'videoSensing',
   collaborator: 'Scratch',
-  iconURL: _videoSensing_video_sensing_png__WEBPACK_IMPORTED_MODULE_6___default.a,
-  insetIconURL: _videoSensing_video_sensing_small_svg__WEBPACK_IMPORTED_MODULE_7___default.a,
   description: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__["FormattedMessage"], {
     defaultMessage: "Sense motion with the camera.",
     id: "gui.extension.videosensing.description"
@@ -33771,8 +33567,6 @@ __webpack_require__.r(__webpack_exports__);
   }),
   extensionId: 'text2speech',
   collaborator: 'Amazon Web Services',
-  iconURL: _text2speech_text2speech_png__WEBPACK_IMPORTED_MODULE_8___default.a,
-  insetIconURL: _text2speech_text2speech_small_svg__WEBPACK_IMPORTED_MODULE_9___default.a,
   description: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__["FormattedMessage"], {
     defaultMessage: "Make your projects talk.",
     id: "gui.extension.text2speech.description"
@@ -33786,8 +33580,6 @@ __webpack_require__.r(__webpack_exports__);
   }),
   extensionId: 'translate',
   collaborator: 'Google',
-  iconURL: _translate_translate_png__WEBPACK_IMPORTED_MODULE_10___default.a,
-  insetIconURL: _translate_translate_small_png__WEBPACK_IMPORTED_MODULE_11___default.a,
   description: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__["FormattedMessage"], {
     defaultMessage: "Translate text into many languages.",
     id: "gui.extension.translate.description"
@@ -33798,8 +33590,6 @@ __webpack_require__.r(__webpack_exports__);
   name: 'Makey Makey',
   extensionId: 'makeymakey',
   collaborator: 'JoyLabz',
-  iconURL: _makeymakey_makeymakey_png__WEBPACK_IMPORTED_MODULE_12___default.a,
-  insetIconURL: _makeymakey_makeymakey_small_svg__WEBPACK_IMPORTED_MODULE_13___default.a,
   description: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__["FormattedMessage"], {
     defaultMessage: "Make anything into a key.",
     id: "gui.extension.makeymakey.description"
@@ -33809,8 +33599,6 @@ __webpack_require__.r(__webpack_exports__);
   name: 'micro:bit',
   extensionId: 'microbit',
   collaborator: 'micro:bit',
-  iconURL: _microbit_microbit_png__WEBPACK_IMPORTED_MODULE_14___default.a,
-  insetIconURL: _microbit_microbit_small_svg__WEBPACK_IMPORTED_MODULE_15___default.a,
   description: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__["FormattedMessage"], {
     defaultMessage: "Connect your projects with the world.",
     id: "gui.extension.microbit.description"
@@ -33821,8 +33609,8 @@ __webpack_require__.r(__webpack_exports__);
   internetConnectionRequired: true,
   launchPeripheralConnectionFlow: true,
   useAutoScan: false,
-  connectionIconURL: _microbit_microbit_illustration_svg__WEBPACK_IMPORTED_MODULE_16___default.a,
-  connectionSmallIconURL: _microbit_microbit_small_svg__WEBPACK_IMPORTED_MODULE_15___default.a,
+  connectionIconURL: _microbit_microbit_illustration_svg__WEBPACK_IMPORTED_MODULE_2___default.a,
+  connectionSmallIconURL: _microbit_microbit_small_svg__WEBPACK_IMPORTED_MODULE_3___default.a,
   connectingMessage: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__["FormattedMessage"], {
     defaultMessage: "Connecting",
     id: "gui.extension.microbit.connectingMessage"
@@ -33832,8 +33620,6 @@ __webpack_require__.r(__webpack_exports__);
   name: 'LEGO MINDSTORMS EV3',
   extensionId: 'ev3',
   collaborator: 'LEGO',
-  iconURL: _ev3_ev3_png__WEBPACK_IMPORTED_MODULE_17___default.a,
-  insetIconURL: _ev3_ev3_small_svg__WEBPACK_IMPORTED_MODULE_18___default.a,
   description: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__["FormattedMessage"], {
     defaultMessage: "Build interactive robots and more.",
     id: "gui.extension.ev3.description"
@@ -33844,8 +33630,8 @@ __webpack_require__.r(__webpack_exports__);
   internetConnectionRequired: true,
   launchPeripheralConnectionFlow: true,
   useAutoScan: false,
-  connectionIconURL: _ev3_ev3_hub_illustration_svg__WEBPACK_IMPORTED_MODULE_19___default.a,
-  connectionSmallIconURL: _ev3_ev3_small_svg__WEBPACK_IMPORTED_MODULE_18___default.a,
+  connectionIconURL: _ev3_ev3_hub_illustration_svg__WEBPACK_IMPORTED_MODULE_4___default.a,
+  connectionSmallIconURL: _ev3_ev3_small_svg__WEBPACK_IMPORTED_MODULE_5___default.a,
   connectingMessage: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__["FormattedMessage"], {
     defaultMessage: "Connecting. Make sure the pin on your EV3 is set to 1234.",
     id: "gui.extension.ev3.connectingMessage"
@@ -33855,8 +33641,6 @@ __webpack_require__.r(__webpack_exports__);
   name: 'LEGO BOOST',
   extensionId: 'boost',
   collaborator: 'LEGO',
-  iconURL: _boost_boost_png__WEBPACK_IMPORTED_MODULE_24___default.a,
-  insetIconURL: _boost_boost_small_svg__WEBPACK_IMPORTED_MODULE_25___default.a,
   description: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__["FormattedMessage"], {
     defaultMessage: "Bring robotic creations to life.",
     id: "gui.extension.boost.description"
@@ -33867,9 +33651,9 @@ __webpack_require__.r(__webpack_exports__);
   internetConnectionRequired: true,
   launchPeripheralConnectionFlow: true,
   useAutoScan: true,
-  connectionIconURL: _boost_boost_illustration_svg__WEBPACK_IMPORTED_MODULE_26___default.a,
-  connectionSmallIconURL: _boost_boost_small_svg__WEBPACK_IMPORTED_MODULE_25___default.a,
-  connectionTipIconURL: _boost_boost_button_illustration_svg__WEBPACK_IMPORTED_MODULE_27___default.a,
+  connectionIconURL: _boost_boost_illustration_svg__WEBPACK_IMPORTED_MODULE_9___default.a,
+  connectionSmallIconURL: _boost_boost_small_svg__WEBPACK_IMPORTED_MODULE_10___default.a,
+  connectionTipIconURL: _boost_boost_button_illustration_svg__WEBPACK_IMPORTED_MODULE_11___default.a,
   connectingMessage: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__["FormattedMessage"], {
     defaultMessage: "Connecting",
     id: "gui.extension.boost.connectingMessage"
@@ -33879,8 +33663,6 @@ __webpack_require__.r(__webpack_exports__);
   name: 'LEGO Education WeDo 2.0',
   extensionId: 'wedo2',
   collaborator: 'LEGO',
-  iconURL: _wedo2_wedo_png__WEBPACK_IMPORTED_MODULE_20___default.a,
-  insetIconURL: _wedo2_wedo_small_svg__WEBPACK_IMPORTED_MODULE_21___default.a,
   description: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__["FormattedMessage"], {
     defaultMessage: "Build with motors and sensors.",
     id: "gui.extension.wedo2.description"
@@ -33891,9 +33673,9 @@ __webpack_require__.r(__webpack_exports__);
   internetConnectionRequired: true,
   launchPeripheralConnectionFlow: true,
   useAutoScan: true,
-  connectionIconURL: _wedo2_wedo_illustration_svg__WEBPACK_IMPORTED_MODULE_22___default.a,
-  connectionSmallIconURL: _wedo2_wedo_small_svg__WEBPACK_IMPORTED_MODULE_21___default.a,
-  connectionTipIconURL: _wedo2_wedo_button_illustration_svg__WEBPACK_IMPORTED_MODULE_23___default.a,
+  connectionIconURL: _wedo2_wedo_illustration_svg__WEBPACK_IMPORTED_MODULE_6___default.a,
+  connectionSmallIconURL: _wedo2_wedo_small_svg__WEBPACK_IMPORTED_MODULE_7___default.a,
+  connectionTipIconURL: _wedo2_wedo_button_illustration_svg__WEBPACK_IMPORTED_MODULE_8___default.a,
   connectingMessage: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__["FormattedMessage"], {
     defaultMessage: "Connecting",
     id: "gui.extension.wedo2.connectingMessage"
@@ -33903,8 +33685,6 @@ __webpack_require__.r(__webpack_exports__);
   name: 'Go Direct Force & Acceleration',
   extensionId: 'gdxfor',
   collaborator: 'Vernier',
-  iconURL: _gdxfor_gdxfor_png__WEBPACK_IMPORTED_MODULE_28___default.a,
-  insetIconURL: _gdxfor_gdxfor_small_svg__WEBPACK_IMPORTED_MODULE_29___default.a,
   description: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__["FormattedMessage"], {
     defaultMessage: "Sense push, pull, motion, and spin.",
     id: "gui.extension.gdxfor.description"
@@ -33915,8 +33695,6 @@ __webpack_require__.r(__webpack_exports__);
   internetConnectionRequired: true,
   launchPeripheralConnectionFlow: true,
   useAutoScan: false,
-  connectionIconURL: _gdxfor_gdxfor_illustration_svg__WEBPACK_IMPORTED_MODULE_30___default.a,
-  connectionSmallIconURL: _gdxfor_gdxfor_small_svg__WEBPACK_IMPORTED_MODULE_29___default.a,
   connectingMessage: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__["FormattedMessage"], {
     defaultMessage: "Connecting",
     id: "gui.extension.gdxfor.connectingMessage"
@@ -33929,7 +33707,6 @@ __webpack_require__.r(__webpack_exports__);
   }),
   extensionId: 'tw',
   collaborator: 'TurboWarp',
-  iconURL: _tw_tw_svg__WEBPACK_IMPORTED_MODULE_35___default.a,
   description: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__["FormattedMessage"], {
     defaultMessage: "Weird new blocks. Not compatible with Scratch.",
     id: "tw.twExtension.description"
@@ -33943,8 +33720,6 @@ __webpack_require__.r(__webpack_exports__);
   }),
   extensionId: 'canvas',
   collaborator: '阿儿法营',
-  iconURL: _canvas_canvas_png__WEBPACK_IMPORTED_MODULE_31___default.a,
-  insetIconURL: _canvas_canvas_small_svg__WEBPACK_IMPORTED_MODULE_32___default.a,
   description: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__["FormattedMessage"], {
     defaultMessage: "\u9AD8\u7EA7\u753B\u5E03\u6307\u4EE4\uFF08\u53E6\u5916\u611F\u8C2252black(what)\u7684\u5E2E\u52A9\uFF09",
     id: "gui.extension.canvas.description"
@@ -33957,8 +33732,6 @@ __webpack_require__.r(__webpack_exports__);
   }),
   extensionId: 'community',
   collaborator: '阿儿法营',
-  iconURL: _community_community_png__WEBPACK_IMPORTED_MODULE_33___default.a,
-  insetIconURL: _community_community_small_svg__WEBPACK_IMPORTED_MODULE_34___default.a,
   description: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__["FormattedMessage"], {
     defaultMessage: "A\u8425\u793E\u533A\u76F8\u5173\uFF08\u591A\u6570\u6A21\u5757\u65E0\u6CD5\u83B7\u53D6\u5230\u6B63\u786E\u503C\uFF09",
     id: "gui.extension.community.description"
@@ -33982,35 +33755,12 @@ __webpack_require__.r(__webpack_exports__);
     id: "tw.customExtension.name"
   }),
   extensionId: '',
-  iconURL: _custom_custom_svg__WEBPACK_IMPORTED_MODULE_36___default.a,
   description: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__["FormattedMessage"], {
     defaultMessage: "Load custom extensions from URLs. For developers. Experimental.",
     id: "tw.customExtension.description"
   }),
   featured: true
 }]);
-
-/***/ }),
-
-/***/ "./src/lib/libraries/extensions/makeymakey/makeymakey-small.svg":
-/*!**********************************************************************!*\
-  !*** ./src/lib/libraries/extensions/makeymakey/makeymakey-small.svg ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "static/assets/d61429ad96a25ec2917ebc77d900aae0.svg";
-
-/***/ }),
-
-/***/ "./src/lib/libraries/extensions/makeymakey/makeymakey.png":
-/*!****************************************************************!*\
-  !*** ./src/lib/libraries/extensions/makeymakey/makeymakey.png ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "static/assets/c30d6a0e73cf38ad6ea7f5e4fe0428a3.png";
 
 /***/ }),
 
@@ -34033,138 +33783,6 @@ module.exports = __webpack_require__.p + "static/assets/84a9455c54ab68ad8dcf8b6f
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "static/assets/6be143c7cb9d23c787f7f20674a76f72.svg";
-
-/***/ }),
-
-/***/ "./src/lib/libraries/extensions/microbit/microbit.png":
-/*!************************************************************!*\
-  !*** ./src/lib/libraries/extensions/microbit/microbit.png ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "static/assets/4b6ca5259f1271d510f081867e746847.png";
-
-/***/ }),
-
-/***/ "./src/lib/libraries/extensions/music/music-small.svg":
-/*!************************************************************!*\
-  !*** ./src/lib/libraries/extensions/music/music-small.svg ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "static/assets/504d73be1b361b4b9ca7f655ce085dc6.svg";
-
-/***/ }),
-
-/***/ "./src/lib/libraries/extensions/music/music.png":
-/*!******************************************************!*\
-  !*** ./src/lib/libraries/extensions/music/music.png ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "static/assets/7eea42371f5ccb84b4fc7d0ba7331ea3.png";
-
-/***/ }),
-
-/***/ "./src/lib/libraries/extensions/pen/pen-small.svg":
-/*!********************************************************!*\
-  !*** ./src/lib/libraries/extensions/pen/pen-small.svg ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "static/assets/800f6f1573677d59954e8d3164602287.svg";
-
-/***/ }),
-
-/***/ "./src/lib/libraries/extensions/pen/pen.png":
-/*!**************************************************!*\
-  !*** ./src/lib/libraries/extensions/pen/pen.png ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "static/assets/7679e8aa3b5a6b745823e00a7b950065.png";
-
-/***/ }),
-
-/***/ "./src/lib/libraries/extensions/text2speech/text2speech-small.svg":
-/*!************************************************************************!*\
-  !*** ./src/lib/libraries/extensions/text2speech/text2speech-small.svg ***!
-  \************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "static/assets/c7ffd288176b935f835311512a224d4b.svg";
-
-/***/ }),
-
-/***/ "./src/lib/libraries/extensions/text2speech/text2speech.png":
-/*!******************************************************************!*\
-  !*** ./src/lib/libraries/extensions/text2speech/text2speech.png ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "static/assets/d6f130fb79e78e4dd351fd930e742bcc.png";
-
-/***/ }),
-
-/***/ "./src/lib/libraries/extensions/translate/translate-small.png":
-/*!********************************************************************!*\
-  !*** ./src/lib/libraries/extensions/translate/translate-small.png ***!
-  \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "static/assets/f40501ed87782097b1a4eec8747eb84a.png";
-
-/***/ }),
-
-/***/ "./src/lib/libraries/extensions/translate/translate.png":
-/*!**************************************************************!*\
-  !*** ./src/lib/libraries/extensions/translate/translate.png ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "static/assets/b6162ffbfe48d4b6c67f0b469f1615ae.png";
-
-/***/ }),
-
-/***/ "./src/lib/libraries/extensions/tw/tw.svg":
-/*!************************************************!*\
-  !*** ./src/lib/libraries/extensions/tw/tw.svg ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "static/assets/4d2b4af5075d8b7bf7cd7bf046458045.svg";
-
-/***/ }),
-
-/***/ "./src/lib/libraries/extensions/videoSensing/video-sensing-small.svg":
-/*!***************************************************************************!*\
-  !*** ./src/lib/libraries/extensions/videoSensing/video-sensing-small.svg ***!
-  \***************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "static/assets/5e8eccd5a576638f029a1ed2deb4784b.svg";
-
-/***/ }),
-
-/***/ "./src/lib/libraries/extensions/videoSensing/video-sensing.png":
-/*!*********************************************************************!*\
-  !*** ./src/lib/libraries/extensions/videoSensing/video-sensing.png ***!
-  \*********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "static/assets/a03436c2c26c934fc0a7997065971874.png";
 
 /***/ }),
 
@@ -34198,17 +33816,6 @@ module.exports = __webpack_require__.p + "static/assets/5f7a79af3db62e0f5b7306ac
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "static/assets/0f9efe3bd6e80747dfa3aeb9e19997b5.svg";
-
-/***/ }),
-
-/***/ "./src/lib/libraries/extensions/wedo2/wedo.png":
-/*!*****************************************************!*\
-  !*** ./src/lib/libraries/extensions/wedo2/wedo.png ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "static/assets/f011f09e649e804c4c0c8275a7d1ba5b.png";
 
 /***/ }),
 
@@ -36215,17 +35822,12 @@ const SBFileUploaderHOC = function SBFileUploaderHOC(WrappedComponent) {
             const file = await handle.getFile();
             this.handleChange({
               target: {
-                files: [file]
+                files: [file],
+                handle: handle
               }
             });
-
-            if (file.name.endsWith('.sb3')) {
-              this.props.onSetFileHandle(handle);
-            } else {
-              this.props.onSetFileHandle(null);
-            }
           } catch (err) {
-            // If user aborted process, do not show an error.
+            // If the user aborted it, that's not an error.
             if (err && err.name === 'AbortError') {
               return;
             } // eslint-disable-next-line no-console
@@ -36275,7 +35877,18 @@ const SBFileUploaderHOC = function SBFileUploaderHOC(WrappedComponent) {
         }
 
         if (uploadAllowed) {
-          // cues step 4
+          // Don't update file handle until after confirming replace.
+          const handle = thisFileInput.handle;
+
+          if (handle) {
+            if (this.fileToUpload.name.endsWith('.sb3')) {
+              this.props.onSetFileHandle(handle);
+            } else {
+              this.props.onSetFileHandle(null);
+            }
+          } // cues step 4
+
+
           this.props.requestProjectUpload(loadingState);
         } else {
           // skips ahead to step 7
