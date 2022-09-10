@@ -1,0 +1,40 @@
+name: Clipteam-clipcc-gui
+
+on:
+  schedule:
+    - cron: '30 5 * * 3,6'
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 14.x
+    - name: Clone
+      run: |
+        git clone https://github.com/Clipteam/clipcc-gui
+    - name: Build
+      run: |
+        cd clipcc-gui
+        npm install
+        npm run build
+        cp LICENSE build/LICENSE
+        cd ..
+    - name: Upload
+      uses: crazy-max/ghaction-github-pages@v2.6.0
+      with:
+        build_dir: clipcc-gui/build
+        target_branch: Clipteam/clipcc-gui
+        verbose: true
+        commit_message: Upload
+        keep_history: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+ 
