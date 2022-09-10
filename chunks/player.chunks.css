@@ -1,0 +1,18 @@
+.player_stage-only_3WHZN {
+    width: calc(480px + 1rem);
+}
+
+.player_editor_wkTja {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.player_stage-only_3WHZN * {
+    box-sizing: border-box;
+}
+
+
+/*# sourceMappingURL=player.chunks.css.map*/
