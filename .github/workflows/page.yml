@@ -1,0 +1,80 @@
+name: LLK-scratch-gui
+
+on:
+  schedule:
+    - cron: '30 10 * * 3,6'
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - uses: actions/checkout@v2
+      with:
+        # The branch, tag or SHA to checkout. When checking out the repository that
+        # triggered a workflow, this defaults to the reference or SHA for that event.
+        # Otherwise, uses the default branch
+        ref: 'LLK/scratch-gui'
+        # Relative path under $GITHUB_WORKSPACE to place the repository
+        path: 'up/LLK/scratch-gui'
+
+    - uses: actions/checkout@v2
+      with:
+        # The branch, tag or SHA to checkout. When checking out the repository that
+        # triggered a workflow, this defaults to the reference or SHA for that event.
+        # Otherwise, uses the default branch
+        ref: 'griffpatch/scratch-gui'
+        # Relative path under $GITHUB_WORKSPACE to place the repository
+        path: 'up/griffpatch/scratch-gui'
+
+    - uses: actions/checkout@v2
+      with:
+        # The branch, tag or SHA to checkout. When checking out the repository that
+        # triggered a workflow, this defaults to the reference or SHA for that event.
+        # Otherwise, uses the default branch
+        ref: 'Gtd232/AxolotlEditor-gui'
+        # Relative path under $GITHUB_WORKSPACE to place the repository
+        path: 'up/Gtd232/AxolotlEditor-gui'
+
+    - uses: actions/checkout@v2
+      with:
+        # The branch, tag or SHA to checkout. When checking out the repository that
+        # triggered a workflow, this defaults to the reference or SHA for that event.
+        # Otherwise, uses the default branch
+        ref: 'TurboWarp/scratch-gui'
+        # Relative path under $GITHUB_WORKSPACE to place the repository
+        path: 'up/TurboWarp/scratch-gui'
+
+    - uses: actions/checkout@v2
+      with:
+        # The branch, tag or SHA to checkout. When checking out the repository that
+        # triggered a workflow, this defaults to the reference or SHA for that event.
+        # Otherwise, uses the default branch
+        ref: 'SheepTester/scratch-gui'
+        # Relative path under $GITHUB_WORKSPACE to place the repository
+        path: 'up/SheepTester/scratch-gui'
+
+    - uses: actions/checkout@v2
+      with:
+        # The branch, tag or SHA to checkout. When checking out the repository that
+        # triggered a workflow, this defaults to the reference or SHA for that event.
+        # Otherwise, uses the default branch
+        ref: 'Clipteam/clipcc-gui'
+        # Relative path under $GITHUB_WORKSPACE to place the repository
+        path: 'up/Clipteam/clipcc-gui'
+
+
+    - name: Upload
+      uses: crazy-max/ghaction-github-pages@v2.6.0
+      with:
+        build_dir: up
+        target_branch: gh-page
+        verbose: true
+        commit_message: Upload
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
