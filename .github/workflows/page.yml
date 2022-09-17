@@ -22,6 +22,7 @@ jobs:
         ref: 'LLK/scratch-gui'
         # Relative path under $GITHUB_WORKSPACE to place the repository
         path: 'up/LLK/scratch-gui'
+    - run: rm -r up/LLK/scratch-gui/.git
 
     - uses: actions/checkout@v2
       with:
@@ -31,6 +32,7 @@ jobs:
         ref: 'griffpatch/scratch-gui'
         # Relative path under $GITHUB_WORKSPACE to place the repository
         path: 'up/griffpatch/scratch-gui'
+    - run: rm -r up/griffpatch/scratch-gui/.git
 
     - uses: actions/checkout@v2
       with:
@@ -40,6 +42,7 @@ jobs:
         ref: 'Gtd232/AxolotlEditor-gui'
         # Relative path under $GITHUB_WORKSPACE to place the repository
         path: 'up/Gtd232/AxolotlEditor-gui'
+    - run: rm -r up/Gtd232/AxolotlEditor-gui/.git
 
     - uses: actions/checkout@v2
       with:
@@ -49,6 +52,7 @@ jobs:
         ref: 'TurboWarp/scratch-gui'
         # Relative path under $GITHUB_WORKSPACE to place the repository
         path: 'up/TurboWarp/scratch-gui'
+    - run: rm -r up/TurboWarp/scratch-gui/.git
 
     - uses: actions/checkout@v2
       with:
@@ -58,6 +62,7 @@ jobs:
         ref: 'SheepTester/scratch-gui'
         # Relative path under $GITHUB_WORKSPACE to place the repository
         path: 'up/SheepTester/scratch-gui'
+    - run: rm -r up/SheepTester/scratch-gui/.git
 
     - uses: actions/checkout@v2
       with:
@@ -67,7 +72,9 @@ jobs:
         ref: 'Clipteam/clipcc-gui'
         # Relative path under $GITHUB_WORKSPACE to place the repository
         path: 'up/Clipteam/clipcc-gui'
+    - run: rm -r up/Clipteam/clipcc-gui/.git
 
+    - run: cp README.md up/README.md
 
     - name: Upload
       uses: crazy-max/ghaction-github-pages@v2.6.0
