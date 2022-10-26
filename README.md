@@ -1,7 +1,7 @@
 # Scratch自动构建
 master之外所有分支均由GitHub Actions自动构建，与作者无关
 
-# 状态 & 在线查看
+# 状态
 [![LLK-scratch-gui](https://github.com/lll69/scratch-builds/actions/workflows/LLK-scratch-gui.yml/badge.svg)](https://lll69.github.io/scratch-builds/LLK/scratch-gui)
 [![TurboWarp-scratch-gui](https://github.com/lll69/scratch-builds/actions/workflows/TurboWarp-scratch-gui.yml/badge.svg)](https://lll69.github.io/scratch-builds/TurboWarp/scratch-gui)
 [![griffpatch-scratch-gui](https://github.com/lll69/scratch-builds/actions/workflows/griffpatch-scratch-gui.yml/badge.svg)](https://lll69.github.io/scratch-builds/griffpatch/scratch-gui)
