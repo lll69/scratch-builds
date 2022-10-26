@@ -55,9 +55,7 @@ __webpack_require__.r(__webpack_exports__);
   let {
     addon
   } = _ref;
-
   const resize = () => window.dispatchEvent(new Event("resize"));
-
   addon.self.addEventListener('disabled', resize);
   addon.self.addEventListener('reenabled', resize);
   resize();

@@ -154,15 +154,14 @@ __webpack_require__.r(__webpack_exports__);
     console
   } = _ref;
   const vm = addon.tab.traps.vm;
-
   const updateStageSize = () => {
     document.documentElement.style.setProperty('--sa-fullscreen-width', vm.runtime.stageWidth);
     document.documentElement.style.setProperty('--sa-fullscreen-height', vm.runtime.stageHeight);
   };
-
   updateStageSize();
-  vm.on('STAGE_SIZE_CHANGED', updateStageSize); // "Browser fullscreen" is defined as the mode that hides the browser UI.
+  vm.on('STAGE_SIZE_CHANGED', updateStageSize);
 
+  // "Browser fullscreen" is defined as the mode that hides the browser UI.
   function updateBrowserFullscreen() {
     if (addon.settings.get("browserFullscreen") && !addon.self.disabled) {
       // If Scratch fullscreen is enabled, then browser fullscreen should also
@@ -173,10 +172,10 @@ __webpack_require__.r(__webpack_exports__);
         document.exitFullscreen();
       }
     }
-  } // "Scratch fullscreen" is defined as the mode normally toggled by the
+  }
+
+  // "Scratch fullscreen" is defined as the mode normally toggled by the
   // rightmost button above the stage.
-
-
   function updateScratchFullscreen() {
     if (addon.settings.get("browserFullscreen") && !addon.self.disabled) {
       // If browser fullscreen is disabled, then Scratch fullscreen should also
@@ -189,20 +188,17 @@ __webpack_require__.r(__webpack_exports__);
       }
     }
   }
-
   async function setPageScrollbar() {
     const body = await addon.tab.waitForElement(".sa-body-editor");
-
     if (addon.tab.redux.state.scratchGui.mode.isFullScreen) {
       body.classList.add("sa-fullscreen");
     } else {
       body.classList.remove("sa-fullscreen");
     }
-  } // Properly scale variable monitors on stage resize.
+  }
 
-
+  // Properly scale variable monitors on stage resize.
   let monitorScaler, resizeObserver, stage;
-
   async function initScaler() {
     monitorScaler = await addon.tab.waitForElement("[class*=monitor-list_monitor-list-scaler]");
     stage = await addon.tab.waitForElement('[class*="stage-wrapper_full-screen"] [class*="stage_stage"]');
@@ -214,14 +210,15 @@ __webpack_require__.r(__webpack_exports__);
     });
     resizeObserver.observe(stage);
   }
+  initScaler();
 
-  initScaler(); // Running this on page load handles the case of the project initially
+  // Running this on page load handles the case of the project initially
   // loading in Scratch fullscreen mode.
-
   setPageScrollbar();
-  updateBrowserFullscreen(); // Changing to or from Scratch fullscreen is signified by a state change
-  // (URL change doesn't work when editing project without project page)
+  updateBrowserFullscreen();
 
+  // Changing to or from Scratch fullscreen is signified by a state change
+  // (URL change doesn't work when editing project without project page)
   addon.tab.redux.initialize();
   addon.tab.redux.addEventListener("statechanged", e => {
     if (e.detail.action.type === "scratch-gui/mode/SET_FULL_SCREEN") {
@@ -229,13 +226,13 @@ __webpack_require__.r(__webpack_exports__);
       updateBrowserFullscreen();
       setPageScrollbar();
     }
-  }); // Changing to or from browser fullscreen is signified by a window resize.
-
+  });
+  // Changing to or from browser fullscreen is signified by a window resize.
   window.addEventListener("resize", () => {
     updateScratchFullscreen();
-  }); // Handles the case of F11 full screen AND document full screen being enabled
+  });
+  // Handles the case of F11 full screen AND document full screen being enabled
   // at the same time.
-
   document.addEventListener("fullscreenchange", () => {
     if (document.fullscreenElement === null && addon.tab.redux.state.scratchGui.mode.isFullScreen) {
       addon.tab.redux.dispatch({
@@ -243,10 +240,10 @@ __webpack_require__.r(__webpack_exports__);
         isFullScreen: false
       });
     }
-  }); // These handle the case of the user already being in Scratch fullscreen
+  });
+  // These handle the case of the user already being in Scratch fullscreen
   // (without being in browser fullscreen) when the addon or sync option are
   // dynamically enabled.
-
   addon.settings.addEventListener("change", () => {
     updateBrowserFullscreen();
   });

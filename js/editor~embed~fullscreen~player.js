@@ -2717,7 +2717,6 @@ __webpack_require__.r(__webpack_exports__);
 const runAddons = () => {
   Promise.all(/*! import() | addons */[__webpack_require__.e("addon-settings~addons~editor~fullscreen~player"), __webpack_require__.e("addons")]).then(__webpack_require__.bind(null, /*! ./api */ "./src/addons/api.js"));
 };
-
 /* harmony default export */ __webpack_exports__["default"] = (runAddons);
 
 /***/ }),
@@ -2810,14 +2809,12 @@ class ActionMenu extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
     };
     this.mainTooltipId = "tooltip-".concat(Math.random());
   }
-
   componentDidMount() {
     // Touch start on the main button is caught to trigger open and not click
-    this.buttonRef.addEventListener('touchstart', this.handleTouchStart); // Touch start on document is used to trigger close if it is outside
-
+    this.buttonRef.addEventListener('touchstart', this.handleTouchStart);
+    // Touch start on document is used to trigger close if it is outside
     document.addEventListener('touchstart', this.handleTouchOutside);
   }
-
   shouldComponentUpdate(newProps, newState) {
     // This check prevents re-rendering while the project is updating.
     // @todo check only the state and the title because it is enough to know
@@ -2826,12 +2823,10 @@ class ActionMenu extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
     //  which should be refactored.
     return newState.isOpen !== this.state.isOpen || newState.forceHide !== this.state.forceHide || newProps.title !== this.props.title;
   }
-
   componentWillUnmount() {
     this.buttonRef.removeEventListener('touchstart', this.handleTouchStart);
     document.removeEventListener('touchstart', this.handleTouchOutside);
   }
-
   handleClosePopover() {
     this.closeTimeoutId = setTimeout(() => {
       this.setState({
@@ -2840,7 +2835,6 @@ class ActionMenu extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
       this.closeTimeoutId = null;
     }, CLOSE_DELAY);
   }
-
   handleToggleOpenState() {
     // Mouse enter back in after timeout was started prevents it from closing.
     if (this.closeTimeoutId) {
@@ -2853,7 +2847,6 @@ class ActionMenu extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
       });
     }
   }
-
   handleTouchOutside(e) {
     if (this.state.isOpen && !this.containerRef.contains(e.target)) {
       this.setState({
@@ -2862,7 +2855,6 @@ class ActionMenu extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
       react_tooltip__WEBPACK_IMPORTED_MODULE_4___default.a.hide();
     }
   }
-
   clickDelayer(fn) {
     // Return a wrapped action that manages the menu closing.
     // @todo we may be able to use react-transition for this in the future
@@ -2870,9 +2862,9 @@ class ActionMenu extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
     // (possibly slow) action is started.
     return event => {
       react_tooltip__WEBPACK_IMPORTED_MODULE_4___default.a.hide();
-      if (fn) fn(event); // Blur the button so it does not keep focus after being clicked
+      if (fn) fn(event);
+      // Blur the button so it does not keep focus after being clicked
       // This prevents keyboard events from triggering the button
-
       this.buttonRef.blur();
       this.setState({
         forceHide: true,
@@ -2884,7 +2876,6 @@ class ActionMenu extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
       });
     };
   }
-
   handleTouchStart(e) {
     // Prevent this touch from becoming a click if menu is closed
     if (!this.state.isOpen) {
@@ -2892,15 +2883,12 @@ class ActionMenu extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
       this.handleToggleOpenState();
     }
   }
-
   setButtonRef(ref) {
     this.buttonRef = ref;
   }
-
   setContainerRef(ref) {
     this.containerRef = ref;
   }
-
   render() {
     const {
       className,
@@ -2982,9 +2970,7 @@ class ActionMenu extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
       }));
     }))));
   }
-
 }
-
 ActionMenu.propTypes = {
   className: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
   img: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
@@ -3000,8 +2986,8 @@ ActionMenu.propTypes = {
     fileInput: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func,
     // Optional, only for file upload
     fileMultiple: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.bool // Optional, only for file upload
-
   })),
+
   onClick: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func.isRequired,
   title: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.node.isRequired,
   tooltipPlace: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string
@@ -3141,7 +3127,6 @@ const closeButtonColors = {
   [_lib_alerts_index_jsx__WEBPACK_IMPORTED_MODULE_7__["AlertLevels"].SUCCESS]: _close_button_close_button_jsx__WEBPACK_IMPORTED_MODULE_5__["default"].COLOR_GREEN,
   [_lib_alerts_index_jsx__WEBPACK_IMPORTED_MODULE_7__["AlertLevels"].WARN]: _close_button_close_button_jsx__WEBPACK_IMPORTED_MODULE_5__["default"].COLOR_ORANGE
 };
-
 const AlertComponent = _ref => {
   let {
     content,
@@ -3205,7 +3190,6 @@ const AlertComponent = _ref => {
     onClick: onCloseAlert
   }))));
 };
-
 AlertComponent.propTypes = {
   closeButton: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
   content: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.element, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string]),
@@ -3280,7 +3264,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const AlertsComponent = _ref => {
   let {
     alertsList,
@@ -3309,7 +3292,6 @@ const AlertsComponent = _ref => {
     onCloseAlert: onCloseAlert
   }))));
 };
-
 AlertsComponent.propTypes = {
   alertsList: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object),
   className: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
@@ -3374,7 +3356,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const InlineMessageComponent = _ref => {
   let {
     content,
@@ -3389,7 +3370,6 @@ const InlineMessageComponent = _ref => {
     level: 'info'
   }), content);
 };
-
 InlineMessageComponent.propTypes = {
   content: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.element,
   iconSpinner: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
@@ -3448,14 +3428,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _asset_panel_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./asset-panel.css */ "./src/components/asset-panel/asset-panel.css");
 /* harmony import */ var _asset_panel_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_asset_panel_css__WEBPACK_IMPORTED_MODULE_3__);
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-
 
 
 
@@ -3467,7 +3442,6 @@ const AssetPanel = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___defa
 }, props)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_box_box_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
   className: _asset_panel_css__WEBPACK_IMPORTED_MODULE_3___default.a.detailArea
 }, props.children));
-
 AssetPanel.propTypes = _objectSpread({}, _selector_jsx__WEBPACK_IMPORTED_MODULE_2__["default"].propTypes);
 /* harmony default export */ __webpack_exports__["default"] = (AssetPanel);
 
@@ -3602,7 +3576,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const Selector = props => {
   const {
     buttons,
@@ -3623,7 +3596,6 @@ const Selector = props => {
   } = props;
   const isRelevantDrag = draggingType === dragType;
   let newButtonSection = null;
-
   if (buttons.length > 0) {
     const {
       img,
@@ -3641,7 +3613,6 @@ const Selector = props => {
       onClick: onClick
     }));
   }
-
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_box_box_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
     className: _selector_css__WEBPACK_IMPORTED_MODULE_9___default.a.wrapper,
     componentRef: containerRef
@@ -3665,9 +3636,7 @@ const Selector = props => {
     id: index,
     index: index,
     name: item.name,
-    number: index + 1
-    /* 1-indexed */
-    ,
+    number: index + 1 /* 1-indexed */,
     selected: index === selectedItemIndex,
     onClick: onItemClick,
     onDeleteButtonClick: onDeleteClick,
@@ -3675,7 +3644,6 @@ const Selector = props => {
     onExportButtonClick: onExportClick
   })))), newButtonSection);
 };
-
 Selector.propTypes = {
   buttons: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.shape({
     title: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string.isRequired,
@@ -3723,25 +3691,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 class SortableAsset extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
   constructor(props) {
     super(props);
     lodash_bindall__WEBPACK_IMPORTED_MODULE_2___default()(this, ['setRef']);
   }
-
   componentDidMount() {
     this.props.onAddSortable(this.ref);
   }
-
   componentWillUnmount() {
     this.props.onRemoveSortable(this.ref);
   }
-
   setRef(ref) {
     this.ref = ref;
   }
-
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: this.props.className,
@@ -3751,9 +3714,7 @@ class SortableAsset extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Compone
       }
     }, this.props.children);
   }
-
 }
-
 SortableAsset.propTypes = {
   children: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.node.isRequired,
   className: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
@@ -3792,7 +3753,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const AudioSelector = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
   className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(_audio_trimmer_css__WEBPACK_IMPORTED_MODULE_4___default.a.absolute, _audio_trimmer_css__WEBPACK_IMPORTED_MODULE_4___default.a.selector),
   ref: props.containerRef,
@@ -3815,7 +3775,6 @@ const AudioSelector = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___d
 })), props.playhead ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_playhead_jsx__WEBPACK_IMPORTED_MODULE_6__["default"], {
   playbackPosition: props.playhead
 }) : null);
-
 AudioSelector.propTypes = {
   containerRef: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func,
   onNewSelectionMouseDown: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func.isRequired,
@@ -3886,7 +3845,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const AudioTrimmer = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
   className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(_audio_trimmer_css__WEBPACK_IMPORTED_MODULE_4___default.a.absolute, _audio_trimmer_css__WEBPACK_IMPORTED_MODULE_4___default.a.trimmer),
   ref: props.containerRef
@@ -3916,7 +3874,6 @@ const AudioTrimmer = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___de
 }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_selection_handle_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], {
   handleStyle: _audio_trimmer_css__WEBPACK_IMPORTED_MODULE_4___default.a.rightHandle
 })));
-
 AudioTrimmer.propTypes = {
   containerRef: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func,
   onTrimEndMouseDown: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func.isRequired,
@@ -3961,7 +3918,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const Playhead = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
   className: _audio_trimmer_css__WEBPACK_IMPORTED_MODULE_3___default.a.playheadContainer
 }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -3970,7 +3926,6 @@ const Playhead = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___defaul
     transform: "translateX(".concat(100 * props.playbackPosition, "%)")
   }
 }));
-
 Playhead.propTypes = {
   playbackPosition: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.number
 };
@@ -4004,7 +3959,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const SelectionHandle = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_box_box_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
   className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(_audio_trimmer_css__WEBPACK_IMPORTED_MODULE_4___default.a.trimLine, props.handleStyle),
   onMouseDown: props.onMouseDown,
@@ -4018,7 +3972,6 @@ const SelectionHandle = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__
 }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
   src: _icon_handle_svg__WEBPACK_IMPORTED_MODULE_5___default.a
 })));
-
 SelectionHandle.propTypes = {
   handleStyle: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
   onMouseDown: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func
@@ -4085,10 +4038,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- // TODO make sprite selector item not require onClick
 
+
+// TODO make sprite selector item not require onClick
 const noop = () => {};
-
 const dragTypeMap = {
   // Keys correspond with the backpack-server item types
   costume: _lib_drag_constants__WEBPACK_IMPORTED_MODULE_4__["default"].BACKPACK_COSTUME,
@@ -4114,7 +4067,6 @@ const labelMap = Object(react_intl__WEBPACK_IMPORTED_MODULE_3__["defineMessages"
     "defaultMessage": "sprite"
   }
 });
-
 const Backpack = _ref => {
   let {
     blockDragOver,
@@ -4179,7 +4131,8 @@ const Backpack = _ref => {
     name: intl.formatMessage(labelMap[item.type]),
     selected: false,
     onClick: noop,
-    onDeleteButtonClick: onDelete // Currently, renaming sprites is not supported.
+    onDeleteButtonClick: onDelete
+    // Currently, renaming sprites is not supported.
     ,
     onRenameButtonClick: item.type === 'sprite' ? null : onRename
   })), showMore && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -4195,7 +4148,6 @@ const Backpack = _ref => {
     id: "gui.backpack.emptyBackpack"
   }))) : null);
 };
-
 Backpack.propTypes = {
   blockDragOver: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
   containerRef: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
@@ -4281,14 +4233,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _blocks_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./blocks.css */ "./src/components/blocks/blocks.css");
 /* harmony import */ var _blocks_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_blocks_css__WEBPACK_IMPORTED_MODULE_4__);
 const _excluded = ["containerRef", "dragOver"];
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
 
 
 
@@ -4296,11 +4243,10 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 const BlocksComponent = props => {
   const {
-    containerRef,
-    dragOver
-  } = props,
-        componentProps = _objectWithoutProperties(props, _excluded);
-
+      containerRef,
+      dragOver
+    } = props,
+    componentProps = _objectWithoutProperties(props, _excluded);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_box_box_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({
     className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(_blocks_css__WEBPACK_IMPORTED_MODULE_4___default.a.blocks, {
       [_blocks_css__WEBPACK_IMPORTED_MODULE_4___default.a.dragOver]: dragOver
@@ -4309,7 +4255,6 @@ const BlocksComponent = props => {
     componentRef: containerRef
   }));
 };
-
 BlocksComponent.propTypes = {
   containerRef: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func,
   dragOver: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.bool
@@ -4368,18 +4313,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _box_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./box.css */ "./src/components/box/box.css");
 /* harmony import */ var _box_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_box_css__WEBPACK_IMPORTED_MODULE_4__);
 const _excluded = ["alignContent", "alignItems", "alignSelf", "basis", "children", "className", "componentRef", "direction", "element", "grow", "height", "justifyContent", "width", "wrap", "shrink", "style"];
-
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
 
 
 
@@ -4401,7 +4339,6 @@ const getRandomColor = function () {
       return result + 1;
     };
   }(601);
-
   return function () {
     const r = Math.max(parseInt(random() * 100, 10) % 256, 1);
     const g = Math.max(parseInt(random() * 100, 10) % 256, 1);
@@ -4409,28 +4346,26 @@ const getRandomColor = function () {
     return "rgb(".concat(r, ",").concat(g, ",").concat(b, ")");
   };
 }();
-
 const Box = props => {
   const {
-    alignContent,
-    alignItems,
-    alignSelf,
-    basis,
-    children,
-    className,
-    componentRef,
-    direction,
-    element,
-    grow,
-    height,
-    justifyContent,
-    width,
-    wrap,
-    shrink,
-    style
-  } = props,
-        componentProps = _objectWithoutProperties(props, _excluded);
-
+      alignContent,
+      alignItems,
+      alignSelf,
+      basis,
+      children,
+      className,
+      componentRef,
+      direction,
+      element,
+      grow,
+      height,
+      justifyContent,
+      width,
+      wrap,
+      shrink,
+      style
+    } = props,
+    componentProps = _objectWithoutProperties(props, _excluded);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(element, _objectSpread({
     className: classnames__WEBPACK_IMPORTED_MODULE_0___default()(className, _box_css__WEBPACK_IMPORTED_MODULE_4___default.a.box),
     ref: componentRef,
@@ -4449,56 +4384,40 @@ const Box = props => {
     },  false ? undefined : {}, style)
   }, componentProps), children);
 };
-
 Box.propTypes = {
   /** Defines how the browser distributes space between and around content items vertically within this box. */
   alignContent: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOf(['flex-start', 'flex-end', 'center', 'space-between', 'space-around', 'stretch']),
-
   /** Defines how the browser distributes space between and around flex items horizontally within this box. */
   alignItems: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOf(['flex-start', 'flex-end', 'center', 'baseline', 'stretch']),
-
   /** Specifies how this box should be aligned inside of its container (requires the container to be flexable). */
   alignSelf: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOf(['auto', 'flex-start', 'flex-end', 'center', 'baseline', 'stretch']),
-
   /** Specifies the initial length of this box */
   basis: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOf(['auto'])]),
-
   /** Specifies the the HTML nodes which will be child elements of this box. */
   children: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.node,
-
   /** Specifies the class name that will be set on this box */
   className: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
-
   /**
    * A callback function whose first parameter is the underlying dom elements.
    * This call back will be executed immediately after the component is mounted or unmounted
    */
   componentRef: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
-
   /** https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction */
   direction: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOf(['row', 'row-reverse', 'column', 'column-reverse']),
-
   /** Specifies the type of HTML element of this box. Defaults to div. */
   element: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
-
   /** Specifies the flex grow factor of a flex item. */
   grow: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
-
   /** The height in pixels (if specified as a number) or a string if different units are required. */
   height: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string]),
-
   /** https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content */
   justifyContent: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOf(['flex-start', 'flex-end', 'center', 'space-between', 'space-around']),
-
   /** Specifies the flex shrink factor of a flex item. */
   shrink: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
-
   /** An object whose keys are css property names and whose values correspond the the css property. */
   style: react_style_proptype__WEBPACK_IMPORTED_MODULE_3___default.a,
-
   /** The width in pixels (if specified as a number) or a string if different units are required. */
   width: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string]),
-
   /** How whitespace should wrap within this block. */
   wrap: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOf(['nowrap', 'wrap', 'wrap-reverse'])
 };
@@ -4563,17 +4482,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _unsupported_browser_svg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./unsupported-browser.svg */ "./src/components/browser-modal/unsupported-browser.svg");
 /* harmony import */ var _unsupported_browser_svg__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_unsupported_browser_svg__WEBPACK_IMPORTED_MODULE_7__);
 const _excluded = ["intl"];
-
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
 
 
 
@@ -4588,13 +4501,11 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_4__["defineMessages"
     "defaultMessage": "Browser is not supported"
   }
 });
-
 const BrowserModal = _ref => {
   let {
-    intl
-  } = _ref,
-      props = _objectWithoutProperties(_ref, _excluded);
-
+      intl
+    } = _ref,
+    props = _objectWithoutProperties(_ref, _excluded);
   const label = messages.label;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_modal__WEBPACK_IMPORTED_MODULE_2___default.a, {
     isOpen: true,
@@ -4619,7 +4530,6 @@ const BrowserModal = _ref => {
     id: "tw.browserModal.desc"
   })))));
 };
-
 BrowserModal.propTypes = {
   intl: react_intl__WEBPACK_IMPORTED_MODULE_4__["intlShape"].isRequired,
   isRtl: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.bool,
@@ -4690,35 +4600,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _button_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./button.css */ "./src/components/button/button.css");
 /* harmony import */ var _button_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_button_css__WEBPACK_IMPORTED_MODULE_3__);
 const _excluded = ["className", "disabled", "iconClassName", "iconSrc", "iconWidth", "iconHeight", "onClick", "children"];
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
 
 
 
 
 const ButtonComponent = _ref => {
   let {
-    className,
-    disabled,
-    iconClassName,
-    iconSrc,
-    iconWidth,
-    iconHeight,
-    onClick,
-    children
-  } = _ref,
-      props = _objectWithoutProperties(_ref, _excluded);
-
+      className,
+      disabled,
+      iconClassName,
+      iconSrc,
+      iconWidth,
+      iconHeight,
+      onClick,
+      children
+    } = _ref,
+    props = _objectWithoutProperties(_ref, _excluded);
   if (disabled) {
     onClick = function onClick() {};
   }
-
   const icon = iconSrc && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("img", {
     className: classnames__WEBPACK_IMPORTED_MODULE_0___default()(iconClassName, _button_css__WEBPACK_IMPORTED_MODULE_3___default.a.icon),
     draggable: false,
@@ -4734,7 +4637,6 @@ const ButtonComponent = _ref => {
     className: _button_css__WEBPACK_IMPORTED_MODULE_3___default.a.content
   }, children));
 };
-
 ButtonComponent.propTypes = {
   children: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.node,
   className: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
@@ -4817,12 +4719,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_libraries_decks_translate_video_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../lib/libraries/decks/translate-video.js */ "./src/lib/libraries/decks/translate-video.js");
 /* harmony import */ var _lib_libraries_decks_translate_image_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../lib/libraries/decks/translate-image.js */ "./src/lib/libraries/decks/translate-image.js");
 const _excluded = ["activeDeckId", "content", "dragging", "isRtl", "locale", "onActivateDeckFactory", "onCloseCards", "onShrinkExpandCards", "onDrag", "onStartDrag", "onEndDrag", "onShowAll", "onNextStep", "onPrevStep", "showVideos", "step", "expanded"];
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
 
 
 
@@ -4887,7 +4785,6 @@ const CardHeader = _ref => {
     id: "gui.cards.close"
   }))));
 };
-
 class VideoStep extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
   componentDidMount() {
     const script = document.createElement('script');
@@ -4900,33 +4797,33 @@ class VideoStep extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
     script2.async = true;
     script2.setAttribute('id', 'wistia-video-api');
     document.body.appendChild(script2);
-  } // We use the Wistia API here to update or pause the video dynamically:
+  }
+
+  // We use the Wistia API here to update or pause the video dynamically:
   // https://wistia.com/support/developers/player-api
-
-
   componentDidUpdate(prevProps) {
     // Ensure the wistia API is loaded and available
-    if (!(window.Wistia && window.Wistia.api)) return; // Get a handle on the currently loaded video
+    if (!(window.Wistia && window.Wistia.api)) return;
 
-    const video = window.Wistia.api(prevProps.video); // Reset the video source if a new video has been chosen from the library
+    // Get a handle on the currently loaded video
+    const video = window.Wistia.api(prevProps.video);
 
+    // Reset the video source if a new video has been chosen from the library
     if (prevProps.video !== this.props.video) {
       video.replaceWith(this.props.video);
-    } // Pause the video if the modal is being shrunken
+    }
 
-
+    // Pause the video if the modal is being shrunken
     if (!this.props.expanded) {
       video.pause();
     }
   }
-
   componentWillUnmount() {
     const script = document.getElementById('wistia-video-content');
     script.parentNode.removeChild(script);
     const script2 = document.getElementById('wistia-video-api');
     script2.parentNode.removeChild(script2);
   }
-
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
       className: _card_css__WEBPACK_IMPORTED_MODULE_5___default.a.stepVideo
@@ -4939,14 +4836,11 @@ class VideoStep extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       }
     }, "\xA0"));
   }
-
 }
-
 VideoStep.propTypes = {
   expanded: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.bool.isRequired,
   video: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string.isRequired
 };
-
 const ImageStep = _ref2 => {
   let {
     title,
@@ -4959,18 +4853,14 @@ const ImageStep = _ref2 => {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
     className: _card_css__WEBPACK_IMPORTED_MODULE_5___default.a.stepImage,
     draggable: false,
-    key: image
-    /* Use src as key to prevent hanging around on slow connections */
-    ,
+    key: image /* Use src as key to prevent hanging around on slow connections */,
     src: image
   })));
 };
-
 ImageStep.propTypes = {
   image: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string.isRequired,
   title: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.node.isRequired
 };
-
 const NextPrevButtons = _ref3 => {
   let {
     isRtl,
@@ -4996,7 +4886,6 @@ const NextPrevButtons = _ref3 => {
     src: isRtl ? _icon_next_svg__WEBPACK_IMPORTED_MODULE_8___default.a : _icon_prev_svg__WEBPACK_IMPORTED_MODULE_9___default.a
   }))) : null);
 };
-
 NextPrevButtons.propTypes = {
   expanded: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.bool.isRequired,
   isRtl: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.bool,
@@ -5011,7 +4900,6 @@ CardHeader.propTypes = {
   step: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.number,
   totalSteps: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.number
 };
-
 const PreviewsStep = _ref4 => {
   let {
     deckIds,
@@ -5046,7 +4934,6 @@ const PreviewsStep = _ref4 => {
     id: "gui.cards.see-more"
   }))));
 };
-
 PreviewsStep.propTypes = {
   content: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.shape({
     id: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.shape({
@@ -5064,57 +4951,50 @@ PreviewsStep.propTypes = {
   onActivateDeckFactory: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func.isRequired,
   onShowAll: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func.isRequired
 };
-
 const Cards = props => {
   const {
-    activeDeckId,
-    content,
-    dragging,
-    isRtl,
-    locale,
-    onActivateDeckFactory,
-    onCloseCards,
-    onShrinkExpandCards,
-    onDrag,
-    onStartDrag,
-    onEndDrag,
-    onShowAll,
-    onNextStep,
-    onPrevStep,
-    showVideos,
-    step,
-    expanded
-  } = props,
-        posProps = _objectWithoutProperties(props, _excluded);
-
+      activeDeckId,
+      content,
+      dragging,
+      isRtl,
+      locale,
+      onActivateDeckFactory,
+      onCloseCards,
+      onShrinkExpandCards,
+      onDrag,
+      onStartDrag,
+      onEndDrag,
+      onShowAll,
+      onNextStep,
+      onPrevStep,
+      showVideos,
+      step,
+      expanded
+    } = props,
+    posProps = _objectWithoutProperties(props, _excluded);
   let {
     x,
     y
   } = posProps;
-  if (activeDeckId === null) return; // Tutorial cards need to calculate their own dragging bounds
+  if (activeDeckId === null) return;
+
+  // Tutorial cards need to calculate their own dragging bounds
   // to allow for dragging the cards off the left, right and bottom
   // edges of the workspace.
-
   const cardHorizontalDragOffset = 400; // ~80% of card width
-
   const cardVerticalDragOffset = expanded ? 257 : 0; // ~80% of card height, if expanded
-
   const menuBarHeight = 48; // TODO: get pre-calculated from elsewhere?
-
   const wideCardWidth = 500;
-
   if (x === 0 && y === 0) {
     // initialize positions
     x = isRtl ? -190 - wideCardWidth - cardHorizontalDragOffset : 292;
-    x += cardHorizontalDragOffset; // The tallest cards are about 320px high, and the default position is pinned
+    x += cardHorizontalDragOffset;
+    // The tallest cards are about 320px high, and the default position is pinned
     // to near the bottom of the blocks palette to allow room to work above.
-
     const tallCardHeight = 320;
     const bottomMargin = 60; // To avoid overlapping the backpack region
-
     y = window.innerHeight - tallCardHeight - bottomMargin - menuBarHeight;
   }
-
   const steps = content[activeDeckId].steps;
   return (
     /*#__PURE__*/
@@ -5177,7 +5057,6 @@ const Cards = props => {
     })))))
   );
 };
-
 Cards.propTypes = {
   activeDeckId: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string.isRequired,
   content: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.shape({
@@ -5333,7 +5212,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let closeIcons = {};
-
 const CloseButton = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
   "aria-label": "Close",
   className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(_close_button_css__WEBPACK_IMPORTED_MODULE_3___default.a.closeButton, props.className, {
@@ -5353,7 +5231,6 @@ const CloseButton = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___def
   }),
   src: props.color && closeIcons[props.color] ? closeIcons[props.color] : _icon_close_svg__WEBPACK_IMPORTED_MODULE_4___default.a
 }));
-
 CloseButton.SIZE_SMALL = 'small';
 CloseButton.SIZE_LARGE = 'large';
 CloseButton.COLOR_NEUTRAL = 'neutral';
@@ -5482,7 +5359,6 @@ function _extends() { _extends = Object.assign ? Object.assign.bind() : function
 
 
 
-
 const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_2__["defineMessages"])({
   message1: {
     "id": "gui.comingSoon.message1",
@@ -5497,7 +5373,6 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_2__["defineMessages"
     "defaultMessage": "We're working on it {emoji}"
   }
 });
-
 class ComingSoonContent extends react__WEBPACK_IMPORTED_MODULE_4___default.a.Component {
   constructor(props) {
     super(props);
@@ -5506,20 +5381,17 @@ class ComingSoonContent extends react__WEBPACK_IMPORTED_MODULE_4___default.a.Com
       isShowing: false
     };
   }
-
   setShow() {
     // needed to set the opacity to 1, since the default is .9 on show
     this.setState({
       isShowing: true
     });
   }
-
   setHide() {
     this.setState({
       isShowing: false
     });
   }
-
   getRandomMessage() {
     // randomly chooses a messages from `messages` to display in the tooltip.
     const images = [_aww_cat_png__WEBPACK_IMPORTED_MODULE_7___default.a, _cool_cat_png__WEBPACK_IMPORTED_MODULE_8___default.a];
@@ -5534,7 +5406,6 @@ class ComingSoonContent extends react__WEBPACK_IMPORTED_MODULE_4___default.a.Com
       }
     }));
   }
-
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(react_tooltip__WEBPACK_IMPORTED_MODULE_5___default.a, {
       afterHide: this.setHide,
@@ -5550,9 +5421,7 @@ class ComingSoonContent extends react__WEBPACK_IMPORTED_MODULE_4___default.a.Com
       id: this.props.tooltipId
     });
   }
-
 }
-
 ComingSoonContent.propTypes = {
   className: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.string,
   intl: react_intl__WEBPACK_IMPORTED_MODULE_2__["intlShape"],
@@ -5563,7 +5432,6 @@ ComingSoonContent.defaultProps = {
   place: 'bottom'
 };
 const ComingSoon = Object(react_intl__WEBPACK_IMPORTED_MODULE_2__["injectIntl"])(ComingSoonContent);
-
 const ComingSoonTooltip = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", {
   className: props.className
 }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", {
@@ -5578,7 +5446,6 @@ const ComingSoonTooltip = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4
   place: props.place,
   tooltipId: props.tooltipId
 }));
-
 ComingSoonTooltip.propTypes = {
   children: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.node.isRequired,
   className: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.string,
@@ -5656,7 +5523,6 @@ const PHASES = keymirror__WEBPACK_IMPORTED_MODULE_3___default()({
   pressbutton: null,
   notfound: null
 });
-
 const AutoScanningStep = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_box_box_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], {
   className: _connection_modal_css__WEBPACK_IMPORTED_MODULE_11___default.a.body
 }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_box_box_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], {
@@ -5728,7 +5594,6 @@ const AutoScanningStep = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2_
   defaultMessage: "Try again",
   id: "gui.connection.auto-scanning.try-again"
 })))));
-
 AutoScanningStep.propTypes = {
   connectionTipIconURL: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
   onRefresh: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
@@ -5764,7 +5629,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _connection_modal_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_connection_modal_css__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_7__);
-
 
 
 
@@ -5813,7 +5677,6 @@ const ConnectedStep = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___d
   defaultMessage: "Go to Editor",
   id: "gui.connection.go-to-editor"
 })))));
-
 ConnectedStep.propTypes = {
   connectionIconURL: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired,
   onCancel: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
@@ -5847,7 +5710,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _close_button_icon_close_svg__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_close_button_icon_close_svg__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var _connection_modal_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./connection-modal.css */ "./src/components/connection-modal/connection-modal.css");
 /* harmony import */ var _connection_modal_css__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_connection_modal_css__WEBPACK_IMPORTED_MODULE_8__);
-
 
 
 
@@ -5894,7 +5756,6 @@ const ConnectingStep = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___
   className: _connection_modal_css__WEBPACK_IMPORTED_MODULE_8___default.a.abortConnectingIcon,
   src: _close_button_icon_close_svg__WEBPACK_IMPORTED_MODULE_7___default.a
 })))));
-
 ConnectingStep.propTypes = {
   connectingMessage: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.node.isRequired,
   connectionIconURL: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired,
@@ -5980,7 +5841,6 @@ const PHASES = keymirror__WEBPACK_IMPORTED_MODULE_2___default()({
   error: null,
   unavailable: null
 });
-
 const ConnectionModalComponent = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_containers_modal_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
   className: _connection_modal_css__WEBPACK_IMPORTED_MODULE_11___default.a.modalContent,
   contentLabel: props.name,
@@ -5992,7 +5852,6 @@ const ConnectionModalComponent = props => /*#__PURE__*/react__WEBPACK_IMPORTED_M
 }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_box_box_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
   className: _connection_modal_css__WEBPACK_IMPORTED_MODULE_11___default.a.body
 }, props.phase === PHASES.scanning && !props.useAutoScan && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_containers_scanning_step_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], props), props.phase === PHASES.scanning && props.useAutoScan && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_containers_auto_scanning_step_jsx__WEBPACK_IMPORTED_MODULE_6__["default"], props), props.phase === PHASES.connecting && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_connecting_step_jsx__WEBPACK_IMPORTED_MODULE_7__["default"], props), props.phase === PHASES.connected && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_connected_step_jsx__WEBPACK_IMPORTED_MODULE_8__["default"], props), props.phase === PHASES.error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_error_step_jsx__WEBPACK_IMPORTED_MODULE_9__["default"], props), props.phase === PHASES.unavailable && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_unavailable_step_jsx__WEBPACK_IMPORTED_MODULE_10__["default"], props)));
-
 ConnectionModalComponent.propTypes = {
   connectingMessage: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.node.isRequired,
   connectionSmallIconURL: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
@@ -6034,7 +5893,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const Dots = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_box_box_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
   className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(props.className, _connection_modal_css__WEBPACK_IMPORTED_MODULE_4___default.a.dotsRow)
 }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -6052,7 +5910,6 @@ const Dots = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.
     type: type
   });
 })));
-
 Dots.propTypes = {
   className: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
   counter: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.number,
@@ -6060,7 +5917,6 @@ Dots.propTypes = {
   success: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.bool,
   total: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.number
 };
-
 const Dot = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
   className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(_connection_modal_css__WEBPACK_IMPORTED_MODULE_4___default.a.dot, {
     [_connection_modal_css__WEBPACK_IMPORTED_MODULE_4___default.a.inactiveStepDot]: props.type === 'inactive',
@@ -6069,7 +5925,6 @@ const Dot = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.c
     [_connection_modal_css__WEBPACK_IMPORTED_MODULE_4___default.a.errorDot]: props.type === 'error'
   })
 });
-
 Dot.propTypes = {
   type: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string
 };
@@ -6101,7 +5956,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _icons_back_svg__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_icons_back_svg__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var _connection_modal_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./connection-modal.css */ "./src/components/connection-modal/connection-modal.css");
 /* harmony import */ var _connection_modal_css__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_connection_modal_css__WEBPACK_IMPORTED_MODULE_8__);
-
 
 
 
@@ -6154,7 +6008,6 @@ const ErrorStep = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___defau
   defaultMessage: "Help",
   id: "gui.connection.error.helpbutton"
 })))));
-
 ErrorStep.propTypes = {
   connectionIconURL: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired,
   onHelp: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
@@ -6269,17 +6122,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 class PeripheralTile extends react__WEBPACK_IMPORTED_MODULE_3___default.a.Component {
   constructor(props) {
     super(props);
     lodash_bindall__WEBPACK_IMPORTED_MODULE_4___default()(this, ['handleConnecting']);
   }
-
   handleConnecting() {
     this.props.onConnecting(this.props.peripheralId);
   }
-
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_box_box_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], {
       className: _connection_modal_css__WEBPACK_IMPORTED_MODULE_6___default.a.peripheralTile
@@ -6324,9 +6174,7 @@ class PeripheralTile extends react__WEBPACK_IMPORTED_MODULE_3___default.a.Compon
       id: "gui.connection.connect"
     }))));
   }
-
 }
-
 PeripheralTile.propTypes = {
   connectionSmallIconURL: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
   name: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
@@ -6363,7 +6211,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _icons_refresh_svg__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_icons_refresh_svg__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _connection_modal_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./connection-modal.css */ "./src/components/connection-modal/connection-modal.css");
 /* harmony import */ var _connection_modal_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_connection_modal_css__WEBPACK_IMPORTED_MODULE_9__);
-
 
 
 
@@ -6423,7 +6270,6 @@ const ScanningStep = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___de
   className: _connection_modal_css__WEBPACK_IMPORTED_MODULE_9___default.a.buttonIconRight,
   src: _icons_refresh_svg__WEBPACK_IMPORTED_MODULE_8___default.a
 }))));
-
 ScanningStep.propTypes = {
   connectionSmallIconURL: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
   onConnecting: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
@@ -6471,7 +6317,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _icons_scratchlink_svg__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_icons_scratchlink_svg__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var _connection_modal_css__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./connection-modal.css */ "./src/components/connection-modal/connection-modal.css");
 /* harmony import */ var _connection_modal_css__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_connection_modal_css__WEBPACK_IMPORTED_MODULE_10__);
-
 
 
 
@@ -6544,7 +6389,6 @@ const UnavailableStep = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__
   defaultMessage: "Help",
   id: "gui.connection.unavailable.helpbutton"
 })))));
-
 UnavailableStep.propTypes = {
   onHelp: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
   onScanning: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func
@@ -6608,30 +6452,24 @@ function _extends() { _extends = Object.assign ? Object.assign.bind() : function
 
 
 
-
-
 const StyledContextMenu = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_contextmenu__WEBPACK_IMPORTED_MODULE_1__["ContextMenu"], _extends({}, props, {
   className: _context_menu_css__WEBPACK_IMPORTED_MODULE_3___default.a.contextMenu
 }));
-
 const StyledMenuItem = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_contextmenu__WEBPACK_IMPORTED_MODULE_1__["MenuItem"], _extends({}, props, {
   attributes: {
     className: _context_menu_css__WEBPACK_IMPORTED_MODULE_3___default.a.menuItem
   }
 }));
-
 const BorderedMenuItem = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_contextmenu__WEBPACK_IMPORTED_MODULE_1__["MenuItem"], _extends({}, props, {
   attributes: {
     className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(_context_menu_css__WEBPACK_IMPORTED_MODULE_3___default.a.menuItem, _context_menu_css__WEBPACK_IMPORTED_MODULE_3___default.a.menuItemBordered)
   }
 }));
-
 const DangerousMenuItem = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_contextmenu__WEBPACK_IMPORTED_MODULE_1__["MenuItem"], _extends({}, props, {
   attributes: {
     className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(_context_menu_css__WEBPACK_IMPORTED_MODULE_3___default.a.menuItem, _context_menu_css__WEBPACK_IMPORTED_MODULE_3___default.a.menuItemBordered, _context_menu_css__WEBPACK_IMPORTED_MODULE_3___default.a.menuItemDanger)
   }
 }));
-
 
 
 /***/ }),
@@ -6690,13 +6528,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _controls_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./controls.css */ "./src/components/controls/controls.css");
 /* harmony import */ var _controls_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_controls_css__WEBPACK_IMPORTED_MODULE_9__);
 const _excluded = ["active", "className", "intl", "onGreenFlagClick", "onStopAllClick", "turbo", "framerate", "interpolation", "isSmall"];
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
 
 
 
@@ -6717,21 +6551,19 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_3__["defineMessages"
     "defaultMessage": "Stop"
   }
 });
-
 const Controls = function Controls(props) {
   const {
-    active,
-    className,
-    intl,
-    onGreenFlagClick,
-    onStopAllClick,
-    turbo,
-    framerate,
-    interpolation,
-    isSmall
-  } = props,
-        componentProps = _objectWithoutProperties(props, _excluded);
-
+      active,
+      className,
+      intl,
+      onGreenFlagClick,
+      onStopAllClick,
+      turbo,
+      framerate,
+      interpolation,
+      isSmall
+    } = props,
+    componentProps = _objectWithoutProperties(props, _excluded);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", _extends({
     className: classnames__WEBPACK_IMPORTED_MODULE_0___default()(_controls_css__WEBPACK_IMPORTED_MODULE_9___default.a.controlsContainer, className)
   }, componentProps), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_green_flag_green_flag_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -6749,7 +6581,6 @@ const Controls = function Controls(props) {
     interpolation: interpolation
   }));
 };
-
 Controls.propTypes = {
   active: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
   className: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
@@ -6825,7 +6656,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const CrashMessage = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
   className: _crash_message_css__WEBPACK_IMPORTED_MODULE_4___default.a.crashWrapper
 }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_box_box_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -6856,7 +6686,6 @@ const CrashMessage = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___de
   defaultMessage: "Reload",
   id: "gui.crashMessage.reload"
 }))));
-
 CrashMessage.propTypes = {
   eventId: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
   errorMessage: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
@@ -6946,7 +6775,6 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_4__["defineMessages"
     "defaultMessage": "Make a Block"
   }
 });
-
 const CustomProcedures = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_containers_modal_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
   className: _custom_procedures_css__WEBPACK_IMPORTED_MODULE_8___default.a.modalContent,
   contentLabel: props.intl.formatMessage(messages.myblockModalTitle),
@@ -7031,7 +6859,6 @@ const CustomProcedures = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1_
   defaultMessage: "OK",
   id: "gui.customProcedures.ok"
 })))));
-
 CustomProcedures.propTypes = {
   componentRef: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func.isRequired,
   intl: react_intl__WEBPACK_IMPORTED_MODULE_4__["intlShape"],
@@ -7134,7 +6961,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const DeleteButton = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
   "aria-label": "Delete",
   className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(_delete_button_css__WEBPACK_IMPORTED_MODULE_3___default.a.deleteButton, props.className),
@@ -7147,7 +6973,6 @@ const DeleteButton = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___de
   className: _delete_button_css__WEBPACK_IMPORTED_MODULE_3___default.a.deleteIcon,
   src: _icon_delete_svg__WEBPACK_IMPORTED_MODULE_4___default.a
 })));
-
 DeleteButton.propTypes = {
   className: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
   onClick: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func.isRequired,
@@ -7230,13 +7055,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 class Dial extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
   constructor(props) {
     super(props);
     lodash_bindall__WEBPACK_IMPORTED_MODULE_1___default()(this, ['handleMouseDown', 'handleMouseMove', 'containerRef', 'handleRef', 'unbindMouseEvents']);
   }
-
   componentDidMount() {
     // Manually add touch/mouse handlers so that preventDefault can be used
     // to prevent scrolling on touch.
@@ -7244,19 +7067,17 @@ class Dial extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
     this.handleElement.addEventListener('mousedown', this.handleMouseDown);
     this.handleElement.addEventListener('touchstart', this.handleMouseDown);
   }
-
   componentWillUnmount() {
     this.unbindMouseEvents();
     this.handleElement.removeEventListener('mousedown', this.handleMouseDown);
     this.handleElement.removeEventListener('touchstart', this.handleMouseDown);
   }
+
   /**
    * Get direction from dial center to mouse move event.
    * @param {Event} e - Mouse move event.
    * @returns {number} Direction in degrees, clockwise, 90=horizontal.
    */
-
-
   directionToMouseEvent(e) {
     const {
       x: mx,
@@ -7269,14 +7090,13 @@ class Dial extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
     const degrees = angle * (180 / Math.PI);
     return degrees + 90; // To correspond with scratch coordinate system
   }
+
   /**
    * Create SVG path data string for the dial "gauge", the overlaid arc slice.
    * @param {number} radius - The radius of the dial.
    * @param {number} direction - Direction in degrees, clockwise, 90=horizontal.
    * @returns {string} Path data string for the gauge.
    */
-
-
   gaugePath(radius, direction) {
     const rads = direction * (Math.PI / 180);
     const path = [];
@@ -7287,19 +7107,16 @@ class Dial extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
     path.push("Z");
     return path.join(' ');
   }
-
   handleMouseMove(e) {
     this.props.onChange(this.directionToMouseEvent(e) + this.directionOffset);
     e.preventDefault();
   }
-
   unbindMouseEvents() {
     window.removeEventListener('mousemove', this.handleMouseMove);
     window.removeEventListener('mouseup', this.unbindMouseEvents);
     window.removeEventListener('touchmove', this.handleMouseMove);
     window.removeEventListener('touchend', this.unbindMouseEvents);
   }
-
   handleMouseDown(e) {
     // Because the drag handle is not a single point, there is some initial
     // difference between the current sprite direction and the direction to the mouse
@@ -7311,15 +7128,12 @@ class Dial extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
     window.addEventListener('touchend', this.unbindMouseEvents);
     e.preventDefault();
   }
-
   containerRef(el) {
     this.containerElement = el;
   }
-
   handleRef(el) {
     this.handleElement = el;
   }
-
   render() {
     const {
       direction,
@@ -7357,9 +7171,7 @@ class Dial extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
       }
     })));
   }
-
 }
-
 Dial.propTypes = {
   direction: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.number,
   onChange: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func.isRequired,
@@ -7369,8 +7181,8 @@ Dial.defaultProps = {
   direction: 90,
   // degrees
   radius: 56 // px
-
 };
+
 /* harmony default export */ __webpack_exports__["default"] = (Dial);
 
 /***/ }),
@@ -7474,7 +7286,6 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_4__["defineMessages"
     "defaultMessage": "Do not rotate"
   }
 });
-
 const DirectionPicker = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_forms_label_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], {
   secondary: true,
   above: props.labelAbove,
@@ -7526,7 +7337,6 @@ const DirectionPicker = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__
   onFocus: props.onOpenPopover,
   onSubmit: props.onChangeDirection
 })));
-
 DirectionPicker.propTypes = {
   direction: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
   disabled: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool.isRequired,
@@ -7655,7 +7465,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const Divider = _ref => {
   let {
     className
@@ -7664,7 +7473,6 @@ const Divider = _ref => {
     className: classnames__WEBPACK_IMPORTED_MODULE_0___default()(_divider_css__WEBPACK_IMPORTED_MODULE_3___default.a.divider, className)
   });
 };
-
 Divider.propTypes = {
   className: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string
 };
@@ -7720,8 +7528,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-/* eslint no-confusing-arrow: ["error", {"allowParens": true}] */
 
+/* eslint no-confusing-arrow: ["error", {"allowParens": true}] */
 const DragLayer = _ref => {
   let {
     dragging,
@@ -7740,7 +7548,6 @@ const DragLayer = _ref => {
     src: img
   }))) : null;
 };
-
 DragLayer.propTypes = {
   currentOffset: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.shape({
     x: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number.isRequired,
@@ -7810,7 +7617,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const FilterComponent = props => {
   const {
     className,
@@ -7841,7 +7647,6 @@ const FilterComponent = props => {
     src: _icon_x_svg__WEBPACK_IMPORTED_MODULE_4___default.a
   })));
 };
-
 FilterComponent.propTypes = {
   className: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
   filterQuery: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
@@ -7904,7 +7709,6 @@ function _extends() { _extends = Object.assign ? Object.assign.bind() : function
  * @param {React.Component} Input text input that consumes onChange, onBlur, onKeyPress
  * @returns {React.Component} Buffered input that calls onSubmit on blur and <enter>
  */
-
 /* harmony default export */ __webpack_exports__["default"] = (function (Input) {
   class BufferedInput extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
     constructor(props) {
@@ -7914,33 +7718,27 @@ function _extends() { _extends = Object.assign ? Object.assign.bind() : function
         value: null
       };
     }
-
     handleKeyPress(e) {
       if (e.key === 'Enter') {
         this.handleFlush();
         e.target.blur();
       }
     }
-
     handleFlush() {
       const isNumeric = typeof this.props.value === 'number';
       const validatesNumeric = isNumeric ? !isNaN(this.state.value) : true;
-
       if (this.state.value !== null && validatesNumeric) {
         this.props.onSubmit(isNumeric ? Number(this.state.value) : this.state.value);
       }
-
       this.setState({
         value: null
       });
     }
-
     handleChange(e) {
       this.setState({
         value: e.target.value
       });
     }
-
     render() {
       const bufferedValue = this.state.value === null ? this.props.value : this.state.value;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(Input, _extends({}, this.props, {
@@ -7950,9 +7748,7 @@ function _extends() { _extends = Object.assign ? Object.assign.bind() : function
         onKeyPress: this.handleKeyPress
       }));
     }
-
   }
-
   BufferedInput.propTypes = {
     onSubmit: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func.isRequired,
     value: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number])
@@ -8010,31 +7806,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _input_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./input.css */ "./src/components/forms/input.css");
 /* harmony import */ var _input_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_input_css__WEBPACK_IMPORTED_MODULE_3__);
 const _excluded = ["small"];
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
 
 
 
 
 const Input = props => {
   const {
-    small
-  } = props,
-        componentProps = _objectWithoutProperties(props, _excluded);
-
+      small
+    } = props,
+    componentProps = _objectWithoutProperties(props, _excluded);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", _extends({}, componentProps, {
     className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(_input_css__WEBPACK_IMPORTED_MODULE_3___default.a.inputForm, props.className, {
       [_input_css__WEBPACK_IMPORTED_MODULE_3___default.a.inputSmall]: small
     })
   }));
 };
-
 Input.propTypes = {
   className: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
   small: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.bool
@@ -8094,13 +7883,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const Label = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
   className: props.above ? _label_css__WEBPACK_IMPORTED_MODULE_2___default.a.inputGroupColumn : _label_css__WEBPACK_IMPORTED_MODULE_2___default.a.inputGroup
 }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
   className: props.secondary ? _label_css__WEBPACK_IMPORTED_MODULE_2___default.a.inputLabelSecondary : _label_css__WEBPACK_IMPORTED_MODULE_2___default.a.inputLabel
 }, props.text), props.children);
-
 Label.propTypes = {
   above: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.bool,
   children: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.node,
@@ -8165,14 +7952,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _green_flag_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./green-flag.css */ "./src/components/green-flag/green-flag.css");
 /* harmony import */ var _green_flag_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_green_flag_css__WEBPACK_IMPORTED_MODULE_4__);
 const _excluded = ["active", "className", "onClick", "title"];
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
 
 
 
@@ -8180,13 +7962,12 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 const GreenFlagComponent = function GreenFlagComponent(props) {
   const {
-    active,
-    className,
-    onClick,
-    title
-  } = props,
-        componentProps = _objectWithoutProperties(props, _excluded);
-
+      active,
+      className,
+      onClick,
+      title
+    } = props,
+    componentProps = _objectWithoutProperties(props, _excluded);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("img", _extends({
     className: classnames__WEBPACK_IMPORTED_MODULE_0___default()(className, _green_flag_css__WEBPACK_IMPORTED_MODULE_4___default.a.greenFlag, {
       [_green_flag_css__WEBPACK_IMPORTED_MODULE_4___default.a.isActive]: active
@@ -8194,12 +7975,12 @@ const GreenFlagComponent = function GreenFlagComponent(props) {
     draggable: false,
     src: _icon_green_flag_svg__WEBPACK_IMPORTED_MODULE_3___default.a,
     title: title,
-    onClick: onClick // tw: also fire click when opening context menu (right click on all systems and alt+click on chromebooks)
+    onClick: onClick
+    // tw: also fire click when opening context menu (right click on all systems and alt+click on chromebooks)
     ,
     onContextMenu: onClick
   }, componentProps));
 };
-
 GreenFlagComponent.propTypes = {
   active: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
   className: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
@@ -8319,13 +8100,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _icon_sounds_svg__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./icon--sounds.svg */ "./src/components/gui/icon--sounds.svg");
 /* harmony import */ var _icon_sounds_svg__WEBPACK_IMPORTED_MODULE_40___default = /*#__PURE__*/__webpack_require__.n(_icon_sounds_svg__WEBPACK_IMPORTED_MODULE_40__);
 const _excluded = ["accountNavOpen", "activeTabIndex", "alertsVisible", "authorId", "authorThumbnailUrl", "authorUsername", "basePath", "backdropLibraryVisible", "backpackHost", "backpackVisible", "blocksTabVisible", "cardsVisible", "canChangeLanguage", "canCreateNew", "canEditTitle", "canManageFiles", "canRemix", "canSave", "canCreateCopy", "canShare", "canUseCloud", "children", "connectionModalVisible", "costumeLibraryVisible", "costumesTabVisible", "customStageSize", "enableCommunity", "intl", "isCreating", "isDark", "isEmbedded", "isFullScreen", "isPlayerOnly", "isRtl", "isShared", "isWindowFullScreen", "isTelemetryEnabled", "loading", "logo", "renderLogin", "onClickAbout", "onClickAccountNav", "onCloseAccountNav", "onClickAddonSettings", "onClickTheme", "onClickPackager", "onLogOut", "onOpenRegistration", "onToggleLoginOpen", "onActivateCostumesTab", "onActivateSoundsTab", "onActivateTab", "onClickLogo", "onExtensionButtonClick", "onProjectTelemetryEvent", "onRequestCloseBackdropLibrary", "onRequestCloseCostumeLibrary", "onRequestCloseTelemetryModal", "onSeeCommunity", "onShare", "onShowPrivacyPolicy", "onStartSelectingFileUpload", "onTelemetryModalCancel", "onTelemetryModalOptIn", "onTelemetryModalOptOut", "showComingSoon", "soundsTabVisible", "stageSizeMode", "targetIsStage", "telemetryModalVisible", "tipsLibraryVisible", "usernameModalVisible", "settingsModalVisible", "vm"];
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
 
 
 
@@ -8373,107 +8150,99 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_4__["defineMessages"
     "defaultMessage": "Add Extension"
   }
 });
-
 const getFullscreenBackgroundColor = () => {
   const params = new URLSearchParams(location.search);
-
   if (params.has('fullscreen-background')) {
     return params.get('fullscreen-background');
   }
-
   if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
     return '#111';
   }
-
   return 'white';
 };
-
 const fullscreenBackgroundColor = getFullscreenBackgroundColor();
-
 const GUIComponent = props => {
   const _omit = lodash_omit__WEBPACK_IMPORTED_MODULE_1___default()(props, 'dispatch'),
-        {
-    accountNavOpen,
-    activeTabIndex,
-    alertsVisible,
-    authorId,
-    authorThumbnailUrl,
-    authorUsername,
-    basePath,
-    backdropLibraryVisible,
-    backpackHost,
-    backpackVisible,
-    blocksTabVisible,
-    cardsVisible,
-    canChangeLanguage,
-    canCreateNew,
-    canEditTitle,
-    canManageFiles,
-    canRemix,
-    canSave,
-    canCreateCopy,
-    canShare,
-    canUseCloud,
-    children,
-    connectionModalVisible,
-    costumeLibraryVisible,
-    costumesTabVisible,
-    customStageSize,
-    enableCommunity,
-    intl,
-    isCreating,
-    isDark,
-    isEmbedded,
-    isFullScreen,
-    isPlayerOnly,
-    isRtl,
-    isShared,
-    isWindowFullScreen,
-    isTelemetryEnabled,
-    loading,
-    logo,
-    renderLogin,
-    onClickAbout,
-    onClickAccountNav,
-    onCloseAccountNav,
-    onClickAddonSettings,
-    onClickTheme,
-    onClickPackager,
-    onLogOut,
-    onOpenRegistration,
-    onToggleLoginOpen,
-    onActivateCostumesTab,
-    onActivateSoundsTab,
-    onActivateTab,
-    onClickLogo,
-    onExtensionButtonClick,
-    onProjectTelemetryEvent,
-    onRequestCloseBackdropLibrary,
-    onRequestCloseCostumeLibrary,
-    onRequestCloseTelemetryModal,
-    onSeeCommunity,
-    onShare,
-    onShowPrivacyPolicy,
-    onStartSelectingFileUpload,
-    onTelemetryModalCancel,
-    onTelemetryModalOptIn,
-    onTelemetryModalOptOut,
-    showComingSoon,
-    soundsTabVisible,
-    stageSizeMode,
-    targetIsStage,
-    telemetryModalVisible,
-    tipsLibraryVisible,
-    usernameModalVisible,
-    settingsModalVisible,
-    vm
-  } = _omit,
-        componentProps = _objectWithoutProperties(_omit, _excluded);
-
+    {
+      accountNavOpen,
+      activeTabIndex,
+      alertsVisible,
+      authorId,
+      authorThumbnailUrl,
+      authorUsername,
+      basePath,
+      backdropLibraryVisible,
+      backpackHost,
+      backpackVisible,
+      blocksTabVisible,
+      cardsVisible,
+      canChangeLanguage,
+      canCreateNew,
+      canEditTitle,
+      canManageFiles,
+      canRemix,
+      canSave,
+      canCreateCopy,
+      canShare,
+      canUseCloud,
+      children,
+      connectionModalVisible,
+      costumeLibraryVisible,
+      costumesTabVisible,
+      customStageSize,
+      enableCommunity,
+      intl,
+      isCreating,
+      isDark,
+      isEmbedded,
+      isFullScreen,
+      isPlayerOnly,
+      isRtl,
+      isShared,
+      isWindowFullScreen,
+      isTelemetryEnabled,
+      loading,
+      logo,
+      renderLogin,
+      onClickAbout,
+      onClickAccountNav,
+      onCloseAccountNav,
+      onClickAddonSettings,
+      onClickTheme,
+      onClickPackager,
+      onLogOut,
+      onOpenRegistration,
+      onToggleLoginOpen,
+      onActivateCostumesTab,
+      onActivateSoundsTab,
+      onActivateTab,
+      onClickLogo,
+      onExtensionButtonClick,
+      onProjectTelemetryEvent,
+      onRequestCloseBackdropLibrary,
+      onRequestCloseCostumeLibrary,
+      onRequestCloseTelemetryModal,
+      onSeeCommunity,
+      onShare,
+      onShowPrivacyPolicy,
+      onStartSelectingFileUpload,
+      onTelemetryModalCancel,
+      onTelemetryModalOptIn,
+      onTelemetryModalOptOut,
+      showComingSoon,
+      soundsTabVisible,
+      stageSizeMode,
+      targetIsStage,
+      telemetryModalVisible,
+      tipsLibraryVisible,
+      usernameModalVisible,
+      settingsModalVisible,
+      vm
+    } = _omit,
+    componentProps = _objectWithoutProperties(_omit, _excluded);
   if (children) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_box_box_jsx__WEBPACK_IMPORTED_MODULE_17__["default"], componentProps, children);
   }
-
   const tabClassNames = {
     tabs: _gui_css__WEBPACK_IMPORTED_MODULE_36___default.a.tabs,
     tab: classnames__WEBPACK_IMPORTED_MODULE_0___default()(react_tabs_style_react_tabs_css__WEBPACK_IMPORTED_MODULE_8___default.a.reactTabsTab, _gui_css__WEBPACK_IMPORTED_MODULE_36___default.a.tab),
@@ -8661,7 +8430,6 @@ const GUIComponent = props => {
     }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_containers_drag_layer_jsx__WEBPACK_IMPORTED_MODULE_28__["default"], null));
   });
 };
-
 GUIComponent.propTypes = {
   accountNavOpen: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.bool,
   activeTabIndex: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.number,
@@ -8759,14 +8527,12 @@ GUIComponent.defaultProps = {
   showComingSoon: false,
   stageSizeMode: _lib_layout_constants__WEBPACK_IMPORTED_MODULE_33__["STAGE_SIZE_MODES"].large
 };
-
 const mapStateToProps = state => ({
   customStageSize: state.scratchGui.customStageSize,
   isWindowFullScreen: state.scratchGui.tw.isWindowFullScreen,
   // This is the button's mode, as opposed to the actual current state
   stageSizeMode: state.scratchGui.stageSize.stageSize
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_intl__WEBPACK_IMPORTED_MODULE_4__["injectIntl"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_5__["connect"])(mapStateToProps)(GUIComponent)));
 
 /***/ }),
@@ -8866,7 +8632,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const IconButton = _ref => {
   let {
     img,
@@ -8887,7 +8652,6 @@ const IconButton = _ref => {
     className: _icon_button_css__WEBPACK_IMPORTED_MODULE_3___default.a.title
   }, title));
 };
-
 IconButton.propTypes = {
   className: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
   disabled: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.bool,
@@ -8959,10 +8723,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- // supported languages to exclude from the menu, but allow as a URL option
 
+
+// supported languages to exclude from the menu, but allow as a URL option
 const ignore = [];
-
 const LanguageSelector = _ref => {
   let {
     currentLocale,
@@ -8979,7 +8743,6 @@ const LanguageSelector = _ref => {
     value: locale
   }, _turbowarp_scratch_l10n__WEBPACK_IMPORTED_MODULE_2__["default"][locale].name)));
 };
-
 LanguageSelector.propTypes = {
   currentLocale: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
   label: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
@@ -9096,8 +8859,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-/* eslint-disable react/prefer-stateless-function */
 
+/* eslint-disable react/prefer-stateless-function */
 class LibraryItemComponent extends react__WEBPACK_IMPORTED_MODULE_2___default.a.PureComponent {
   render() {
     return this.props.featured ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
@@ -9176,10 +8939,8 @@ class LibraryItemComponent extends react__WEBPACK_IMPORTED_MODULE_2___default.a.
       onStop: this.props.onStop
     }) : null);
   }
-
 }
 /* eslint-enable react/prefer-stateless-function */
-
 
 LibraryItemComponent.propTypes = {
   bluetoothRequired: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
@@ -9281,7 +9042,6 @@ function _extends() { _extends = Object.assign ? Object.assign.bind() : function
 
 
 
-
 const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_4__["defineMessages"])({
   filterPlaceholder: {
     "id": "gui.library.filterPlaceholder",
@@ -9297,7 +9057,6 @@ const ALL_TAG = {
   intlLabel: messages.allTag
 };
 const tagListPrefix = [ALL_TAG];
-
 class LibraryComponent extends react__WEBPACK_IMPORTED_MODULE_3___default.a.Component {
   constructor(props) {
     super(props);
@@ -9310,7 +9069,6 @@ class LibraryComponent extends react__WEBPACK_IMPORTED_MODULE_3___default.a.Comp
       data: props.data
     };
   }
-
   componentDidMount() {
     if (this.state.data.then) {
       // If data is a promise, wait for the promise to resolve
@@ -9328,15 +9086,12 @@ class LibraryComponent extends react__WEBPACK_IMPORTED_MODULE_3___default.a.Comp
         });
       });
     }
-
     if (this.props.setStopHandler) this.props.setStopHandler(this.handlePlayingEnd);
   }
-
   componentDidUpdate(prevProps, prevState) {
     if (prevState.filterQuery !== this.state.filterQuery || prevState.selectedTag !== this.state.selectedTag) {
       this.scrollToTop();
     }
-
     if (prevProps.data !== this.props.data) {
       // eslint-disable-next-line react/no-did-update-set-state
       this.setState({
@@ -9344,16 +9099,13 @@ class LibraryComponent extends react__WEBPACK_IMPORTED_MODULE_3___default.a.Comp
       });
     }
   }
-
   handleSelect(id) {
     this.handleClose();
     this.props.onItemSelected(this.getFilteredData()[id]);
   }
-
   handleClose() {
     this.props.onRequestClose();
   }
-
   handleTagClick(tag) {
     if (this.state.playingItem === null) {
       this.setState({
@@ -9369,7 +9121,6 @@ class LibraryComponent extends react__WEBPACK_IMPORTED_MODULE_3___default.a.Comp
       });
     }
   }
-
   handleMouseEnter(id) {
     // don't restart if mouse over already playing item
     if (this.props.onItemMouseEnter && this.state.playingItem !== id) {
@@ -9379,7 +9130,6 @@ class LibraryComponent extends react__WEBPACK_IMPORTED_MODULE_3___default.a.Comp
       });
     }
   }
-
   handleMouseLeave(id) {
     if (this.props.onItemMouseLeave) {
       this.props.onItemMouseLeave(this.getFilteredData()[id]);
@@ -9388,7 +9138,6 @@ class LibraryComponent extends react__WEBPACK_IMPORTED_MODULE_3___default.a.Comp
       });
     }
   }
-
   handlePlayingEnd() {
     if (this.state.playingItem !== null) {
       this.setState({
@@ -9396,7 +9145,6 @@ class LibraryComponent extends react__WEBPACK_IMPORTED_MODULE_3___default.a.Comp
       });
     }
   }
-
   handleFilterChange(event) {
     if (this.state.playingItem === null) {
       this.setState({
@@ -9412,33 +9160,29 @@ class LibraryComponent extends react__WEBPACK_IMPORTED_MODULE_3___default.a.Comp
       });
     }
   }
-
   handleFilterClear() {
     this.setState({
       filterQuery: ''
     });
   }
-
   getFilteredData() {
     if (this.state.selectedTag === 'all') {
       if (!this.state.filterQuery) return this.state.data;
-      return this.state.data.filter(dataItem => (dataItem.tags || [] // Second argument to map sets `this`
-      ).map(String.prototype.toLowerCase.call, String.prototype.toLowerCase).concat(dataItem.name ? (typeof dataItem.name === 'string' ? // Use the name if it is a string, else use formatMessage to get the translated name
+      return this.state.data.filter(dataItem => (dataItem.tags || []
+      // Second argument to map sets `this`
+      ).map(String.prototype.toLowerCase.call, String.prototype.toLowerCase).concat(dataItem.name ? (typeof dataItem.name === 'string' ?
+      // Use the name if it is a string, else use formatMessage to get the translated name
       dataItem.name : this.props.intl.formatMessage(dataItem.name.props)).toLowerCase() : null).join('\n') // unlikely to partially match newlines
       .indexOf(this.state.filterQuery.toLowerCase()) !== -1);
     }
-
     return this.state.data.filter(dataItem => dataItem.tags && dataItem.tags.map(String.prototype.toLowerCase.call, String.prototype.toLowerCase).indexOf(this.state.selectedTag) !== -1);
   }
-
   scrollToTop() {
     this.filteredDataRef.scrollTop = 0;
   }
-
   setFilteredDataRef(ref) {
     this.filteredDataRef = ref;
   }
-
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_containers_modal_jsx__WEBPACK_IMPORTED_MODULE_6__["default"], {
       fullScreen: true,
@@ -9496,12 +9240,9 @@ class LibraryComponent extends react__WEBPACK_IMPORTED_MODULE_3___default.a.Comp
       level: "primary"
     }))));
   }
-
 }
-
 LibraryComponent.propTypes = {
-  data: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.arrayOf(
-  /* eslint-disable react/no-unused-prop-types, lines-around-comment */
+  data: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.arrayOf( /* eslint-disable react/no-unused-prop-types, lines-around-comment */
   // An item in the library
   prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.shape({
     // @todo remove md5/rawURL prop from library, refactor to use storage
@@ -9509,8 +9250,7 @@ LibraryComponent.propTypes = {
     name: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string, prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.node]),
     rawURL: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string
   })
-  /* eslint-enable react/no-unused-prop-types, lines-around-comment */
-  ), prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.instanceOf(Promise)]),
+  /* eslint-enable react/no-unused-prop-types, lines-around-comment */), prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.instanceOf(Promise)]),
   filterable: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.bool,
   id: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string.isRequired,
   intl: react_intl__WEBPACK_IMPORTED_MODULE_4__["intlShape"].isRequired,
@@ -9608,7 +9348,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- // tw:
+
+
+// tw:
 // we make some rather large changes here:
 //  - remove random message, replaced with message dependent on what is actually being loaded
 //  - add a progress bar
@@ -9644,7 +9386,6 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_1__["defineMessages"
     "defaultMessage": "Downloading assets \u2026"
   }
 });
-
 class LoaderComponent extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
   constructor(props) {
     super(props);
@@ -9654,40 +9395,32 @@ class LoaderComponent extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Compo
     this.total = 0;
     lodash_bindall__WEBPACK_IMPORTED_MODULE_5___default()(this, ['barInnerRef', 'handleProgressChange', 'messageRef']);
   }
-
   componentDidMount() {
     _tw_progress_monitor__WEBPACK_IMPORTED_MODULE_9__["setProgressHandler"](this.handleProgressChange);
     this.updateMessage();
   }
-
   componentDidUpdate() {
     this.update();
   }
-
   componentWillUnmount() {
     _tw_progress_monitor__WEBPACK_IMPORTED_MODULE_9__["setProgressHandler"](() => {});
   }
-
   handleProgressChange(state, progress, complete, total) {
     if (state !== this._state) {
       this._state = state;
       this.updateMessage();
     }
-
     this.progress = progress;
     this.complete = complete;
     this.total = total;
     this.update();
   }
-
   update() {
     this.barInner.style.width = "".concat(this.progress * 100, "%");
-
     if (this._state === 2) {
       this.updateMessage();
     }
   }
-
   updateMessage() {
     if (this._state === 0) {
       this.message.textContent = this.props.intl.formatMessage(messages.generic);
@@ -9702,15 +9435,12 @@ class LoaderComponent extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Compo
       this.message.textContent = this.props.intl.formatMessage(messages.assetsUnknown);
     }
   }
-
   barInnerRef(element) {
     this.barInner = element;
   }
-
   messageRef(element) {
     this.message = element;
   }
-
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(_loader_css__WEBPACK_IMPORTED_MODULE_3___default.a.background, {
@@ -9743,9 +9473,7 @@ class LoaderComponent extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Compo
       ref: this.barInnerRef
     }))));
   }
-
 }
-
 LoaderComponent.propTypes = {
   isFullScreen: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.bool,
   intl: react_intl__WEBPACK_IMPORTED_MODULE_1__["intlShape"].isRequired,
@@ -9794,112 +9522,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchWithProgress", function() { return fetchWithProgress; });
 // This file implements some extremely terrible tricks to monitor project loading progress.
 // Please don't use this as a reference for "good JS code"
+
 let total = 0;
-let complete = 0; // 0 - none
+let complete = 0;
+
+// 0 - none
 // 1 - load json
 // 2 - load assets
-
 let state = 0;
 let currentProgress = 0;
-
 let progressHandler = (state, progress, complete, total) => {};
-
 const setProgressHandler = newHandler => {
   progressHandler = newHandler;
   progressHandler(state, currentProgress, complete, total);
 };
 let progressHandlerTimeout = null;
-
 const fireProgressHandler = () => {
   progressHandler(state, currentProgress, complete, total);
   progressHandlerTimeout = null;
 };
-
 const queueProgressHandlerUpdate = () => {
   if (progressHandlerTimeout === null) {
     progressHandlerTimeout = requestAnimationFrame(fireProgressHandler);
   }
 };
-
 const setProgress = progress => {
   if (progress < 0) {
     progress = 0;
   }
-
   if (progress > 1) {
     progress = 1;
   }
-
   currentProgress = progress;
   queueProgressHandlerUpdate();
 };
-
 const setState = newState => {
   if (state === newState) {
     return;
   }
-
   state = newState;
   complete = 0;
   total = 0;
   setProgress(0);
 };
-
 const fetchWithProgress = url => {
   setState(1);
   return new Promise((resolve, reject) => {
     // fetch() does not support progress, so we use XMLHttpRequest
     const xhr = new XMLHttpRequest();
     xhr.responseType = 'blob';
-
     xhr.onload = () => {
       resolve(new Response(xhr.response, {
         status: xhr.status,
         statusText: xhr.statusText
       }));
     };
-
     xhr.onloadend = () => setProgress(1);
-
     xhr.onerror = () => reject(new Error('[tw-progress-monitor] xhr failed'));
-
     xhr.onprogress = e => {
       if (e.lengthComputable) {
         setProgress(e.loaded / e.total);
       }
     };
-
     xhr.open('GET', url);
     xhr.send();
   });
-}; // Scratch uses fetch() to download the project JSON, so we override it to monitor when the project is being downloaded.
+};
 
+// Scratch uses fetch() to download the project JSON, so we override it to monitor when the project is being downloaded.
 const originalFetch = window.fetch;
-
 window.fetch = (url, opts) => {
   const isGET = typeof opts === 'object' && opts && opts.method === 'GET';
   const isProjectURL = typeof url === 'string' && /^https:\/\/projects\.scratch\.mit\.edu\/\d+$/.test(url);
-
   if (isGET && isProjectURL) {
     return fetchWithProgress(url);
   }
-
   return originalFetch(url, opts);
 };
-
 const handleWorkerMessage = e => {
   const data = e.data;
-
   if (Array.isArray(data)) {
     complete += data.length;
     setProgress(complete / total);
   }
 };
-
 if (window.Worker) {
   let downloadWorker = null;
   const originalPostMessage = window.Worker.prototype.postMessage;
-
   window.Worker.prototype.postMessage = function (message) {
     if (downloadWorker === null) {
       if (message && message.url && message.id && message.options) {
@@ -9907,12 +9616,10 @@ if (window.Worker) {
         downloadWorker.addEventListener('message', handleWorkerMessage);
       }
     }
-
     if (downloadWorker === this) {
       setState(2);
       total++;
     }
-
     originalPostMessage.call(this, message);
   };
 }
@@ -9968,30 +9675,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _loupe_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./loupe.css */ "./src/components/loupe/loupe.css");
 /* harmony import */ var _loupe_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_loupe_css__WEBPACK_IMPORTED_MODULE_4__);
 const _excluded = ["colorInfo"];
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 
 
 
 
-
 const zoomScale = 3;
-
 class LoupeComponent extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
   constructor(props) {
     super(props);
     lodash_bindall__WEBPACK_IMPORTED_MODULE_2___default()(this, ['setCanvas']);
   }
-
   componentDidUpdate() {
     this.draw();
   }
-
   draw() {
     const boxSize = 6 / zoomScale;
     const boxLineWidth = 1 / zoomScale;
@@ -10004,28 +9704,32 @@ class LoupeComponent extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Compon
       height
     } = this.props.colorInfo;
     this.canvas.width = zoomScale * width;
-    this.canvas.height = zoomScale * height; // In order to scale the image data, must draw to a tmp canvas first
+    this.canvas.height = zoomScale * height;
 
+    // In order to scale the image data, must draw to a tmp canvas first
     const tmpCanvas = document.createElement('canvas');
     tmpCanvas.width = width;
     tmpCanvas.height = height;
     const tmpCtx = tmpCanvas.getContext('2d');
     const imageData = tmpCtx.createImageData(width, height);
     imageData.data.set(data);
-    tmpCtx.putImageData(imageData, 0, 0); // Scale the loupe canvas and draw the zoomed image
+    tmpCtx.putImageData(imageData, 0, 0);
 
+    // Scale the loupe canvas and draw the zoomed image
     ctx.save();
     ctx.scale(zoomScale, zoomScale);
-    ctx.drawImage(tmpCanvas, 0, 0, width, height); // Draw an outlined square at the cursor position (cursor is hidden)
+    ctx.drawImage(tmpCanvas, 0, 0, width, height);
 
+    // Draw an outlined square at the cursor position (cursor is hidden)
     ctx.lineWidth = boxLineWidth;
     ctx.strokeStyle = 'black';
     ctx.fillStyle = "rgba(".concat(color.r, ", ").concat(color.g, ", ").concat(color.b, ", ").concat(color.a, ")");
     ctx.beginPath();
     ctx.rect(width / 2 - boxSize / 2, height / 2 - boxSize / 2, boxSize, boxSize);
     ctx.fill();
-    ctx.stroke(); // Draw a thick ring around the loupe showing the current color
+    ctx.stroke();
 
+    // Draw a thick ring around the loupe showing the current color
     ctx.strokeStyle = "rgba(".concat(color.r, ", ").concat(color.g, ", ").concat(color.b, ", ").concat(color.a, ")");
     ctx.lineWidth = colorRingWidth;
     ctx.beginPath();
@@ -10034,18 +9738,15 @@ class LoupeComponent extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Compon
     ctx.stroke();
     ctx.restore();
   }
-
   setCanvas(element) {
     this.canvas = element;
   }
-
   render() {
     const _this$props = this.props,
-          {
-      colorInfo
-    } = _this$props,
-          boxProps = _objectWithoutProperties(_this$props, _excluded);
-
+      {
+        colorInfo
+      } = _this$props,
+      boxProps = _objectWithoutProperties(_this$props, _excluded);
     const x = colorInfo.x - zoomScale * colorInfo.width / 2;
     const y = colorInfo.y - zoomScale * colorInfo.height / 2;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_box_box_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({}, boxProps, {
@@ -10061,9 +9762,7 @@ class LoupeComponent extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Compon
       width: colorInfo.width
     }));
   }
-
 }
-
 LoupeComponent.propTypes = {
   colorInfo: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.shape({
     color: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.shape({
@@ -10144,12 +9843,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _author_info_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./author-info.css */ "./src/components/menu-bar/author-info.css");
 /* harmony import */ var _author_info_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_author_info_css__WEBPACK_IMPORTED_MODULE_5__);
 const _excluded = ["projectId"];
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
 
 
 
@@ -10187,7 +9882,6 @@ const ActualAuthorInfo = _ref => {
     }
   })))));
 };
-
 ActualAuthorInfo.propTypes = {
   className: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
   imageUrl: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
@@ -10195,13 +9889,11 @@ ActualAuthorInfo.propTypes = {
   userId: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string, prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.bool]),
   username: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string, prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.bool])
 };
-
 const AuthorInfo = _ref2 => {
   let {
-    projectId
-  } = _ref2,
-      props = _objectWithoutProperties(_ref2, _excluded);
-
+      projectId
+    } = _ref2,
+    props = _objectWithoutProperties(_ref2, _excluded);
   return projectId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
     className: _author_info_css__WEBPACK_IMPORTED_MODULE_5___default.a.link,
     href: "https://scratch.mit.edu/projects/".concat(projectId),
@@ -10209,7 +9901,6 @@ const AuthorInfo = _ref2 => {
     rel: "noreferrer"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(ActualAuthorInfo, props)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(ActualAuthorInfo, props);
 };
-
 AuthorInfo.propTypes = {
   projectId: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string
 };
@@ -10275,7 +9966,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const CommunityButton = _ref => {
   let {
     className,
@@ -10291,7 +9981,6 @@ const CommunityButton = _ref => {
     id: "gui.menuBar.seeProjectPage"
   }));
 };
-
 CommunityButton.propTypes = {
   className: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string,
   onClick: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.func
@@ -10386,7 +10075,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const MenuBarMenu = _ref => {
   let {
     children,
@@ -10403,7 +10091,6 @@ const MenuBarMenu = _ref => {
     onRequestClose: onRequestClose
   }, children));
 };
-
 MenuBarMenu.propTypes = {
   children: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.node,
   className: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
@@ -10585,7 +10272,6 @@ const twMessages = Object(react_intl__WEBPACK_IMPORTED_MODULE_3__["defineMessage
     "defaultMessage": "{sprite}: {error}"
   }
 });
-
 const MenuBarItemTooltip = _ref => {
   let {
     children,
@@ -10594,11 +10280,9 @@ const MenuBarItemTooltip = _ref => {
     id,
     place = 'bottom'
   } = _ref;
-
   if (enable) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_7___default.a.Fragment, null, children);
   }
-
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_coming_soon_coming_soon_jsx__WEBPACK_IMPORTED_MODULE_13__["ComingSoonTooltip"], {
     className: classnames__WEBPACK_IMPORTED_MODULE_0___default()(_menu_bar_css__WEBPACK_IMPORTED_MODULE_36___default.a.comingSoon, className),
     place: place,
@@ -10606,7 +10290,6 @@ const MenuBarItemTooltip = _ref => {
     tooltipId: id
   }, children);
 };
-
 MenuBarItemTooltip.propTypes = {
   children: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.node,
   className: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.string,
@@ -10614,7 +10297,6 @@ MenuBarItemTooltip.propTypes = {
   id: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.string,
   place: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.oneOf(['top', 'bottom', 'left', 'right'])
 };
-
 const MenuItemTooltip = _ref2 => {
   let {
     id,
@@ -10630,53 +10312,47 @@ const MenuItemTooltip = _ref2 => {
     tooltipId: id
   }, children);
 };
-
 MenuItemTooltip.propTypes = {
   children: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.node,
   className: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.string,
   id: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.string,
   isRtl: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.bool
 };
-
 const AboutButton = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_button_button_jsx__WEBPACK_IMPORTED_MODULE_10__["default"], {
   className: classnames__WEBPACK_IMPORTED_MODULE_0___default()(_menu_bar_css__WEBPACK_IMPORTED_MODULE_36___default.a.menuBarItem, _menu_bar_css__WEBPACK_IMPORTED_MODULE_36___default.a.hoverable),
   iconClassName: _menu_bar_css__WEBPACK_IMPORTED_MODULE_36___default.a.aboutIcon,
   iconSrc: _icon_about_svg__WEBPACK_IMPORTED_MODULE_43___default.a,
   onClick: props.onClick
 });
-
 AboutButton.propTypes = {
   onClick: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.func.isRequired
-}; // Unlike <MenuItem href="">, this uses an actual <a>
+};
 
+// Unlike <MenuItem href="">, this uses an actual <a>
 const MenuItemLink = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("a", {
-  href: props.href // _blank is safe because of noopener
+  href: props.href
+  // _blank is safe because of noopener
   // eslint-disable-next-line react/jsx-no-target-blank
   ,
   target: "_blank",
   rel: "noopener",
   className: _menu_bar_css__WEBPACK_IMPORTED_MODULE_36___default.a.menuItemLink
 }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_menu_menu_jsx__WEBPACK_IMPORTED_MODULE_18__["MenuItem"], null, props.children));
-
 MenuItemLink.propTypes = {
   children: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.node.isRequired,
   href: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.string.isRequired
 };
-
 class MenuBar extends react__WEBPACK_IMPORTED_MODULE_7___default.a.Component {
   constructor(props) {
     super(props);
     lodash_bindall__WEBPACK_IMPORTED_MODULE_5___default()(this, ['handleClickSeeInside', 'handleClickNew', 'handleClickRemix', 'handleClickSave', 'handleClickSaveAsCopy', 'handleClickPackager', 'handleClickSeeCommunity', 'handleClickShare', 'handleKeyPress', 'handleLanguageMouseUp', 'handleRestoreOption', 'getSaveToComputerHandler', 'restoreOptionMessage']);
   }
-
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeyPress);
   }
-
   componentWillUnmount() {
     document.removeEventListener('keydown', this.handleKeyPress);
   }
-
   handleClickNew() {
     // if the project is dirty, and user owns the project, we will autosave.
     // but if they are not logged in and can't save, user should consider
@@ -10685,38 +10361,30 @@ class MenuBar extends react__WEBPACK_IMPORTED_MODULE_7___default.a.Component {
     // they'll lose their work.
     const readyToReplaceProject = this.props.confirmReadyToReplaceProject(this.props.intl.formatMessage(_lib_shared_messages__WEBPACK_IMPORTED_MODULE_47__["default"].replaceProjectWarning));
     this.props.onRequestCloseFile();
-
     if (readyToReplaceProject) {
       this.props.onClickNew(this.props.canSave && this.props.canCreateNew);
     }
-
     this.props.onRequestCloseFile();
   }
-
   handleClickRemix() {
     this.props.onClickRemix();
     this.props.onRequestCloseFile();
   }
-
   handleClickSave() {
     this.props.onClickSave();
     this.props.onRequestCloseFile();
   }
-
   handleClickSaveAsCopy() {
     this.props.onClickSaveAsCopy();
     this.props.onRequestCloseFile();
   }
-
   handleClickPackager() {
     this.props.onClickPackager();
     this.props.onRequestCloseFile();
   }
-
   handleClickSeeCommunity(waitForUpdate) {
     if (this.props.shouldSaveBeforeTransition()) {
       this.props.autoUpdateProject(); // save before transitioning to project page
-
       waitForUpdate(true); // queue the transition to project page
     } else {
       waitForUpdate(false); // immediately transition to project page
@@ -10729,7 +10397,6 @@ class MenuBar extends react__WEBPACK_IMPORTED_MODULE_7___default.a.Component {
         // save before transitioning to project page
         this.props.onShare();
       }
-
       if (this.props.canSave) {
         // save before transitioning to project page
         this.props.autoUpdateProject();
@@ -10746,34 +10413,28 @@ class MenuBar extends react__WEBPACK_IMPORTED_MODULE_7___default.a.Component {
       this.props.onRequestCloseEdit();
     };
   }
-
   handleKeyPress(event) {
     const modifier = bowser__WEBPACK_IMPORTED_MODULE_6___default.a.mac ? event.metaKey : event.ctrlKey;
-
     if (modifier && event.key === 's') {
       this.props.handleSaveProject();
       event.preventDefault();
     }
   }
-
   getSaveToComputerHandler(downloadProjectCallback) {
     return () => {
       this.props.onRequestCloseFile();
       downloadProjectCallback();
-
       if (this.props.onProjectTelemetryEvent) {
         const metadata = Object(_lib_collect_metadata__WEBPACK_IMPORTED_MODULE_35__["default"])(this.props.vm, this.props.projectTitle, this.props.locale);
         this.props.onProjectTelemetryEvent('projectDidSave', metadata);
       }
     };
   }
-
   handleLanguageMouseUp(e) {
     if (!this.props.languageMenuOpen) {
       this.props.onClickLanguage(e);
     }
   }
-
   restoreOptionMessage(deletedItem) {
     switch (deletedItem) {
       case 'Sprite':
@@ -10781,51 +10442,43 @@ class MenuBar extends react__WEBPACK_IMPORTED_MODULE_7___default.a.Component {
           defaultMessage: "Restore Sprite",
           id: "gui.menuBar.restoreSprite"
         });
-
       case 'Sound':
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_3__["FormattedMessage"], {
           defaultMessage: "Restore Sound",
           id: "gui.menuBar.restoreSound"
         });
-
       case 'Costume':
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_3__["FormattedMessage"], {
           defaultMessage: "Restore Costume",
           id: "gui.menuBar.restoreCostume"
         });
-
       default:
         {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_3__["FormattedMessage"], {
             defaultMessage: "Restore",
-
             /* eslint-disable-line max-len */
             id: "gui.menuBar.restore"
           });
         }
     }
   }
-
   handleClickSeeInside() {
     this.props.onClickSeeInside();
   }
-
   buildAboutMenu(onClickAbout) {
     if (!onClickAbout) {
       // hide the button
       return null;
     }
-
     if (typeof onClickAbout === 'function') {
       // make a button which calls a function
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(AboutButton, {
         onClick: onClickAbout
       });
-    } // assume it's an array of objects
+    }
+    // assume it's an array of objects
     // each item must have a 'title' FormattedMessage and a 'handleClick' function
     // generate a menu with items for each object in the array
-
-
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
       className: classnames__WEBPACK_IMPORTED_MODULE_0___default()(_menu_bar_css__WEBPACK_IMPORTED_MODULE_36___default.a.menuBarItem, _menu_bar_css__WEBPACK_IMPORTED_MODULE_36___default.a.hoverable, {
         [_menu_bar_css__WEBPACK_IMPORTED_MODULE_36___default.a.active]: this.props.aboutMenuOpen
@@ -10846,14 +10499,12 @@ class MenuBar extends react__WEBPACK_IMPORTED_MODULE_7___default.a.Component {
       onClick: this.wrapAboutMenuCallback(itemProps.onClick)
     }, itemProps.title))));
   }
-
   wrapAboutMenuCallback(callback) {
     return () => {
       callback();
       this.props.onRequestCloseAbout();
     };
   }
-
   render() {
     const saveNowMessage = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_3__["FormattedMessage"], {
       defaultMessage: "Save now",
@@ -10876,8 +10527,8 @@ class MenuBar extends react__WEBPACK_IMPORTED_MODULE_7___default.a.Component {
       iconClassName: _menu_bar_css__WEBPACK_IMPORTED_MODULE_36___default.a.remixButtonIcon,
       iconSrc: _icon_remix_svg__WEBPACK_IMPORTED_MODULE_40___default.a,
       onClick: this.handleClickRemix
-    }, remixMessage); // Show the About button only if we have a handler for it (like in the desktop app)
-
+    }, remixMessage);
+    // Show the About button only if we have a handler for it (like in the desktop app)
     const aboutButton = this.buildAboutMenu(this.props.onClickAbout);
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_box_box_jsx__WEBPACK_IMPORTED_MODULE_9__["default"], {
       className: classnames__WEBPACK_IMPORTED_MODULE_0___default()(this.props.className, _menu_bar_css__WEBPACK_IMPORTED_MODULE_36___default.a.menuBar)
@@ -11017,8 +10668,10 @@ class MenuBar extends react__WEBPACK_IMPORTED_MODULE_7___default.a.Component {
     }))))), this.props.onClickPackager && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_menu_menu_jsx__WEBPACK_IMPORTED_MODULE_18__["MenuSection"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_menu_menu_jsx__WEBPACK_IMPORTED_MODULE_18__["MenuItem"], {
       onClick: this.handleClickPackager
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_3__["FormattedMessage"], {
-      defaultMessage: "Package project" // eslint-disable-next-line max-len
+      defaultMessage: "Package project"
+      // eslint-disable-next-line max-len
       ,
+
       id: "tw.menuBar.package"
     }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_menu_menu_jsx__WEBPACK_IMPORTED_MODULE_18__["MenuSection"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_containers_tw_restore_point_loader_jsx__WEBPACK_IMPORTED_MODULE_28__["default"], null, (className, loadRestorePoint) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_menu_menu_jsx__WEBPACK_IMPORTED_MODULE_18__["MenuItem"], {
       className: className,
@@ -11111,7 +10764,8 @@ class MenuBar extends react__WEBPACK_IMPORTED_MODULE_7___default.a.Component {
     }))))), this.props.onClickAddonSettings && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
       className: classnames__WEBPACK_IMPORTED_MODULE_0___default()(_menu_bar_css__WEBPACK_IMPORTED_MODULE_36___default.a.menuBarItem, _menu_bar_css__WEBPACK_IMPORTED_MODULE_36___default.a.hoverable),
       onMouseUp: this.props.onClickAddonSettings
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_3__["FormattedMessage"] // Note: this string is used by scratch-vm for the addons blocks category
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_3__["FormattedMessage"]
+    // Note: this string is used by scratch-vm for the addons blocks category
     , {
       defaultMessage: "Addons",
       id: "tw.menuBar.addons"
@@ -11144,13 +10798,11 @@ class MenuBar extends react__WEBPACK_IMPORTED_MODULE_7___default.a.Component {
     }, waitForUpdate => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_share_button_jsx__WEBPACK_IMPORTED_MODULE_12__["default"], {
       className: _menu_bar_css__WEBPACK_IMPORTED_MODULE_36___default.a.menuBarButton,
       isShared: this.props.isShared
-      /* eslint-disable react/jsx-no-bind */
-      ,
+      /* eslint-disable react/jsx-no-bind */,
       onClick: () => {
         this.handleClickShare(waitForUpdate);
       }
       /* eslint-enable react/jsx-no-bind */
-
     })) : this.props.showComingSoon ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(MenuBarItemTooltip, {
       id: "share-button"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_share_button_jsx__WEBPACK_IMPORTED_MODULE_12__["default"], {
@@ -11161,13 +10813,11 @@ class MenuBar extends react__WEBPACK_IMPORTED_MODULE_7___default.a.Component {
       onDoneUpdating: this.props.onSeeCommunity
     }, waitForUpdate => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_community_button_jsx__WEBPACK_IMPORTED_MODULE_11__["default"], {
       className: _menu_bar_css__WEBPACK_IMPORTED_MODULE_36___default.a.menuBarButton
-      /* eslint-disable react/jsx-no-bind */
-      ,
+      /* eslint-disable react/jsx-no-bind */,
       onClick: () => {
         this.handleClickSeeCommunity(waitForUpdate);
       }
       /* eslint-enable react/jsx-no-bind */
-
     })) : this.props.showComingSoon ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(MenuBarItemTooltip, {
       id: "community-button"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_community_button_jsx__WEBPACK_IMPORTED_MODULE_11__["default"], {
@@ -11184,9 +10834,7 @@ class MenuBar extends react__WEBPACK_IMPORTED_MODULE_7___default.a.Component {
       className: _menu_bar_css__WEBPACK_IMPORTED_MODULE_36___default.a.menuBarItem
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_tw_save_status_jsx__WEBPACK_IMPORTED_MODULE_29__["default"], null))), aboutButton);
   }
-
 }
-
 MenuBar.propTypes = {
   enableSeeInside: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.bool,
   onClickSeeInside: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.func,
@@ -11225,14 +10873,16 @@ MenuBar.propTypes = {
   locale: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.string.isRequired,
   loginMenuOpen: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.bool,
   logo: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.string,
-  onClickAbout: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.func, // button mode: call this callback when the About button is clicked
-  prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.arrayOf( // menu mode: list of items in the About menu
+  onClickAbout: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.func,
+  // button mode: call this callback when the About button is clicked
+  prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.arrayOf(
+  // menu mode: list of items in the About menu
   prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.shape({
     title: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.string,
     // text for the menu item
     onClick: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.func // call this callback when the menu item is clicked
-
   }))]),
+
   onClickAccount: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.func,
   onClickAddonSettings: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.func,
   onClickTheme: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.func,
@@ -11279,7 +10929,6 @@ MenuBar.defaultProps = {
   logo: _AxolotlEditor_logo_svg__WEBPACK_IMPORTED_MODULE_46___default.a,
   onShare: () => {}
 };
-
 const mapStateToProps = (state, ownProps) => {
   const loadingState = state.scratchGui.projectState.loadingState;
   const user = state.session && state.session.session && state.session.session.user;
@@ -11307,7 +10956,6 @@ const mapStateToProps = (state, ownProps) => {
     vm: state.scratchGui.vm
   };
 };
-
 const mapDispatchToProps = dispatch => ({
   onClickSeeInside: () => dispatch(Object(_reducers_mode__WEBPACK_IMPORTED_MODULE_31__["setPlayer"])(false)),
   autoUpdateProject: () => dispatch(Object(_reducers_project_state__WEBPACK_IMPORTED_MODULE_32__["autoUpdateProject"])()),
@@ -11339,7 +10987,6 @@ const mapDispatchToProps = dispatch => ({
   },
   onSeeCommunity: () => dispatch(Object(_reducers_mode__WEBPACK_IMPORTED_MODULE_31__["setPlayer"])(true))
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_2__["compose"])(react_intl__WEBPACK_IMPORTED_MODULE_3__["injectIntl"], _containers_menu_bar_hoc_jsx__WEBPACK_IMPORTED_MODULE_24__["default"], Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps))(MenuBar));
 
 /***/ }),
@@ -11412,7 +11059,6 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_4__["defineMessages"
     "defaultMessage": "Project title here"
   }
 });
-
 const ProjectTitleInput = _ref => {
   let {
     className,
@@ -11430,22 +11076,18 @@ const ProjectTitleInput = _ref => {
     onSubmit: onSubmit
   });
 };
-
 ProjectTitleInput.propTypes = {
   className: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string,
   intl: react_intl__WEBPACK_IMPORTED_MODULE_4__["intlShape"].isRequired,
   onSubmit: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.func,
   projectTitle: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string
 };
-
 const mapStateToProps = state => ({
   projectTitle: state.scratchGui.projectTitle
 });
-
 const mapDispatchToProps = dispatch => ({
   onSubmit: title => dispatch(Object(_reducers_project_title__WEBPACK_IMPORTED_MODULE_5__["setProjectTitle"])(title))
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_intl__WEBPACK_IMPORTED_MODULE_4__["injectIntl"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(ProjectTitleInput)));
 
 /***/ }),
@@ -11535,7 +11177,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const ShareButton = _ref => {
   let {
     className,
@@ -11555,7 +11196,6 @@ const ShareButton = _ref => {
     id: "gui.menuBar.share"
   }));
 };
-
 ShareButton.propTypes = {
   className: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string,
   isShared: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.bool,
@@ -11618,7 +11258,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const TWSaveStatus = _ref => {
   let {
     alertsList,
@@ -11644,7 +11283,6 @@ const TWSaveStatus = _ref => {
     }));
   });
 };
-
 TWSaveStatus.propTypes = {
   alertsList: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.object),
   fileHandle: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.shape({
@@ -11652,13 +11290,11 @@ TWSaveStatus.propTypes = {
   }),
   projectChanged: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.bool
 };
-
 const mapStateToProps = state => ({
   alertsList: state.scratchGui.alerts.alertsList,
   fileHandle: state.scratchGui.tw.fileHandle,
   projectChanged: state.scratchGui.projectChanged
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, () => ({}))(TWSaveStatus));
 
 /***/ }),
@@ -11721,7 +11357,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const SeeInsideButton = _ref => {
   let {
     className,
@@ -11739,7 +11374,6 @@ const SeeInsideButton = _ref => {
     id: "tw.menuBar.seeInside"
   }));
 };
-
 SeeInsideButton.propTypes = {
   className: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string,
   onClick: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.func
@@ -11802,7 +11436,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const UserAvatar = _ref => {
   let {
     className,
@@ -11813,7 +11446,6 @@ const UserAvatar = _ref => {
     src: imageUrl
   });
 };
-
 UserAvatar.propTypes = {
   className: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
   imageUrl: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string
@@ -11876,7 +11508,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const MenuComponent = _ref => {
   let {
     className = '',
@@ -11892,14 +11523,12 @@ const MenuComponent = _ref => {
     ref: componentRef
   }, children);
 };
-
 MenuComponent.propTypes = {
   children: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.node,
   className: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
   componentRef: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
   place: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOf(['left', 'right'])
 };
-
 const MenuItem = _ref2 => {
   let {
     children,
@@ -11911,27 +11540,23 @@ const MenuItem = _ref2 => {
     onClick: onClick
   }, children);
 };
-
 MenuItem.propTypes = {
   children: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.node,
   className: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
   onClick: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func
 };
-
 const addDividerClassToFirstChild = (child, id) => child && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.cloneElement(child, {
   className: classnames__WEBPACK_IMPORTED_MODULE_0___default()(child.className, {
     [_menu_css__WEBPACK_IMPORTED_MODULE_3___default.a.menuSection]: id === 0
   }),
   key: id
 });
-
 const MenuSection = _ref3 => {
   let {
     children
   } = _ref3;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_2___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_2___default.a.Children.map(children, addDividerClassToFirstChild));
 };
-
 MenuSection.propTypes = {
   children: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.node
 };
@@ -11987,7 +11612,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const Meter = props => {
   const {
     level,
@@ -12028,7 +11652,6 @@ const Meter = props => {
     }
   }));
 };
-
 Meter.propTypes = {
   height: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
   level: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
@@ -12091,7 +11714,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const MicIndicatorComponent = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
   className: props.className,
   style: Object(_lib_screen_utils__WEBPACK_IMPORTED_MODULE_4__["stageSizeToTransform"])(props.stageSize)
@@ -12099,7 +11721,6 @@ const MicIndicatorComponent = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODU
   className: _mic_indicator_css__WEBPACK_IMPORTED_MODULE_2___default.a.micImg,
   src: _mic_indicator_svg__WEBPACK_IMPORTED_MODULE_3___default.a
 }));
-
 MicIndicatorComponent.propTypes = {
   className: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
   stageSize: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.shape({
@@ -12192,7 +11813,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const ModalComponent = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_modal__WEBPACK_IMPORTED_MODULE_3___default.a, {
   isOpen: true,
   className: classnames__WEBPACK_IMPORTED_MODULE_0___default()(_modal_css__WEBPACK_IMPORTED_MODULE_10___default.a.modalContent, props.className, {
@@ -12234,7 +11854,6 @@ const ModalComponent = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___
   size: _close_button_close_button_jsx__WEBPACK_IMPORTED_MODULE_7__["default"].SIZE_LARGE,
   onClick: props.onRequestClose
 }))), props.children));
-
 ModalComponent.propTypes = {
   children: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.node,
   className: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
@@ -12310,8 +11929,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-const MonitorList = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_box_box_jsx__WEBPACK_IMPORTED_MODULE_2__["default"] // Use static `monitor-overlay` class for bounds of draggables
+const MonitorList = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_box_box_jsx__WEBPACK_IMPORTED_MODULE_2__["default"]
+// Use static `monitor-overlay` class for bounds of draggables
 , {
   className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(_monitor_list_css__WEBPACK_IMPORTED_MODULE_7___default.a.monitorList, 'monitor-overlay'),
   style: {
@@ -12340,7 +11959,6 @@ const MonitorList = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___def
   y: monitorData.y,
   onDragEnd: props.onMonitorChange
 }))));
-
 MonitorList.propTypes = {
   draggable: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.bool.isRequired,
   monitors: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.instanceOf(immutable__WEBPACK_IMPORTED_MODULE_5__["OrderedMap"]),
@@ -12374,7 +11992,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const DefaultMonitor = _ref => {
   let {
     categoryColor,
@@ -12394,7 +12011,6 @@ const DefaultMonitor = _ref => {
     }
   }, value)));
 };
-
 DefaultMonitor.propTypes = {
   categoryColor: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired,
   label: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired,
@@ -12422,7 +12038,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const LargeMonitor = _ref => {
   let {
     categoryColor,
@@ -12437,7 +12052,6 @@ const LargeMonitor = _ref => {
     }
   }, value));
 };
-
 LargeMonitor.propTypes = {
   categoryColor: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
   value: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number])
@@ -12474,17 +12088,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 class ListMonitorScroller extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
   constructor(props) {
     super(props);
     lodash_bindall__WEBPACK_IMPORTED_MODULE_3___default()(this, ['rowRenderer', 'noRowsRenderer', 'handleEventFactory']);
   }
-
   handleEventFactory(index) {
     return () => this.props.onActivate(index);
   }
-
   noRowsRenderer() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(_monitor_css__WEBPACK_IMPORTED_MODULE_5___default.a.listRow, _monitor_css__WEBPACK_IMPORTED_MODULE_5___default.a.listEmpty)
@@ -12493,7 +12104,6 @@ class ListMonitorScroller extends react__WEBPACK_IMPORTED_MODULE_0___default.a.C
       id: "gui.monitor.listMonitor.empty"
     }));
   }
-
   rowRenderer(_ref) {
     let {
       index,
@@ -12506,9 +12116,7 @@ class ListMonitorScroller extends react__WEBPACK_IMPORTED_MODULE_0___default.a.C
       style: style
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: _monitor_css__WEBPACK_IMPORTED_MODULE_5___default.a.listIndex
-    }, index + 1
-    /* one indexed */
-    ), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, index + 1 /* one indexed */), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: _monitor_css__WEBPACK_IMPORTED_MODULE_5___default.a.listValue,
       dataIndex: index,
       style: {
@@ -12528,16 +12136,13 @@ class ListMonitorScroller extends react__WEBPACK_IMPORTED_MODULE_0___default.a.C
       onChange: this.props.onInput,
       onFocus: this.props.onFocus,
       onKeyDown: this.props.onKeyPress // key down to get ahead of blur
-
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: _monitor_css__WEBPACK_IMPORTED_MODULE_5___default.a.removeButton,
       onMouseDown: this.props.onRemove // mousedown to get ahead of blur
-
     }, '✖︎')) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: _monitor_css__WEBPACK_IMPORTED_MODULE_5___default.a.valueInner
     }, this.props.values[index])));
   }
-
   render() {
     const {
       height,
@@ -12545,33 +12150,23 @@ class ListMonitorScroller extends react__WEBPACK_IMPORTED_MODULE_0___default.a.C
       width,
       activeIndex,
       activeValue
-    } = this.props; // Keep the active index in view if defined, else must be undefined for List component
-
-    const scrollToIndex = activeIndex === null ? undefined : activeIndex;
-    /* eslint-disable-line no-undefined */
-
+    } = this.props;
+    // Keep the active index in view if defined, else must be undefined for List component
+    const scrollToIndex = activeIndex === null ? undefined : activeIndex; /* eslint-disable-line no-undefined */
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_virtualized__WEBPACK_IMPORTED_MODULE_6__["List"], {
       activeIndex: activeIndex,
       activeValue: activeValue,
-      height: height - 44
-      /* Header/footer size, approx */
-      ,
+      height: height - 44 /* Header/footer size, approx */,
       noRowsRenderer: this.noRowsRenderer,
       rowCount: values.length,
-      rowHeight: 24
-      /* Row size is same for all rows */
-      ,
+      rowHeight: 24 /* Row size is same for all rows */,
       rowRenderer: this.rowRenderer,
-      scrollToIndex: scrollToIndex
-      /* eslint-disable-line no-undefined */
-      ,
+      scrollToIndex: scrollToIndex /* eslint-disable-line no-undefined */,
       values: values,
       width: width
     });
   }
-
 }
-
 ListMonitorScroller.propTypes = {
   activeIndex: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
   activeValue: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
@@ -12611,14 +12206,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _monitor_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_monitor_css__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _list_monitor_scroller_jsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./list-monitor-scroller.jsx */ "./src/components/monitor/list-monitor-scroller.jsx");
 const _excluded = ["draggable", "label", "width", "height", "value", "onResizeMouseDown", "onAdd"];
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
 
 
 
@@ -12627,16 +12217,15 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 const ListMonitor = _ref => {
   let {
-    draggable,
-    label,
-    width,
-    height,
-    value,
-    onResizeMouseDown,
-    onAdd
-  } = _ref,
-      rowProps = _objectWithoutProperties(_ref, _excluded);
-
+      draggable,
+      label,
+      width,
+      height,
+      value,
+      onResizeMouseDown,
+      onAdd
+    } = _ref,
+    rowProps = _objectWithoutProperties(_ref, _excluded);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: _monitor_css__WEBPACK_IMPORTED_MODULE_4___default.a.listMonitor,
     style: {
@@ -12657,9 +12246,7 @@ const ListMonitor = _ref => {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(draggable ? _monitor_css__WEBPACK_IMPORTED_MODULE_4___default.a.addButton : null, 'no-drag'),
     onClick: draggable ? onAdd : null
-  }, '+'
-  /* TODO waiting on asset */
-  ), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, '+' /* TODO waiting on asset */), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: _monitor_css__WEBPACK_IMPORTED_MODULE_4___default.a.footerLength
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_3__["FormattedMessage"], {
     defaultMessage: "length {length}",
@@ -12670,9 +12257,7 @@ const ListMonitor = _ref => {
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(draggable ? _monitor_css__WEBPACK_IMPORTED_MODULE_4___default.a.resizeHandle : null, 'no-drag'),
     onMouseDown: draggable ? onResizeMouseDown : null
-  }, '='
-  /* TODO waiting on asset */
-  )));
+  }, '=' /* TODO waiting on asset */)));
 };
 
 ListMonitor.propTypes = {
@@ -12755,11 +12340,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _monitor_css__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./monitor.css */ "./src/components/monitor/monitor.css");
 /* harmony import */ var _monitor_css__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_monitor_css__WEBPACK_IMPORTED_MODULE_12__);
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -12788,7 +12370,6 @@ const modes = {
   slider: _containers_slider_monitor_jsx__WEBPACK_IMPORTED_MODULE_10__["default"],
   list: _containers_list_monitor_jsx__WEBPACK_IMPORTED_MODULE_11__["default"]
 };
-
 const MonitorComponent = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_contextmenu__WEBPACK_IMPORTED_MODULE_5__["ContextMenuTrigger"], {
   disable: !props.draggable && !props.onExport,
   holdToDisplay: props.mode === 'slider' ? -1 : 1000,
@@ -12851,7 +12432,6 @@ react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_context_menu_context
   defaultMessage: "hide",
   id: "gui.monitor.contextMenu.hide"
 }))), document.body));
-
 MonitorComponent.categories = categories;
 const monitorModes = Object.keys(modes);
 MonitorComponent.propTypes = {
@@ -12899,7 +12479,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const SliderMonitor = _ref => {
   let {
     categoryColor,
@@ -12934,7 +12513,6 @@ const SliderMonitor = _ref => {
     onChange: onSliderUpdate
   })));
 };
-
 SliderMonitor.propTypes = {
   categoryColor: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired,
   isDiscrete: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
@@ -13028,13 +12606,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _icon_stop_svg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./icon--stop.svg */ "./src/components/play-button/icon--stop.svg");
 /* harmony import */ var _icon_stop_svg__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_icon_stop_svg__WEBPACK_IMPORTED_MODULE_6__);
 const _excluded = ["className", "intl", "isPlaying", "onClick", "onMouseDown", "onMouseEnter", "onMouseLeave", "setButtonRef"];
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
 
 
 
@@ -13052,20 +12626,18 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_3__["defineMessages"
     "defaultMessage": "Stop"
   }
 });
-
 const PlayButtonComponent = _ref => {
   let {
-    className,
-    intl,
-    isPlaying,
-    onClick,
-    onMouseDown,
-    onMouseEnter,
-    onMouseLeave,
-    setButtonRef
-  } = _ref,
-      props = _objectWithoutProperties(_ref, _excluded);
-
+      className,
+      intl,
+      isPlaying,
+      onClick,
+      onMouseDown,
+      onMouseEnter,
+      onMouseLeave,
+      setButtonRef
+    } = _ref,
+    props = _objectWithoutProperties(_ref, _excluded);
   const label = isPlaying ? intl.formatMessage(messages.stop) : intl.formatMessage(messages.play);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", _extends({
     "aria-label": label,
@@ -13083,7 +12655,6 @@ const PlayButtonComponent = _ref => {
     src: isPlaying ? _icon_stop_svg__WEBPACK_IMPORTED_MODULE_6___default.a : _icon_play_svg__WEBPACK_IMPORTED_MODULE_5___default.a
   }));
 };
-
 PlayButtonComponent.propTypes = {
   className: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
   intl: react_intl__WEBPACK_IMPORTED_MODULE_3__["intlShape"],
@@ -13179,7 +12750,6 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_1__["defineMessages"
     "defaultMessage": "This list will be available to all sprites."
   }
 });
-
 const PromptComponent = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_containers_modal_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], {
   className: _prompt_css__WEBPACK_IMPORTED_MODULE_6___default.a.modalContent,
   contentLabel: props.title,
@@ -13230,10 +12800,13 @@ const PromptComponent = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__
   onChange: props.onCloudVarOptionChange
 }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__["FormattedMessage"], messages.cloudVarOptionMessage))) : null) : null, props.cloudSelected && !props.isAddingCloudVariableScratchSafe && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_box_box_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
   className: _prompt_css__WEBPACK_IMPORTED_MODULE_6___default.a.infoMessage
-}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__["FormattedMessage"] // eslint-disable-next-line max-len
+}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__["FormattedMessage"]
+// eslint-disable-next-line max-len
 , {
-  defaultMessage: "If you make this cloud variable, the project will exceed Scratch's limit of {number} variables, and some variables will not function if you upload the project to Scratch." // eslint-disable-next-line max-len
+  defaultMessage: "If you make this cloud variable, the project will exceed Scratch's limit of {number} variables, and some variables will not function if you upload the project to Scratch."
+  // eslint-disable-next-line max-len
   ,
+
   id: "tw.scratchUnsafeCloud",
   values: {
     number: _lib_tw_cloud_limits_js__WEBPACK_IMPORTED_MODULE_7__["SCRATCH_MAX_CLOUD_VARIABLES"]
@@ -13241,8 +12814,7 @@ const PromptComponent = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__
 })), props.cloudSelected && props.canAddCloudVariable && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_box_box_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
   className: _prompt_css__WEBPACK_IMPORTED_MODULE_6___default.a.infoMessage
 }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__["FormattedMessage"]
-/* eslint-disable-next-line max-len */
-, {
+/* eslint-disable-next-line max-len */, {
   defaultMessage: "Although you can create cloud variables, they won't work unless this project is uploaded to Scratch or converted using a tool like the {packager}.",
   values: {
     packager: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("a", {
@@ -13267,7 +12839,6 @@ const PromptComponent = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__
   defaultMessage: "OK",
   id: "gui.prompt.ok"
 })))));
-
 PromptComponent.propTypes = {
   isAddingCloudVariableScratchSafe: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.bool.isRequired,
   canAddCloudVariable: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.bool.isRequired,
@@ -13356,7 +12927,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const QuestionComponent = props => {
   const {
     answer,
@@ -13388,7 +12958,6 @@ const QuestionComponent = props => {
     src: _icon_enter_svg__WEBPACK_IMPORTED_MODULE_4___default.a
   })))));
 };
-
 QuestionComponent.propTypes = {
   answer: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
   className: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
@@ -13504,7 +13073,6 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_6__["defineMessages"
     "defaultMessage": "Re-record"
   }
 });
-
 const PlaybackStep = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_box_box_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_box_box_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
   className: _record_modal_css__WEBPACK_IMPORTED_MODULE_7___default.a.visualizationContainer
 }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_box_box_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -13551,7 +13119,6 @@ const PlaybackStep = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___de
   disabled: props.encoding,
   onClick: props.onSubmit
 }, props.encoding ? props.intl.formatMessage(messages.loadingMsg) : props.intl.formatMessage(messages.saveMsg))));
-
 PlaybackStep.propTypes = {
   encoding: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.bool.isRequired,
   intl: react_intl__WEBPACK_IMPORTED_MODULE_6__["intlShape"].isRequired,
@@ -13635,7 +13202,6 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_3__["defineMessages"
     "defaultMessage": "Record Sound"
   }
 });
-
 const RecordModal = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_containers_modal_jsx__WEBPACK_IMPORTED_MODULE_6__["default"], {
   className: _record_modal_css__WEBPACK_IMPORTED_MODULE_7___default.a.modalContent,
   contentLabel: props.intl.formatMessage(messages.title),
@@ -13663,7 +13229,6 @@ const RecordModal = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___def
   onRecord: props.onRecord,
   onStopRecording: props.onStopRecording
 })));
-
 RecordModal.propTypes = {
   encoding: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.bool.isRequired,
   intl: react_intl__WEBPACK_IMPORTED_MODULE_3__["intlShape"].isRequired,
@@ -13737,7 +13302,6 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_2__["defineMessages"
     "defaultMessage": "Record"
   }
 });
-
 const RecordingStep = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_box_box_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_box_box_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
   className: _record_modal_css__WEBPACK_IMPORTED_MODULE_6___default.a.visualizationContainer
 }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_box_box_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -13785,7 +13349,6 @@ const RecordingStep = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___d
 }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
   className: _record_modal_css__WEBPACK_IMPORTED_MODULE_6___default.a.recordingText
 }, props.recording ? props.intl.formatMessage(messages.stop) : props.intl.formatMessage(messages.record))))));
-
 RecordingStep.propTypes = {
   intl: react_intl__WEBPACK_IMPORTED_MODULE_2__["intlShape"].isRequired,
   isRtl: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.bool,
@@ -13868,7 +13431,6 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_0__["defineMessages"
     "defaultMessage": "Change slider range"
   }
 });
-
 const SliderPromptComponent = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_containers_modal_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
   className: _slider_prompt_css__WEBPACK_IMPORTED_MODULE_5___default.a.modalContent,
   contentLabel: props.intl.formatMessage(messages.title),
@@ -13911,7 +13473,6 @@ const SliderPromptComponent = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODU
   defaultMessage: "OK",
   id: "gui.sliderPrompt.ok"
 })))));
-
 SliderPromptComponent.propTypes = {
   intl: react_intl__WEBPACK_IMPORTED_MODULE_0__["intlShape"],
   maxValue: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
@@ -14328,36 +13889,33 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_3__["defineMessages"
     "defaultMessage": "Mute"
   }
 });
-
 const formatTime = timeSeconds => {
   const minutes = Math.floor(timeSeconds / 60).toString().padStart(2, '0');
   const seconds = (timeSeconds % 60).toFixed(2).padStart(5, '0');
   return "".concat(minutes, ":").concat(seconds);
 };
-
 const formatDuration = (playheadPercent, trimStartPercent, trimEndPercent, durationSeconds) => {
   // If no selection, the trim is the entire sound.
   trimStartPercent = trimStartPercent === null ? 0 : trimStartPercent;
-  trimEndPercent = trimEndPercent === null ? 1 : trimEndPercent; // If the playhead doesn't exist, assume it's at the start of the selection.
+  trimEndPercent = trimEndPercent === null ? 1 : trimEndPercent;
 
-  playheadPercent = playheadPercent === null ? trimStartPercent : playheadPercent; // If selection has zero length, treat it as the entire sound being selected.
+  // If the playhead doesn't exist, assume it's at the start of the selection.
+  playheadPercent = playheadPercent === null ? trimStartPercent : playheadPercent;
+
+  // If selection has zero length, treat it as the entire sound being selected.
   // This happens when the user first clicks to start making a selection.
-
   const trimSize = trimEndPercent - trimStartPercent || 1;
   const trimDuration = trimSize * durationSeconds;
   const progressInTrim = (playheadPercent - trimStartPercent) / trimSize;
   const currentTime = progressInTrim * trimDuration;
   return "".concat(formatTime(currentTime), " / ").concat(formatTime(trimDuration));
 };
-
 const formatSoundSize = bytes => {
   if (bytes > 1000 * 1000) {
     return "".concat((bytes / 1000 / 1000).toFixed(2), "MB");
   }
-
   return "".concat((bytes / 1000).toFixed(2), "KB");
 };
-
 const SoundEditor = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
   className: _sound_editor_css__WEBPACK_IMPORTED_MODULE_11___default.a.editorContainer,
   ref: props.setRef,
@@ -14527,7 +14085,6 @@ const SoundEditor = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___def
   defaultMessage: "Editing this stereo sound will irreversibly convert it to mono.",
   id: "tw.stereoAlert"
 })));
-
 SoundEditor.propTypes = {
   isStereo: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.bool.isRequired,
   duration: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.number.isRequired,
@@ -14621,7 +14178,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const SpinnerComponent = function SpinnerComponent(props) {
   const {
     className,
@@ -14636,7 +14192,6 @@ const SpinnerComponent = function SpinnerComponent(props) {
     })
   });
 };
-
 SpinnerComponent.propTypes = {
   className: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
   large: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
@@ -14783,13 +14338,12 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_8__["defineMessages"
     "defaultMessage": "Name"
   }
 });
-
 class SpriteInfo extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
   shouldComponentUpdate(nextProps) {
-    return this.props.rotationStyle !== nextProps.rotationStyle || this.props.disabled !== nextProps.disabled || this.props.name !== nextProps.name || this.props.stageSize !== nextProps.stageSize || this.props.visible !== nextProps.visible || // Only update these if rounded value has changed
+    return this.props.rotationStyle !== nextProps.rotationStyle || this.props.disabled !== nextProps.disabled || this.props.name !== nextProps.name || this.props.stageSize !== nextProps.stageSize || this.props.visible !== nextProps.visible ||
+    // Only update these if rounded value has changed
     Math.round(this.props.direction) !== Math.round(nextProps.direction) || Math.round(this.props.size) !== Math.round(nextProps.size) || Math.round(this.props.x) !== Math.round(nextProps.x) || Math.round(this.props.y) !== Math.round(nextProps.y);
   }
-
   render() {
     const {
       stageSize
@@ -14856,7 +14410,6 @@ class SpriteInfo extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component 
       value: this.props.disabled ? '' : Math.round(this.props.y),
       onSubmit: this.props.onChangeY
     })));
-
     if (stageSize === _lib_layout_constants_js__WEBPACK_IMPORTED_MODULE_9__["STAGE_DISPLAY_SIZES"].small) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_box_box_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
         className: _sprite_info_css__WEBPACK_IMPORTED_MODULE_11___default.a.spriteInfo
@@ -14868,7 +14421,6 @@ class SpriteInfo extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component 
         className: classnames__WEBPACK_IMPORTED_MODULE_0___default()(_sprite_info_css__WEBPACK_IMPORTED_MODULE_11___default.a.row, _sprite_info_css__WEBPACK_IMPORTED_MODULE_11___default.a.rowSecondary)
       }, xPosition, yPosition));
     }
-
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_box_box_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
       className: _sprite_info_css__WEBPACK_IMPORTED_MODULE_11___default.a.spriteInfo
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
@@ -14934,9 +14486,7 @@ class SpriteInfo extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component 
       onChangeRotationStyle: this.props.onChangeRotationStyle
     }))));
   }
-
 }
-
 SpriteInfo.propTypes = {
   direction: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number]),
   disabled: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
@@ -15021,10 +14571,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- // react-contextmenu requires unique id to match trigger and context menu
 
+
+// react-contextmenu requires unique id to match trigger and context menu
 let contextMenuId = 0;
-
 const SpriteSelectorItem = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_contextmenu__WEBPACK_IMPORTED_MODULE_5__["ContextMenuTrigger"], {
   attributes: {
     className: classnames__WEBPACK_IMPORTED_MODULE_0___default()(props.className, _sprite_selector_item_css__WEBPACK_IMPORTED_MODULE_4___default.a.spriteSelectorItem, {
@@ -15081,7 +14631,6 @@ const SpriteSelectorItem = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_
   defaultMessage: "delete",
   id: "gui.spriteSelectorItem.contextMenuDelete"
 })) : null) : null);
-
 SpriteSelectorItem.propTypes = {
   className: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
   componentRef: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
@@ -15139,7 +14688,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const ThrottledSpriteSelectorItem = Object(_lib_throttled_property_hoc_jsx__WEBPACK_IMPORTED_MODULE_8__["default"])('asset', 500)(_containers_sprite_selector_item_jsx__WEBPACK_IMPORTED_MODULE_5__["default"]);
-
 const SpriteList = function SpriteList(props) {
   const {
     containerRef,
@@ -15168,13 +14716,15 @@ const SpriteList = function SpriteList(props) {
     className: _sprite_selector_css__WEBPACK_IMPORTED_MODULE_9___default.a.itemsWrapper
   }, items.map((sprite, index) => {
     // If the sprite has just received a block drop, used for green highlight
-    const receivedBlocks = hoveredTarget.sprite === sprite.id && sprite.id !== editingTarget && hoveredTarget.receivedBlocks; // If the sprite is indicating it can receive block dropping, used for blue highlight
+    const receivedBlocks = hoveredTarget.sprite === sprite.id && sprite.id !== editingTarget && hoveredTarget.receivedBlocks;
 
-    let isRaised = !receivedBlocks && raised && sprite.id !== editingTarget; // A sprite is also raised if a costume or sound is being dragged.
+    // If the sprite is indicating it can receive block dropping, used for blue highlight
+    let isRaised = !receivedBlocks && raised && sprite.id !== editingTarget;
+
+    // A sprite is also raised if a costume or sound is being dragged.
     // Note the absence of the self-sharing check: a sprite can share assets with itself.
     // This is a quirk of 2.0, but seems worth leaving possible, it
     // allows quick (albeit unusual) duplication of assets.
-
     isRaised = isRaised || [_lib_drag_constants__WEBPACK_IMPORTED_MODULE_3__["default"].COSTUME, _lib_drag_constants__WEBPACK_IMPORTED_MODULE_3__["default"].SOUND, _lib_drag_constants__WEBPACK_IMPORTED_MODULE_3__["default"].BACKPACK_COSTUME, _lib_drag_constants__WEBPACK_IMPORTED_MODULE_3__["default"].BACKPACK_SOUND, _lib_drag_constants__WEBPACK_IMPORTED_MODULE_3__["default"].BACKPACK_CODE].includes(draggingType);
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_asset_panel_sortable_asset_jsx__WEBPACK_IMPORTED_MODULE_7__["default"], {
       className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(_sprite_selector_css__WEBPACK_IMPORTED_MODULE_9___default.a.spriteWrapper, {
@@ -15204,7 +14754,6 @@ const SpriteList = function SpriteList(props) {
     }));
   })));
 };
-
 SpriteList.propTypes = {
   containerRef: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func,
   draggingIndex: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.number,
@@ -15305,13 +14854,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _action_menu_icon_search_svg__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../action-menu/icon--search.svg */ "./src/components/action-menu/icon--search.svg");
 /* harmony import */ var _action_menu_icon_search_svg__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_action_menu_icon_search_svg__WEBPACK_IMPORTED_MODULE_14__);
 const _excluded = ["editingTarget", "hoveredTarget", "intl", "onChangeSpriteDirection", "onChangeSpriteName", "onChangeSpriteRotationStyle", "onChangeSpriteSize", "onChangeSpriteVisibility", "onChangeSpriteX", "onChangeSpriteY", "onDrop", "onDeleteSprite", "onDuplicateSprite", "onExportSprite", "onFileUploadClick", "onNewSpriteClick", "onPaintSpriteClick", "onSelectSprite", "onSpriteUpload", "onSurpriseSpriteClick", "raised", "selectedId", "spriteFileInput", "sprites", "stageSize"];
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
 
 
 
@@ -15345,45 +14890,41 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_2__["defineMessages"
     "defaultMessage": "Upload Sprite"
   }
 });
-
 const SpriteSelectorComponent = function SpriteSelectorComponent(props) {
   const {
-    editingTarget,
-    hoveredTarget,
-    intl,
-    onChangeSpriteDirection,
-    onChangeSpriteName,
-    onChangeSpriteRotationStyle,
-    onChangeSpriteSize,
-    onChangeSpriteVisibility,
-    onChangeSpriteX,
-    onChangeSpriteY,
-    onDrop,
-    onDeleteSprite,
-    onDuplicateSprite,
-    onExportSprite,
-    onFileUploadClick,
-    onNewSpriteClick,
-    onPaintSpriteClick,
-    onSelectSprite,
-    onSpriteUpload,
-    onSurpriseSpriteClick,
-    raised,
-    selectedId,
-    spriteFileInput,
-    sprites,
-    stageSize
-  } = props,
-        componentProps = _objectWithoutProperties(props, _excluded);
-
+      editingTarget,
+      hoveredTarget,
+      intl,
+      onChangeSpriteDirection,
+      onChangeSpriteName,
+      onChangeSpriteRotationStyle,
+      onChangeSpriteSize,
+      onChangeSpriteVisibility,
+      onChangeSpriteX,
+      onChangeSpriteY,
+      onDrop,
+      onDeleteSprite,
+      onDuplicateSprite,
+      onExportSprite,
+      onFileUploadClick,
+      onNewSpriteClick,
+      onPaintSpriteClick,
+      onSelectSprite,
+      onSpriteUpload,
+      onSurpriseSpriteClick,
+      raised,
+      selectedId,
+      spriteFileInput,
+      sprites,
+      stageSize
+    } = props,
+    componentProps = _objectWithoutProperties(props, _excluded);
   let selectedSprite = sprites[selectedId];
   let spriteInfoDisabled = false;
-
   if (typeof selectedSprite === 'undefined') {
     selectedSprite = {};
     spriteInfoDisabled = true;
   }
-
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_box_box_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({
     className: _sprite_selector_css__WEBPACK_IMPORTED_MODULE_9___default.a.spriteSelector
   }, componentProps), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_containers_sprite_info_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -15429,12 +14970,10 @@ const SpriteSelectorComponent = function SpriteSelectorComponent(props) {
       title: intl.formatMessage(messages.addSpriteFromSurprise),
       img: _action_menu_icon_surprise_svg__WEBPACK_IMPORTED_MODULE_13___default.a,
       onClick: onSurpriseSpriteClick // TODO need real function for this
-
     }, {
       title: intl.formatMessage(messages.addSpriteFromPaint),
       img: _action_menu_icon_paint_svg__WEBPACK_IMPORTED_MODULE_11___default.a,
       onClick: onPaintSpriteClick // TODO need real function for this
-
     }, {
       title: intl.formatMessage(messages.addSpriteFromLibrary),
       img: _action_menu_icon_search_svg__WEBPACK_IMPORTED_MODULE_14___default.a,
@@ -15445,7 +14984,6 @@ const SpriteSelectorComponent = function SpriteSelectorComponent(props) {
     onClick: onNewSpriteClick
   }));
 };
-
 SpriteSelectorComponent.propTypes = {
   editingTarget: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
   hoveredTarget: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.shape({
@@ -15659,7 +15197,6 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_1__["defineMessages"
   }
 });
 const enableSettingsButton = new URLSearchParams(location.search).has('settings-button');
-
 const StageHeaderComponent = function StageHeaderComponent(props) {
   const {
     customStageSize,
@@ -15676,7 +15213,6 @@ const StageHeaderComponent = function StageHeaderComponent(props) {
     vm
   } = props;
   let header = null;
-
   if (isFullScreen || isEmbedded) {
     const stageDimensions = Object(_lib_screen_utils__WEBPACK_IMPORTED_MODULE_9__["getStageDimensions"])(null, customStageSize, true);
     const settingsButton = isEmbedded && enableSettingsButton ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_button_button_jsx__WEBPACK_IMPORTED_MODULE_7__["default"], {
@@ -15763,16 +15299,13 @@ const StageHeaderComponent = function StageHeaderComponent(props) {
       title: props.intl.formatMessage(messages.fullscreenControl)
     }))))));
   }
-
   return header;
 };
-
 const mapStateToProps = state => ({
   customStageSize: state.scratchGui.customStageSize,
   // This is the button's mode, as opposed to the actual current state
   stageSizeMode: state.scratchGui.stageSize.stageSize
 });
-
 StageHeaderComponent.propTypes = {
   intl: react_intl__WEBPACK_IMPORTED_MODULE_1__["intlShape"],
   customStageSize: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.shape({
@@ -15860,13 +15393,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _action_menu_icon_search_svg__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../action-menu/icon--search.svg */ "./src/components/action-menu/icon--search.svg");
 /* harmony import */ var _action_menu_icon_search_svg__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_action_menu_icon_search_svg__WEBPACK_IMPORTED_MODULE_12__);
 const _excluded = ["backdropCount", "containerRef", "dragOver", "fileInputRef", "intl", "selected", "raised", "receivedBlocks", "url", "onBackdropFileUploadClick", "onBackdropFileUpload", "onClick", "onMouseEnter", "onMouseLeave", "onNewBackdropClick", "onSurpriseBackdropClick", "onEmptyBackdropClick"];
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
 
 
 
@@ -15898,29 +15427,27 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_3__["defineMessages"
     "defaultMessage": "Upload Backdrop"
   }
 });
-
 const StageSelector = props => {
   const {
-    backdropCount,
-    containerRef,
-    dragOver,
-    fileInputRef,
-    intl,
-    selected,
-    raised,
-    receivedBlocks,
-    url,
-    onBackdropFileUploadClick,
-    onBackdropFileUpload,
-    onClick,
-    onMouseEnter,
-    onMouseLeave,
-    onNewBackdropClick,
-    onSurpriseBackdropClick,
-    onEmptyBackdropClick
-  } = props,
-        componentProps = _objectWithoutProperties(props, _excluded);
-
+      backdropCount,
+      containerRef,
+      dragOver,
+      fileInputRef,
+      intl,
+      selected,
+      raised,
+      receivedBlocks,
+      url,
+      onBackdropFileUploadClick,
+      onBackdropFileUpload,
+      onClick,
+      onMouseEnter,
+      onMouseLeave,
+      onNewBackdropClick,
+      onSurpriseBackdropClick,
+      onEmptyBackdropClick
+    } = props,
+    componentProps = _objectWithoutProperties(props, _excluded);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_box_box_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], _extends({
     className: classnames__WEBPACK_IMPORTED_MODULE_0___default()(_stage_selector_css__WEBPACK_IMPORTED_MODULE_6___default.a.stageSelector, {
       [_stage_selector_css__WEBPACK_IMPORTED_MODULE_6___default.a.isSelected]: selected,
@@ -15977,7 +15504,6 @@ const StageSelector = props => {
     onClick: onNewBackdropClick
   }));
 };
-
 StageSelector.propTypes = {
   backdropCount: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number.isRequired,
   containerRef: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
@@ -16065,7 +15591,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const StageWrapperComponent = function StageWrapperComponent(props) {
   const {
     isEmbedded,
@@ -16097,7 +15622,6 @@ const StageWrapperComponent = function StageWrapperComponent(props) {
     isFullScreen: isFullScreen
   }) : null);
 };
-
 StageWrapperComponent.propTypes = {
   isEmbedded: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.bool,
   isFullScreen: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.bool,
@@ -16169,20 +15693,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _stage_css__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./stage.css */ "./src/components/stage/stage.css");
 /* harmony import */ var _stage_css__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_stage_css__WEBPACK_IMPORTED_MODULE_13__);
 const _excluded = ["canvas", "customStageSize", "dragRef", "isColorPicking", "isFullScreen", "isPlayerOnly", "isStarted", "colorInfo", "micIndicator", "question", "stageSize", "useEditorDragStyle", "onDeactivateColorPicker", "onDoubleClick", "onQuestionAnswered"];
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
 
 
 
@@ -16199,24 +15715,23 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 const StageComponent = props => {
   const {
-    canvas,
-    customStageSize,
-    dragRef,
-    isColorPicking,
-    isFullScreen,
-    isPlayerOnly,
-    isStarted,
-    colorInfo,
-    micIndicator,
-    question,
-    stageSize,
-    useEditorDragStyle,
-    onDeactivateColorPicker,
-    onDoubleClick,
-    onQuestionAnswered
-  } = props,
-        boxProps = _objectWithoutProperties(props, _excluded);
-
+      canvas,
+      customStageSize,
+      dragRef,
+      isColorPicking,
+      isFullScreen,
+      isPlayerOnly,
+      isStarted,
+      colorInfo,
+      micIndicator,
+      question,
+      stageSize,
+      useEditorDragStyle,
+      onDeactivateColorPicker,
+      onDoubleClick,
+      onQuestionAnswered
+    } = props,
+    boxProps = _objectWithoutProperties(props, _excluded);
   const stageDimensions = Object(_lib_screen_utils_js__WEBPACK_IMPORTED_MODULE_12__["getStageDimensions"])(stageSize, customStageSize, isFullScreen);
   const minWidth = Object(_lib_screen_utils_js__WEBPACK_IMPORTED_MODULE_12__["getMinWidth"])(stageSize);
   const transformStyle = stageDimensions.width < minWidth && !isFullScreen ? {
@@ -16292,7 +15807,6 @@ const StageComponent = props => {
     onClick: onDeactivateColorPicker
   }) : null);
 };
-
 StageComponent.propTypes = {
   canvas: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.instanceOf(Element).isRequired,
   customStageSize: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.shape({
@@ -16381,14 +15895,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _stop_all_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./stop-all.css */ "./src/components/stop-all/stop-all.css");
 /* harmony import */ var _stop_all_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_stop_all_css__WEBPACK_IMPORTED_MODULE_4__);
 const _excluded = ["active", "className", "onClick", "title"];
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
 
 
 
@@ -16396,13 +15905,12 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 const StopAllComponent = function StopAllComponent(props) {
   const {
-    active,
-    className,
-    onClick,
-    title
-  } = props,
-        componentProps = _objectWithoutProperties(props, _excluded);
-
+      active,
+      className,
+      onClick,
+      title
+    } = props,
+    componentProps = _objectWithoutProperties(props, _excluded);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("img", _extends({
     className: classnames__WEBPACK_IMPORTED_MODULE_0___default()(className, _stop_all_css__WEBPACK_IMPORTED_MODULE_4___default.a.stopAll, {
       [_stop_all_css__WEBPACK_IMPORTED_MODULE_4___default.a.isActive]: active
@@ -16413,7 +15921,6 @@ const StopAllComponent = function StopAllComponent(props) {
     onClick: onClick
   }, componentProps));
 };
-
 StopAllComponent.propTypes = {
   active: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
   className: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
@@ -16478,20 +15985,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tag_button_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./tag-button.css */ "./src/components/tag-button/tag-button.css");
 /* harmony import */ var _tag_button_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_tag_button_css__WEBPACK_IMPORTED_MODULE_5__);
 const _excluded = ["active", "iconClassName", "className", "tag", "intlLabel"];
-
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
 
 
 
@@ -16500,15 +15999,14 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 const TagButtonComponent = _ref => {
   let {
-    active,
-    iconClassName,
-    className,
-    tag,
-    // eslint-disable-line no-unused-vars
-    intlLabel
-  } = _ref,
-      props = _objectWithoutProperties(_ref, _excluded);
-
+      active,
+      iconClassName,
+      className,
+      tag,
+      // eslint-disable-line no-unused-vars
+      intlLabel
+    } = _ref,
+    props = _objectWithoutProperties(_ref, _excluded);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_button_button_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], _extends({
     className: classnames__WEBPACK_IMPORTED_MODULE_0___default()(_tag_button_css__WEBPACK_IMPORTED_MODULE_5___default.a.tagButton, className, {
       [_tag_button_css__WEBPACK_IMPORTED_MODULE_5___default.a.active]: active
@@ -16516,7 +16014,6 @@ const TagButtonComponent = _ref => {
     iconClassName: classnames__WEBPACK_IMPORTED_MODULE_0___default()(_tag_button_css__WEBPACK_IMPORTED_MODULE_5___default.a.tagButtonIcon, iconClassName)
   }, props), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_3__["FormattedMessage"], intlLabel));
 };
-
 TagButtonComponent.propTypes = _objectSpread(_objectSpread({}, _button_button_jsx__WEBPACK_IMPORTED_MODULE_4__["default"].propTypes), {}, {
   active: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
   intlLabel: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.shape({
@@ -16585,11 +16082,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _target_pane_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./target-pane.css */ "./src/components/target-pane/target-pane.css");
 /* harmony import */ var _target_pane_css__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_target_pane_css__WEBPACK_IMPORTED_MODULE_7__);
 const _excluded = ["editingTarget", "fileInputRef", "hoveredTarget", "spriteLibraryVisible", "onActivateBlocksTab", "onChangeSpriteDirection", "onChangeSpriteName", "onChangeSpriteRotationStyle", "onChangeSpriteSize", "onChangeSpriteVisibility", "onChangeSpriteX", "onChangeSpriteY", "onDeleteSprite", "onDrop", "onDuplicateSprite", "onExportSprite", "onFileUploadClick", "onNewSpriteClick", "onPaintSpriteClick", "onRequestCloseSpriteLibrary", "onSelectSprite", "onSpriteUpload", "onSurpriseSpriteClick", "raiseSprites", "stage", "stageSize", "sprites", "vm"];
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 
@@ -16606,40 +16100,38 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
  * @param {object} props Props for the component
  * @returns {React.Component} rendered component
  */
-
 const TargetPane = _ref => {
   let {
-    editingTarget,
-    fileInputRef,
-    hoveredTarget,
-    spriteLibraryVisible,
-    onActivateBlocksTab,
-    onChangeSpriteDirection,
-    onChangeSpriteName,
-    onChangeSpriteRotationStyle,
-    onChangeSpriteSize,
-    onChangeSpriteVisibility,
-    onChangeSpriteX,
-    onChangeSpriteY,
-    onDeleteSprite,
-    onDrop,
-    onDuplicateSprite,
-    onExportSprite,
-    onFileUploadClick,
-    onNewSpriteClick,
-    onPaintSpriteClick,
-    onRequestCloseSpriteLibrary,
-    onSelectSprite,
-    onSpriteUpload,
-    onSurpriseSpriteClick,
-    raiseSprites,
-    stage,
-    stageSize,
-    sprites,
-    vm
-  } = _ref,
-      componentProps = _objectWithoutProperties(_ref, _excluded);
-
+      editingTarget,
+      fileInputRef,
+      hoveredTarget,
+      spriteLibraryVisible,
+      onActivateBlocksTab,
+      onChangeSpriteDirection,
+      onChangeSpriteName,
+      onChangeSpriteRotationStyle,
+      onChangeSpriteSize,
+      onChangeSpriteVisibility,
+      onChangeSpriteX,
+      onChangeSpriteY,
+      onDeleteSprite,
+      onDrop,
+      onDuplicateSprite,
+      onExportSprite,
+      onFileUploadClick,
+      onNewSpriteClick,
+      onPaintSpriteClick,
+      onRequestCloseSpriteLibrary,
+      onSelectSprite,
+      onSpriteUpload,
+      onSurpriseSpriteClick,
+      raiseSprites,
+      stage,
+      stageSize,
+      sprites,
+      vm
+    } = _ref,
+    componentProps = _objectWithoutProperties(_ref, _excluded);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", _extends({
     className: _target_pane_css__WEBPACK_IMPORTED_MODULE_7___default.a.targetPane
   }, componentProps), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_sprite_selector_sprite_selector_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -16681,7 +16173,6 @@ const TargetPane = _ref => {
     onRequestClose: onRequestCloseSpriteLibrary
   }) : null)));
 };
-
 const spriteShape = prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.shape({
   costume: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.shape({
     // asset is defined in scratch-storage's Asset.js
@@ -16814,7 +16305,6 @@ function _extends() { _extends = Object.assign ? Object.assign.bind() : function
 
 
 
-
 const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_3__["defineMessages"])({
   label: {
     "id": "gui.telemetryOptIn.label",
@@ -16856,10 +16346,10 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_3__["defineMessages"
     "id": "gui.telemetryOptIn.buttonClose",
     "defaultMessage": "Close"
   }
-}); // This should be at least as long as the CSS transition
+});
 
+// This should be at least as long as the CSS transition
 const SETTING_WAS_UPDATED_DURATION_MS = 3000;
-
 class TelemetryModal extends react__WEBPACK_IMPORTED_MODULE_2___default.a.PureComponent {
   constructor(props) {
     super(props);
@@ -16869,21 +16359,17 @@ class TelemetryModal extends react__WEBPACK_IMPORTED_MODULE_2___default.a.PureCo
       settingWasUpdatedTimer: null
     };
   }
-
   componentWillUnmount() {
     if (this.state.settingWasUpdatedTimer) {
       clearTimeout(this.state.settingWasUpdatedTimer);
     }
   }
-
   handleCancel() {
     this.props.onRequestClose();
-
     if (this.props.onCancel) {
       this.props.onCancel();
     }
   }
-
   handleOptInOutChanged(e) {
     if (e.target.value === 'true') {
       if (this.props.onOptIn) {
@@ -16897,29 +16383,24 @@ class TelemetryModal extends react__WEBPACK_IMPORTED_MODULE_2___default.a.PureCo
       }
     }
   }
-
   handleSettingWasUpdated() {
     if (this.state.settingWasUpdatedTimer) {
       clearTimeout(this.state.settingWasUpdatedTimer);
     }
-
     const newTimer = setTimeout(() => this.handleSettingWasUpdatedTimeout(newTimer), SETTING_WAS_UPDATED_DURATION_MS);
     this.setState({
       settingWasUpdatedTimer: newTimer
     });
   }
-
   handleSettingWasUpdatedTimeout(thisTimer) {
     if (thisTimer !== this.state.settingWasUpdatedTimer) {
       // some other timer has taken over
       return;
     }
-
     this.setState({
       settingWasUpdatedTimer: null
     });
   }
-
   render() {
     const isUndecided = typeof this.props.isTelemetryEnabled !== 'boolean';
     const isOff = this.props.isTelemetryEnabled === false;
@@ -16972,16 +16453,13 @@ class TelemetryModal extends react__WEBPACK_IMPORTED_MODULE_2___default.a.PureCo
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("span", {
       className: _telemetry_modal_css__WEBPACK_IMPORTED_MODULE_6___default.a.settingWasUpdated,
       key: this.state.settingWasUpdatedTimer // restart CSS fade when timer changes
-
     }, settingWasUpdated), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("button", {
       className: _telemetry_modal_css__WEBPACK_IMPORTED_MODULE_6___default.a.optIn,
       onClick: this.props.onRequestClose,
       disabled: isUndecided
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_3__["FormattedMessage"], messages.closeButton))))));
   }
-
 }
-
 TelemetryModal.propTypes = {
   intl: react_intl__WEBPACK_IMPORTED_MODULE_3__["intlShape"].isRequired,
   isRtl: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
@@ -17061,7 +16539,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const TurboMode = _ref => {
   let {
     isSmall
@@ -17078,7 +16555,6 @@ const TurboMode = _ref => {
     id: "gui.turboMode.active"
   })));
 };
-
 TurboMode.propTypes = {
   isSmall: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.bool
 };
@@ -17104,7 +16580,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
 
 
-
 const DocumentationLink = _ref => {
   let {
     slug,
@@ -17116,7 +16591,6 @@ const DocumentationLink = _ref => {
     rel: "noopener noreferrer"
   }, children);
 };
-
 DocumentationLink.propTypes = {
   slug: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
   children: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.node
@@ -17177,12 +16651,9 @@ function _extends() { _extends = Object.assign ? Object.assign.bind() : function
 
 
 
-
-
 const FancyCheckbox = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _extends({}, props, {
   className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(props.className, _checkbox_css__WEBPACK_IMPORTED_MODULE_2___default.a.checkbox)
 }));
-
 FancyCheckbox.propTypes = {
   className: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string
 };
@@ -17251,7 +16722,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const FramerateIndicator = _ref => {
   let {
     framerate,
@@ -17276,7 +16746,6 @@ const FramerateIndicator = _ref => {
     id: "tw.interpolationEnabled"
   }))));
 };
-
 FramerateIndicator.propTypes = {
   framerate: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
   interpolation: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool
@@ -17330,13 +16799,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _spinner_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_spinner_css__WEBPACK_IMPORTED_MODULE_1__);
 
 
-
 const Loading = () => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
   className: _spinner_css__WEBPACK_IMPORTED_MODULE_1___default.a.container
 }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
   className: _spinner_css__WEBPACK_IMPORTED_MODULE_1___default.a.spinner
 }));
-
 /* harmony default export */ __webpack_exports__["default"] = (Loading);
 
 /***/ }),
@@ -17420,11 +16887,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _settings_modal_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./settings-modal.css */ "./src/components/tw-settings-modal/settings-modal.css");
 /* harmony import */ var _settings_modal_css__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_settings_modal_css__WEBPACK_IMPORTED_MODULE_11__);
 const _excluded = ["value", "onChange", "label"];
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 
@@ -17452,12 +16916,10 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_0__["defineMessages"
     "defaultMessage": "Click for help"
   }
 });
-
 const LearnMore = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_2___default.a.Fragment, null, ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_tw_documentation_link_documentation_link_jsx__WEBPACK_IMPORTED_MODULE_10__["default"], props, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_0__["FormattedMessage"], {
   defaultMessage: "Learn more.",
   id: "gui.alerts.cloudInfoLearnMore"
 })));
-
 class UnwrappedSetting extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
   constructor(props) {
     super(props);
@@ -17466,7 +16928,6 @@ class UnwrappedSetting extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Comp
       helpVisible: false
     };
   }
-
   componentDidUpdate(prevProps) {
     if (this.props.active && !prevProps.active) {
       // eslint-disable-next-line react/no-did-update-set-state
@@ -17475,13 +16936,11 @@ class UnwrappedSetting extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Comp
       });
     }
   }
-
   handleClickHelp() {
     this.setState(prevState => ({
       helpVisible: !prevState.helpVisible
     }));
   }
-
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
       className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(_settings_modal_css__WEBPACK_IMPORTED_MODULE_11___default.a.setting, {
@@ -17499,9 +16958,7 @@ class UnwrappedSetting extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Comp
       slug: this.props.slug
     })), this.props.secondary);
   }
-
 }
-
 UnwrappedSetting.propTypes = {
   intl: react_intl__WEBPACK_IMPORTED_MODULE_0__["intlShape"],
   active: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
@@ -17511,15 +16968,13 @@ UnwrappedSetting.propTypes = {
   slug: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string
 };
 const Setting = Object(react_intl__WEBPACK_IMPORTED_MODULE_0__["injectIntl"])(UnwrappedSetting);
-
 const BooleanSetting = _ref => {
   let {
-    value,
-    onChange,
-    label
-  } = _ref,
-      props = _objectWithoutProperties(_ref, _excluded);
-
+      value,
+      onChange,
+      label
+    } = _ref,
+    props = _objectWithoutProperties(_ref, _excluded);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(Setting, _extends({}, props, {
     active: value,
     primary: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("label", {
@@ -17532,26 +16987,24 @@ const BooleanSetting = _ref => {
     }), label)
   }));
 };
-
 BooleanSetting.propTypes = {
   onChange: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func.isRequired,
   value: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool.isRequired,
   label: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.node.isRequired
 };
-
 const HighQualityPen = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(BooleanSetting, _extends({}, props, {
   label: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_0__["FormattedMessage"], {
     defaultMessage: "High Quality Pen",
     id: "tw.settingsModal.highQualityPen"
   }),
-  help: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_0__["FormattedMessage"] // eslint-disable-next-line max-len
+  help: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_0__["FormattedMessage"]
+  // eslint-disable-next-line max-len
   , {
     defaultMessage: "Allows pen projects to render at higher resolutions and disables some coordinate rounding in the editor. Not all projects benefit from this setting and it may impact performance.",
     id: "tw.settingsModal.highQualityPenHelp"
   }),
   slug: "high-quality-pen"
 }));
-
 const CustomFPS = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(BooleanSetting, {
   value: props.framerate !== 30,
   onChange: props.onChange,
@@ -17559,7 +17012,8 @@ const CustomFPS = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___defau
     defaultMessage: "60 FPS (Custom FPS)",
     id: "tw.settingsModal.fps"
   }),
-  help: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_0__["FormattedMessage"] // eslint-disable-next-line max-len
+  help: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_0__["FormattedMessage"]
+  // eslint-disable-next-line max-len
   , {
     defaultMessage: "Runs scripts 60 times per second instead of 30. Most projects will not work properly with this enabled. You should try Interpolation with 60 FPS mode disabled if that is the case. {customFramerate}.",
     id: "tw.settingsModal.fpsHelp",
@@ -17575,26 +17029,24 @@ const CustomFPS = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___defau
   }),
   slug: "custom-fps"
 });
-
 CustomFPS.propTypes = {
   framerate: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
   onChange: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
   onCustomizeFramerate: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func
 };
-
 const Interpolation = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(BooleanSetting, _extends({}, props, {
   label: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_0__["FormattedMessage"], {
     defaultMessage: "Interpolation",
     id: "tw.settingsModal.interpolation"
   }),
-  help: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_0__["FormattedMessage"] // eslint-disable-next-line max-len
+  help: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_0__["FormattedMessage"]
+  // eslint-disable-next-line max-len
   , {
     defaultMessage: "Makes projects appear smoother by interpolating sprite motion. Interpolation should not be used on 3D projects, raytracers, pen projects, and laggy projects as interpolation will make them run slower without making them appear smoother.",
     id: "tw.settingsModal.interpolationHelp"
   }),
   slug: "interpolation"
 }));
-
 const InfiniteClones = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(BooleanSetting, _extends({}, props, {
   label: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_0__["FormattedMessage"], {
     defaultMessage: "Infinite Clones",
@@ -17606,20 +17058,19 @@ const InfiniteClones = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___
   }),
   slug: "infinite-clones"
 }));
-
 const RemoveFencing = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(BooleanSetting, _extends({}, props, {
   label: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_0__["FormattedMessage"], {
     defaultMessage: "Remove Fencing",
     id: "tw.settingsModal.removeFencing"
   }),
-  help: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_0__["FormattedMessage"] // eslint-disable-next-line max-len
+  help: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_0__["FormattedMessage"]
+  // eslint-disable-next-line max-len
   , {
     defaultMessage: "Allows sprites to move offscreen, become as large or as small as they want, and makes touching blocks work offscreen.",
     id: "tw.settingsModal.removeFencingHelp"
   }),
   slug: "remove-fencing"
 }));
-
 const RemoveMiscLimits = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(BooleanSetting, _extends({}, props, {
   label: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_0__["FormattedMessage"], {
     defaultMessage: "Remove Miscellaneous Limits",
@@ -17631,33 +17082,32 @@ const RemoveMiscLimits = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2_
   }),
   slug: "remove-misc-limits"
 }));
-
 const WarpTimer = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(BooleanSetting, _extends({}, props, {
   label: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_0__["FormattedMessage"], {
     defaultMessage: "Warp Timer",
     id: "tw.settingsModal.warpTimer"
   }),
-  help: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_0__["FormattedMessage"] // eslint-disable-next-line max-len
+  help: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_0__["FormattedMessage"]
+  // eslint-disable-next-line max-len
   , {
     defaultMessage: "Makes scripts check if they are stuck in a long or infinite loop and run at a low framerate instead of getting stuck until the loop finishes. This fixes most crashes but has a significant performance impact, so it's only enabled by default in the editor.",
     id: "tw.settingsModal.warpTimerHelp"
   }),
   slug: "warp-timer"
 }));
-
 const DisableCompiler = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(BooleanSetting, _extends({}, props, {
   label: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_0__["FormattedMessage"], {
     defaultMessage: "Disable Compiler",
     id: "tw.settingsModal.disableCompiler"
   }),
-  help: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_0__["FormattedMessage"] // eslint-disable-next-line max-len
+  help: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_0__["FormattedMessage"]
+  // eslint-disable-next-line max-len
   , {
     defaultMessage: "Disables the TurboWarp compiler. You may want to enable this while editing projects so that scripts update immediately. Otherwise, you should never enable this.",
     id: "tw.settingsModal.disableCompilerHelp"
   }),
   slug: "disable-compiler"
 }));
-
 const CustomStageSize = _ref2 => {
   let {
     customStageSizeEnabled,
@@ -17692,14 +17142,16 @@ const CustomStageSize = _ref2 => {
     })),
     secondary: (stageWidth >= 1000 || stageHeight >= 1000) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
       className: _settings_modal_css__WEBPACK_IMPORTED_MODULE_11___default.a.warning
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_0__["FormattedMessage"] // eslint-disable-next-line max-len
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_0__["FormattedMessage"]
+    // eslint-disable-next-line max-len
     , {
       defaultMessage: "Using a custom stage size this large is not recommended! Instead, use a lower size with the same aspect ratio and let fullscreen mode upscale it to match the user's display.",
       id: "tw.settingsModal.largeStageWarning"
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(LearnMore, {
       slug: "custom-stage-size"
     })),
-    help: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_0__["FormattedMessage"] // eslint-disable-next-line max-len
+    help: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_0__["FormattedMessage"]
+    // eslint-disable-next-line max-len
     , {
       defaultMessage: "Changes the size of the Scratch stage from 480x360 to something else. Try 640x360 to make the stage widescreen. Very few projects will handle this properly.",
       id: "tw.settingsModal.customStageSizeHelp"
@@ -17707,7 +17159,6 @@ const CustomStageSize = _ref2 => {
     slug: "custom-stage-size"
   });
 };
-
 CustomStageSize.propTypes = {
   customStageSizeEnabled: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
   stageWidth: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
@@ -17715,7 +17166,6 @@ CustomStageSize.propTypes = {
   stageHeight: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
   onStageHeightChange: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func
 };
-
 const StoreProjectOptions = _ref3 => {
   let {
     onStoreProjectOptions
@@ -17728,27 +17178,24 @@ const StoreProjectOptions = _ref3 => {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_0__["FormattedMessage"], {
     defaultMessage: "Store settings in project",
     id: "tw.settingsModal.storeProjectOptions"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_0__["FormattedMessage"] // eslint-disable-next-line max-len
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_0__["FormattedMessage"]
+  // eslint-disable-next-line max-len
   , {
     defaultMessage: "Stores the selected settings in the project so they will be automatically applied when TurboWarp loads this project. Warp timer and disable compiler will not be saved.",
     id: "tw.settingsModal.storeProjectOptionsHelp"
   }))));
 };
-
 StoreProjectOptions.propTypes = {
   onStoreProjectOptions: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func
 };
-
 const Header = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
   className: _settings_modal_css__WEBPACK_IMPORTED_MODULE_11___default.a.header
 }, props.children, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
   className: _settings_modal_css__WEBPACK_IMPORTED_MODULE_11___default.a.divider
 }));
-
 Header.propTypes = {
   children: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.node
 };
-
 const SettingsModalComponent = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_containers_modal_jsx__WEBPACK_IMPORTED_MODULE_6__["default"], {
   className: _settings_modal_css__WEBPACK_IMPORTED_MODULE_11___default.a.modalContent,
   onRequestClose: props.onClose,
@@ -17791,7 +17238,6 @@ const SettingsModalComponent = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MOD
   value: props.disableCompiler,
   onChange: props.onDisableCompilerChange
 }), !props.isEmbedded && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(StoreProjectOptions, props)));
-
 SettingsModalComponent.propTypes = {
   intl: react_intl__WEBPACK_IMPORTED_MODULE_0__["intlShape"],
   onClose: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
@@ -17881,7 +17327,6 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_0__["defineMessages"
     "defaultMessage": "Change Username"
   }
 });
-
 const UsernameModalComponent = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_containers_modal_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
   className: _username_modal_css__WEBPACK_IMPORTED_MODULE_6___default.a.modalContent,
   onRequestClose: props.onCancel,
@@ -17891,7 +17336,8 @@ const UsernameModalComponent = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MOD
   className: _username_modal_css__WEBPACK_IMPORTED_MODULE_6___default.a.body
 }, props.mustChangeUsername && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_2___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", {
   className: classnames__WEBPACK_IMPORTED_MODULE_5___default()(_username_modal_css__WEBPACK_IMPORTED_MODULE_6___default.a.helpText, _username_modal_css__WEBPACK_IMPORTED_MODULE_6___default.a.mustChange)
-}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_0__["FormattedMessage"] // eslint-disable-next-line max-len
+}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_0__["FormattedMessage"]
+// eslint-disable-next-line max-len
 , {
   defaultMessage: "Sorry, the cloud variable server thinks your username may be unsafe. Please change it to something else or {resetIt}.",
   id: "tw.usernameModal.mustChange",
@@ -17916,13 +17362,15 @@ const UsernameModalComponent = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MOD
   spellCheck: "false"
 })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", {
   className: _username_modal_css__WEBPACK_IMPORTED_MODULE_6___default.a.helpText
-}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_0__["FormattedMessage"] // eslint-disable-next-line max-len
+}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_0__["FormattedMessage"]
+// eslint-disable-next-line max-len
 , {
   defaultMessage: "This value will be stored in your browser's storage. It may be logged when you interact with projects that contain cloud variables.",
   id: "tw.usernameModal.help"
 })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", {
   className: _username_modal_css__WEBPACK_IMPORTED_MODULE_6___default.a.helpText
-}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_0__["FormattedMessage"] // eslint-disable-next-line max-len
+}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_0__["FormattedMessage"]
+// eslint-disable-next-line max-len
 , {
   defaultMessage: "Values that do not correspond to a valid Scratch account will typically be rejected by the cloud variable server. We recommend leaving it as-is or changing it to your Scratch username.",
   id: "tw.usernameModal.help2"
@@ -17948,7 +17396,6 @@ const UsernameModalComponent = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MOD
   defaultMessage: "OK",
   id: "gui.prompt.ok"
 })))));
-
 UsernameModalComponent.propTypes = {
   intl: react_intl__WEBPACK_IMPORTED_MODULE_0__["intlShape"],
   mustChangeUsername: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool.isRequired,
@@ -18013,12 +17460,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const Watermark = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
   className: _watermark_css__WEBPACK_IMPORTED_MODULE_2___default.a.spriteImage,
   src: props.costumeURL
 });
-
 Watermark.propTypes = {
   costumeURL: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string
 };
@@ -18073,28 +17518,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _waveform_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_waveform_css__WEBPACK_IMPORTED_MODULE_2__);
 
 
- // Waveform is expensive to compute, make sure it only updates when data does
+
+
+// Waveform is expensive to compute, make sure it only updates when data does
 // by using PureComponent. In future can be changed back to function with React.memo
 // eslint-disable-next-line react/prefer-stateless-function
-
 class Waveform extends react__WEBPACK_IMPORTED_MODULE_0___default.a.PureComponent {
   render() {
     const {
       width,
       height,
       data
-    } = this.props; // Never want a density of points higher than the number of pixels
+    } = this.props;
+
+    // Never want a density of points higher than the number of pixels
     // This is very conservative, could be far fewer points because of curve smoothing.
     // Drawing too many points seems to cause an explosion in browser
     // composite time when animating the playhead
-
     const takeEveryN = Math.ceil(data.length / width);
-    const filteredData = takeEveryN === 1 ? data.slice(0) : data.filter((_, i) => i % takeEveryN === 0); // Need at least two points to render waveform.
+    const filteredData = takeEveryN === 1 ? data.slice(0) : data.filter((_, i) => i % takeEveryN === 0);
 
+    // Need at least two points to render waveform.
     if (filteredData.length === 1) {
       filteredData.push(filteredData[0]);
     }
-
     const maxIndex = filteredData.length - 1;
     const points = [...filteredData.map((v, i) => [width * (i / maxIndex), height * v / 2]), ...filteredData.reverse().map((v, i) => [width * (1 - i / maxIndex), -height * v / 2])];
     const pathComponents = points.map((_ref, i) => {
@@ -18114,9 +17561,7 @@ class Waveform extends react__WEBPACK_IMPORTED_MODULE_0___default.a.PureComponen
       strokeWidth: 1
     })));
   }
-
 }
-
 Waveform.propTypes = {
   data: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number),
   height: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
@@ -18187,17 +17632,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _webgl_modal_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./webgl-modal.css */ "./src/components/webgl-modal/webgl-modal.css");
 /* harmony import */ var _webgl_modal_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_webgl_modal_css__WEBPACK_IMPORTED_MODULE_5__);
 const _excluded = ["intl"];
-
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
 
 
 
@@ -18210,13 +17649,11 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_4__["defineMessages"
     "defaultMessage": "Your Browser Does Not Support WebGL"
   }
 });
-
 const WebGlModal = _ref => {
   let {
-    intl
-  } = _ref,
-      props = _objectWithoutProperties(_ref, _excluded);
-
+      intl
+    } = _ref,
+    props = _objectWithoutProperties(_ref, _excluded);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_modal__WEBPACK_IMPORTED_MODULE_2___default.a, {
     isOpen: true,
     className: _webgl_modal_css__WEBPACK_IMPORTED_MODULE_5___default.a.modalContent,
@@ -18242,7 +17679,6 @@ const WebGlModal = _ref => {
     }
   })))));
 };
-
 WebGlModal.propTypes = {
   intl: react_intl__WEBPACK_IMPORTED_MODULE_4__["intlShape"].isRequired,
   isRtl: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.bool
@@ -18283,22 +17719,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 class Alert extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
   constructor(props) {
     super(props);
     lodash_bindall__WEBPACK_IMPORTED_MODULE_1___default()(this, ['handleOnCloseAlert', 'handleOnReconnect']);
   }
-
   handleOnCloseAlert() {
     this.props.onCloseAlert(this.props.index);
   }
-
   handleOnReconnect() {
     this.props.onOpenConnectionModal(this.props.extensionId);
     this.handleOnCloseAlert();
   }
-
   render() {
     const {
       closeButton,
@@ -18332,11 +17764,8 @@ class Alert extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       onSaveNow: onSaveNow
     }));
   }
-
 }
-
 const mapStateToProps = () => ({});
-
 const mapDispatchToProps = dispatch => ({
   onOpenConnectionModal: id => {
     dispatch(Object(_reducers_connection_modal__WEBPACK_IMPORTED_MODULE_8__["setConnectionModalExtensionId"])(id));
@@ -18346,7 +17775,6 @@ const mapDispatchToProps = dispatch => ({
     dispatch(Object(_reducers_project_state__WEBPACK_IMPORTED_MODULE_9__["manualUpdateProject"])());
   }
 });
-
 Alert.propTypes = {
   closeButton: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.bool,
   content: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.element,
@@ -18389,35 +17817,31 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const Alerts = _ref => {
   let {
     alertsList,
     className,
     onCloseAlert
   } = _ref;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_alerts_alerts_jsx__WEBPACK_IMPORTED_MODULE_4__["default"] // only display standard and extension alerts here
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_alerts_alerts_jsx__WEBPACK_IMPORTED_MODULE_4__["default"]
+  // only display standard and extension alerts here
   , {
     alertsList: Object(_reducers_alerts__WEBPACK_IMPORTED_MODULE_3__["filterPopupAlerts"])(alertsList),
     className: className,
     onCloseAlert: onCloseAlert
   });
 };
-
 Alerts.propTypes = {
   alertsList: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object),
   className: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
   onCloseAlert: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func
 };
-
 const mapStateToProps = state => ({
   alertsList: state.scratchGui.alerts.alertsList
 });
-
 const mapDispatchToProps = dispatch => ({
   onCloseAlert: index => dispatch(Object(_reducers_alerts__WEBPACK_IMPORTED_MODULE_3__["closeAlert"])(index))
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, mapDispatchToProps)(Alerts));
 
 /***/ }),
@@ -18448,7 +17872,6 @@ __webpack_require__.r(__webpack_exports__);
 
 const MIN_LENGTH = 0.01;
 const MIN_DURATION = 500;
-
 class AudioSelector extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
   constructor(props) {
     super(props);
@@ -18471,7 +17894,6 @@ class AudioSelector extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Compone
       distanceThreshold: 0
     });
   }
-
   componentWillReceiveProps(newProps) {
     const {
       trimStart,
@@ -18483,11 +17905,9 @@ class AudioSelector extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Compone
       trimEnd: newProps.trimEnd
     });
   }
-
   clearSelection() {
     this.props.onSetTrim(null, null);
   }
-
   handleNewSelectionMouseDown(e) {
     const {
       width,
@@ -18501,11 +17921,9 @@ class AudioSelector extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Compone
     this.trimEndDragRecognizer.start(e);
     e.preventDefault();
   }
-
   handleTrimStartMouseMove(currentOffset, initialOffset) {
     const dx = (currentOffset.x - initialOffset.x) / this.containerSize;
     const newTrim = Math.max(0, Math.min(1, this.initialTrimStart + dx));
-
     if (newTrim > this.initialTrimEnd) {
       this.setState({
         trimStart: this.initialTrimEnd,
@@ -18518,11 +17936,9 @@ class AudioSelector extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Compone
       });
     }
   }
-
   handleTrimEndMouseMove(currentOffset, initialOffset) {
     const dx = (currentOffset.x - initialOffset.x) / this.containerSize;
     const newTrim = Math.min(1, Math.max(0, this.initialTrimEnd + dx));
-
     if (newTrim < this.initialTrimStart) {
       this.setState({
         trimStart: newTrim,
@@ -18535,11 +17951,9 @@ class AudioSelector extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Compone
       });
     }
   }
-
   handleTrimStartMouseUp() {
     this.props.onSetTrim(this.state.trimStart, this.state.trimEnd);
   }
-
   handleTrimEndMouseUp() {
     // If the selection was made quickly (tooFast) and is small (tooShort),
     // deselect instead. This allows click-to-deselect even if you drag
@@ -18547,14 +17961,12 @@ class AudioSelector extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Compone
     // selection, as long as it is above a minimum length.
     const tooFast = Date.now() - this.clickStartTime < MIN_DURATION;
     const tooShort = this.state.trimEnd - this.state.trimStart < MIN_LENGTH;
-
     if (tooFast && tooShort) {
       this.clearSelection();
     } else {
       this.props.onSetTrim(this.state.trimStart, this.state.trimEnd);
     }
   }
-
   handleTrimStartMouseDown(e) {
     this.containerSize = this.containerElement.getBoundingClientRect().width;
     this.trimStartDragRecognizer.start(e);
@@ -18563,7 +17975,6 @@ class AudioSelector extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Compone
     e.stopPropagation();
     e.preventDefault();
   }
-
   handleTrimEndMouseDown(e) {
     this.containerSize = this.containerElement.getBoundingClientRect().width;
     this.trimEndDragRecognizer.start(e);
@@ -18572,11 +17983,9 @@ class AudioSelector extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Compone
     e.stopPropagation();
     e.preventDefault();
   }
-
   storeRef(el) {
     this.containerElement = el;
   }
-
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_audio_trimmer_audio_selector_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
       containerRef: this.storeRef,
@@ -18588,9 +17997,7 @@ class AudioSelector extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Compone
       onTrimStartMouseDown: this.handleTrimStartMouseDown
     });
   }
-
 }
-
 AudioSelector.propTypes = {
   onSetTrim: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
   playhead: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
@@ -18640,19 +18047,16 @@ class AudioTrimmer extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Componen
       distanceThreshold: 0
     });
   }
-
   handleTrimStartMouseMove(currentOffset, initialOffset) {
     const dx = (currentOffset.x - initialOffset.x) / this.containerSize;
     const newTrim = Math.max(0, Math.min(this.props.trimEnd - MIN_LENGTH, this.initialTrim + dx));
     this.props.onSetTrimStart(newTrim);
   }
-
   handleTrimEndMouseMove(currentOffset, initialOffset) {
     const dx = (currentOffset.x - initialOffset.x) / this.containerSize;
     const newTrim = Math.min(1, Math.max(this.props.trimStart + MIN_LENGTH, this.initialTrim + dx));
     this.props.onSetTrimEnd(newTrim);
   }
-
   handleTrimStartMouseDown(e) {
     this.containerSize = this.containerElement.getBoundingClientRect().width;
     this.trimStartDragRecognizer.start(e);
@@ -18660,7 +18064,6 @@ class AudioTrimmer extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Componen
     e.stopPropagation();
     e.preventDefault();
   }
-
   handleTrimEndMouseDown(e) {
     this.containerSize = this.containerElement.getBoundingClientRect().width;
     this.trimEndDragRecognizer.start(e);
@@ -18668,11 +18071,9 @@ class AudioTrimmer extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Componen
     e.stopPropagation();
     e.preventDefault();
   }
-
   storeRef(el) {
     this.containerElement = el;
   }
-
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_audio_trimmer_audio_trimmer_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
       containerRef: this.storeRef,
@@ -18683,9 +18084,7 @@ class AudioTrimmer extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Componen
       onTrimStartMouseDown: this.handleTrimStartMouseDown
     });
   }
-
 }
-
 AudioTrimmer.propTypes = {
   onSetTrimEnd: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
   onSetTrimStart: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
@@ -18720,7 +18119,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 class AutoScanningStep extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
   constructor(props) {
     super(props);
@@ -18729,38 +18127,31 @@ class AutoScanningStep extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Comp
       phase: _components_connection_modal_auto_scanning_step_jsx__WEBPACK_IMPORTED_MODULE_3__["PHASES"].prescan
     };
   }
-
   componentWillUnmount() {
     // @todo: stop the peripheral scan here
     this.unbindPeripheralUpdates();
   }
-
   handlePeripheralScanTimeout() {
     this.setState({
       phase: _components_connection_modal_auto_scanning_step_jsx__WEBPACK_IMPORTED_MODULE_3__["PHASES"].notfound
     });
     this.unbindPeripheralUpdates();
   }
-
   handlePeripheralListUpdate(newList) {
     // TODO: sort peripherals by signal strength? so they don't jump around
     const peripheralArray = Object.keys(newList).map(id => newList[id]);
-
     if (peripheralArray.length > 0) {
       this.props.onConnecting(peripheralArray[0].peripheralId);
     }
   }
-
   bindPeripheralUpdates() {
     this.props.vm.on('PERIPHERAL_LIST_UPDATE', this.handlePeripheralListUpdate);
     this.props.vm.on('PERIPHERAL_SCAN_TIMEOUT', this.handlePeripheralScanTimeout);
   }
-
   unbindPeripheralUpdates() {
     this.props.vm.removeListener('PERIPHERAL_LIST_UPDATE', this.handlePeripheralListUpdate);
     this.props.vm.removeListener('PERIPHERAL_SCAN_TIMEOUT', this.handlePeripheralScanTimeout);
   }
-
   handleRefresh() {
     // @todo: stop the peripheral scan here, it is more important for auto scan
     // due to timeout and cancellation
@@ -18769,7 +18160,6 @@ class AutoScanningStep extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Comp
     });
     this.unbindPeripheralUpdates();
   }
-
   handleStartScan() {
     this.bindPeripheralUpdates();
     this.props.vm.scanForPeripheral(this.props.extensionId);
@@ -18777,7 +18167,6 @@ class AutoScanningStep extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Comp
       phase: _components_connection_modal_auto_scanning_step_jsx__WEBPACK_IMPORTED_MODULE_3__["PHASES"].pressbutton
     });
   }
-
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_connection_modal_auto_scanning_step_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
       connectionTipIconURL: this.props.connectionTipIconURL,
@@ -18787,9 +18176,7 @@ class AutoScanningStep extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Comp
       onStartScan: this.handleStartScan
     });
   }
-
 }
-
 AutoScanningStep.propTypes = {
   connectionTipIconURL: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
   extensionId: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string.isRequired,
@@ -18835,13 +18222,11 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_3__["defineMessages"
     "defaultMessage": "Choose a Backdrop"
   }
 });
-
 class BackdropLibrary extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
   constructor(props) {
     super(props);
     lodash_bindall__WEBPACK_IMPORTED_MODULE_0___default()(this, ['handleItemSelect']);
   }
-
   handleItemSelect(item) {
     const vmBackdrop = {
       name: item.name,
@@ -18849,11 +18234,10 @@ class BackdropLibrary extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Compo
       rotationCenterY: item.rotationCenterY,
       bitmapResolution: item.bitmapResolution,
       skinId: null
-    }; // Do not switch to stage, just add the backdrop
-
+    };
+    // Do not switch to stage, just add the backdrop
     this.props.vm.addBackdrop(item.md5ext, vmBackdrop);
   }
-
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_library_library_jsx__WEBPACK_IMPORTED_MODULE_7__["default"], {
       data: Object(_lib_libraries_tw_async_libraries__WEBPACK_IMPORTED_MODULE_5__["getBackdropLibrary"])(),
@@ -18864,9 +18248,7 @@ class BackdropLibrary extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Compo
       onRequestClose: this.props.onRequestClose
     });
   }
-
 }
-
 BackdropLibrary.propTypes = {
   intl: react_intl__WEBPACK_IMPORTED_MODULE_3__["intlShape"].isRequired,
   onRequestClose: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
@@ -18901,11 +18283,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var scratch_vm__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! scratch-vm */ "./node_modules/scratch-vm/src/index.js");
 /* harmony import */ var scratch_vm__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(scratch_vm__WEBPACK_IMPORTED_MODULE_10__);
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -18925,7 +18304,6 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_3__["defineMessages"
     "defaultMessage": "New name:"
   }
 });
-
 class Backpack extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
   constructor(props) {
     super(props);
@@ -18942,29 +18320,26 @@ class Backpack extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       loading: false,
       expanded: false,
       contents: []
-    }; // If a host is given, add it as a web source to the storage module
-    // TODO remove the hacky flag that prevents double adding
+    };
 
+    // If a host is given, add it as a web source to the storage module
+    // TODO remove the hacky flag that prevents double adding
     if (props.host && !_lib_storage__WEBPACK_IMPORTED_MODULE_9__["default"]._hasAddedBackpackSource && props.host !== _lib_backpack_api__WEBPACK_IMPORTED_MODULE_5__["LOCAL_API"]) {
       _lib_storage__WEBPACK_IMPORTED_MODULE_9__["default"].addWebSource([_lib_storage__WEBPACK_IMPORTED_MODULE_9__["default"].AssetType.ImageVector, _lib_storage__WEBPACK_IMPORTED_MODULE_9__["default"].AssetType.ImageBitmap, _lib_storage__WEBPACK_IMPORTED_MODULE_9__["default"].AssetType.Sound], this.getBackpackAssetURL);
       _lib_storage__WEBPACK_IMPORTED_MODULE_9__["default"]._hasAddedBackpackSource = true;
     }
   }
-
   componentDidMount() {
     this.props.vm.addListener('BLOCK_DRAG_END', this.handleBlockDragEnd);
     this.props.vm.addListener('BLOCK_DRAG_UPDATE', this.handleBlockDragUpdate);
   }
-
   componentWillUnmount() {
     this.props.vm.removeListener('BLOCK_DRAG_END', this.handleBlockDragEnd);
     this.props.vm.removeListener('BLOCK_DRAG_UPDATE', this.handleBlockDragUpdate);
   }
-
   getBackpackAssetURL(asset) {
     return "".concat(this.props.host, "/").concat(asset.assetId, ".").concat(asset.dataFormat);
   }
-
   handleToggle() {
     const newState = !this.state.expanded;
     this.setState({
@@ -18974,47 +18349,40 @@ class Backpack extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       // Emit resize on window to get blocks to resize
       window.dispatchEvent(new Event('resize'));
     });
-
     if (newState) {
       this.getContents();
     }
   }
-
   handleError(error) {
     this.setState({
       error: "".concat(error),
       loading: false
-    }); // Log error to console and make the Promise reject.
-
+    });
+    // Log error to console and make the Promise reject.
     throw error;
   }
-
   handleDrop(dragInfo) {
     let payloader = null;
     let presaveAsset = null;
-
     switch (dragInfo.dragType) {
       case _lib_drag_constants__WEBPACK_IMPORTED_MODULE_6__["default"].COSTUME:
         payloader = _lib_backpack_api__WEBPACK_IMPORTED_MODULE_5__["costumePayload"];
         presaveAsset = dragInfo.payload.asset;
         break;
-
       case _lib_drag_constants__WEBPACK_IMPORTED_MODULE_6__["default"].SOUND:
         payloader = _lib_backpack_api__WEBPACK_IMPORTED_MODULE_5__["soundPayload"];
         presaveAsset = dragInfo.payload.asset;
         break;
-
       case _lib_drag_constants__WEBPACK_IMPORTED_MODULE_6__["default"].SPRITE:
         payloader = _lib_backpack_api__WEBPACK_IMPORTED_MODULE_5__["spritePayload"];
         break;
-
       case _lib_drag_constants__WEBPACK_IMPORTED_MODULE_6__["default"].CODE:
         payloader = _lib_backpack_api__WEBPACK_IMPORTED_MODULE_5__["codePayload"];
         break;
     }
+    if (!payloader) return;
 
-    if (!payloader) return; // Creating the payload is async, so set loading before starting
-
+    // Creating the payload is async, so set loading before starting
     this.setState({
       loading: true
     }, () => {
@@ -19024,7 +18392,6 @@ class Backpack extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
         if (presaveAsset && !presaveAsset.clean && !this.props.host === _lib_backpack_api__WEBPACK_IMPORTED_MODULE_5__["LOCAL_API"]) {
           return _lib_storage__WEBPACK_IMPORTED_MODULE_9__["default"].store(presaveAsset.assetType, presaveAsset.dataFormat, presaveAsset.data, presaveAsset.assetId).then(() => payload);
         }
-
         return payload;
       }).then(payload => Object(_lib_backpack_api__WEBPACK_IMPORTED_MODULE_5__["saveBackpackObject"])(_objectSpread({
         host: this.props.host,
@@ -19040,7 +18407,6 @@ class Backpack extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       });
     });
   }
-
   handleDelete(id) {
     this.setState({
       loading: true
@@ -19060,20 +18426,16 @@ class Backpack extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       });
     });
   }
-
   findItemById(id) {
     return this.state.contents.find(i => i.id === id);
   }
-
   handleRename(id) {
-    const item = this.findItemById(id); // eslint-disable-next-line no-alert
-
+    const item = this.findItemById(id);
+    // eslint-disable-next-line no-alert
     const newName = prompt(this.props.intl.formatMessage(messages.rename), item.name);
-
     if (!newName) {
       return;
     }
-
     this.setState({
       loading: true
     }, () => {
@@ -19091,7 +18453,6 @@ class Backpack extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       });
     });
   }
-
   getContents() {
     if (this.props.token && this.props.username || this.props.host === _lib_backpack_api__WEBPACK_IMPORTED_MODULE_5__["LOCAL_API"]) {
       this.setState({
@@ -19116,13 +18477,11 @@ class Backpack extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       });
     }
   }
-
   handleBlockDragUpdate(isOutsideWorkspace) {
     this.setState({
       blockDragOutsideWorkspace: isOutsideWorkspace
     });
   }
-
   handleMouseEnter() {
     if (this.state.blockDragOutsideWorkspace) {
       this.setState({
@@ -19130,13 +18489,11 @@ class Backpack extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       });
     }
   }
-
   handleMouseLeave() {
     this.setState({
       blockDragOverBackpack: false
     });
   }
-
   handleBlockDragEnd(blocks, topBlockId) {
     if (this.state.blockDragOverBackpack) {
       this.handleDrop({
@@ -19147,17 +18504,14 @@ class Backpack extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
         }
       });
     }
-
     this.setState({
       blockDragOverBackpack: false,
       blockDragOutsideWorkspace: false
     });
   }
-
   handleMore() {
     this.getContents();
   }
-
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(DroppableBackpack, {
       blockDragOver: this.state.blockDragOverBackpack,
@@ -19175,9 +18529,7 @@ class Backpack extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       onToggle: this.props.host ? this.handleToggle : null
     });
   }
-
 }
-
 Backpack.propTypes = {
   intl: react_intl__WEBPACK_IMPORTED_MODULE_3__["intlShape"],
   host: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
@@ -19185,7 +18537,6 @@ Backpack.propTypes = {
   username: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
   vm: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.instanceOf(scratch_vm__WEBPACK_IMPORTED_MODULE_10___default.a)
 };
-
 const getTokenAndUsername = state => {
   // Look for the session state provided by scratch-www
   if (state.session && state.session.session && state.session.session.user) {
@@ -19193,10 +18544,9 @@ const getTokenAndUsername = state => {
       token: state.session.session.user.token,
       username: state.session.session.user.username
     };
-  } // Otherwise try to pull testing params out of the URL, or return nulls
+  }
+  // Otherwise try to pull testing params out of the URL, or return nulls
   // TODO a hack for testing the backpack
-
-
   const tokenMatches = window.location.href.match(/[?&]token=([^&]*)&?/);
   const usernameMatches = window.location.href.match(/[?&]username=([^&]*)&?/);
   return {
@@ -19204,15 +18554,12 @@ const getTokenAndUsername = state => {
     username: usernameMatches ? usernameMatches[1] : null
   };
 };
-
 const mapStateToProps = state => Object.assign({
   dragInfo: state.scratchGui.assetDrag,
   vm: state.scratchGui.vm,
   blockDrag: state.scratchGui.blockDrag
 }, getTokenAndUsername(state));
-
 const mapDispatchToProps = () => ({});
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_intl__WEBPACK_IMPORTED_MODULE_3__["injectIntl"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_8__["connect"])(mapStateToProps, mapDispatchToProps)(Backpack)));
 
 /***/ }),
@@ -19262,14 +18609,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _reducers_workspace_metrics__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../reducers/workspace-metrics */ "./src/reducers/workspace-metrics.js");
 /* harmony import */ var _reducers_editor_tab__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../reducers/editor-tab */ "./src/reducers/editor-tab.js");
 const _excluded = ["anyModalVisible", "canUseCloud", "customStageSize", "customProceduresVisible", "extensionLibraryVisible", "options", "stageSize", "vm", "isRtl", "isVisible", "onActivateColorPicker", "onOpenConnectionModal", "onOpenSoundRecorder", "updateToolboxState", "onActivateCustomProcedures", "onRequestCloseExtensionLibrary", "onRequestCloseCustomProcedures", "toolboxXML", "updateMetrics", "workspaceMetrics"];
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
 
 
 
@@ -19301,20 +18643,16 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 const addFunctionListener = (object, property, callback) => {
   const oldFn = object[property];
-
   object[property] = function () {
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
-
     const result = oldFn.apply(this, args);
     callback.apply(this, result);
     return result;
   };
 };
-
 const DroppableBlocks = Object(_lib_drop_area_hoc_jsx__WEBPACK_IMPORTED_MODULE_16__["default"])([_lib_drag_constants__WEBPACK_IMPORTED_MODULE_17__["default"].BACKPACK_CODE])(_components_blocks_blocks_jsx__WEBPACK_IMPORTED_MODULE_10__["default"]);
-
 class Blocks extends react__WEBPACK_IMPORTED_MODULE_5___default.a.Component {
   constructor(props) {
     super(props);
@@ -19333,7 +18671,6 @@ class Blocks extends react__WEBPACK_IMPORTED_MODULE_5___default.a.Component {
     this.onTargetsUpdate = lodash_debounce__WEBPACK_IMPORTED_MODULE_1___default()(this.onTargetsUpdate, 100);
     this.toolboxUpdateQueue = [];
   }
-
   componentDidMount() {
     this.props.vm.setCompilerOptions({
       warpTimer: true
@@ -19346,17 +18683,16 @@ class Blocks extends react__WEBPACK_IMPORTED_MODULE_5___default.a.Component {
       rtl: this.props.isRtl,
       toolbox: this.props.toolboxXML
     });
-    this.workspace = this.ScratchBlocks.inject(this.blocks, workspaceConfig); // Register buttons under new callback keys for creating variables,
+    this.workspace = this.ScratchBlocks.inject(this.blocks, workspaceConfig);
+
+    // Register buttons under new callback keys for creating variables,
     // lists, and procedures from extensions.
 
     const toolboxWorkspace = this.workspace.getFlyout().getWorkspace();
-
     const varListButtonCallback = type => () => this.ScratchBlocks.Variables.createVariable(this.workspace, null, type);
-
     const procButtonCallback = () => {
       this.ScratchBlocks.Procedures.createProcedureDefCallback_(this.workspace);
     };
-
     toolboxWorkspace.registerButtonCallback('MAKE_A_VARIABLE', varListButtonCallback(''));
     toolboxWorkspace.registerButtonCallback('MAKE_A_LIST', varListButtonCallback('list'));
     toolboxWorkspace.registerButtonCallback('MAKE_A_PROCEDURE', procButtonCallback);
@@ -19364,85 +18700,76 @@ class Blocks extends react__WEBPACK_IMPORTED_MODULE_5___default.a.Component {
       const CLASS_PREFIX = 'docs-uri-';
       const svgGroup = block.svgGroup_;
       const docsURIClass = Array.from(svgGroup.classList).find(i => i.startsWith(CLASS_PREFIX));
-
       if (!docsURIClass) {
         return;
       }
-
       try {
         const docsURI = docsURIClass.substr(CLASS_PREFIX.length);
         const url = new URL(docsURI);
-
         if (url.protocol !== 'http:' && url.protocol !== 'https:') {
           throw new Error('invalid protocol');
         }
-
         window.open(docsURI, '_blank');
       } catch (e) {
         _lib_log_js__WEBPACK_IMPORTED_MODULE_8__["default"].warn('cannot open docs URI', e);
       }
-    }); // Store the xml of the toolbox that is actually rendered.
+    });
+
+    // Store the xml of the toolbox that is actually rendered.
     // This is used in componentDidUpdate instead of prevProps, because
     // the xml can change while e.g. on the costumes tab.
+    this._renderedToolboxXML = this.props.toolboxXML;
 
-    this._renderedToolboxXML = this.props.toolboxXML; // we actually never want the workspace to enable "refresh toolbox" - this basically re-renders the
+    // we actually never want the workspace to enable "refresh toolbox" - this basically re-renders the
     // entire toolbox every time we reset the workspace.  We call updateToolbox as a part of
     // componentDidUpdate so the toolbox will still correctly be updated
-
     this.setToolboxRefreshEnabled = this.workspace.setToolboxRefreshEnabled.bind(this.workspace);
-
     this.workspace.setToolboxRefreshEnabled = () => {
       this.setToolboxRefreshEnabled(false);
-    }; // @todo change this when blockly supports UI events
+    };
 
-
+    // @todo change this when blockly supports UI events
     addFunctionListener(this.workspace, 'translate', this.onWorkspaceMetricsChange);
     addFunctionListener(this.workspace, 'zoom', this.onWorkspaceMetricsChange);
-    this.attachVM(); // Only update blocks/vm locale when visible to avoid sizing issues
+    this.attachVM();
+    // Only update blocks/vm locale when visible to avoid sizing issues
     // If locale changes while not visible it will get handled in didUpdate
-
     if (this.props.isVisible) {
       this.setLocale();
-    } // tw: Handle when extensions are added when Blocks isn't mounted
+    }
 
-
+    // tw: Handle when extensions are added when Blocks isn't mounted
     for (const category of this.props.vm.runtime._blockInfo) {
       this.handleExtensionAdded(category);
     }
   }
-
   shouldComponentUpdate(nextProps, nextState) {
     return this.state.prompt !== nextState.prompt || this.props.isVisible !== nextProps.isVisible || this._renderedToolboxXML !== nextProps.toolboxXML || this.props.extensionLibraryVisible !== nextProps.extensionLibraryVisible || this.props.customProceduresVisible !== nextProps.customProceduresVisible || this.props.locale !== nextProps.locale || this.props.anyModalVisible !== nextProps.anyModalVisible || this.props.stageSize !== nextProps.stageSize || this.props.customStageSize !== nextProps.customStageSize;
   }
-
   componentDidUpdate(prevProps) {
     // If any modals are open, call hideChaff to close z-indexed field editors
     if (this.props.anyModalVisible && !prevProps.anyModalVisible) {
       this.ScratchBlocks.hideChaff();
-    } // Only rerender the toolbox when the blocks are visible and the xml is
+    }
+
+    // Only rerender the toolbox when the blocks are visible and the xml is
     // different from the previously rendered toolbox xml.
     // Do not check against prevProps.toolboxXML because that may not have been rendered.
-
-
     if (this.props.isVisible && this.props.toolboxXML !== this._renderedToolboxXML) {
       this.requestToolboxUpdate();
     }
-
     if (this.props.isVisible === prevProps.isVisible) {
       if (this.props.stageSize !== prevProps.stageSize || this.props.customStageSize !== prevProps.customStageSize) {
         // force workspace to redraw for the new stage size
         window.dispatchEvent(new Event('resize'));
       }
-
       return;
-    } // @todo hack to resize blockly manually in case resize happened while hidden
+    }
+    // @todo hack to resize blockly manually in case resize happened while hidden
     // @todo hack to reload the workspace due to gui bug #413
-
-
     if (this.props.isVisible) {
       // Scripts tab
       this.workspace.setVisible(true);
-
       if (prevProps.locale !== this.props.locale || this.props.locale !== this.props.vm.getLocale()) {
         // call setLocale if the locale has changed, or changed while the blocks were hidden.
         // vm.getLocale() will be out of sync if locale was changed while not visible
@@ -19451,27 +18778,23 @@ class Blocks extends react__WEBPACK_IMPORTED_MODULE_5___default.a.Component {
         this.props.vm.refreshWorkspace();
         this.requestToolboxUpdate();
       }
-
       window.dispatchEvent(new Event('resize'));
     } else {
       this.workspace.setVisible(false);
     }
   }
-
   componentWillUnmount() {
     this.detachVM();
     this.workspace.dispose();
     clearTimeout(this.toolboxUpdateTimeout);
     this.props.vm.setInEditor(false);
   }
-
   requestToolboxUpdate() {
     clearTimeout(this.toolboxUpdateTimeout);
     this.toolboxUpdateTimeout = setTimeout(() => {
       this.updateToolbox();
     }, 0);
   }
-
   setLocale() {
     this.ScratchBlocks.ScratchMsgs.setLocale(this.props.locale);
     this.props.vm.setLocale(this.props.locale, this.props.messages).then(() => {
@@ -19483,31 +18806,28 @@ class Blocks extends react__WEBPACK_IMPORTED_MODULE_5___default.a.Component {
       });
     });
   }
-
   updateToolbox() {
     this.toolboxUpdateTimeout = false;
     const categoryId = this.workspace.toolbox_.getSelectedCategoryId();
     const offset = this.workspace.toolbox_.getCategoryScrollOffset();
     this.workspace.updateToolbox(this.props.toolboxXML);
-    this._renderedToolboxXML = this.props.toolboxXML; // In order to catch any changes that mutate the toolbox during "normal runtime"
+    this._renderedToolboxXML = this.props.toolboxXML;
+
+    // In order to catch any changes that mutate the toolbox during "normal runtime"
     // (variable changes/etc), re-enable toolbox refresh.
     // Using the setter function will rerender the entire toolbox which we just rendered.
-
     this.workspace.toolboxRefreshEnabled_ = true;
     const currentCategoryPos = this.workspace.toolbox_.getCategoryPositionById(categoryId);
     const currentCategoryLen = this.workspace.toolbox_.getCategoryLengthById(categoryId);
-
     if (offset < currentCategoryLen) {
       this.workspace.toolbox_.setFlyoutScrollPos(currentCategoryPos + offset);
     } else {
       this.workspace.toolbox_.setFlyoutScrollPos(currentCategoryPos);
     }
-
     const queue = this.toolboxUpdateQueue;
     this.toolboxUpdateQueue = [];
     queue.forEach(fn => fn());
   }
-
   withToolboxUpdates(fn) {
     // if there is a queued toolbox update, we need to wait
     if (this.toolboxUpdateTimeout) {
@@ -19516,7 +18836,6 @@ class Blocks extends react__WEBPACK_IMPORTED_MODULE_5___default.a.Component {
       fn();
     }
   }
-
   attachVM() {
     this.workspace.addChangeListener(this.props.vm.blockListener);
     this.flyoutWorkspace = this.workspace.getFlyout().getWorkspace();
@@ -19535,7 +18854,6 @@ class Blocks extends react__WEBPACK_IMPORTED_MODULE_5___default.a.Component {
     this.props.vm.addListener('PERIPHERAL_CONNECTED', this.handleStatusButtonUpdate);
     this.props.vm.addListener('PERIPHERAL_DISCONNECTED', this.handleStatusButtonUpdate);
   }
-
   detachVM() {
     this.props.vm.removeListener('SCRIPT_GLOW_ON', this.onScriptGlowOn);
     this.props.vm.removeListener('SCRIPT_GLOW_OFF', this.onScriptGlowOff);
@@ -19550,17 +18868,14 @@ class Blocks extends react__WEBPACK_IMPORTED_MODULE_5___default.a.Component {
     this.props.vm.removeListener('PERIPHERAL_CONNECTED', this.handleStatusButtonUpdate);
     this.props.vm.removeListener('PERIPHERAL_DISCONNECTED', this.handleStatusButtonUpdate);
   }
-
   updateToolboxBlockValue(id, value) {
     this.withToolboxUpdates(() => {
       const block = this.workspace.getFlyout().getWorkspace().getBlockById(id);
-
       if (block) {
         block.inputList[0].fieldRow[0].setValue(value);
       }
     });
   }
-
   onTargetsUpdate() {
     if (this.props.vm.editingTarget && this.workspace.getFlyout()) {
       ['glide', 'move', 'set'].forEach(prefix => {
@@ -19569,10 +18884,8 @@ class Blocks extends react__WEBPACK_IMPORTED_MODULE_5___default.a.Component {
       });
     }
   }
-
   onWorkspaceMetricsChange() {
     const target = this.props.vm.editingTarget;
-
     if (target && target.id) {
       // Dispatch updateMetrics later, since onWorkspaceMetricsChange may be (very indirectly)
       // called from a reducer, i.e. when you create a custom procedure.
@@ -19587,27 +18900,21 @@ class Blocks extends react__WEBPACK_IMPORTED_MODULE_5___default.a.Component {
       }, 0);
     }
   }
-
   onScriptGlowOn(data) {
     this.workspace.glowStack(data.id, true);
   }
-
   onScriptGlowOff(data) {
     this.workspace.glowStack(data.id, false);
   }
-
   onBlockGlowOn(data) {
     this.workspace.glowBlock(data.id, true);
   }
-
   onBlockGlowOff(data) {
     this.workspace.glowBlock(data.id, false);
   }
-
   onVisualReport(data) {
     this.workspace.reportValue(data.id, data.value);
   }
-
   getToolboxXML() {
     // Use try/catch because this requires digging pretty deep into the VM
     // Code inside intentionally ignores several error situations (no stage, etc.)
@@ -19629,23 +18936,19 @@ class Blocks extends react__WEBPACK_IMPORTED_MODULE_5___default.a.Component {
       return null;
     }
   }
-
   onWorkspaceUpdate(data) {
     // When we change sprites, update the toolbox to have the new sprite's blocks
     const toolboxXML = this.getToolboxXML();
-
     if (toolboxXML) {
       this.props.updateToolboxState(toolboxXML);
     }
-
     if (this.props.vm.editingTarget && !this.props.workspaceMetrics.targets[this.props.vm.editingTarget.id]) {
       this.onWorkspaceMetricsChange();
-    } // Remove and reattach the workspace listener (but allow flyout events)
+    }
 
-
+    // Remove and reattach the workspace listener (but allow flyout events)
     this.workspace.removeChangeListener(this.props.vm.blockListener);
     const dom = this.ScratchBlocks.Xml.textToDom(data.xml);
-
     try {
       this.ScratchBlocks.Xml.clearWorkspaceAndLoadFromXml(dom, this.workspace);
     } catch (error) {
@@ -19661,12 +18964,9 @@ class Blocks extends react__WEBPACK_IMPORTED_MODULE_5___default.a.Component {
       if (error.message) {
         error.message = "Workspace Update Error: ".concat(error.message);
       }
-
       _lib_log_js__WEBPACK_IMPORTED_MODULE_8__["default"].error(error);
     }
-
     this.workspace.addChangeListener(this.props.vm.blockListener);
-
     if (this.props.vm.editingTarget && this.props.workspaceMetrics.targets[this.props.vm.editingTarget.id]) {
       const {
         scrollX,
@@ -19677,35 +18977,31 @@ class Blocks extends react__WEBPACK_IMPORTED_MODULE_5___default.a.Component {
       this.workspace.scrollY = scrollY;
       this.workspace.scale = scale;
       this.workspace.resize();
-    } // Clear the undo state of the workspace since this is a
+    }
+
+    // Clear the undo state of the workspace since this is a
     // fresh workspace and we don't want any changes made to another sprites
     // workspace to be 'undone' here.
-
-
     this.workspace.clearUndo();
   }
-
   handleMonitorsUpdate(monitors) {
     // Update the checkboxes of the relevant monitors.
     // TODO: What about monitors that have fields? See todo in scratch-vm blocks.js changeBlock:
     // https://github.com/LLK/scratch-vm/blob/2373f9483edaf705f11d62662f7bb2a57fbb5e28/src/engine/blocks.js#L569-L576
     const flyout = this.workspace.getFlyout();
-
     for (const monitor of monitors.values()) {
       const blockId = monitor.get('id');
       const isVisible = monitor.get('visible');
-      flyout.setCheckboxState(blockId, isVisible); // We also need to update the isMonitored flag for this block on the VM, since it's used to determine
+      flyout.setCheckboxState(blockId, isVisible);
+      // We also need to update the isMonitored flag for this block on the VM, since it's used to determine
       // whether the checkbox is activated or not when the checkbox is re-displayed (e.g. local variables/blocks
       // when switching between sprites).
-
       const block = this.props.vm.runtime.monitorBlocks.getBlock(blockId);
-
       if (block) {
         block.isMonitored = isVisible;
       }
     }
   }
-
   handleExtensionAdded(categoryInfo) {
     const defineBlocks = blockInfoArray => {
       if (blockInfoArray && blockInfoArray.length > 0) {
@@ -19716,9 +19012,10 @@ class Blocks extends react__WEBPACK_IMPORTED_MODULE_5___default.a.Component {
             dynamicBlocksInfo.push(blockInfo);
           } else if (blockInfo.json) {
             staticBlocksJson.push(blockInfo.json);
-          } // otherwise it's a non-block entry such as '---'
-
+          }
+          // otherwise it's a non-block entry such as '---'
         });
+
         this.ScratchBlocks.defineBlocksWithJsonArray(staticBlocksJson);
         dynamicBlocksInfo.forEach(blockInfo => {
           // This is creating the block factory / constructor -- NOT a specific instance of the block.
@@ -19729,42 +19026,36 @@ class Blocks extends react__WEBPACK_IMPORTED_MODULE_5___default.a.Component {
           this.ScratchBlocks.Blocks[extendedOpcode] = blockDefinition;
         });
       }
-    }; // scratch-blocks implements a menu or custom field as a special kind of block ("shadow" block)
+    };
+
+    // scratch-blocks implements a menu or custom field as a special kind of block ("shadow" block)
     // these actually define blocks and MUST run regardless of the UI state
-
-
     defineBlocks(Object.getOwnPropertyNames(categoryInfo.customFieldTypes).map(fieldTypeName => categoryInfo.customFieldTypes[fieldTypeName].scratchBlocksDefinition));
     defineBlocks(categoryInfo.menus);
-    defineBlocks(categoryInfo.blocks); // Update the toolbox with new blocks if possible
+    defineBlocks(categoryInfo.blocks);
 
+    // Update the toolbox with new blocks if possible
     const toolboxXML = this.getToolboxXML();
-
     if (toolboxXML) {
       this.props.updateToolboxState(toolboxXML);
     }
   }
-
   handleBlocksInfoUpdate(categoryInfo) {
     // @todo Later we should replace this to avoid all the warnings from redefining blocks.
     this.handleExtensionAdded(categoryInfo);
   }
-
   handleCategorySelected(categoryId) {
     const extension = _lib_libraries_extensions_index_jsx__WEBPACK_IMPORTED_MODULE_12__["default"].find(ext => ext.extensionId === categoryId);
-
     if (extension && extension.launchPeripheralConnectionFlow) {
       this.handleConnectionModalStart(categoryId);
     }
-
     this.withToolboxUpdates(() => {
       this.workspace.toolbox_.setSelectedCategoryById(categoryId);
     });
   }
-
   setBlocks(blocks) {
     this.blocks = blocks;
   }
-
   handlePromptStart(message, defaultValue, callback, optTitle, optVarType) {
     const p = {
       prompt: {
@@ -19775,48 +19066,42 @@ class Blocks extends react__WEBPACK_IMPORTED_MODULE_5___default.a.Component {
     };
     p.prompt.title = optTitle ? optTitle : this.ScratchBlocks.Msg.VARIABLE_MODAL_TITLE;
     p.prompt.varType = typeof optVarType === 'string' ? optVarType : this.ScratchBlocks.SCALAR_VARIABLE_TYPE;
-    p.prompt.showVariableOptions = // This flag means that we should show variable/list options about scope
+    p.prompt.showVariableOptions =
+    // This flag means that we should show variable/list options about scope
     optVarType !== this.ScratchBlocks.BROADCAST_MESSAGE_VARIABLE_TYPE && p.prompt.title !== this.ScratchBlocks.Msg.RENAME_VARIABLE_MODAL_TITLE && p.prompt.title !== this.ScratchBlocks.Msg.RENAME_LIST_MODAL_TITLE;
     p.prompt.showCloudOption = optVarType === this.ScratchBlocks.SCALAR_VARIABLE_TYPE && this.props.canUseCloud;
     this.setState(p);
   }
-
   handleConnectionModalStart(extensionId) {
     this.props.onOpenConnectionModal(extensionId);
   }
-
   handleStatusButtonUpdate() {
     this.ScratchBlocks.refreshStatusButtons(this.workspace);
   }
-
   handleOpenSoundRecorder() {
     this.props.onOpenSoundRecorder();
   }
+
   /*
    * Pass along information about proposed name and variable options (scope and isCloud)
    * and additional potentially conflicting variable names from the VM
    * to the variable validation prompt callback used in scratch-blocks.
    */
-
-
   handlePromptCallback(input, variableOptions) {
     this.state.prompt.callback(input, this.props.vm.runtime.getAllVarNamesOfType(this.state.prompt.varType), variableOptions);
     this.handlePromptClose();
   }
-
   handlePromptClose() {
     this.setState({
       prompt: null
     });
   }
-
   handleCustomProceduresClose(data) {
     this.props.onRequestCloseCustomProcedures(data);
     const ws = this.workspace;
     ws.refreshToolboxSelection_();
     ws.toolbox_.scrollToCategoryById('myBlocks');
   }
-
   handleDrop(dragInfo) {
     fetch(dragInfo.payload.bodyUrl).then(response => response.json()).then(blocks => this.props.vm.shareBlocksToTarget(blocks, this.props.vm.editingTarget.id)).then(() => {
       this.props.vm.refreshWorkspace();
@@ -19827,32 +19112,30 @@ class Blocks extends react__WEBPACK_IMPORTED_MODULE_5___default.a.Component {
   render() {
     /* eslint-disable no-unused-vars */
     const _this$props = this.props,
-          {
-      anyModalVisible,
-      canUseCloud,
-      customStageSize,
-      customProceduresVisible,
-      extensionLibraryVisible,
-      options,
-      stageSize,
-      vm,
-      isRtl,
-      isVisible,
-      onActivateColorPicker,
-      onOpenConnectionModal,
-      onOpenSoundRecorder,
-      updateToolboxState,
-      onActivateCustomProcedures,
-      onRequestCloseExtensionLibrary,
-      onRequestCloseCustomProcedures,
-      toolboxXML,
-      updateMetrics: updateMetricsProp,
-      workspaceMetrics
-    } = _this$props,
-          props = _objectWithoutProperties(_this$props, _excluded);
+      {
+        anyModalVisible,
+        canUseCloud,
+        customStageSize,
+        customProceduresVisible,
+        extensionLibraryVisible,
+        options,
+        stageSize,
+        vm,
+        isRtl,
+        isVisible,
+        onActivateColorPicker,
+        onOpenConnectionModal,
+        onOpenSoundRecorder,
+        updateToolboxState,
+        onActivateCustomProcedures,
+        onRequestCloseExtensionLibrary,
+        onRequestCloseCustomProcedures,
+        toolboxXML,
+        updateMetrics: updateMetricsProp,
+        workspaceMetrics
+      } = _this$props,
+      props = _objectWithoutProperties(_this$props, _excluded);
     /* eslint-enable no-unused-vars */
-
-
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_5___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(DroppableBlocks, _extends({
       componentRef: this.setBlocks,
       onDrop: this.handleDrop
@@ -19878,9 +19161,7 @@ class Blocks extends react__WEBPACK_IMPORTED_MODULE_5___default.a.Component {
       onRequestClose: this.handleCustomProceduresClose
     }) : null);
   }
-
 }
-
 Blocks.propTypes = {
   anyModalVisible: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.bool,
   canUseCloud: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.bool,
@@ -19962,7 +19243,6 @@ Blocks.defaultProps = {
   isVisible: true,
   options: Blocks.defaultOptions
 };
-
 const mapStateToProps = state => ({
   anyModalVisible: Object.keys(state.scratchGui.modals).some(key => state.scratchGui.modals[key]) || state.scratchGui.mode.isFullScreen,
   customStageSize: state.scratchGui.customStageSize,
@@ -19974,7 +19254,6 @@ const mapStateToProps = state => ({
   customProceduresVisible: state.scratchGui.customProcedures.active,
   workspaceMetrics: state.scratchGui.workspaceMetrics
 });
-
 const mapDispatchToProps = dispatch => ({
   onActivateColorPicker: callback => dispatch(Object(_reducers_color_picker__WEBPACK_IMPORTED_MODULE_23__["activateColorPicker"])(callback)),
   onActivateCustomProcedures: (data, callback) => dispatch(Object(_reducers_custom_procedures__WEBPACK_IMPORTED_MODULE_25__["activateCustomProcedures"])(data, callback)),
@@ -19999,7 +19278,6 @@ const mapDispatchToProps = dispatch => ({
     dispatch(Object(_reducers_workspace_metrics__WEBPACK_IMPORTED_MODULE_27__["updateMetrics"])(metrics));
   }
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(_lib_error_boundary_hoc_jsx__WEBPACK_IMPORTED_MODULE_14__["default"])('Blocks')(Object(react_redux__WEBPACK_IMPORTED_MODULE_21__["connect"])(mapStateToProps, mapDispatchToProps)(Object(_lib_tw_load_scratch_blocks_hoc_jsx__WEBPACK_IMPORTED_MODULE_20__["default"])(Blocks))));
 
 /***/ }),
@@ -20031,30 +19309,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 class Cards extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
   componentDidMount() {
     if (this.props.locale !== 'en') {
       Object(_lib_libraries_decks_translate_image_js__WEBPACK_IMPORTED_MODULE_6__["loadImageData"])(this.props.locale);
     }
   }
-
   componentDidUpdate(prevProps) {
     if (this.props.locale !== prevProps.locale) {
       Object(_lib_libraries_decks_translate_image_js__WEBPACK_IMPORTED_MODULE_6__["loadImageData"])(this.props.locale);
     }
   }
-
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_cards_cards_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], this.props);
   }
-
 }
-
 Cards.propTypes = {
   locale: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired
 };
-
 const mapStateToProps = state => ({
   visible: state.scratchGui.cards.visible,
   content: state.scratchGui.cards.content,
@@ -20068,7 +19340,6 @@ const mapStateToProps = state => ({
   dragging: state.scratchGui.cards.dragging,
   showVideos: Object(_lib_isScratchDesktop__WEBPACK_IMPORTED_MODULE_7__["notScratchDesktop"])()
 });
-
 const mapDispatchToProps = dispatch => ({
   onActivateDeckFactory: id => () => dispatch(Object(_reducers_cards__WEBPACK_IMPORTED_MODULE_3__["activateDeck"])(id)),
   onShowAll: () => {
@@ -20083,7 +19354,6 @@ const mapDispatchToProps = dispatch => ({
   onStartDrag: () => dispatch(Object(_reducers_cards__WEBPACK_IMPORTED_MODULE_3__["startDrag"])()),
   onEndDrag: () => dispatch(Object(_reducers_cards__WEBPACK_IMPORTED_MODULE_3__["endDrag"])())
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(Cards));
 
 /***/ }),
@@ -20119,7 +19389,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 class ConnectionModal extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
   constructor(props) {
     super(props);
@@ -20129,23 +19398,19 @@ class ConnectionModal extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Compo
       phase: props.vm.getPeripheralIsConnected(props.extensionId) ? _components_connection_modal_connection_modal_jsx__WEBPACK_IMPORTED_MODULE_3__["PHASES"].connected : _components_connection_modal_connection_modal_jsx__WEBPACK_IMPORTED_MODULE_3__["PHASES"].scanning
     };
   }
-
   componentDidMount() {
     this.props.vm.on('PERIPHERAL_CONNECTED', this.handleConnected);
     this.props.vm.on('PERIPHERAL_REQUEST_ERROR', this.handleError);
   }
-
   componentWillUnmount() {
     this.props.vm.removeListener('PERIPHERAL_CONNECTED', this.handleConnected);
     this.props.vm.removeListener('PERIPHERAL_REQUEST_ERROR', this.handleError);
   }
-
   handleScanning() {
     this.setState({
       phase: _components_connection_modal_connection_modal_jsx__WEBPACK_IMPORTED_MODULE_3__["PHASES"].scanning
     });
   }
-
   handleConnecting(peripheralId) {
     this.props.vm.connectPeripheral(this.props.extensionId, peripheralId);
     this.setState({
@@ -20157,7 +19422,6 @@ class ConnectionModal extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Compo
       label: this.props.extensionId
     });
   }
-
   handleDisconnect() {
     try {
       this.props.vm.disconnectPeripheral(this.props.extensionId);
@@ -20165,7 +19429,6 @@ class ConnectionModal extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Compo
       this.props.onCancel();
     }
   }
-
   handleCancel() {
     try {
       // If we're not connected to a peripheral, close the websocket so we stop scanning.
@@ -20177,7 +19440,6 @@ class ConnectionModal extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Compo
       this.props.onCancel();
     }
   }
-
   handleError() {
     // Assume errors that come in during scanning phase are the result of not
     // having scratch-link installed.
@@ -20196,7 +19458,6 @@ class ConnectionModal extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Compo
       });
     }
   }
-
   handleConnected() {
     this.setState({
       phase: _components_connection_modal_connection_modal_jsx__WEBPACK_IMPORTED_MODULE_3__["PHASES"].connected
@@ -20207,7 +19468,6 @@ class ConnectionModal extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Compo
       label: this.props.extensionId
     });
   }
-
   handleHelp() {
     window.open(this.state.extension.helpLink, '_blank');
     _lib_analytics__WEBPACK_IMPORTED_MODULE_5__["default"].event({
@@ -20216,7 +19476,6 @@ class ConnectionModal extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Compo
       label: this.props.extensionId
     });
   }
-
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_connection_modal_connection_modal_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
       connectingMessage: this.state.extension && this.state.extension.connectingMessage,
@@ -20237,25 +19496,20 @@ class ConnectionModal extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Compo
       onScanning: this.handleScanning
     });
   }
-
 }
-
 ConnectionModal.propTypes = {
   extensionId: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string.isRequired,
   onCancel: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func.isRequired,
   vm: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.instanceOf(scratch_vm__WEBPACK_IMPORTED_MODULE_4___default.a).isRequired
 };
-
 const mapStateToProps = state => ({
   extensionId: state.scratchGui.connectionModal.extensionId
 });
-
 const mapDispatchToProps = dispatch => ({
   onCancel: () => {
     dispatch(Object(_reducers_modals__WEBPACK_IMPORTED_MODULE_8__["closeConnectionModal"])());
   }
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_7__["connect"])(mapStateToProps, mapDispatchToProps)(ConnectionModal));
 
 /***/ }),
@@ -20281,14 +19535,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_controls_controls_jsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/controls/controls.jsx */ "./src/components/controls/controls.jsx");
 /* harmony import */ var _lib_layout_constants_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../lib/layout-constants.js */ "./src/lib/layout-constants.js");
 const _excluded = ["vm", "isStarted", "projectRunning", "turbo"];
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
 
 
 
@@ -20301,15 +19550,13 @@ class Controls extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
     super(props);
     lodash_bindall__WEBPACK_IMPORTED_MODULE_0___default()(this, ['handleGreenFlagClick', 'handleStopAllClick']);
   }
-
   handleGreenFlagClick(e) {
-    e.preventDefault(); // tw: implement alt+click and right click to toggle FPS
-
+    e.preventDefault();
+    // tw: implement alt+click and right click to toggle FPS
     if (e.shiftKey || e.altKey || e.type === 'contextmenu') {
       if (e.shiftKey) {
         this.props.vm.setTurboMode(!this.props.turbo);
       }
-
       if (e.altKey || e.type === 'contextmenu') {
         if (this.props.framerate === 30) {
           this.props.vm.setFramerate(60);
@@ -20321,28 +19568,24 @@ class Controls extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
       if (!this.props.isStarted) {
         this.props.vm.start();
       }
-
       this.props.vm.greenFlag();
     }
   }
-
   handleStopAllClick(e) {
     e.preventDefault();
     this.props.vm.stopAll();
   }
-
   render() {
     const _this$props = this.props,
-          {
-      vm,
-      // eslint-disable-line no-unused-vars
-      isStarted,
-      // eslint-disable-line no-unused-vars
-      projectRunning,
-      turbo
-    } = _this$props,
-          props = _objectWithoutProperties(_this$props, _excluded);
-
+      {
+        vm,
+        // eslint-disable-line no-unused-vars
+        isStarted,
+        // eslint-disable-line no-unused-vars
+        projectRunning,
+        turbo
+      } = _this$props,
+      props = _objectWithoutProperties(_this$props, _excluded);
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_controls_controls_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], _extends({}, props, {
       active: projectRunning && isStarted,
       turbo: turbo,
@@ -20350,9 +19593,7 @@ class Controls extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
       onStopAllClick: this.handleStopAllClick
     }));
   }
-
 }
-
 Controls.propTypes = {
   isStarted: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool.isRequired,
   projectRunning: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool.isRequired,
@@ -20362,18 +19603,15 @@ Controls.propTypes = {
   isSmall: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
   vm: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.instanceOf(scratch_vm__WEBPACK_IMPORTED_MODULE_3___default.a)
 };
-
 const mapStateToProps = state => ({
   isStarted: state.scratchGui.vmStatus.started,
   projectRunning: state.scratchGui.vmStatus.running,
   framerate: state.scratchGui.tw.framerate,
   interpolation: state.scratchGui.tw.interpolation,
   turbo: state.scratchGui.vmStatus.turbo
-}); // no-op function to prevent dispatch prop being passed to component
-
-
+});
+// no-op function to prevent dispatch prop being passed to component
 const mapDispatchToProps = () => ({});
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["connect"])(mapStateToProps, mapDispatchToProps)(Controls));
 
 /***/ }),
@@ -20413,13 +19651,11 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_3__["defineMessages"
     "defaultMessage": "Choose a Costume"
   }
 });
-
 class CostumeLibrary extends react__WEBPACK_IMPORTED_MODULE_2___default.a.PureComponent {
   constructor(props) {
     super(props);
     lodash_bindall__WEBPACK_IMPORTED_MODULE_0___default()(this, ['handleItemSelected']);
   }
-
   handleItemSelected(item) {
     const vmCostume = {
       name: item.name,
@@ -20430,7 +19666,6 @@ class CostumeLibrary extends react__WEBPACK_IMPORTED_MODULE_2___default.a.PureCo
     };
     this.props.vm.addCostumeFromLibrary(item.md5ext, vmCostume);
   }
-
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_library_library_jsx__WEBPACK_IMPORTED_MODULE_7__["default"], {
       data: Object(_lib_libraries_tw_async_libraries__WEBPACK_IMPORTED_MODULE_5__["getCostumeLibrary"])(),
@@ -20441,9 +19676,7 @@ class CostumeLibrary extends react__WEBPACK_IMPORTED_MODULE_2___default.a.PureCo
       onRequestClose: this.props.onRequestClose
     });
   }
-
 }
-
 CostumeLibrary.propTypes = {
   intl: react_intl__WEBPACK_IMPORTED_MODULE_3__["intlShape"].isRequired,
   onRequestClose: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
@@ -20498,11 +19731,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_action_menu_icon_search_svg__WEBPACK_IMPORTED_MODULE_23___default = /*#__PURE__*/__webpack_require__.n(_components_action_menu_icon_search_svg__WEBPACK_IMPORTED_MODULE_23__);
 /* harmony import */ var _lib_libraries_tw_async_libraries__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../lib/libraries/tw-async-libraries */ "./src/lib/libraries/tw-async-libraries.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -20555,7 +19785,6 @@ let messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_3__["defineMessages"])
   }
 });
 messages = _objectSpread(_objectSpread({}, messages), _lib_shared_messages__WEBPACK_IMPORTED_MODULE_12__["default"]);
-
 class CostumeTab extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
   constructor(props) {
     super(props);
@@ -20566,7 +19795,6 @@ class CostumeTab extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
       stage
     } = props;
     const target = editingTarget && sprites[editingTarget] ? sprites[editingTarget] : stage;
-
     if (target && target.currentCostume) {
       this.state = {
         selectedCostumeIndex: target.currentCostume
@@ -20577,7 +19805,6 @@ class CostumeTab extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
       };
     }
   }
-
   componentWillReceiveProps(nextProps) {
     const {
       editingTarget,
@@ -20585,18 +19812,16 @@ class CostumeTab extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
       stage
     } = nextProps;
     const target = editingTarget && sprites[editingTarget] ? sprites[editingTarget] : stage;
-
     if (!target || !target.costumes) {
       return;
     }
-
     if (this.props.editingTarget === editingTarget) {
       // If costumes have been added or removed, change costumes to the editing target's
       // current costume.
-      const oldTarget = this.props.sprites[editingTarget] ? this.props.sprites[editingTarget] : this.props.stage; // @todo: Find and switch to the index of the costume that is new. This is blocked by
+      const oldTarget = this.props.sprites[editingTarget] ? this.props.sprites[editingTarget] : this.props.stage;
+      // @todo: Find and switch to the index of the costume that is new. This is blocked by
       // https://github.com/LLK/scratch-vm/issues/967
       // Right now, you can land on the wrong costume if a costume changing script is running.
-
       if (oldTarget.costumeCount !== target.costumeCount) {
         this.setState({
           selectedCostumeIndex: target.currentCostume
@@ -20609,14 +19834,12 @@ class CostumeTab extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
       });
     }
   }
-
   handleSelectCostume(costumeIndex) {
     this.props.vm.editingTarget.setCostume(costumeIndex);
     this.setState({
       selectedCostumeIndex: costumeIndex
     });
   }
-
   handleDeleteCostume(costumeIndex) {
     const restoreCostumeFun = this.props.vm.deleteCostume(costumeIndex);
     this.props.dispatchUpdateRestore({
@@ -20624,11 +19847,9 @@ class CostumeTab extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
       deletedItem: 'Costume'
     });
   }
-
   handleDuplicateCostume(costumeIndex) {
     this.props.vm.duplicateCostume(costumeIndex);
   }
-
   handleExportCostume(costumeIndex) {
     const item = this.props.vm.editingTarget.sprite.costumes[costumeIndex];
     const blob = new Blob([this.props.vm.getExportedCostume(item)], {
@@ -20636,21 +19857,18 @@ class CostumeTab extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
     });
     Object(_lib_download_blob__WEBPACK_IMPORTED_MODULE_13__["default"])("".concat(item.name, ".").concat(item.asset.dataFormat), blob);
   }
-
   handleNewCostume(costume, fromCostumeLibrary, targetId) {
     const costumes = Array.isArray(costume) ? costume : [costume];
     return Promise.all(costumes.map(c => {
       if (fromCostumeLibrary) {
         return this.props.vm.addCostumeFromLibrary(c.md5, c);
-      } // If targetId is falsy, VM should default it to editingTarget.id
+      }
+      // If targetId is falsy, VM should default it to editingTarget.id
       // However, targetId should be provided to prevent #5876,
       // if making new costume takes a while
-
-
       return this.props.vm.addCostume(c.md5, c, targetId);
     }));
   }
-
   handleNewBlankCostume() {
     const name = this.props.vm.editingTarget.isStage ? this.props.intl.formatMessage(messages.backdrop, {
       index: 1
@@ -20659,7 +19877,6 @@ class CostumeTab extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
     });
     this.handleNewCostume(Object(_lib_empty_assets__WEBPACK_IMPORTED_MODULE_11__["emptyCostume"])(name));
   }
-
   async handleSurpriseCostume() {
     const costumeLibraryContent = await Object(_lib_libraries_tw_async_libraries__WEBPACK_IMPORTED_MODULE_24__["getCostumeLibrary"])();
     const item = costumeLibraryContent[Math.floor(Math.random() * costumeLibraryContent.length)];
@@ -20671,9 +19888,7 @@ class CostumeTab extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
       bitmapResolution: item.bitmapResolution,
       skinId: null
     };
-    this.handleNewCostume(vmCostume, true
-    /* fromCostumeLibrary */
-    );
+    this.handleNewCostume(vmCostume, true /* fromCostumeLibrary */);
   }
 
   async handleSurpriseBackdrop() {
@@ -20689,7 +19904,6 @@ class CostumeTab extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
     };
     this.handleNewCostume(vmCostume);
   }
-
   handleCostumeUpload(e) {
     const vm = this.props.vm;
     const targetId = this.props.vm.editingTarget.id;
@@ -20707,11 +19921,9 @@ class CostumeTab extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
       }, this.props.onCloseImporting);
     }, this.props.onCloseImporting);
   }
-
   handleFileUploadClick() {
     this.fileInput.click();
   }
-
   handleDrop(dropInfo) {
     if (dropInfo.dragType === _lib_drag_constants__WEBPACK_IMPORTED_MODULE_10__["default"].COSTUME) {
       const sprite = this.props.vm.editingTarget.sprite;
@@ -20732,20 +19944,17 @@ class CostumeTab extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
       });
     }
   }
-
   setFileInput(input) {
     this.fileInput = input;
   }
-
   formatCostumeDetails(size, optResolution) {
     // If no resolution is given, assume that the costume is an SVG
-    const resolution = optResolution ? optResolution : 1; // Convert size to stage units by dividing by resolution
+    const resolution = optResolution ? optResolution : 1;
+    // Convert size to stage units by dividing by resolution
     // Round up width and height for scratch-flash compatibility
     // https://github.com/LLK/scratch-flash/blob/9fbac92ef3d09ceca0c0782f8a08deaa79e4df69/src/ui/media/MediaInfo.as#L224-L237
-
     return "".concat(Math.ceil(size[0] / resolution), " x ").concat(Math.ceil(size[1] / resolution));
   }
-
   render() {
     const {
       dispatchUpdateRestore,
@@ -20756,11 +19965,9 @@ class CostumeTab extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
       onNewLibraryCostumeClick,
       vm
     } = this.props;
-
     if (!vm.editingTarget) {
       return null;
     }
-
     const isStage = vm.editingTarget.isStage;
     const target = vm.editingTarget.sprite;
     const addLibraryMessage = isStage ? messages.addLibraryBackdropMsg : messages.addLibraryCostumeMsg;
@@ -20814,9 +20021,7 @@ class CostumeTab extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
       isDark: this.props.isDark
     }) : null);
   }
-
 }
-
 CostumeTab.propTypes = {
   dispatchUpdateRestore: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func,
   editingTarget: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
@@ -20844,7 +20049,6 @@ CostumeTab.propTypes = {
   }),
   vm: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.instanceOf(scratch_vm__WEBPACK_IMPORTED_MODULE_4___default.a)
 };
-
 const mapStateToProps = state => ({
   editingTarget: state.scratchGui.targets.editingTarget,
   isRtl: state.locales.isRtl,
@@ -20852,7 +20056,6 @@ const mapStateToProps = state => ({
   stage: state.scratchGui.targets.stage,
   dragging: state.scratchGui.assetDrag.dragging
 });
-
 const mapDispatchToProps = dispatch => ({
   onActivateSoundsTab: () => dispatch(Object(_reducers_editor_tab__WEBPACK_IMPORTED_MODULE_15__["activateTab"])(_reducers_editor_tab__WEBPACK_IMPORTED_MODULE_15__["SOUNDS_TAB_INDEX"])),
   onNewLibraryBackdropClick: e => {
@@ -20869,7 +20072,6 @@ const mapDispatchToProps = dispatch => ({
   onCloseImporting: () => dispatch(Object(_reducers_alerts__WEBPACK_IMPORTED_MODULE_17__["closeAlertWithId"])('importingAsset')),
   onShowImporting: () => dispatch(Object(_reducers_alerts__WEBPACK_IMPORTED_MODULE_17__["showStandardAlert"])('importingAsset'))
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(_lib_error_boundary_hoc_jsx__WEBPACK_IMPORTED_MODULE_9__["default"])('Costume Tab')(Object(react_intl__WEBPACK_IMPORTED_MODULE_3__["injectIntl"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_7__["connect"])(mapStateToProps, mapDispatchToProps)(CostumeTab))));
 
 /***/ }),
@@ -20901,7 +20103,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 class CustomProcedures extends react__WEBPACK_IMPORTED_MODULE_3___default.a.Component {
   constructor(props) {
     super(props);
@@ -20911,34 +20112,34 @@ class CustomProcedures extends react__WEBPACK_IMPORTED_MODULE_3___default.a.Comp
       warp: false
     };
   }
-
   componentWillUnmount() {
     if (this.workspace) {
       this.workspace.dispose();
     }
   }
-
   setBlocks(blocksRef) {
     if (!blocksRef) return;
     this.blocks = blocksRef;
     const workspaceConfig = lodash_defaultsdeep__WEBPACK_IMPORTED_MODULE_1___default()({}, CustomProcedures.defaultOptions, this.props.options, {
       rtl: this.props.isRtl
-    }); // @todo This is a hack to make there be no toolbox.
+    });
 
+    // @todo This is a hack to make there be no toolbox.
     const ScratchBlocks = _lib_tw_lazy_scratch_blocks__WEBPACK_IMPORTED_MODULE_5__["default"].get();
     const oldDefaultToolbox = ScratchBlocks.Blocks.defaultToolbox;
     ScratchBlocks.Blocks.defaultToolbox = null;
     this.workspace = ScratchBlocks.inject(this.blocks, workspaceConfig);
-    ScratchBlocks.Blocks.defaultToolbox = oldDefaultToolbox; // Create the procedure declaration block for editing the mutation.
+    ScratchBlocks.Blocks.defaultToolbox = oldDefaultToolbox;
 
-    this.mutationRoot = this.workspace.newBlock('procedures_declaration'); // Make the declaration immovable, undeletable and have no context menu
-
+    // Create the procedure declaration block for editing the mutation.
+    this.mutationRoot = this.workspace.newBlock('procedures_declaration');
+    // Make the declaration immovable, undeletable and have no context menu
     this.mutationRoot.setMovable(false);
     this.mutationRoot.setDeletable(false);
     this.mutationRoot.contextMenu = false;
     this.workspace.addChangeListener(() => {
-      this.mutationRoot.onChangeFn(); // Keep the block centered on the workspace
-
+      this.mutationRoot.onChangeFn();
+      // Keep the block centered on the workspace
       const metrics = this.workspace.getMetrics();
       const {
         x,
@@ -20946,7 +20147,6 @@ class CustomProcedures extends react__WEBPACK_IMPORTED_MODULE_3___default.a.Comp
       } = this.mutationRoot.getRelativeToSurfaceXY();
       const dy = metrics.viewHeight / 2 - this.mutationRoot.height / 2 - y;
       let dx;
-
       if (this.props.isRtl) {
         // // TODO: https://github.com/LLK/scratch-gui/issues/2838
         // This is temporary until we can figure out what's going on width
@@ -20959,14 +20159,11 @@ class CustomProcedures extends react__WEBPACK_IMPORTED_MODULE_3___default.a.Comp
         // Use the difference between ltrX and mirrorX as the amount to move
         const ltrX = metrics.viewWidth / 2 - this.mutationRoot.width / 2 + 25;
         const mirrorX = x - (x - this.state.rtlOffset) * 2;
-
         if (mirrorX === ltrX) {
           return;
         }
-
         dx = mirrorX - ltrX;
         const midPoint = metrics.viewWidth / 2;
-
         if (x === 0) {
           // if it's the first time positioning, it should always move right
           if (this.mutationRoot.width < midPoint) {
@@ -20976,26 +20173,23 @@ class CustomProcedures extends react__WEBPACK_IMPORTED_MODULE_3___default.a.Comp
           } else {
             dx = midPoint + (this.mutationRoot.width - metrics.viewWidth);
           }
-
           this.mutationRoot.moveBy(dx, dy);
           this.setState({
             rtlOffset: this.mutationRoot.getRelativeToSurfaceXY().x
           });
           return;
         }
-
         if (this.mutationRoot.width > metrics.viewWidth) {
           dx = dx + this.mutationRoot.width - metrics.viewWidth;
         }
       } else {
-        dx = metrics.viewWidth / 2 - this.mutationRoot.width / 2 - x; // If the procedure declaration is wider than the view width,
+        dx = metrics.viewWidth / 2 - this.mutationRoot.width / 2 - x;
+        // If the procedure declaration is wider than the view width,
         // keep the right-hand side of the procedure in view.
-
         if (this.mutationRoot.width > metrics.viewWidth) {
           dx = metrics.viewWidth - this.mutationRoot.width - x;
         }
       }
-
       this.mutationRoot.moveBy(dx, dy);
     });
     this.mutationRoot.domToMutation(this.props.mutator);
@@ -21003,40 +20197,34 @@ class CustomProcedures extends react__WEBPACK_IMPORTED_MODULE_3___default.a.Comp
     this.mutationRoot.render();
     this.setState({
       warp: this.mutationRoot.getWarp()
-    }); // Allow the initial events to run to position this block, then focus.
-
+    });
+    // Allow the initial events to run to position this block, then focus.
     setTimeout(() => {
       this.mutationRoot.focusLastEditor_();
     });
   }
-
   handleCancel() {
     this.props.onRequestClose();
   }
-
   handleOk() {
     const newMutation = this.mutationRoot ? this.mutationRoot.mutationToDom(true) : null;
     this.props.onRequestClose(newMutation);
   }
-
   handleAddLabel() {
     if (this.mutationRoot) {
       this.mutationRoot.addLabelExternal();
     }
   }
-
   handleAddBoolean() {
     if (this.mutationRoot) {
       this.mutationRoot.addBooleanExternal();
     }
   }
-
   handleAddTextNumber() {
     if (this.mutationRoot) {
       this.mutationRoot.addStringNumberExternal();
     }
   }
-
   handleToggleWarp() {
     if (this.mutationRoot) {
       const newWarp = !this.mutationRoot.getWarp();
@@ -21046,7 +20234,6 @@ class CustomProcedures extends react__WEBPACK_IMPORTED_MODULE_3___default.a.Comp
       });
     }
   }
-
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_components_custom_procedures_custom_procedures_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
       componentRef: this.setBlocks,
@@ -21059,9 +20246,7 @@ class CustomProcedures extends react__WEBPACK_IMPORTED_MODULE_3___default.a.Comp
       onToggleWarp: this.handleToggleWarp
     });
   }
-
 }
-
 CustomProcedures.propTypes = {
   isRtl: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.bool,
   mutator: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.instanceOf(Element),
@@ -21090,12 +20275,10 @@ CustomProcedures.defaultOptions = {
 CustomProcedures.defaultProps = {
   options: CustomProcedures.defaultOptions
 };
-
 const mapStateToProps = state => ({
   isRtl: state.locales.isRtl,
   mutator: state.scratchGui.customProcedures.mutator
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_6__["connect"])(mapStateToProps)(CustomProcedures));
 
 /***/ }),
@@ -21118,15 +20301,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _reducers_restore_deletion__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../reducers/restore-deletion */ "./src/reducers/restore-deletion.js");
 const _excluded = ["children", "dispatchUpdateRestore"];
-
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 
@@ -21148,13 +20326,11 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
  *     />
  * )}</DeletionRestorer>
  */
-
 class DeletionRestorer extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
   constructor(props) {
     super(props);
     lodash_bindall__WEBPACK_IMPORTED_MODULE_0___default()(this, ['restoreDeletion']);
   }
-
   restoreDeletion() {
     if (typeof this.props.restore === 'function') {
       this.props.restore();
@@ -21164,42 +20340,35 @@ class DeletionRestorer extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Comp
       });
     }
   }
-
   render() {
     const _this$props = this.props,
-          {
-      /* eslint-disable no-unused-vars */
-      children,
-      dispatchUpdateRestore
-    } = _this$props,
-          props = _objectWithoutProperties(_this$props, _excluded);
-
+      {
+        /* eslint-disable no-unused-vars */
+        children,
+        dispatchUpdateRestore
+      } = _this$props,
+      props = _objectWithoutProperties(_this$props, _excluded);
     const restorable = typeof this.props.restore === 'function';
     return this.props.children(this.restoreDeletion, _objectSpread(_objectSpread({}, props), {}, {
       restorable
     }));
   }
-
 }
-
 DeletionRestorer.propTypes = {
   children: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
   deletedItem: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
   dispatchUpdateRestore: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
   restore: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func
 };
-
 const mapStateToProps = state => ({
   deletedItem: state.scratchGui.restoreDeletion.deletedItem,
   restore: state.scratchGui.restoreDeletion.restoreFun
 });
-
 const mapDispatchToProps = dispatch => ({
   dispatchUpdateRestore: updatedState => {
     dispatch(Object(_reducers_restore_deletion__WEBPACK_IMPORTED_MODULE_4__["setRestore"])(updatedState));
   }
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps, mapDispatchToProps)(DeletionRestorer));
 
 /***/ }),
@@ -21224,7 +20393,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 class DirectionPicker extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
   constructor(props) {
     super(props);
@@ -21233,31 +20401,25 @@ class DirectionPicker extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Compo
       popoverOpen: false
     };
   }
-
   handleOpenPopover() {
     this.setState({
       popoverOpen: true
     });
   }
-
   handleClosePopover() {
     this.setState({
       popoverOpen: false
     });
   }
-
   handleClickAllAround() {
     this.props.onChangeRotationStyle(_components_direction_picker_direction_picker_jsx__WEBPACK_IMPORTED_MODULE_3__["RotationStyles"].ALL_AROUND);
   }
-
   handleClickLeftRight() {
     this.props.onChangeRotationStyle(_components_direction_picker_direction_picker_jsx__WEBPACK_IMPORTED_MODULE_3__["RotationStyles"].LEFT_RIGHT);
   }
-
   handleClickDontRotate() {
     this.props.onChangeRotationStyle(_components_direction_picker_direction_picker_jsx__WEBPACK_IMPORTED_MODULE_3__["RotationStyles"].DONT_ROTATE);
   }
-
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_direction_picker_direction_picker_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
       direction: this.props.direction,
@@ -21273,9 +20435,7 @@ class DirectionPicker extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Compo
       onOpenPopover: this.handleOpenPopover
     });
   }
-
 }
-
 DirectionPicker.propTypes = {
   direction: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
   disabled: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
@@ -21312,6 +20472,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /*
  * DOMElementRenderer wraps a DOM element, allowing it to be
  * rendered by React. It's up to the containing component
@@ -21321,42 +20482,35 @@ __webpack_require__.r(__webpack_exports__);
  * Props passed to the DOMElementRenderer will be set on the
  * DOM element like it's a normal component.
  */
-
 class DOMElementRenderer extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
   constructor(props) {
     super(props);
     this.setContainer = this.setContainer.bind(this);
   }
-
   componentDidMount() {
     this.container.appendChild(this.props.domElement);
   }
-
   componentWillUnmount() {
     this.container.removeChild(this.props.domElement);
   }
-
   setContainer(c) {
     this.container = c;
   }
-
   render() {
     // Apply props to the DOM element, so its attributes
     // are updated as if it were a normal component.
     // Look at me, I'm the React now!
-    Object.assign(this.props.domElement, lodash_omit__WEBPACK_IMPORTED_MODULE_0___default()(this.props, ['domElement', 'children', 'style'])); // Convert react style prop to dom element styling.
+    Object.assign(this.props.domElement, lodash_omit__WEBPACK_IMPORTED_MODULE_0___default()(this.props, ['domElement', 'children', 'style']));
 
+    // Convert react style prop to dom element styling.
     if (this.props.style) {
       this.props.domElement.style.cssText = to_style__WEBPACK_IMPORTED_MODULE_3___default.a.string(this.props.style);
     }
-
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
       ref: this.setContainer
     });
   }
-
 }
-
 DOMElementRenderer.propTypes = {
   domElement: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.instanceOf(Element).isRequired,
   style: react_style_proptype__WEBPACK_IMPORTED_MODULE_4___default.a
@@ -21378,13 +20532,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_drag_layer_drag_layer_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/drag-layer/drag-layer.jsx */ "./src/components/drag-layer/drag-layer.jsx");
 
 
-
 const mapStateToProps = state => ({
   dragging: state.scratchGui.assetDrag.dragging,
   currentOffset: state.scratchGui.assetDrag.currentOffset,
   img: state.scratchGui.assetDrag.img
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps)(_components_drag_layer_drag_layer_jsx__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
@@ -21410,7 +20562,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 class ErrorBoundary extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
   constructor(props) {
     super(props);
@@ -21419,14 +20570,14 @@ class ErrorBoundary extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Compone
       errorId: null
     };
   }
-
   componentDidCatch(error, info) {
     // Error object may be undefined (IE?)
     error = error || {
       stack: 'Unknown stack',
       message: 'Unknown error'
-    }; // Log errors to analytics, leaving out browsers that are not in our recommended set
+    };
 
+    // Log errors to analytics, leaving out browsers that are not in our recommended set
     if (Object(_lib_supported_browser__WEBPACK_IMPORTED_MODULE_4__["recommendedBrowser"])() && window.Sentry) {
       window.Sentry.withScope(scope => {
         Object.keys(info).forEach(key => {
@@ -21435,26 +20586,24 @@ class ErrorBoundary extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Compone
         scope.setExtra('action', this.props.action);
         window.Sentry.captureException(error);
       });
-    } // Display fallback UI
+    }
 
-
+    // Display fallback UI
     this.setState({
       hasError: true,
       errorId: window.Sentry ? window.Sentry.lastEventId() : null,
       errorMessage: "".concat(error && error.message || error)
-    }); // Log error locally for debugging as well.
+    });
 
+    // Log error locally for debugging as well.
     _lib_log_js__WEBPACK_IMPORTED_MODULE_3__["default"].error("Unhandled Error: ".concat(error.stack, "\nComponent stack: ").concat(info.componentStack));
   }
-
   handleBack() {
     window.history.back();
   }
-
   handleReload() {
     window.location.replace(window.location.origin + window.location.pathname);
   }
-
   render() {
     if (this.state.hasError) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_crash_message_crash_message_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -21463,12 +20612,9 @@ class ErrorBoundary extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Compone
         onReload: this.handleReload
       });
     }
-
     return this.props.children;
   }
-
 }
-
 ErrorBoundary.propTypes = {
   action: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired,
   // Used for defining tracking action
@@ -21502,11 +20648,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_action_menu_icon_sprite_svg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/action-menu/icon--sprite.svg */ "./src/components/action-menu/icon--sprite.svg");
 /* harmony import */ var _components_action_menu_icon_sprite_svg__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_components_action_menu_icon_sprite_svg__WEBPACK_IMPORTED_MODULE_7__);
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -21532,35 +20675,28 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_4__["defineMessages"
 const parseExtensionURL = url => {
   // Parse real extension URL from scratchx.org URL
   const match = url.match(/^https?:\/\/scratchx\.org\/\?url=(.*)$/);
-
   if (match) {
     return match[1];
   }
-
   return url;
 };
-
 class ExtensionLibrary extends react__WEBPACK_IMPORTED_MODULE_2___default.a.PureComponent {
   constructor(props) {
     super(props);
     lodash_bindall__WEBPACK_IMPORTED_MODULE_0___default()(this, ['handleItemSelect']);
   }
-
   handleItemSelect(item) {
     // eslint-disable-next-line no-alert
     if (item.incompatibleWithScratch && !confirm(this.props.intl.formatMessage(messages.incompatible))) {
       return;
     }
-
     const id = item.extensionId;
     let url = item.extensionURL ? item.extensionURL : id;
     const isCustomURL = !item.disabled && !id;
-
     if (isCustomURL) {
       // eslint-disable-next-line no-alert
       url = prompt(this.props.intl.formatMessage(messages.extensionUrl));
     }
-
     if (url && !item.disabled) {
       if (this.props.vm.extensionManager.isExtensionLoaded(url)) {
         this.props.onCategorySelected(id);
@@ -21568,17 +20704,14 @@ class ExtensionLibrary extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Pure
         const parsedURL = isCustomURL ? parseExtensionURL(url) : url;
         this.props.vm.extensionManager.loadExtensionURL(parsedURL).then(() => {
           this.props.onCategorySelected(id);
-
           if (isCustomURL) {
             let newUrl = location.pathname;
-
             if (location.search) {
               newUrl += location.search;
               newUrl += '&';
             } else {
               newUrl += '?';
             }
-
             newUrl += "extension=".concat(encodeURIComponent(url));
             history.replaceState('', '', newUrl);
           }
@@ -21589,7 +20722,6 @@ class ExtensionLibrary extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Pure
       }
     }
   }
-
   render() {
     const extensionLibraryThumbnailData = _lib_libraries_extensions_index_jsx__WEBPACK_IMPORTED_MODULE_5__["default"].map(extension => _objectSpread({
       rawURL: extension.iconURL || _components_action_menu_icon_sprite_svg__WEBPACK_IMPORTED_MODULE_7___default.a
@@ -21604,17 +20736,15 @@ class ExtensionLibrary extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Pure
       onRequestClose: this.props.onRequestClose
     });
   }
-
 }
-
 ExtensionLibrary.propTypes = {
   intl: react_intl__WEBPACK_IMPORTED_MODULE_4__["intlShape"].isRequired,
   onCategorySelected: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
   onRequestClose: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
   visible: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
   vm: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.instanceOf(scratch_vm__WEBPACK_IMPORTED_MODULE_3___default.a).isRequired // eslint-disable-line react/no-unused-prop-types
-
 };
+
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_intl__WEBPACK_IMPORTED_MODULE_4__["injectIntl"])(ExtensionLibrary));
 
 /***/ }),
@@ -21647,18 +20777,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 class GreenFlagOverlay extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
   constructor(props) {
     super(props);
     lodash_bindall__WEBPACK_IMPORTED_MODULE_0___default()(this, ['handleClick']);
   }
-
   handleClick() {
     this.props.vm.start();
     this.props.vm.greenFlag();
   }
-
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_box_box_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], {
       className: this.props.wrapperClass,
@@ -21670,21 +20797,16 @@ class GreenFlagOverlay extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Comp
       src: _components_green_flag_icon_green_flag_svg__WEBPACK_IMPORTED_MODULE_6___default.a
     })));
   }
-
 }
-
 GreenFlagOverlay.propTypes = {
   className: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string,
   vm: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.instanceOf(scratch_vm__WEBPACK_IMPORTED_MODULE_4___default.a),
   wrapperClass: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string
 };
-
 const mapStateToProps = state => ({
   vm: state.scratchGui.vm
 });
-
 const mapDispatchToProps = () => ({});
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps, mapDispatchToProps)(GreenFlagOverlay));
 
 /***/ }),
@@ -21728,14 +20850,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_gui_gui_jsx__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../components/gui/gui.jsx */ "./src/components/gui/gui.jsx");
 /* harmony import */ var _lib_isScratchDesktop_js__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../lib/isScratchDesktop.js */ "./src/lib/isScratchDesktop.js");
 const _excluded = ["assetHost", "cloudHost", "error", "isError", "isScratchDesktop", "isShowingProject", "onProjectLoaded", "onStorageInit", "onUpdateProjectId", "onVmInit", "projectHost", "projectId", "children", "fetchingProject", "isLoading", "loadingStateVisible"];
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
 
 
 
@@ -21767,55 +20884,47 @@ class GUI extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
     this.props.onStorageInit(_lib_storage__WEBPACK_IMPORTED_MODULE_18__["default"]);
     this.props.onVmInit(this.props.vm);
   }
-
   componentDidUpdate(prevProps) {
     if (this.props.projectId !== prevProps.projectId && this.props.projectId !== null) {
       this.props.onUpdateProjectId(this.props.projectId);
     }
-
     if (this.props.isShowingProject && !prevProps.isShowingProject) {
       // this only notifies container when a project changes from not yet loaded to loaded
       // At this time the project view in www doesn't need to know when a project is unloaded
       this.props.onProjectLoaded();
     }
   }
-
   render() {
     if (this.props.isError) {
       throw new Error("Error in GUI [location=".concat(window.location, "]: ").concat(this.props.error));
     }
-
     const _this$props = this.props,
-          {
-      /* eslint-disable no-unused-vars */
-      assetHost,
-      cloudHost,
-      error,
-      isError,
-      isScratchDesktop,
-      isShowingProject,
-      onProjectLoaded,
-      onStorageInit,
-      onUpdateProjectId,
-      onVmInit,
-      projectHost,
-      projectId,
-
-      /* eslint-enable no-unused-vars */
-      children,
-      fetchingProject,
-      isLoading,
-      loadingStateVisible
-    } = _this$props,
-          componentProps = _objectWithoutProperties(_this$props, _excluded);
-
+      {
+        /* eslint-disable no-unused-vars */
+        assetHost,
+        cloudHost,
+        error,
+        isError,
+        isScratchDesktop,
+        isShowingProject,
+        onProjectLoaded,
+        onStorageInit,
+        onUpdateProjectId,
+        onVmInit,
+        projectHost,
+        projectId,
+        /* eslint-enable no-unused-vars */
+        children,
+        fetchingProject,
+        isLoading,
+        loadingStateVisible
+      } = _this$props,
+      componentProps = _objectWithoutProperties(_this$props, _excluded);
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_gui_gui_jsx__WEBPACK_IMPORTED_MODULE_23__["default"], _extends({
       loading: fetchingProject || isLoading || loadingStateVisible
     }, componentProps), children);
   }
-
 }
-
 GUI.propTypes = {
   assetHost: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
   children: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.node,
@@ -21847,7 +20956,6 @@ GUI.defaultProps = {
   onUpdateProjectId: () => {},
   onVmInit: () => {}
 };
-
 const mapStateToProps = state => {
   const loadingState = state.scratchGui.projectState.loadingState;
   return {
@@ -21877,7 +20985,6 @@ const mapStateToProps = state => {
     vm: state.scratchGui.vm
   };
 };
-
 const mapDispatchToProps = dispatch => ({
   onExtensionButtonClick: () => dispatch(Object(_reducers_modals__WEBPACK_IMPORTED_MODULE_10__["openExtensionLibrary"])()),
   onActivateTab: tab => dispatch(Object(_reducers_editor_tab__WEBPACK_IMPORTED_MODULE_9__["activateTab"])(tab)),
@@ -21887,12 +20994,13 @@ const mapDispatchToProps = dispatch => ({
   onRequestCloseCostumeLibrary: () => dispatch(Object(_reducers_modals__WEBPACK_IMPORTED_MODULE_10__["closeCostumeLibrary"])()),
   onRequestCloseTelemetryModal: () => dispatch(Object(_reducers_modals__WEBPACK_IMPORTED_MODULE_10__["closeTelemetryModal"])())
 });
+const ConnectedGUI = Object(react_intl__WEBPACK_IMPORTED_MODULE_6__["injectIntl"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps, mapDispatchToProps)(GUI));
 
-const ConnectedGUI = Object(react_intl__WEBPACK_IMPORTED_MODULE_6__["injectIntl"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps, mapDispatchToProps)(GUI)); // note that redux's 'compose' function is just being used as a general utility to make
+// note that redux's 'compose' function is just being used as a general utility to make
 // the hierarchy of HOC constructor calls clearer here; it has nothing to do with redux's
 // ability to compose reducers.
-
-const WrappedGui = Object(redux__WEBPACK_IMPORTED_MODULE_2__["compose"])(_lib_localization_hoc_jsx__WEBPACK_IMPORTED_MODULE_12__["default"], Object(_lib_error_boundary_hoc_jsx__WEBPACK_IMPORTED_MODULE_7__["default"])('Top Level App'), _lib_font_loader_hoc_jsx__WEBPACK_IMPORTED_MODULE_11__["default"], // QueryParserHOC, // tw: HOC is unused
+const WrappedGui = Object(redux__WEBPACK_IMPORTED_MODULE_2__["compose"])(_lib_localization_hoc_jsx__WEBPACK_IMPORTED_MODULE_12__["default"], Object(_lib_error_boundary_hoc_jsx__WEBPACK_IMPORTED_MODULE_7__["default"])('Top Level App'), _lib_font_loader_hoc_jsx__WEBPACK_IMPORTED_MODULE_11__["default"],
+// QueryParserHOC, // tw: HOC is unused
 _lib_project_fetcher_hoc_jsx__WEBPACK_IMPORTED_MODULE_14__["default"], _lib_titled_hoc_jsx__WEBPACK_IMPORTED_MODULE_15__["default"], _lib_project_saver_hoc_jsx__WEBPACK_IMPORTED_MODULE_16__["default"], _lib_vm_listener_hoc_jsx__WEBPACK_IMPORTED_MODULE_19__["default"], _lib_vm_manager_hoc_jsx__WEBPACK_IMPORTED_MODULE_20__["default"], _lib_sb_file_uploader_hoc_jsx__WEBPACK_IMPORTED_MODULE_13__["default"], _lib_cloud_manager_hoc_jsx__WEBPACK_IMPORTED_MODULE_21__["default"], _lib_tw_fullscreen_resizer_hoc_jsx__WEBPACK_IMPORTED_MODULE_22__["default"])(ConnectedGUI);
 WrappedGui.setAppElement = react_modal__WEBPACK_IMPORTED_MODULE_4___default.a.setAppElement;
 /* harmony default export */ __webpack_exports__["default"] = (WrappedGui);
@@ -21920,25 +21028,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const InlineMessages = _ref => {
   let {
     alertsList,
     className
   } = _ref;
-
   if (!alertsList) {
     return null;
-  } // only display inline alerts here
-
-
+  }
+  // only display inline alerts here
   const inlineAlerts = Object(_reducers_alerts__WEBPACK_IMPORTED_MODULE_3__["filterInlineAlerts"])(alertsList);
-
   if (!inlineAlerts || !inlineAlerts.length) {
     return null;
-  } // get first alert
+  }
 
-
+  // get first alert
   const firstInlineAlert = inlineAlerts[0];
   const {
     content,
@@ -21952,18 +21056,14 @@ const InlineMessages = _ref => {
     level: level
   });
 };
-
 InlineMessages.propTypes = {
   alertsList: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object),
   className: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string
 };
-
 const mapStateToProps = state => ({
   alertsList: state.scratchGui.alerts.alertsList
 });
-
 const mapDispatchToProps = () => ({});
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, mapDispatchToProps)(InlineMessages));
 
 /***/ }),
@@ -21988,14 +21088,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _reducers_menus__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../reducers/menus */ "./src/reducers/menus.js");
 /* harmony import */ var _components_language_selector_language_selector_jsx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/language-selector/language-selector.jsx */ "./src/components/language-selector/language-selector.jsx");
 const _excluded = ["onChangeLanguage", "messagesByLocale", "children"];
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
 
 
 
@@ -22009,34 +21104,28 @@ class LanguageSelector extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Comp
     lodash_bindall__WEBPACK_IMPORTED_MODULE_0___default()(this, ['handleChange']);
     document.documentElement.lang = props.currentLocale;
   }
-
   handleChange(e) {
     const newLocale = e.target.value;
-
     if (this.props.messagesByLocale[newLocale]) {
       this.props.onChangeLanguage(newLocale);
       document.documentElement.lang = newLocale;
     }
   }
-
   render() {
     const _this$props = this.props,
-          {
-      onChangeLanguage,
-      // eslint-disable-line no-unused-vars
-      messagesByLocale,
-      // eslint-disable-line no-unused-vars
-      children
-    } = _this$props,
-          props = _objectWithoutProperties(_this$props, _excluded);
-
+      {
+        onChangeLanguage,
+        // eslint-disable-line no-unused-vars
+        messagesByLocale,
+        // eslint-disable-line no-unused-vars
+        children
+      } = _this$props,
+      props = _objectWithoutProperties(_this$props, _excluded);
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_language_selector_language_selector_jsx__WEBPACK_IMPORTED_MODULE_6__["default"], _extends({
       onChange: this.handleChange
     }, props), children);
   }
-
 }
-
 LanguageSelector.propTypes = {
   children: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.node,
   currentLocale: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired,
@@ -22045,19 +21134,16 @@ LanguageSelector.propTypes = {
   // eslint-disable-line react/forbid-prop-types
   onChangeLanguage: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func.isRequired
 };
-
 const mapStateToProps = state => ({
   currentLocale: state.locales.locale,
   messagesByLocale: state.locales.messagesByLocale
 });
-
 const mapDispatchToProps = dispatch => ({
   onChangeLanguage: locale => {
     dispatch(Object(_reducers_locales__WEBPACK_IMPORTED_MODULE_4__["selectLocale"])(locale));
     dispatch(Object(_reducers_menus__WEBPACK_IMPORTED_MODULE_5__["closeLanguageMenu"])());
   }
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps, mapDispatchToProps)(LanguageSelector));
 
 /***/ }),
@@ -22084,7 +21170,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 class LibraryItem extends react__WEBPACK_IMPORTED_MODULE_2___default.a.PureComponent {
   constructor(props) {
     super(props);
@@ -22094,41 +21179,33 @@ class LibraryItem extends react__WEBPACK_IMPORTED_MODULE_2___default.a.PureCompo
       isRotatingIcon: false
     };
   }
-
   componentWillUnmount() {
     clearInterval(this.intervalId);
   }
-
   handleBlur(id) {
     this.handleMouseLeave(id);
   }
-
   handleClick(e) {
     if (!this.props.disabled) {
       this.props.onSelect(this.props.id);
     }
-
     e.preventDefault();
   }
-
   handleFocus(id) {
     if (!this.props.showPlayButton) {
       this.handleMouseEnter(id);
     }
   }
-
   handleKeyPress(e) {
     if (e.key === ' ' || e.key === 'Enter') {
       e.preventDefault();
       this.props.onSelect(this.props.id);
     }
   }
-
   handleMouseEnter() {
     // only show hover effects on the item if not showing a play button
     if (!this.props.showPlayButton) {
       this.props.onMouseEnter(this.props.id);
-
       if (this.props.icons && this.props.icons.length) {
         this.stopRotatingIcons();
         this.setState({
@@ -22137,12 +21214,10 @@ class LibraryItem extends react__WEBPACK_IMPORTED_MODULE_2___default.a.PureCompo
       }
     }
   }
-
   handleMouseLeave() {
     // only show hover effects on the item if not showing a play button
     if (!this.props.showPlayButton) {
       this.props.onMouseLeave(this.props.id);
-
       if (this.props.icons && this.props.icons.length) {
         this.setState({
           isRotatingIcon: false
@@ -22150,46 +21225,39 @@ class LibraryItem extends react__WEBPACK_IMPORTED_MODULE_2___default.a.PureCompo
       }
     }
   }
-
   handlePlay() {
     this.props.onMouseEnter(this.props.id);
   }
-
   handleStop() {
     this.props.onMouseLeave(this.props.id);
   }
-
   startRotatingIcons() {
     this.rotateIcon();
     this.intervalId = setInterval(this.rotateIcon, 300);
   }
-
   stopRotatingIcons() {
     if (this.intervalId) {
       this.intervalId = clearInterval(this.intervalId);
     }
   }
-
   rotateIcon() {
     const nextIconIndex = (this.state.iconIndex + 1) % this.props.icons.length;
     this.setState({
       iconIndex: nextIconIndex
     });
   }
-
   curIconMd5() {
     const iconMd5Prop = this.props.iconMd5;
-
     if (this.props.icons && this.state.isRotatingIcon && this.state.iconIndex < this.props.icons.length) {
       const icon = this.props.icons[this.state.iconIndex] || {};
-      return icon.md5ext || // 3.0 library format
-      icon.baseLayerMD5 || // 2.0 library format, TODO GH-5084
+      return icon.md5ext ||
+      // 3.0 library format
+      icon.baseLayerMD5 ||
+      // 2.0 library format, TODO GH-5084
       iconMd5Prop;
     }
-
     return iconMd5Prop;
   }
-
   render() {
     const iconMd5 = this.curIconMd5();
     const iconURL = iconMd5 ? "https://cdn.assets.scratch.mit.edu/internalapi/asset/".concat(iconMd5, "/get/") : this.props.iconRawURL;
@@ -22219,9 +21287,7 @@ class LibraryItem extends react__WEBPACK_IMPORTED_MODULE_2___default.a.PureCompo
       onStop: this.handleStop
     });
   }
-
 }
-
 LibraryItem.propTypes = {
   bluetoothRequired: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
   collaborator: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
@@ -22236,8 +21302,8 @@ LibraryItem.propTypes = {
     baseLayerMD5: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
     // 2.0 library format, TODO GH-5084
     md5ext: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string // 3.0 library format
-
   })),
+
   id: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number.isRequired,
   insetIconURL: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
   internetConnectionRequired: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
@@ -22276,14 +21342,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var immutable__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! immutable */ "./node_modules/immutable/dist/immutable.js");
 /* harmony import */ var immutable__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(immutable__WEBPACK_IMPORTED_MODULE_8__);
 const _excluded = ["vm"];
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
 
 
 
@@ -22304,19 +21365,16 @@ class ListMonitor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
       height: props.height || 200
     };
   }
-
   handleActivate(index) {
     // Do nothing if activating the currently active item
     if (this.state.activeIndex === index) {
       return;
     }
-
     this.setState({
       activeIndex: index,
       activeValue: this.props.value[index]
     });
   }
-
   handleDeactivate() {
     // Submit any in-progress value edits on blur
     if (this.state.activeIndex !== null) {
@@ -22334,12 +21392,10 @@ class ListMonitor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
       });
     }
   }
-
   handleFocus(e) {
     // Select all the text in the input when it is focused.
     e.target.select();
   }
-
   handleKeyPress(e) {
     // Special case for tab, arrow keys and enter.
     // Tab / shift+tab navigate down / up the list.
@@ -22353,10 +21409,8 @@ class ListMonitor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
     } = this.props;
     let navigateDirection = 0;
     if (e.key === 'Tab') navigateDirection = e.shiftKey ? -1 : 1;else if (e.key === 'ArrowUp') navigateDirection = -1;else if (e.key === 'ArrowDown') navigateDirection = 1;
-
     if (navigateDirection) {
       this.handleDeactivate(); // Submit in-progress edits
-
       const newIndex = this.wrapListIndex(previouslyActiveIndex + navigateDirection, this.props.value.length);
       this.setState({
         activeIndex: newIndex,
@@ -22365,11 +21419,8 @@ class ListMonitor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
       e.preventDefault(); // Stop default tab behavior, handled by this state change
     } else if (e.key === 'Enter') {
       this.handleDeactivate(); // Submit in-progress edits
-
       const newListItemValue = ''; // Enter adds a blank item
-
       const newValueOffset = e.shiftKey ? 0 : 1; // Shift-enter inserts above
-
       const listValue = Object(_lib_variable_utils__WEBPACK_IMPORTED_MODULE_6__["getVariableValue"])(vm, targetId, variableId);
       const newListValue = listValue.slice(0, previouslyActiveIndex + newValueOffset).concat([newListItemValue]).concat(listValue.slice(previouslyActiveIndex + newValueOffset));
       Object(_lib_variable_utils__WEBPACK_IMPORTED_MODULE_6__["setVariableValue"])(vm, targetId, variableId, newListValue);
@@ -22380,18 +21431,14 @@ class ListMonitor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
       });
     }
   }
-
   handleInput(e) {
     this.setState({
       activeValue: e.target.value
     });
   }
-
   handleRemove(e) {
     e.preventDefault(); // Default would blur input, prevent that.
-
     e.stopPropagation(); // Bubbling would activate, which will be handled here
-
     const {
       vm,
       targetId,
@@ -22406,7 +21453,6 @@ class ListMonitor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
       activeValue: newListValue[newActiveIndex]
     });
   }
-
   handleAdd() {
     // Add button appends a blank value and switches to it
     const {
@@ -22421,12 +21467,10 @@ class ListMonitor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
       activeValue: ''
     });
   }
-
   handleResizeMouseDown(e) {
     this.initialPosition = Object(_lib_touch_utils__WEBPACK_IMPORTED_MODULE_5__["getEventXY"])(e);
     this.initialWidth = this.state.width;
     this.initialHeight = this.state.height;
-
     const onMouseMove = ev => {
       const newPosition = Object(_lib_touch_utils__WEBPACK_IMPORTED_MODULE_5__["getEventXY"])(ev);
       const dx = newPosition.x - this.initialPosition.x;
@@ -22436,10 +21480,8 @@ class ListMonitor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
         height: Math.max(Math.min(this.initialHeight + dy, this.props.customStageSize.height), 60)
       });
     };
-
     const onMouseUp = ev => {
       onMouseMove(ev); // Make sure width/height are up-to-date
-
       window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('mouseup', onMouseUp);
       this.props.vm.runtime.requestUpdateMonitor(Object(immutable__WEBPACK_IMPORTED_MODULE_8__["Map"])({
@@ -22448,22 +21490,18 @@ class ListMonitor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
         width: this.state.width
       }));
     };
-
     window.addEventListener('mousemove', onMouseMove);
     window.addEventListener('mouseup', onMouseUp);
   }
-
   wrapListIndex(index, length) {
     return (index + length) % length;
   }
-
   render() {
     const _this$props = this.props,
-          {
-      vm
-    } = _this$props,
-          props = _objectWithoutProperties(_this$props, _excluded);
-
+      {
+        vm
+      } = _this$props,
+      props = _objectWithoutProperties(_this$props, _excluded);
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_monitor_list_monitor_jsx__WEBPACK_IMPORTED_MODULE_7__["default"], _extends({}, props, {
       activeIndex: this.state.activeIndex,
       activeValue: this.state.activeValue,
@@ -22479,9 +21517,7 @@ class ListMonitor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
       onResizeMouseDown: this.handleResizeMouseDown
     }));
   }
-
 }
-
 ListMonitor.propTypes = {
   height: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
   id: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
@@ -22496,12 +21532,10 @@ ListMonitor.propTypes = {
   x: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
   y: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number
 };
-
 const mapStateToProps = state => ({
   customStageSize: state.scratchGui.customStageSize,
   vm: state.scratchGui.vm
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["connect"])(mapStateToProps)(ListMonitor));
 
 /***/ }),
@@ -22524,14 +21558,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _sb3_downloader_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./sb3-downloader.jsx */ "./src/containers/sb3-downloader.jsx");
 const _excluded = ["projectChanged"];
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
 
 
 
@@ -22543,38 +21572,30 @@ const MenuBarHOC = function MenuBarHOC(WrappedComponent) {
       super(props);
       lodash_bindall__WEBPACK_IMPORTED_MODULE_2___default()(this, ['confirmReadyToReplaceProject', 'shouldSaveBeforeTransition']);
     }
-
     confirmReadyToReplaceProject(message) {
       let readyToReplaceProject = true;
-
       if (this.props.projectChanged && !this.props.canCreateNew) {
         readyToReplaceProject = this.props.confirmWithMessage(message);
       }
-
       return readyToReplaceProject;
     }
-
     shouldSaveBeforeTransition() {
       return this.props.canSave && this.props.projectChanged;
     }
-
     render() {
       const _this$props = this.props,
-            {
-        /* eslint-disable no-unused-vars */
-        projectChanged
-      } = _this$props,
-            props = _objectWithoutProperties(_this$props, _excluded);
-
+        {
+          /* eslint-disable no-unused-vars */
+          projectChanged
+        } = _this$props,
+        props = _objectWithoutProperties(_this$props, _excluded);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_sb3_downloader_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], null, (_className, _downloadProject, extended) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(WrappedComponent, _extends({
         confirmReadyToReplaceProject: this.confirmReadyToReplaceProject,
         shouldSaveBeforeTransition: this.shouldSaveBeforeTransition,
         handleSaveProject: extended.smartSave
       }, props)));
     }
-
   }
-
   MenuBarContainer.propTypes = {
     canCreateNew: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
     canSave: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
@@ -22584,21 +21605,16 @@ const MenuBarHOC = function MenuBarHOC(WrappedComponent) {
   MenuBarContainer.defaultProps = {
     // default to using standard js confirm
     confirmWithMessage: message => confirm(message) // eslint-disable-line no-alert
-
   };
 
   const mapStateToProps = state => ({
     projectChanged: state.scratchGui.projectChanged
   });
-
-  const mapDispatchToProps = () => ({}); // Allow incoming props to override redux-provided props. Used to mock in tests.
-
-
+  const mapDispatchToProps = () => ({});
+  // Allow incoming props to override redux-provided props. Used to mock in tests.
   const mergeProps = (stateProps, dispatchProps, ownProps) => Object.assign({}, stateProps, dispatchProps, ownProps);
-
   return Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps, mergeProps)(MenuBarContainer);
 };
-
 /* harmony default export */ __webpack_exports__["default"] = (MenuBarHOC);
 
 /***/ }),
@@ -22620,14 +21636,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_menu_menu_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/menu/menu.jsx */ "./src/components/menu/menu.jsx");
 const _excluded = ["open", "children"];
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
 
 
 
@@ -22637,54 +21648,43 @@ class Menu extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
     super(props);
     lodash_bindall__WEBPACK_IMPORTED_MODULE_0___default()(this, ['addListeners', 'removeListeners', 'handleClick', 'ref']);
   }
-
   componentDidMount() {
     if (this.props.open) this.addListeners();
   }
-
   componentDidUpdate(prevProps) {
     if (this.props.open && !prevProps.open) this.addListeners();
     if (!this.props.open && prevProps.open) this.removeListeners();
   }
-
   componentWillUnmount() {
     this.removeListeners();
   }
-
   addListeners() {
     document.addEventListener('mouseup', this.handleClick);
   }
-
   removeListeners() {
     document.removeEventListener('mouseup', this.handleClick);
   }
-
   handleClick(e) {
     if (this.props.open && !this.menu.contains(e.target)) {
       this.props.onRequestClose();
     }
   }
-
   ref(c) {
     this.menu = c;
   }
-
   render() {
     const _this$props = this.props,
-          {
-      open,
-      children
-    } = _this$props,
-          props = _objectWithoutProperties(_this$props, _excluded);
-
+      {
+        open,
+        children
+      } = _this$props,
+      props = _objectWithoutProperties(_this$props, _excluded);
     if (!open) return null;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_menu_menu_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({
       componentRef: this.ref
     }, props), children);
   }
-
 }
-
 Menu.propTypes = {
   children: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.node,
   onRequestClose: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func.isRequired,
@@ -22716,63 +21716,50 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 class Modal extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
   constructor(props) {
     super(props);
     lodash_bindall__WEBPACK_IMPORTED_MODULE_0___default()(this, ['addEventListeners', 'removeEventListeners', 'handlePopState', 'pushHistory']);
     this.addEventListeners();
   }
-
   componentDidMount() {
     // Add a history event only if it's not currently for our modal. This
     // avoids polluting the history with many entries. We only need one.
     this.pushHistory(this.id, history.state === null || history.state !== this.id);
   }
-
   componentWillUnmount() {
     this.removeEventListeners();
   }
-
   addEventListeners() {
     window.addEventListener('popstate', this.handlePopState);
   }
-
   removeEventListeners() {
     window.removeEventListener('popstate', this.handlePopState);
   }
-
   handlePopState() {
     // Whenever someone navigates, we want to be closed
     this.props.onRequestClose();
   }
-
   get id() {
     return "modal-".concat(this.props.id);
   }
-
   pushHistory(state, push) {
     if (push) return history.pushState(state, this.id, null);
     history.replaceState(state, this.id, null);
   }
-
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_modal_modal_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], this.props);
   }
-
 }
-
 Modal.propTypes = {
   id: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired,
   isRtl: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
   onRequestClose: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
   onRequestOpen: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func
 };
-
 const mapStateToProps = state => ({
   isRtl: state.locales.isRtl
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps)(Modal));
 
 /***/ }),
@@ -22808,8 +21795,6 @@ function _extends() { _extends = Object.assign ? Object.assign.bind() : function
 
 
 
-
-
 class MonitorList extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
   constructor(props) {
     super(props);
@@ -22819,7 +21804,6 @@ class MonitorList extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component
       key: 0
     };
   }
-
   componentWillReceiveProps(nextProps) {
     // TW: When stage size changes, we'll force all monitors to re-render completely
     // This is important because the VM moves monitors after resize to preserve locations but
@@ -22831,21 +21815,17 @@ class MonitorList extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component
       });
     }
   }
-
   handleMonitorChange(id, x, y) {
     // eslint-disable-line no-unused-vars
     this.props.moveMonitorRect(id, x, y);
   }
-
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_monitor_list_monitor_list_jsx__WEBPACK_IMPORTED_MODULE_8__["default"], _extends({
       onMonitorChange: this.handleMonitorChange,
       key: this.state.key
     }, this.props));
   }
-
 }
-
 MonitorList.propTypes = {
   intl: react_intl__WEBPACK_IMPORTED_MODULE_3__["intlShape"].isRequired,
   customStageSize: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.shape({
@@ -22856,23 +21836,19 @@ MonitorList.propTypes = {
     monitors: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.object,
     // eslint-disable-line react/forbid-prop-types
     savedMonitorPositions: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.object // eslint-disable-line react/forbid-prop-types
-
   }).isRequired,
   moveMonitorRect: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.func.isRequired,
   resetMonitorLayout: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.func
 };
-
 const mapStateToProps = state => ({
   customStageSize: state.scratchGui.customStageSize,
   monitors: state.scratchGui.monitors,
   monitorLayout: state.scratchGui.monitorLayout
 });
-
 const mapDispatchToProps = dispatch => ({
   moveMonitorRect: (id, x, y) => dispatch(Object(_reducers_monitor_layout__WEBPACK_IMPORTED_MODULE_5__["moveMonitorRect"])(id, x, y)),
   resetMonitorLayout: () => dispatch(Object(_reducers_monitor_layout__WEBPACK_IMPORTED_MODULE_5__["resetMonitorLayout"])())
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(_lib_error_boundary_hoc_jsx__WEBPACK_IMPORTED_MODULE_6__["default"])('Monitors')(Object(react_intl__WEBPACK_IMPORTED_MODULE_3__["injectIntl"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["connect"])(mapStateToProps, mapDispatchToProps)(MonitorList))));
 
 /***/ }),
@@ -22920,25 +21896,20 @@ function _extends() { _extends = Object.assign ? Object.assign.bind() : function
 
 
 
-
-
 const availableModes = opcode => _components_monitor_monitor_jsx__WEBPACK_IMPORTED_MODULE_5__["monitorModes"].filter(t => {
   if (opcode === 'data_variable') {
     return t !== 'list';
   } else if (opcode === 'data_listcontents') {
     return t === 'list';
   }
-
   return t !== 'slider' && t !== 'list';
 });
-
 const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_3__["defineMessages"])({
   columnPrompt: {
     "id": "gui.monitors.importListColumnPrompt",
     "defaultMessage": "Which column should be used (1-{numberOfColumns})?"
   }
 });
-
 class Monitor extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
   constructor(props) {
     super(props);
@@ -22947,15 +21918,13 @@ class Monitor extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       sliderPrompt: false
     };
   }
-
   componentDidMount() {
     let rect;
+    const isNum = num => typeof num === 'number' && !isNaN(num);
 
-    const isNum = num => typeof num === 'number' && !isNaN(num); // Load the VM provided position if not loaded already
+    // Load the VM provided position if not loaded already
     // If a monitor has numbers for the x and y positions, load the saved position.
     // Otherwise, auto-position the monitor.
-
-
     if (isNum(this.props.x) && isNum(this.props.y) && !this.props.monitorLayout.savedMonitorPositions[this.props.id]) {
       rect = {
         upperStart: {
@@ -22967,9 +21936,7 @@ class Monitor extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
           y: this.props.y + this.element.offsetHeight
         }
       };
-      this.props.addMonitorRect(this.props.id, rect, true
-      /* savePosition */
-      );
+      this.props.addMonitorRect(this.props.id, rect, true /* savePosition */);
     } else {
       // Newly created user monitor
       rect = Object(_reducers_monitor_layout__WEBPACK_IMPORTED_MODULE_6__["getInitialPosition"])(this.props.monitorLayout, this.props.id, this.element.offsetWidth, this.element.offsetHeight);
@@ -22980,16 +21947,13 @@ class Monitor extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
         y: rect.upperStart.y
       }));
     }
-
     this.element.style.top = "".concat(rect.upperStart.y, "px");
     this.element.style.left = "".concat(rect.upperStart.x, "px");
   }
-
   shouldComponentUpdate(nextProps, nextState) {
     if (nextState !== this.state) {
       return true;
     }
-
     for (const key of Object.getOwnPropertyNames(nextProps)) {
       // Don't need to rerender when other monitors are moved.
       // monitorLayout is only used during initial layout.
@@ -22997,23 +21961,18 @@ class Monitor extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
         return true;
       }
     }
-
     return false;
   }
-
   componentDidUpdate() {
     // tw: if monitor is not draggable (ie. not in editor), do not calculate size of monitor for performance
     if (!this.props.draggable) {
       return;
     }
-
     this.props.resizeMonitorRect(this.props.id, this.element.offsetWidth, this.element.offsetHeight);
   }
-
   componentWillUnmount() {
     this.props.removeMonitorRect(this.props.id);
   }
-
   handleDragEnd(e, _ref) {
     let {
       x,
@@ -23028,14 +21987,12 @@ class Monitor extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       y: newY
     }));
   }
-
   handleHide() {
     this.props.vm.runtime.requestUpdateMonitor(Object(immutable__WEBPACK_IMPORTED_MODULE_12__["Map"])({
       id: this.props.id,
       visible: false
     }));
   }
-
   handleNextMode() {
     const modes = availableModes(this.props.opcode);
     const modeIndex = modes.indexOf(this.props.mode);
@@ -23045,40 +22002,34 @@ class Monitor extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       mode: newMode
     }));
   }
-
   handleSetModeToDefault() {
     this.props.vm.runtime.requestUpdateMonitor(Object(immutable__WEBPACK_IMPORTED_MODULE_12__["Map"])({
       id: this.props.id,
       mode: 'default'
     }));
   }
-
   handleSetModeToLarge() {
     this.props.vm.runtime.requestUpdateMonitor(Object(immutable__WEBPACK_IMPORTED_MODULE_12__["Map"])({
       id: this.props.id,
       mode: 'large'
     }));
   }
-
   handleSetModeToSlider() {
     this.props.vm.runtime.requestUpdateMonitor(Object(immutable__WEBPACK_IMPORTED_MODULE_12__["Map"])({
       id: this.props.id,
       mode: 'slider'
     }));
   }
-
   handleSliderPromptClose() {
     this.setState({
       sliderPrompt: false
     });
   }
-
   handleSliderPromptOpen() {
     this.setState({
       sliderPrompt: true
     });
   }
-
   handleSliderPromptOk(min, max, isDiscrete) {
     const realMin = Math.min(min, max);
     const realMax = Math.max(min, max);
@@ -23090,11 +22041,9 @@ class Monitor extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
     }));
     this.handleSliderPromptClose();
   }
-
   setElement(monitorElt) {
     this.element = monitorElt;
   }
-
   handleImport() {
     Object(_lib_import_csv__WEBPACK_IMPORTED_MODULE_8__["default"])().then(_ref2 => {
       let {
@@ -23103,7 +22052,6 @@ class Monitor extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       } = _ref2;
       const numberOfColumns = rows[0].length;
       let columnNumber = 1;
-
       if (numberOfColumns > 1) {
         const msg = this.props.intl.formatMessage(messages.columnPrompt, {
           numberOfColumns
@@ -23112,7 +22060,6 @@ class Monitor extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       }
 
       let newListValue;
-
       if (isNaN(columnNumber) || numberOfColumns === 1) {
         newListValue = text.replace(/\r/g, '').split('\n');
       } else {
@@ -23127,7 +22074,6 @@ class Monitor extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       Object(_lib_variable_utils__WEBPACK_IMPORTED_MODULE_7__["setVariableValue"])(vm, targetId, variableId, newListValue);
     });
   }
-
   handleExport() {
     const {
       vm,
@@ -23141,7 +22087,6 @@ class Monitor extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
     });
     Object(_lib_download_blob__WEBPACK_IMPORTED_MODULE_9__["default"])("".concat(variable.name, ".txt"), blob);
   }
-
   render() {
     const monitorProps = Object(_lib_monitor_adapter_js__WEBPACK_IMPORTED_MODULE_4__["default"])(this.props);
     const showSliderOption = availableModes(this.props.opcode).indexOf('slider') !== -1;
@@ -23174,9 +22119,7 @@ class Monitor extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       onSliderPromptOpen: this.handleSliderPromptOpen
     })));
   }
-
 }
-
 Monitor.propTypes = {
   addMonitorRect: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.func.isRequired,
   draggable: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.bool,
@@ -23191,7 +22134,6 @@ Monitor.propTypes = {
     monitors: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.object,
     // eslint-disable-line react/forbid-prop-types
     savedMonitorPositions: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.object // eslint-disable-line react/forbid-prop-types
-
   }).isRequired,
   onDragEnd: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.func.isRequired,
   opcode: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string.isRequired,
@@ -23210,18 +22152,15 @@ Monitor.propTypes = {
   x: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.number,
   y: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.number
 };
-
 const mapStateToProps = state => ({
   monitorLayout: state.scratchGui.monitorLayout,
   vm: state.scratchGui.vm
 });
-
 const mapDispatchToProps = dispatch => ({
   addMonitorRect: (id, rect, savePosition) => dispatch(Object(_reducers_monitor_layout__WEBPACK_IMPORTED_MODULE_6__["addMonitorRect"])(id, rect.upperStart, rect.lowerEnd, savePosition)),
   resizeMonitorRect: (id, newWidth, newHeight) => dispatch(Object(_reducers_monitor_layout__WEBPACK_IMPORTED_MODULE_6__["resizeMonitorRect"])(id, newWidth, newHeight)),
   removeMonitorRect: id => dispatch(Object(_reducers_monitor_layout__WEBPACK_IMPORTED_MODULE_6__["removeMonitorRect"])(id))
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_intl__WEBPACK_IMPORTED_MODULE_3__["injectIntl"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_11__["connect"])(mapStateToProps, mapDispatchToProps)(Monitor)));
 
 /***/ }),
@@ -23248,14 +22187,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var scratch_svg_renderer__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(scratch_svg_renderer__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 const _excluded = ["selectedCostumeIndex", "vm"];
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
 
 
 
@@ -23268,35 +22202,28 @@ class PaintEditorWrapper extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Co
     super(props);
     lodash_bindall__WEBPACK_IMPORTED_MODULE_2___default()(this, ['handleUpdateImage', 'handleUpdateName']);
   }
-
   shouldComponentUpdate(nextProps) {
     return this.props.imageId !== nextProps.imageId || this.props.rtl !== nextProps.rtl || this.props.name !== nextProps.name || this.props.isDark !== nextProps.isDark || this.props.customStageSize !== nextProps.customStageSize;
   }
-
   handleUpdateName(name) {
     this.props.vm.renameCostume(this.props.selectedCostumeIndex, name);
   }
-
   handleUpdateImage(isVector, image, rotationCenterX, rotationCenterY) {
     if (isVector) {
       this.props.vm.updateSvg(this.props.selectedCostumeIndex, image, rotationCenterX, rotationCenterY);
     } else {
-      this.props.vm.updateBitmap(this.props.selectedCostumeIndex, image, rotationCenterX, rotationCenterY, 2
-      /* bitmapResolution */
-      );
+      this.props.vm.updateBitmap(this.props.selectedCostumeIndex, image, rotationCenterX, rotationCenterY, 2 /* bitmapResolution */);
     }
   }
 
   render() {
     if (!this.props.imageId) return null;
-
     const _this$props = this.props,
-          {
-      selectedCostumeIndex,
-      vm
-    } = _this$props,
-          componentProps = _objectWithoutProperties(_this$props, _excluded);
-
+      {
+        selectedCostumeIndex,
+        vm
+      } = _this$props,
+      componentProps = _objectWithoutProperties(_this$props, _excluded);
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_lib_tw_scratch_paint__WEBPACK_IMPORTED_MODULE_4__["default"], _extends({}, componentProps, {
       image: vm.getCostume(selectedCostumeIndex),
       onUpdateImage: this.handleUpdateImage,
@@ -23307,9 +22234,7 @@ class PaintEditorWrapper extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Co
       height: this.props.customStageSize.height
     }));
   }
-
 }
-
 PaintEditorWrapper.propTypes = {
   customStageSize: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.shape({
     width: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.width,
@@ -23325,14 +22250,13 @@ PaintEditorWrapper.propTypes = {
   selectedCostumeIndex: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.number.isRequired,
   vm: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.instanceOf(scratch_vm__WEBPACK_IMPORTED_MODULE_3___default.a)
 };
-
 const mapStateToProps = (state, _ref) => {
   let {
     selectedCostumeIndex
   } = _ref;
   const targetId = state.scratchGui.vm.editingTarget.id;
-  const sprite = state.scratchGui.vm.editingTarget.sprite; // Make sure the costume index doesn't go out of range.
-
+  const sprite = state.scratchGui.vm.editingTarget.sprite;
+  // Make sure the costume index doesn't go out of range.
   const index = selectedCostumeIndex < sprite.costumes.length ? selectedCostumeIndex : sprite.costumes.length - 1;
   const costume = state.scratchGui.vm.editingTarget.sprite.costumes[index];
   return {
@@ -23348,7 +22272,6 @@ const mapStateToProps = (state, _ref) => {
     zoomLevelId: targetId
   };
 };
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_6__["connect"])(mapStateToProps)(PaintEditorWrapper));
 
 /***/ }),
@@ -23373,7 +22296,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 class PlayButton extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
   constructor(props) {
     super(props);
@@ -23382,7 +22304,6 @@ class PlayButton extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
       touchStarted: false
     };
   }
-
   getDerivedStateFromProps(props, state) {
     // if touchStarted is true and it's not playing, the sound must have ended.
     // reset the touchStarted state to allow the sound to be replayed
@@ -23391,7 +22312,6 @@ class PlayButton extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
         touchStarted: false
       };
     }
-
     return null; // nothing changed
   }
 
@@ -23399,20 +22319,16 @@ class PlayButton extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
     // Touch start
     this.buttonRef.addEventListener('touchstart', this.handleTouchStart);
   }
-
   componentWillUnmount() {
     this.buttonRef.removeEventListener('touchstart', this.handleTouchStart);
   }
-
   handleClick(e) {
     //  stop the click from propagating out of the button
     e.stopPropagation();
   }
-
   handleMouseDown(e) {
     // prevent default (focus) on mouseDown
     e.preventDefault();
-
     if (this.props.isPlaying) {
       // stop sound and reset touch state
       this.props.onStop();
@@ -23421,7 +22337,6 @@ class PlayButton extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
       });
     } else {
       this.props.onPlay();
-
       if (this.state.touchstarted) {
         // started on touch, but now clicked mouse
         this.setState({
@@ -23430,7 +22345,6 @@ class PlayButton extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
       }
     }
   }
-
   handleTouchStart(e) {
     if (this.props.isPlaying) {
       // If playing, stop sound, and reset touch state
@@ -23448,27 +22362,22 @@ class PlayButton extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
       this.props.onPlay();
     }
   }
-
   handleMouseEnter(e) {
     // start the sound if it's not already playing
     e.preventDefault();
-
     if (!this.props.isPlaying) {
       this.props.onPlay();
     }
   }
-
   handleMouseLeave() {
     // stop the sound unless it was started by touch
     if (this.props.isPlaying && !this.state.touchstarted) {
       this.props.onStop();
     }
   }
-
   setButtonRef(ref) {
     this.buttonRef = ref;
   }
-
   render() {
     const {
       className,
@@ -23476,7 +22385,6 @@ class PlayButton extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
       onPlay,
       // eslint-disable-line no-unused-vars
       onStop // eslint-disable-line no-unused-vars
-
     } = this.props;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_play_button_play_button_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
       className: className,
@@ -23488,9 +22396,7 @@ class PlayButton extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
       setButtonRef: this.setButtonRef
     });
   }
-
 }
-
 PlayButton.propTypes = {
   className: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
   isPlaying: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.bool.isRequired,
@@ -23519,20 +22425,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_record_modal_playback_step_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/record-modal/playback-step.jsx */ "./src/components/record-modal/playback-step.jsx");
 /* harmony import */ var _lib_audio_audio_buffer_player_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../lib/audio/audio-buffer-player.js */ "./src/lib/audio/audio-buffer-player.js");
 const _excluded = ["sampleRate", "onPlay", "onStopPlaying", "onSetPlayhead"];
-
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
 
 
 
@@ -23543,46 +22441,38 @@ class PlaybackStep extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Componen
     super(props);
     lodash_bindall__WEBPACK_IMPORTED_MODULE_2___default()(this, ['handlePlay', 'handleStopPlaying']);
   }
-
   componentDidMount() {
     this.audioBufferPlayer = new _lib_audio_audio_buffer_player_js__WEBPACK_IMPORTED_MODULE_4__["default"](this.props.samples, this.props.sampleRate);
   }
-
   componentWillUnmount() {
     this.audioBufferPlayer.stop();
   }
-
   handlePlay() {
     this.audioBufferPlayer.play(this.props.trimStart, this.props.trimEnd, this.props.onSetPlayhead, this.props.onStopPlaying);
     this.props.onPlay();
   }
-
   handleStopPlaying() {
     this.audioBufferPlayer.stop();
     this.props.onStopPlaying();
   }
-
   render() {
     const _this$props = this.props,
-          {
-      sampleRate,
-      // eslint-disable-line no-unused-vars
-      onPlay,
-      // eslint-disable-line no-unused-vars
-      onStopPlaying,
-      // eslint-disable-line no-unused-vars
-      onSetPlayhead
-    } = _this$props,
-          componentProps = _objectWithoutProperties(_this$props, _excluded);
-
+      {
+        sampleRate,
+        // eslint-disable-line no-unused-vars
+        onPlay,
+        // eslint-disable-line no-unused-vars
+        onStopPlaying,
+        // eslint-disable-line no-unused-vars
+        onSetPlayhead
+      } = _this$props,
+      componentProps = _objectWithoutProperties(_this$props, _excluded);
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_record_modal_playback_step_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({
       onPlay: this.handlePlay,
       onStopPlaying: this.handleStopPlaying
     }, componentProps));
   }
-
 }
-
 PlaybackStep.propTypes = _objectSpread({
   sampleRate: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number.isRequired,
   samples: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.instanceOf(Float32Array).isRequired
@@ -23613,6 +22503,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /**
  * Watches for project to finish updating before taking some action.
  *
@@ -23621,7 +22512,6 @@ __webpack_require__.r(__webpack_exports__);
  * to set ProjectWatcher to request that it call the onDoneUpdating callback when
  * project is no longer updating.
  */
-
 class ProjectWatcher extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
   constructor(props) {
     super(props);
@@ -23630,13 +22520,11 @@ class ProjectWatcher extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Compon
       waiting: false
     };
   }
-
   componentDidUpdate(prevProps) {
     if (this.state.waiting && this.props.isShowingWithId && !prevProps.isShowingWithId) {
       this.fulfill();
     }
   }
-
   fulfill() {
     this.props.onDoneUpdating();
     this.setState({
@@ -23644,7 +22532,6 @@ class ProjectWatcher extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Compon
       waiting: false
     });
   }
-
   waitForUpdate(isUpdating) {
     if (isUpdating) {
       this.setState({
@@ -23655,13 +22542,10 @@ class ProjectWatcher extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Compon
       this.fulfill();
     }
   }
-
   render() {
     return this.props.children(this.waitForUpdate);
   }
-
 }
-
 ProjectWatcher.propTypes = {
   children: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
   isShowingWithId: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
@@ -23670,16 +22554,13 @@ ProjectWatcher.propTypes = {
 ProjectWatcher.defaultProps = {
   onDoneUpdating: () => {}
 };
-
 const mapStateToProps = state => {
   const loadingState = state.scratchGui.projectState.loadingState;
   return {
     isShowingWithId: Object(_reducers_project_state__WEBPACK_IMPORTED_MODULE_4__["getIsShowingWithId"])(loadingState)
   };
 };
-
 const mapDispatchToProps = () => ({});
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps, mapDispatchToProps)(ProjectWatcher));
 
 /***/ }),
@@ -23709,7 +22590,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 class Prompt extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
   constructor(props) {
     super(props);
@@ -23722,52 +22602,43 @@ class Prompt extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       canAddCloudVariable: props.vm && props.vm.runtime.canAddCloudVariable() || false
     };
   }
-
   handleKeyPress(event) {
     if (event.key === 'Enter') this.handleOk();
   }
-
   handleFocus(event) {
     event.target.select();
   }
-
   handleOk() {
     this.props.onOk(this.state.inputValue, {
       scope: this.state.globalSelected ? 'global' : 'local',
       isCloud: this.state.cloudSelected
     });
   }
-
   handleCancel() {
     this.props.onCancel();
   }
-
   handleChange(e) {
     this.setState({
       inputValue: e.target.value
     });
   }
-
   handleScopeOptionSelection(e) {
     this.setState({
       globalSelected: e.target.value === 'global'
     });
   }
-
   handleCloudVariableOptionChange(e) {
     if (!this.props.showCloudOption) return;
     const checked = e.target.checked;
     this.setState({
       cloudSelected: checked
     });
-
     if (checked) {
       this.setState({
         globalSelected: true
       });
     }
   }
-
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_prompt_prompt_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
       isAddingCloudVariableScratchSafe: this.state.isAddingCloudVariableScratchSafe,
@@ -23790,9 +22661,7 @@ class Prompt extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       onScopeOptionSelection: this.handleScopeOptionSelection
     });
   }
-
 }
-
 Prompt.propTypes = {
   defaultValue: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
   isStage: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.bool.isRequired,
@@ -23829,7 +22698,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 class Question extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
   constructor(props) {
     super(props);
@@ -23838,21 +22706,17 @@ class Question extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       answer: ''
     };
   }
-
   handleChange(e) {
     this.setState({
       answer: e.target.value
     });
   }
-
   handleKeyPress(event) {
     if (event.key === 'Enter') this.handleSubmit();
   }
-
   handleSubmit() {
     this.props.onQuestionAnswered(this.state.answer);
   }
-
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_question_question_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
       answer: this.state.answer,
@@ -23862,9 +22726,7 @@ class Question extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       onKeyPress: this.handleKeyPress
     });
   }
-
 }
-
 Question.propTypes = {
   onQuestionAnswered: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func.isRequired,
   question: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string
@@ -23902,7 +22764,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 class RecordModal extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
   constructor(props) {
     super(props);
@@ -23919,13 +22780,11 @@ class RecordModal extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
       trimEnd: 1
     };
   }
-
   handleRecord() {
     this.setState({
       recording: true
     });
   }
-
   handleStopRecording(samples, sampleRate, levels, trimStart, trimEnd) {
     if (samples.length > 0) {
       this.setState({
@@ -23938,45 +22797,38 @@ class RecordModal extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
       });
     }
   }
-
   handlePlay() {
     this.setState({
       playing: true
     });
   }
-
   handleStopPlaying() {
     this.setState({
       playing: false,
       playhead: null
     });
   }
-
   handleBack() {
     this.setState({
       playing: false,
       samples: null
     });
   }
-
   handleSetTrimEnd(trimEnd) {
     this.setState({
       trimEnd
     });
   }
-
   handleSetTrimStart(trimStart) {
     this.setState({
       trimStart
     });
   }
-
   handleSetPlayhead(playhead) {
     this.setState({
       playhead
     });
   }
-
   handleSubmit() {
     this.setState({
       encoding: true
@@ -23991,11 +22843,9 @@ class RecordModal extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
       });
     });
   }
-
   handleCancel() {
     this.props.onClose();
   }
-
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_record_modal_record_modal_jsx__WEBPACK_IMPORTED_MODULE_6__["default"], {
       encoding: this.state.encoding,
@@ -24019,25 +22869,20 @@ class RecordModal extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
       onSubmit: this.handleSubmit
     });
   }
-
 }
-
 RecordModal.propTypes = {
   onClose: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
   onNewSound: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
   vm: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.instanceOf(scratch_vm__WEBPACK_IMPORTED_MODULE_3___default.a)
 };
-
 const mapStateToProps = state => ({
   vm: state.scratchGui.vm
 });
-
 const mapDispatchToProps = dispatch => ({
   onClose: () => {
     dispatch(Object(_reducers_modals__WEBPACK_IMPORTED_MODULE_7__["closeSoundRecorder"])());
   }
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["connect"])(mapStateToProps, mapDispatchToProps)(RecordModal));
 
 /***/ }),
@@ -24061,13 +22906,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_audio_audio_recorder_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../lib/audio/audio-recorder.js */ "./src/lib/audio/audio-recorder.js");
 /* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-intl */ "./node_modules/react-intl/lib/index.es.js");
 const _excluded = ["onRecord", "onStopRecording"];
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
 
 
 
@@ -24080,7 +22921,6 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_5__["defineMessages"
     "defaultMessage": "Could not start recording"
   }
 });
-
 class RecordingStep extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
   constructor(props) {
     super(props);
@@ -24091,22 +22931,18 @@ class RecordingStep extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Compone
       levels: null
     };
   }
-
   componentDidMount() {
     this.audioRecorder = new _lib_audio_audio_recorder_js__WEBPACK_IMPORTED_MODULE_4__["default"]();
     this.audioRecorder.startListening(this.handleStarted, this.handleLevelUpdate, this.handleRecordingError);
   }
-
   componentWillUnmount() {
     this.audioRecorder.dispose();
   }
-
   handleStarted() {
     this.setState({
       listening: true
     });
   }
-
   handleRecordingError() {
     alert(this.props.intl.formatMessage(messages.alertMsg)); // eslint-disable-line no-alert
   }
@@ -24117,12 +22953,10 @@ class RecordingStep extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Compone
       levels: this.props.recording ? (this.state.levels || []).concat([level]) : this.state.levels
     });
   }
-
   handleRecord() {
     this.audioRecorder.startRecording();
     this.props.onRecord();
   }
-
   handleStopRecording() {
     const {
       samples,
@@ -24133,16 +22967,14 @@ class RecordingStep extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Compone
     } = this.audioRecorder.stop();
     this.props.onStopRecording(samples, sampleRate, levels, trimStart, trimEnd);
   }
-
   render() {
     const _this$props = this.props,
-          {
-      onRecord,
-      // eslint-disable-line no-unused-vars
-      onStopRecording
-    } = _this$props,
-          componentProps = _objectWithoutProperties(_this$props, _excluded);
-
+      {
+        onRecord,
+        // eslint-disable-line no-unused-vars
+        onStopRecording
+      } = _this$props,
+      componentProps = _objectWithoutProperties(_this$props, _excluded);
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_record_modal_recording_step_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({
       level: this.state.level,
       levels: this.state.levels,
@@ -24151,9 +22983,7 @@ class RecordingStep extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Compone
       onStopRecording: this.handleStopRecording
     }, componentProps));
   }
-
 }
-
 RecordingStep.propTypes = {
   intl: react_intl__WEBPACK_IMPORTED_MODULE_5__["intlShape"].isRequired,
   onRecord: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func.isRequired,
@@ -24199,16 +23029,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- // from sb-file-uploader-hoc.jsx
 
+
+// from sb-file-uploader-hoc.jsx
 const getProjectTitleFromFilename = fileInputFilename => {
-  if (!fileInputFilename) return ''; // only parse title with valid scratch project extensions
+  if (!fileInputFilename) return '';
+  // only parse title with valid scratch project extensions
   // (.sb, .sb2, and .sb3)
-
   const matches = fileInputFilename.match(/^(.*)\.sb[23]?$/);
   if (!matches) return '';
   return matches[1].substring(0, 100); // truncate project title to max 100 chars
 };
+
 /**
  * Project saver component passes a downloadProject function to its child.
  * It expects this child to be a function with the signature
@@ -24223,50 +23055,40 @@ const getProjectTitleFromFilename = fileInputFilename => {
  *     />
  * )}</SB3Downloader>
  */
-
-
 class SB3Downloader extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
   constructor(props) {
     super(props);
     lodash_bindall__WEBPACK_IMPORTED_MODULE_0___default()(this, ['downloadProject', 'saveAsNew', 'saveToLastFile', 'saveToLastFileOrNew']);
   }
-
   startedSaving() {
     this.props.onShowSavingAlert();
   }
-
   finishedSaving() {
     this.props.onProjectUnchanged();
     this.props.onShowSaveSuccessAlert();
-
     if (this.props.onSaveFinished) {
       this.props.onSaveFinished();
     }
   }
-
   downloadProject() {
     if (!this.props.canSaveProject) {
       return;
     }
-
     this.startedSaving();
     this.props.saveProjectSb3().then(content => {
       this.finishedSaving();
       Object(_lib_download_blob__WEBPACK_IMPORTED_MODULE_5__["default"])(this.props.projectFilename, content);
     });
   }
-
   async saveAsNew() {
     if (!this.props.canSaveProject) {
       return;
     }
-
     try {
       const handle = await _lib_tw_filesystem_api__WEBPACK_IMPORTED_MODULE_9__["default"].showSaveFilePicker(this.props.projectFilename);
       await this.saveToHandle(handle);
       this.props.onSetFileHandle(handle);
       const title = getProjectTitleFromFilename(handle.name);
-
       if (title) {
         this.props.onSetProjectTitle(title);
       }
@@ -24274,7 +23096,6 @@ class SB3Downloader extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Compone
       this.handleSaveError(e);
     }
   }
-
   async saveToLastFile() {
     try {
       await this.saveToHandle(this.props.fileHandle);
@@ -24282,23 +23103,18 @@ class SB3Downloader extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Compone
       this.handleSaveError(e);
     }
   }
-
   saveToLastFileOrNew() {
     if (this.props.fileHandle) {
       return this.saveToLastFile();
     }
-
     return this.saveAsNew();
   }
-
   async saveToHandle(handle) {
     if (!this.props.canSaveProject) {
       return;
-    } // Obtain the writable very early, otherwise browsers won't give us the handle when we ask.
-
-
+    }
+    // Obtain the writable very early, otherwise browsers won't give us the handle when we ask.
     const writable = await _lib_tw_filesystem_api__WEBPACK_IMPORTED_MODULE_9__["default"].createWritable(handle);
-
     try {
       this.startedSaving();
       const content = await this.props.saveProjectSb3();
@@ -24309,17 +23125,14 @@ class SB3Downloader extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Compone
       await _lib_tw_filesystem_api__WEBPACK_IMPORTED_MODULE_9__["default"].closeWritable(writable);
     }
   }
-
   handleSaveError(e) {
     // AbortError can happen when someone cancels the file selector dialog
     if (e && e.name === 'AbortError') {
       return;
     }
-
     _lib_log__WEBPACK_IMPORTED_MODULE_11__["default"].error(e);
     this.props.onShowSaveErrorAlert();
   }
-
   render() {
     const {
       children
@@ -24336,19 +23149,14 @@ class SB3Downloader extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Compone
       smartSave: this.downloadProject
     });
   }
-
 }
-
 const getProjectFilename = (curTitle, defaultTitle) => {
   let filenameTitle = curTitle;
-
   if (!filenameTitle || filenameTitle.length === 0) {
     filenameTitle = defaultTitle;
   }
-
   return "".concat(filenameTitle.substring(0, 100), ".sb3");
 };
-
 SB3Downloader.propTypes = {
   children: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
   className: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
@@ -24369,14 +23177,12 @@ SB3Downloader.propTypes = {
 SB3Downloader.defaultProps = {
   className: ''
 };
-
 const mapStateToProps = state => ({
   fileHandle: state.scratchGui.tw.fileHandle,
   saveProjectSb3: state.scratchGui.vm.saveProjectSb3.bind(state.scratchGui.vm),
   canSaveProject: Object(_reducers_project_state__WEBPACK_IMPORTED_MODULE_10__["getIsShowingProject"])(state.scratchGui.projectState.loadingState),
   projectFilename: getProjectFilename(state.scratchGui.projectTitle, _reducers_project_title__WEBPACK_IMPORTED_MODULE_4__["projectTitleInitialState"])
 });
-
 const mapDispatchToProps = dispatch => ({
   onSetFileHandle: fileHandle => dispatch(Object(_reducers_tw__WEBPACK_IMPORTED_MODULE_8__["setFileHandle"])(fileHandle)),
   onSetProjectTitle: title => dispatch(Object(_reducers_project_title__WEBPACK_IMPORTED_MODULE_4__["setProjectTitle"])(title)),
@@ -24385,7 +23191,6 @@ const mapDispatchToProps = dispatch => ({
   onShowSaveErrorAlert: () => dispatch(Object(_reducers_alerts__WEBPACK_IMPORTED_MODULE_7__["showStandardAlert"])('savingError')),
   onProjectUnchanged: () => dispatch(Object(_reducers_project_changed__WEBPACK_IMPORTED_MODULE_6__["setProjectUnchanged"])())
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps, mapDispatchToProps)(SB3Downloader));
 
 /***/ }),
@@ -24413,7 +23218,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 class ScanningStep extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
   constructor(props) {
     super(props);
@@ -24423,26 +23227,22 @@ class ScanningStep extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Componen
       peripheralList: []
     };
   }
-
   componentDidMount() {
     this.props.vm.scanForPeripheral(this.props.extensionId);
     this.props.vm.on('PERIPHERAL_LIST_UPDATE', this.handlePeripheralListUpdate);
     this.props.vm.on('PERIPHERAL_SCAN_TIMEOUT', this.handlePeripheralScanTimeout);
   }
-
   componentWillUnmount() {
     // @todo: stop the peripheral scan here
     this.props.vm.removeListener('PERIPHERAL_LIST_UPDATE', this.handlePeripheralListUpdate);
     this.props.vm.removeListener('PERIPHERAL_SCAN_TIMEOUT', this.handlePeripheralScanTimeout);
   }
-
   handlePeripheralScanTimeout() {
     this.setState({
       scanning: false,
       peripheralList: []
     });
   }
-
   handlePeripheralListUpdate(newList) {
     // TODO: sort peripherals by signal strength? so they don't jump around
     const peripheralArray = Object.keys(newList).map(id => newList[id]);
@@ -24450,7 +23250,6 @@ class ScanningStep extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Componen
       peripheralList: peripheralArray
     });
   }
-
   handleRefresh() {
     this.props.vm.scanForPeripheral(this.props.extensionId);
     this.setState({
@@ -24458,7 +23257,6 @@ class ScanningStep extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Componen
       peripheralList: []
     });
   }
-
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_connection_modal_scanning_step_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
       connectionSmallIconURL: this.props.connectionSmallIconURL,
@@ -24471,9 +23269,7 @@ class ScanningStep extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Componen
       onRefresh: this.handleRefresh
     });
   }
-
 }
-
 ScanningStep.propTypes = {
   connectionSmallIconURL: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
   extensionId: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string.isRequired,
@@ -24506,14 +23302,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _components_monitor_slider_monitor_jsx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/monitor/slider-monitor.jsx */ "./src/components/monitor/slider-monitor.jsx");
 const _excluded = ["vm", "value"];
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
 
 
 
@@ -24529,7 +23320,6 @@ class SliderMonitor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Compone
       value: props.value
     };
   }
-
   componentWillReceiveProps(nextProps) {
     if (this.state.value !== nextProps.value) {
       this.setState({
@@ -24537,7 +23327,6 @@ class SliderMonitor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Compone
       });
     }
   }
-
   handleSliderUpdate(e) {
     this.setState({
       value: Number(e.target.value)
@@ -24549,35 +23338,29 @@ class SliderMonitor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Compone
     } = this.props;
     Object(_lib_variable_utils__WEBPACK_IMPORTED_MODULE_4__["setVariableValue"])(vm, targetId, variableId, Number(e.target.value));
   }
-
   render() {
     const _this$props = this.props,
-          {
-      vm,
-      // eslint-disable-line no-unused-vars
-      value
-    } = _this$props,
-          props = _objectWithoutProperties(_this$props, _excluded);
-
+      {
+        vm,
+        // eslint-disable-line no-unused-vars
+        value
+      } = _this$props,
+      props = _objectWithoutProperties(_this$props, _excluded);
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_monitor_slider_monitor_jsx__WEBPACK_IMPORTED_MODULE_6__["default"], _extends({}, props, {
       value: this.state.value,
       onSliderUpdate: this.handleSliderUpdate
     }));
   }
-
 }
-
 SliderMonitor.propTypes = {
   id: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
   targetId: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
   value: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string]),
   vm: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.instanceOf(scratch_vm__WEBPACK_IMPORTED_MODULE_3___default.a)
 };
-
 const mapStateToProps = state => ({
   vm: state.scratchGui.vm
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_5__["connect"])(mapStateToProps)(SliderMonitor));
 
 /***/ }),
@@ -24602,7 +23385,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 class SliderPrompt extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
   constructor(props) {
     super(props);
@@ -24619,41 +23401,33 @@ class SliderPrompt extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Componen
       maxValue: isDiscrete ? maxValue.toFixed(0) : maxValue.toFixed(2)
     };
   }
-
   handleKeyPress(event) {
     if (event.key === 'Enter') this.handleOk();
   }
-
   handleOk() {
     const {
       minValue,
       maxValue
     } = this.state;
-
     if (!this.validates(minValue, maxValue)) {
       this.props.onCancel();
       return;
     }
-
     this.props.onOk(parseFloat(minValue), parseFloat(maxValue), this.shouldBeDiscrete(minValue, maxValue));
   }
-
   handleCancel() {
     this.props.onCancel();
   }
-
   handleChangeMin(e) {
     this.setState({
       minValue: e.target.value
     });
   }
-
   handleChangeMax(e) {
     this.setState({
       maxValue: e.target.value
     });
   }
-
   shouldBeDiscrete(min, max) {
     return min.indexOf('.') + max.indexOf('.') === -2; // Both -1
   }
@@ -24661,7 +23435,6 @@ class SliderPrompt extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Componen
   validates(min, max) {
     return isFinite(min) && isFinite(max);
   }
-
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_slider_prompt_slider_prompt_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
       maxValue: this.state.maxValue,
@@ -24673,9 +23446,7 @@ class SliderPrompt extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Componen
       onOk: this.handleOk
     });
   }
-
 }
-
 SliderPrompt.propTypes = {
   isDiscrete: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.bool,
   maxValue: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.number,
@@ -24718,11 +23489,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_audio_audio_buffer_player_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../lib/audio/audio-buffer-player.js */ "./src/lib/audio/audio-buffer-player.js");
 /* harmony import */ var _lib_log_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../lib/log.js */ "./src/lib/log.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -24736,7 +23504,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 const UNDO_STACK_SIZE = 99;
 const MAX_RMS = 1.2;
-
 class SoundEditor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
   constructor(props) {
     super(props);
@@ -24753,12 +23520,10 @@ class SoundEditor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
     this.undoStack = [];
     this.ref = null;
   }
-
   componentDidMount() {
     this.audioBufferPlayer = new _lib_audio_audio_buffer_player_js__WEBPACK_IMPORTED_MODULE_9__["default"](this.props.samples, this.props.sampleRate);
     document.addEventListener('keydown', this.handleKeyPress);
   }
-
   componentWillReceiveProps(newProps) {
     if (newProps.soundId !== this.props.soundId) {
       // A different sound has been selected
@@ -24771,52 +23536,42 @@ class SoundEditor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
       });
     }
   }
-
   componentWillUnmount() {
     this.audioBufferPlayer.stop();
     document.removeEventListener('keydown', this.handleKeyPress);
   }
-
   handleKeyPress(event) {
     if (event.target instanceof HTMLInputElement) {
       // Ignore keyboard shortcuts if a text input field is focused
       return;
     }
-
     if (this.props.isFullScreen) {
       // Ignore keyboard shortcuts if the stage is fullscreen mode
       return;
     }
-
     if (event.key === ' ') {
       event.preventDefault();
-
       if (this.state.playhead) {
         this.handleStopPlaying();
       } else {
         this.handlePlay();
       }
     }
-
     if (event.key === 'Delete' || event.key === 'Backspace') {
       event.preventDefault();
-
       if (event.shiftKey) {
         this.handleDeleteInverse();
       } else {
         this.handleDelete();
       }
     }
-
     if (event.key === 'Escape') {
       event.preventDefault();
       this.handleUpdateTrim(null, null);
     }
-
     if (event.metaKey || event.ctrlKey) {
       if (event.shiftKey && event.key.toLowerCase() === 'z') {
         event.preventDefault();
-
         if (this.redoStack.length > 0) {
           this.handleRedo();
         }
@@ -24837,7 +23592,6 @@ class SoundEditor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
       }
     }
   }
-
   resetState(samples, sampleRate) {
     this.audioBufferPlayer.stop();
     this.audioBufferPlayer = new _lib_audio_audio_buffer_player_js__WEBPACK_IMPORTED_MODULE_9__["default"](samples, sampleRate);
@@ -24846,7 +23600,6 @@ class SoundEditor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
       playhead: null
     });
   }
-
   submitNewSamples(samples, sampleRate, skipUndo) {
     return Object(_lib_audio_audio_util_js__WEBPACK_IMPORTED_MODULE_6__["downsampleIfNeeded"])({
       samples,
@@ -24862,14 +23615,12 @@ class SoundEditor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
       }).then(wavBuffer => {
         if (!skipUndo) {
           this.redoStack = [];
-
           if (this.undoStack.length >= UNDO_STACK_SIZE) {
             this.undoStack.shift(); // Drop the first element off the array
           }
 
           this.undoStack.push(this.getUndoItem());
         }
-
         this.resetState(newSamples, newSampleRate);
         this.props.vm.updateSoundBuffer(this.props.soundIndex, this.audioBufferPlayer.buffer, new Uint8Array(wavBuffer));
         return true; // Edit was successful
@@ -24885,28 +23636,23 @@ class SoundEditor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
     this.audioBufferPlayer.stop();
     this.audioBufferPlayer.play(this.state.trimStart || 0, this.state.trimEnd || 1, this.handleUpdatePlayhead, this.handleStoppedPlaying);
   }
-
   handleStopPlaying() {
     this.audioBufferPlayer.stop();
     this.handleStoppedPlaying();
   }
-
   handleStoppedPlaying() {
     this.setState({
       playhead: null
     });
   }
-
   handleUpdatePlayhead(playhead) {
     this.setState({
       playhead
     });
   }
-
   handleChangeName(name) {
     this.props.vm.renameSound(this.props.soundIndex, name);
   }
-
   handleDelete() {
     const {
       samples,
@@ -24919,7 +23665,6 @@ class SoundEditor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
     const secondPart = samples.slice(endIndex, sampleCount);
     const newLength = firstPart.length + secondPart.length;
     let newSamples;
-
     if (newLength === 0) {
       newSamples = new Float32Array(1);
     } else {
@@ -24927,7 +23672,6 @@ class SoundEditor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
       newSamples.set(firstPart, 0);
       newSamples.set(secondPart, firstPart.length);
     }
-
     this.submitNewSamples(newSamples, sampleRate).then(() => {
       this.setState({
         trimStart: null,
@@ -24935,7 +23679,6 @@ class SoundEditor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
       });
     });
   }
-
   handleDeleteInverse() {
     // Delete everything outside of the trimmers
     const {
@@ -24946,11 +23689,9 @@ class SoundEditor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
     const startIndex = Math.floor(this.state.trimStart * sampleCount);
     const endIndex = Math.floor(this.state.trimEnd * sampleCount);
     let clippedSamples = samples.slice(startIndex, endIndex);
-
     if (clippedSamples.length === 0) {
       clippedSamples = new Float32Array(1);
     }
-
     this.submitNewSamples(clippedSamples, sampleRate).then(success => {
       if (success) {
         this.setState({
@@ -24960,7 +23701,6 @@ class SoundEditor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
       }
     });
   }
-
   handleUpdateTrim(trimStart, trimEnd) {
     this.setState({
       trimStart,
@@ -24968,11 +23708,9 @@ class SoundEditor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
     });
     this.handleStopPlaying();
   }
-
   effectFactory(name) {
     return () => this.handleEffect(name);
   }
-
   copyCurrentBuffer() {
     // Cannot reliably use props.samples because it gets detached by Firefox
     return {
@@ -24980,15 +23718,14 @@ class SoundEditor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
       sampleRate: this.audioBufferPlayer.buffer.sampleRate
     };
   }
-
   handleEffect(name) {
     const trimStart = this.state.trimStart === null ? 0.0 : this.state.trimStart;
-    const trimEnd = this.state.trimEnd === null ? 1.0 : this.state.trimEnd; // Offline audio context needs at least 2 samples
+    const trimEnd = this.state.trimEnd === null ? 1.0 : this.state.trimEnd;
 
+    // Offline audio context needs at least 2 samples
     if (this.audioBufferPlayer.buffer.length < 2) {
       return;
     }
-
     const effects = new _lib_audio_audio_effects_js__WEBPACK_IMPORTED_MODULE_7__["default"](this.audioBufferPlayer.buffer, name, trimStart, trimEnd);
     effects.process((renderedBuffer, adjustedTrimStart, adjustedTrimEnd) => {
       const samples = renderedBuffer.getChannelData(0);
@@ -25007,30 +23744,25 @@ class SoundEditor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
       });
     });
   }
-
   tooLoud() {
     const numChunks = this.state.chunkLevels.length;
     const startIndex = this.state.trimStart === null ? 0 : Math.floor(this.state.trimStart * numChunks);
     const endIndex = this.state.trimEnd === null ? numChunks - 1 : Math.ceil(this.state.trimEnd * numChunks);
     const trimChunks = this.state.chunkLevels.slice(startIndex, endIndex);
     let max = 0;
-
     for (const i of trimChunks) {
       if (i > max) {
         max = i;
       }
     }
-
     return max > MAX_RMS;
   }
-
   getUndoItem() {
     return _objectSpread(_objectSpread({}, this.copyCurrentBuffer()), {}, {
       trimStart: this.state.trimStart,
       trimEnd: this.state.trimEnd
     });
   }
-
   handleUndo() {
     this.redoStack.push(this.getUndoItem());
     const {
@@ -25039,7 +23771,6 @@ class SoundEditor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
       trimStart,
       trimEnd
     } = this.undoStack.pop();
-
     if (samples) {
       return this.submitNewSamples(samples, sampleRate, true).then(success => {
         if (success) {
@@ -25051,7 +23782,6 @@ class SoundEditor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
       });
     }
   }
-
   handleRedo() {
     const {
       samples,
@@ -25059,7 +23789,6 @@ class SoundEditor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
       trimStart,
       trimEnd
     } = this.redoStack.pop();
-
     if (samples) {
       this.undoStack.push(this.getUndoItem());
       return this.submitNewSamples(samples, sampleRate, true).then(success => {
@@ -25072,11 +23801,9 @@ class SoundEditor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
       });
     }
   }
-
   handleCopy() {
     this.copy();
   }
-
   copy(callback) {
     const trimStart = this.state.trimStart === null ? 0.0 : this.state.trimStart;
     const trimEnd = this.state.trimEnd === null ? 1.0 : this.state.trimEnd;
@@ -25088,21 +23815,19 @@ class SoundEditor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
       copyBuffer: newCopyBuffer
     }, callback);
   }
-
   handleCopyToNew() {
     this.copy(() => {
       Object(_lib_audio_audio_util_js__WEBPACK_IMPORTED_MODULE_6__["encodeAndAddSoundToVM"])(this.props.vm, this.state.copyBuffer.samples, this.state.copyBuffer.sampleRate, this.props.name);
     });
   }
-
   resampleBufferToRate(buffer, newRate) {
     return new Promise((resolve, reject) => {
       const sampleRateRatio = newRate / buffer.sampleRate;
       const newLength = sampleRateRatio * buffer.samples.length;
-      let offlineContext; // Try to use either OfflineAudioContext or webkitOfflineAudioContext to resample
+      let offlineContext;
+      // Try to use either OfflineAudioContext or webkitOfflineAudioContext to resample
       // The constructors will throw if trying to resample at an unsupported rate
       // (e.g. Safari/webkitOAC does not support lower than 44khz).
-
       try {
         if (window.OfflineAudioContext) {
           offlineContext = new window.OfflineAudioContext(1, newLength, newRate);
@@ -25114,10 +23839,8 @@ class SoundEditor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
         if (newRate === buffer.sampleRate / 2) {
           return resolve(Object(_lib_audio_audio_util_js__WEBPACK_IMPORTED_MODULE_6__["dropEveryOtherSample"])(buffer));
         }
-
         return reject(new Error('Could not resample'));
       }
-
       const source = offlineContext.createBufferSource();
       const audioBuffer = offlineContext.createBuffer(1, buffer.samples.length, buffer.sampleRate);
       audioBuffer.getChannelData(0).set(buffer.samples);
@@ -25125,7 +23848,6 @@ class SoundEditor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
       source.connect(offlineContext.destination);
       source.start();
       offlineContext.startRendering();
-
       offlineContext.oncomplete = _ref2 => {
         let {
           renderedBuffer
@@ -25137,13 +23859,11 @@ class SoundEditor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
       };
     });
   }
-
   paste() {
     // If there's no selection, paste at the end of the sound
     const {
       samples
     } = this.copyCurrentBuffer();
-
     if (this.state.trimStart === null) {
       const newLength = samples.length + this.state.copyBuffer.samples.length;
       const newSamples = new Float32Array(newLength);
@@ -25180,10 +23900,8 @@ class SoundEditor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
       });
     }
   }
-
   handlePaste() {
     if (!this.state.copyBuffer) return;
-
     if (this.state.copyBuffer.sampleRate === this.props.sampleRate) {
       this.paste();
     } else {
@@ -25194,18 +23912,15 @@ class SoundEditor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
       });
     }
   }
-
   setRef(element) {
     this.ref = element;
   }
-
   handleContainerClick(e) {
     // If the click is on the sound editor's div (and not any other element), delesect
     if (e.target === this.ref && this.state.trimStart !== null) {
       this.handleUpdateTrim(null, null);
     }
   }
-
   render() {
     const {
       effectTypes
@@ -25248,9 +23963,7 @@ class SoundEditor extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
       onUndo: this.handleUndo
     });
   }
-
 }
-
 SoundEditor.propTypes = {
   isStereo: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
   duration: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
@@ -25263,13 +23976,12 @@ SoundEditor.propTypes = {
   soundIndex: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
   vm: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.instanceOf(scratch_vm__WEBPACK_IMPORTED_MODULE_4___default.a).isRequired
 };
-
 const mapStateToProps = (state, _ref3) => {
   let {
     soundIndex
   } = _ref3;
-  const sprite = state.scratchGui.vm.editingTarget.sprite; // Make sure the sound index doesn't go out of range.
-
+  const sprite = state.scratchGui.vm.editingTarget.sprite;
+  // Make sure the sound index doesn't go out of range.
   const index = soundIndex < sprite.sounds.length ? soundIndex : sprite.sounds.length - 1;
   const sound = state.scratchGui.vm.editingTarget.sprite.sounds[index];
   const audioBuffer = state.scratchGui.vm.getSoundBuffer(index);
@@ -25285,7 +23997,6 @@ const mapStateToProps = (state, _ref3) => {
     vm: state.scratchGui.vm
   };
 };
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_5__["connect"])(mapStateToProps)(SoundEditor));
 
 /***/ }),
@@ -25319,17 +24030,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_libraries_sound_tags__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../lib/libraries/sound-tags */ "./src/lib/libraries/sound-tags.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 const _excluded = ["md5ext"];
-
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
 
 
 
@@ -25347,48 +24052,45 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_3__["defineMessages"
     "id": "gui.soundLibrary.chooseASound",
     "defaultMessage": "Choose a Sound"
   }
-}); // @todo need to use this hack to avoid library using md5 for image
+});
 
+// @todo need to use this hack to avoid library using md5 for image
 const getSoundLibraryThumbnailData = (soundLibraryContent, isRtl) => soundLibraryContent.map(sound => {
   const {
-    md5ext
-  } = sound,
-        otherData = _objectWithoutProperties(sound, _excluded);
-
+      md5ext
+    } = sound,
+    otherData = _objectWithoutProperties(sound, _excluded);
   return _objectSpread({
     _md5: md5ext,
     rawURL: isRtl ? _components_library_item_lib_icon_sound_rtl_svg__WEBPACK_IMPORTED_MODULE_8___default.a : _components_library_item_lib_icon_sound_svg__WEBPACK_IMPORTED_MODULE_7___default.a
   }, otherData);
 });
-
 class SoundLibrary extends react__WEBPACK_IMPORTED_MODULE_2___default.a.PureComponent {
   constructor(props) {
     super(props);
     lodash_bindall__WEBPACK_IMPORTED_MODULE_0___default()(this, ['handleItemSelected', 'handleItemMouseEnter', 'handleItemMouseLeave', 'onStop', 'setStopHandler']);
+
     /**
      * AudioEngine that will decode and play sounds for us.
      * @type {AudioEngine}
      */
-
     this.audioEngine = null;
     /**
      * A promise for the sound queued to play as soon as it loads and
      * decodes.
      * @type {Promise<SoundPlayer>}
      */
-
     this.playingSoundPromise = null;
+
     /**
      * function to call when the sound ends
      */
-
     this.handleStop = null;
     const soundLibrary = Object(_lib_libraries_tw_async_libraries__WEBPACK_IMPORTED_MODULE_9__["getSoundLibrary"])();
     this.state = {
       data: Array.isArray(soundLibrary) ? getSoundLibraryThumbnailData(soundLibrary, this.props.isRtl) : soundLibrary
     };
   }
-
   componentDidMount() {
     if (this.state.data.then) {
       this.state.data.then(data => {
@@ -25397,33 +24099,28 @@ class SoundLibrary extends react__WEBPACK_IMPORTED_MODULE_2___default.a.PureComp
         });
       });
     }
-
     this.audioEngine = new scratch_audio__WEBPACK_IMPORTED_MODULE_5___default.a();
     this.playingSoundPromise = null;
   }
-
   componentWillUnmount() {
     this.stopPlayingSound();
   }
-
   onStop() {
     if (this.playingSoundPromise !== null) {
       this.playingSoundPromise.then(soundPlayer => soundPlayer && soundPlayer.removeListener('stop', this.onStop));
       if (this.handleStop) this.handleStop();
     }
   }
-
   setStopHandler(func) {
     this.handleStop = func;
   }
-
   stopPlayingSound() {
     // Playback is queued, playing, or has played recently and finished
     // normally.
     if (this.playingSoundPromise !== null) {
       // Forcing sound to stop, so stop listening for sound ending:
-      this.playingSoundPromise.then(soundPlayer => soundPlayer && soundPlayer.removeListener('stop', this.onStop)); // Queued playback began playing before this method.
-
+      this.playingSoundPromise.then(soundPlayer => soundPlayer && soundPlayer.removeListener('stop', this.onStop));
+      // Queued playback began playing before this method.
       if (this.playingSoundPromise.isPlaying) {
         // Fetch the player from the promise and stop playback soon.
         this.playingSoundPromise.then(soundPlayer => {
@@ -25437,24 +24134,24 @@ class SoundLibrary extends react__WEBPACK_IMPORTED_MODULE_2___default.a.PureComp
         this.playingSoundPromise.then(soundPlayer => {
           if (soundPlayer) soundPlayer.stopImmediately();
         });
-      } // No further work should be performed on this promise and its
+      }
+      // No further work should be performed on this promise and its
       // soundPlayer.
-
-
       this.playingSoundPromise = null;
     }
   }
-
   handleItemMouseEnter(soundItem) {
     const md5ext = soundItem._md5;
     const idParts = md5ext.split('.');
     const md5 = idParts[0];
-    const vm = this.props.vm; // In case enter is called twice without a corresponding leave
+    const vm = this.props.vm;
+
+    // In case enter is called twice without a corresponding leave
     // inbetween, stop the last playback before queueing a new sound.
+    this.stopPlayingSound();
 
-    this.stopPlayingSound(); // Save the promise so code to stop the sound may queue the stop
+    // Save the promise so code to stop the sound may queue the stop
     // instruction after the play instruction.
-
     this.playingSoundPromise = vm.runtime.storage.load(vm.runtime.storage.AssetType.Sound, md5).then(soundAsset => {
       if (soundAsset) {
         const sound = {
@@ -25464,27 +24161,24 @@ class SoundLibrary extends react__WEBPACK_IMPORTED_MODULE_2___default.a.PureComp
           data: soundAsset.data
         };
         return this.audioEngine.decodeSoundPlayer(sound).then(soundPlayer => {
-          soundPlayer.connect(this.audioEngine); // Play the sound. Playing the sound will always come before a
+          soundPlayer.connect(this.audioEngine);
+          // Play the sound. Playing the sound will always come before a
           // paired stop if the sound must stop early.
-
           soundPlayer.play();
-          soundPlayer.addListener('stop', this.onStop); // Set that the sound is playing. This affects the type of stop
+          soundPlayer.addListener('stop', this.onStop);
+          // Set that the sound is playing. This affects the type of stop
           // instruction given if the sound must stop early.
-
           if (this.playingSoundPromise !== null) {
             this.playingSoundPromise.isPlaying = true;
           }
-
           return soundPlayer;
         });
       }
     });
   }
-
   handleItemMouseLeave() {
     this.stopPlayingSound();
   }
-
   handleItemSelected(soundItem) {
     const vmSound = {
       format: soundItem.format,
@@ -25497,7 +24191,6 @@ class SoundLibrary extends react__WEBPACK_IMPORTED_MODULE_2___default.a.PureComp
       this.props.onNewSound();
     });
   }
-
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_library_library_jsx__WEBPACK_IMPORTED_MODULE_6__["default"], {
       showPlayButton: true,
@@ -25512,9 +24205,7 @@ class SoundLibrary extends react__WEBPACK_IMPORTED_MODULE_2___default.a.PureComp
       onRequestClose: this.props.onRequestClose
     });
   }
-
 }
-
 SoundLibrary.propTypes = {
   intl: react_intl__WEBPACK_IMPORTED_MODULE_3__["intlShape"].isRequired,
   isRtl: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
@@ -25522,13 +24213,10 @@ SoundLibrary.propTypes = {
   onRequestClose: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
   vm: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.instanceOf(scratch_vm__WEBPACK_IMPORTED_MODULE_4___default.a).isRequired
 };
-
 const mapStateToProps = state => ({
   isRtl: state.locales.isRtl
 });
-
 const mapDispatchToProps = () => ({});
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_intl__WEBPACK_IMPORTED_MODULE_3__["injectIntl"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_11__["connect"])(mapStateToProps, mapDispatchToProps)(SoundLibrary)));
 
 /***/ }),
@@ -25605,7 +24293,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 class SoundTab extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
   constructor(props) {
     super(props);
@@ -25614,7 +24301,6 @@ class SoundTab extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       selectedSoundIndex: 0
     };
   }
-
   componentWillReceiveProps(nextProps) {
     const {
       editingTarget,
@@ -25622,12 +24308,11 @@ class SoundTab extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       stage
     } = nextProps;
     const target = editingTarget && sprites[editingTarget] ? sprites[editingTarget] : stage;
-
     if (!target || !target.sounds) {
       return;
-    } // If switching editing targets, reset the sound index
+    }
 
-
+    // If switching editing targets, reset the sound index
     if (this.props.editingTarget !== editingTarget) {
       this.setState({
         selectedSoundIndex: 0
@@ -25638,28 +24323,23 @@ class SoundTab extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       });
     }
   }
-
   handleSelectSound(soundIndex) {
     this.setState({
       selectedSoundIndex: soundIndex
     });
   }
-
   handleDeleteSound(soundIndex) {
     const restoreFun = this.props.vm.deleteSound(soundIndex);
-
     if (soundIndex >= this.state.selectedSoundIndex) {
       this.setState({
         selectedSoundIndex: Math.max(0, soundIndex - 1)
       });
     }
-
     this.props.dispatchUpdateRestore({
       restoreFun,
       deletedItem: 'Sound'
     });
   }
-
   handleExportSound(soundIndex) {
     const item = this.props.vm.editingTarget.sprite.sounds[soundIndex];
     const blob = new Blob([item.asset.data], {
@@ -25667,7 +24347,6 @@ class SoundTab extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
     });
     Object(_lib_download_blob__WEBPACK_IMPORTED_MODULE_20__["default"])("".concat(item.name, ".").concat(item.asset.dataFormat), blob);
   }
-
   handleDuplicateSound(soundIndex) {
     this.props.vm.duplicateSound(soundIndex).then(() => {
       this.setState({
@@ -25675,19 +24354,16 @@ class SoundTab extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       });
     });
   }
-
   handleNewSound() {
     if (!this.props.vm.editingTarget) {
       return null;
     }
-
     const sprite = this.props.vm.editingTarget.sprite;
     const sounds = sprite.sounds ? sprite.sounds : [];
     this.setState({
       selectedSoundIndex: Math.max(sounds.length - 1, 0)
     });
   }
-
   async handleSurpriseSound() {
     const soundLibraryContent = await Object(_lib_libraries_tw_async_libraries__WEBPACK_IMPORTED_MODULE_16__["getSoundLibrary"])();
     const soundItem = soundLibraryContent[Math.floor(Math.random() * soundLibraryContent.length)];
@@ -25702,11 +24378,9 @@ class SoundTab extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       this.handleNewSound();
     });
   }
-
   handleFileUploadClick() {
     this.fileInput.click();
   }
-
   handleSoundUpload(e) {
     const storage = this.props.vm.runtime.storage;
     const targetId = this.props.vm.editingTarget.id;
@@ -25716,7 +24390,6 @@ class SoundTab extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
         newSound.name = fileName;
         this.props.vm.addSound(newSound, targetId).then(() => {
           this.handleNewSound();
-
           if (fileIndex === fileCount - 1) {
             this.props.onCloseImporting();
           }
@@ -25724,7 +24397,6 @@ class SoundTab extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       }, this.props.onCloseImporting);
     }, this.props.onCloseImporting);
   }
-
   handleDrop(dropInfo) {
     if (dropInfo.dragType === _lib_drag_constants__WEBPACK_IMPORTED_MODULE_19__["default"].SOUND) {
       const sprite = this.props.vm.editingTarget.sprite;
@@ -25745,11 +24417,9 @@ class SoundTab extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       }).then(this.handleNewSound);
     }
   }
-
   setFileInput(input) {
     this.fileInput = input;
   }
-
   render() {
     const {
       dispatchUpdateRestore,
@@ -25760,11 +24430,9 @@ class SoundTab extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       onNewSoundFromLibraryClick,
       onNewSoundFromRecordingClick
     } = this.props;
-
     if (!vm.editingTarget) {
       return null;
     }
-
     const sprite = vm.editingTarget.sprite;
     const sounds = sprite.sounds ? sprite.sounds.map(sound => ({
       url: isRtl ? _components_asset_panel_icon_sound_rtl_svg__WEBPACK_IMPORTED_MODULE_7___default.a : _components_asset_panel_icon_sound_svg__WEBPACK_IMPORTED_MODULE_6___default.a,
@@ -25835,9 +24503,7 @@ class SoundTab extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       onRequestClose: this.props.onRequestCloseSoundLibrary
     }) : null);
   }
-
 }
-
 SoundTab.propTypes = {
   dispatchUpdateRestore: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func,
   editingTarget: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
@@ -25865,7 +24531,6 @@ SoundTab.propTypes = {
   }),
   vm: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.instanceOf(scratch_vm__WEBPACK_IMPORTED_MODULE_4___default.a).isRequired
 };
-
 const mapStateToProps = state => ({
   editingTarget: state.scratchGui.targets.editingTarget,
   isRtl: state.locales.isRtl,
@@ -25874,7 +24539,6 @@ const mapStateToProps = state => ({
   soundLibraryVisible: state.scratchGui.modals.soundLibrary,
   soundRecorderVisible: state.scratchGui.modals.soundRecorder
 });
-
 const mapDispatchToProps = dispatch => ({
   onActivateCostumesTab: () => dispatch(Object(_reducers_editor_tab__WEBPACK_IMPORTED_MODULE_23__["activateTab"])(_reducers_editor_tab__WEBPACK_IMPORTED_MODULE_23__["COSTUMES_TAB_INDEX"])),
   onNewSoundFromLibraryClick: e => {
@@ -25893,7 +24557,6 @@ const mapDispatchToProps = dispatch => ({
   onCloseImporting: () => dispatch(Object(_reducers_alerts__WEBPACK_IMPORTED_MODULE_25__["closeAlertWithId"])('importingAsset')),
   onShowImporting: () => dispatch(Object(_reducers_alerts__WEBPACK_IMPORTED_MODULE_25__["showStandardAlert"])('importingAsset'))
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(_lib_error_boundary_hoc_jsx__WEBPACK_IMPORTED_MODULE_18__["default"])('Sound Tab')(Object(react_intl__WEBPACK_IMPORTED_MODULE_3__["injectIntl"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_21__["connect"])(mapStateToProps, mapDispatchToProps)(SoundTab))));
 
 /***/ }),
@@ -25915,14 +24578,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_sprite_info_sprite_info_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/sprite-info/sprite-info.jsx */ "./src/components/sprite-info/sprite-info.jsx");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-
 
 
 
@@ -25932,31 +24590,26 @@ class SpriteInfo extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component 
     super(props);
     lodash_bindall__WEBPACK_IMPORTED_MODULE_0___default()(this, ['handleClickVisible', 'handleClickNotVisible', 'handlePressVisible', 'handlePressNotVisible']);
   }
-
   handleClickVisible(e) {
     e.preventDefault();
     this.props.onChangeVisibility(true);
   }
-
   handleClickNotVisible(e) {
     e.preventDefault();
     this.props.onChangeVisibility(false);
   }
-
   handlePressVisible(e) {
     if (e.key === ' ' || e.key === 'Enter') {
       e.preventDefault();
       this.props.onChangeVisibility(true);
     }
   }
-
   handlePressNotVisible(e) {
     if (e.key === ' ' || e.key === 'Enter') {
       e.preventDefault();
       this.props.onChangeVisibility(false);
     }
   }
-
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_sprite_info_sprite_info_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({}, this.props, {
       onClickNotVisible: this.handleClickNotVisible,
@@ -25965,9 +24618,7 @@ class SpriteInfo extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component 
       onPressVisible: this.handlePressVisible
     }));
   }
-
 }
-
 SpriteInfo.propTypes = _objectSpread(_objectSpread({}, _components_sprite_info_sprite_info_jsx__WEBPACK_IMPORTED_MODULE_3__["default"].propTypes), {}, {
   onChangeDirection: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
   onChangeName: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
@@ -26019,13 +24670,11 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_3__["defineMessages"
     "defaultMessage": "Choose a Sprite"
   }
 });
-
 class SpriteLibrary extends react__WEBPACK_IMPORTED_MODULE_2___default.a.PureComponent {
   constructor(props) {
     super(props);
     lodash_bindall__WEBPACK_IMPORTED_MODULE_0___default()(this, ['handleItemSelect']);
   }
-
   handleItemSelect(item) {
     // Randomize position of library sprite
     Object(_lib_randomize_sprite_position__WEBPACK_IMPORTED_MODULE_6__["default"])(item);
@@ -26033,7 +24682,6 @@ class SpriteLibrary extends react__WEBPACK_IMPORTED_MODULE_2___default.a.PureCom
       this.props.onActivateBlocksTab();
     });
   }
-
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_library_library_jsx__WEBPACK_IMPORTED_MODULE_8__["default"], {
       data: Object(_lib_libraries_tw_async_libraries__WEBPACK_IMPORTED_MODULE_5__["getSpriteLibrary"])(),
@@ -26044,9 +24692,7 @@ class SpriteLibrary extends react__WEBPACK_IMPORTED_MODULE_2___default.a.PureCom
       onRequestClose: this.props.onRequestClose
     });
   }
-
 }
-
 SpriteLibrary.propTypes = {
   intl: react_intl__WEBPACK_IMPORTED_MODULE_3__["intlShape"].isRequired,
   onActivateBlocksTab: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func.isRequired,
@@ -26083,14 +24729,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_touch_utils__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../lib/touch-utils */ "./src/lib/touch-utils.js");
 /* harmony import */ var _components_sprite_selector_item_sprite_selector_item_jsx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/sprite-selector-item/sprite-selector-item.jsx */ "./src/components/sprite-selector-item/sprite-selector-item.jsx");
 const _excluded = ["asset", "id", "index", "onClick", "onDeleteButtonClick", "onDuplicateButtonClick", "onExportButtonClick", "onRenameButtonClick", "dragPayload", "receivedBlocks", "costumeURL", "vm"];
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
 
 
 
@@ -26112,22 +24753,18 @@ class SpriteSelectorItem extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Pu
       onDragEnd: this.handleDragEnd
     });
   }
-
   componentDidMount() {
     document.addEventListener('touchend', this.handleTouchEnd);
   }
-
   componentWillUnmount() {
     document.removeEventListener('touchend', this.handleTouchEnd);
     this.dragRecognizer.reset();
   }
-
   getCostumeData() {
     if (this.props.costumeURL) return this.props.costumeURL;
     if (!this.props.asset) return null;
     return Object(_lib_get_costume_url__WEBPACK_IMPORTED_MODULE_8__["default"])(this.props.asset);
   }
-
   handleDragEnd() {
     if (this.props.dragging) {
       this.props.onDrag({
@@ -26138,12 +24775,10 @@ class SpriteSelectorItem extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Pu
         index: null
       });
     }
-
     setTimeout(() => {
       this.noClick = false;
     });
   }
-
   handleDrag(currentOffset) {
     this.props.onDrag({
       img: this.getCostumeData(),
@@ -26155,7 +24790,6 @@ class SpriteSelectorItem extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Pu
     });
     this.noClick = true;
   }
-
   handleTouchEnd(e) {
     const {
       x,
@@ -26167,78 +24801,63 @@ class SpriteSelectorItem extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Pu
       bottom,
       right
     } = this.ref.getBoundingClientRect();
-
     if (x >= left && x <= right && y >= top && y <= bottom) {
       this.handleMouseEnter();
     }
   }
-
   handleMouseDown(e) {
     this.dragRecognizer.start(e);
   }
-
   handleClick(e) {
     e.preventDefault();
-
     if (!this.noClick) {
       this.props.onClick(this.props.id);
     }
   }
-
   handleDelete(e) {
     e.stopPropagation(); // To prevent from bubbling back to handleClick
-
     this.props.onDeleteButtonClick(this.props.id);
   }
-
   handleDuplicate(e) {
     e.stopPropagation(); // To prevent from bubbling back to handleClick
-
     this.props.onDuplicateButtonClick(this.props.id);
   }
-
   handleExport(e) {
     e.stopPropagation();
     this.props.onExportButtonClick(this.props.id);
   }
-
   handleRename(e) {
     e.stopPropagation();
     this.props.onRenameButtonClick(this.props.id);
   }
-
   handleMouseLeave() {
     this.props.dispatchSetHoveredSprite(null);
   }
-
   handleMouseEnter() {
     this.props.dispatchSetHoveredSprite(this.props.id);
   }
-
   setRef(component) {
     // Access the DOM node using .elem because it is going through ContextMenuTrigger
     this.ref = component && component.elem;
   }
-
   render() {
     const _this$props = this.props,
-          {
-      /* eslint-disable no-unused-vars */
-      asset,
-      id,
-      index,
-      onClick,
-      onDeleteButtonClick,
-      onDuplicateButtonClick,
-      onExportButtonClick,
-      onRenameButtonClick,
-      dragPayload,
-      receivedBlocks,
-      costumeURL,
-      vm
-    } = _this$props,
-          props = _objectWithoutProperties(_this$props, _excluded);
-
+      {
+        /* eslint-disable no-unused-vars */
+        asset,
+        id,
+        index,
+        onClick,
+        onDeleteButtonClick,
+        onDuplicateButtonClick,
+        onExportButtonClick,
+        onRenameButtonClick,
+        dragPayload,
+        receivedBlocks,
+        costumeURL,
+        vm
+      } = _this$props,
+      props = _objectWithoutProperties(_this$props, _excluded);
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_sprite_selector_item_sprite_selector_item_jsx__WEBPACK_IMPORTED_MODULE_11__["default"], _extends({
       componentRef: this.setRef,
       costumeURL: this.getCostumeData(),
@@ -26253,9 +24872,7 @@ class SpriteSelectorItem extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Pu
       onMouseLeave: this.handleMouseLeave
     }, props));
   }
-
 }
-
 SpriteSelectorItem.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   asset: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.any,
@@ -26280,7 +24897,6 @@ SpriteSelectorItem.propTypes = {
   selected: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
   vm: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.instanceOf(scratch_vm__WEBPACK_IMPORTED_MODULE_7___default.a).isRequired
 };
-
 const mapStateToProps = (state, _ref) => {
   let {
     id
@@ -26291,14 +24907,12 @@ const mapStateToProps = (state, _ref) => {
     vm: state.scratchGui.vm
   };
 };
-
 const mapDispatchToProps = dispatch => ({
   dispatchSetHoveredSprite: spriteId => {
     dispatch(Object(_reducers_hovered_target__WEBPACK_IMPORTED_MODULE_4__["setHoveredSprite"])(spriteId));
   },
   onDrag: data => dispatch(Object(_reducers_asset_drag__WEBPACK_IMPORTED_MODULE_5__["updateAssetDrag"])(data))
 });
-
 const ConnectedComponent = Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps, mapDispatchToProps)(SpriteSelectorItem);
 /* harmony default export */ __webpack_exports__["default"] = (ConnectedComponent);
 
@@ -26338,38 +24952,31 @@ function _extends() { _extends = Object.assign ? Object.assign.bind() : function
 
 
 
- // eslint-disable-next-line react/prefer-stateless-function
 
+// eslint-disable-next-line react/prefer-stateless-function
 class StageHeader extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
   constructor(props) {
     super(props);
     lodash_bindall__WEBPACK_IMPORTED_MODULE_2___default()(this, ['handleKeyPress']);
   }
-
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeyPress);
   }
-
   componentWillUnmount() {
     document.removeEventListener('keydown', this.handleKeyPress);
   }
-
   handleKeyPress(event) {
     if (event.key === 'Escape' && this.props.isFullScreen) {
       this.props.onSetStageUnFull(false);
     }
   }
-
   render() {
     const props = _extends({}, this.props);
-
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_stage_header_stage_header_jsx__WEBPACK_IMPORTED_MODULE_9__["default"], _extends({}, props, {
       onKeyPress: this.handleKeyPress
     }));
   }
-
 }
-
 StageHeader.propTypes = {
   isFullScreen: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.bool,
   // tw: update when dimensions or isWindowFullScreen changes
@@ -26383,7 +24990,6 @@ StageHeader.propTypes = {
   stageSizeMode: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.oneOf(Object.keys(_lib_layout_constants__WEBPACK_IMPORTED_MODULE_4__["STAGE_SIZE_MODES"])),
   vm: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.instanceOf(scratch_vm__WEBPACK_IMPORTED_MODULE_3___default.a).isRequired
 };
-
 const mapStateToProps = state => ({
   stageSizeMode: state.scratchGui.stageSize.stageSize,
   // tw: replace showBranding
@@ -26394,7 +25000,6 @@ const mapStateToProps = state => ({
   dimensions: state.scratchGui.tw.dimensions,
   isPlayerOnly: state.scratchGui.mode.isPlayerOnly
 });
-
 const mapDispatchToProps = dispatch => ({
   onSetStageLarge: () => dispatch(Object(_reducers_stage_size__WEBPACK_IMPORTED_MODULE_5__["setStageSize"])(_lib_layout_constants__WEBPACK_IMPORTED_MODULE_4__["STAGE_SIZE_MODES"].large)),
   onSetStageSmall: () => dispatch(Object(_reducers_stage_size__WEBPACK_IMPORTED_MODULE_5__["setStageSize"])(_lib_layout_constants__WEBPACK_IMPORTED_MODULE_4__["STAGE_SIZE_MODES"].small)),
@@ -26402,7 +25007,6 @@ const mapDispatchToProps = dispatch => ({
   onSetStageUnFull: () => dispatch(Object(_reducers_mode__WEBPACK_IMPORTED_MODULE_6__["setFullScreen"])(false)),
   onOpenSettings: () => dispatch(Object(_reducers_modals__WEBPACK_IMPORTED_MODULE_7__["openSettingsModal"])())
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_8__["connect"])(mapStateToProps, mapDispatchToProps)(StageHeader));
 
 /***/ }),
@@ -26441,13 +25045,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_libraries_tw_async_libraries__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../lib/libraries/tw-async-libraries */ "./src/lib/libraries/tw-async-libraries.js");
 /* harmony import */ var _lib_file_uploader_js__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../lib/file-uploader.js */ "./src/lib/file-uploader.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 
 
 
@@ -26470,21 +25070,17 @@ function _extends() { _extends = Object.assign ? Object.assign.bind() : function
 
 const dragTypes = [_lib_drag_constants__WEBPACK_IMPORTED_MODULE_10__["default"].COSTUME, _lib_drag_constants__WEBPACK_IMPORTED_MODULE_10__["default"].SOUND, _lib_drag_constants__WEBPACK_IMPORTED_MODULE_10__["default"].BACKPACK_COSTUME, _lib_drag_constants__WEBPACK_IMPORTED_MODULE_10__["default"].BACKPACK_SOUND, _lib_drag_constants__WEBPACK_IMPORTED_MODULE_10__["default"].BACKPACK_CODE];
 const DroppableThrottledStage = Object(_lib_drop_area_hoc_jsx__WEBPACK_IMPORTED_MODULE_11__["default"])(dragTypes)(Object(_lib_throttled_property_hoc_jsx__WEBPACK_IMPORTED_MODULE_12__["default"])('url', 500)(_components_stage_selector_stage_selector_jsx__WEBPACK_IMPORTED_MODULE_17__["default"]));
-
 class StageSelector extends react__WEBPACK_IMPORTED_MODULE_3___default.a.Component {
   constructor(props) {
     super(props);
     lodash_bindall__WEBPACK_IMPORTED_MODULE_0___default()(this, ['handleClick', 'handleNewBackdrop', 'handleSurpriseBackdrop', 'handleEmptyBackdrop', 'addBackdropFromLibraryItem', 'handleFileUploadClick', 'handleBackdropUpload', 'handleMouseEnter', 'handleMouseLeave', 'handleTouchEnd', 'handleDrop', 'setFileInput', 'setRef']);
   }
-
   componentDidMount() {
     document.addEventListener('touchend', this.handleTouchEnd);
   }
-
   componentWillUnmount() {
     document.removeEventListener('touchend', this.handleTouchEnd);
   }
-
   handleTouchEnd(e) {
     const {
       x,
@@ -26496,12 +25092,10 @@ class StageSelector extends react__WEBPACK_IMPORTED_MODULE_3___default.a.Compone
       bottom,
       right
     } = this.ref.getBoundingClientRect();
-
     if (x >= left && x <= right && y >= top && y <= bottom) {
       this.handleMouseEnter();
     }
   }
-
   addBackdropFromLibraryItem(item) {
     let shouldActivateTab = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
     const vmBackdrop = {
@@ -26514,11 +25108,9 @@ class StageSelector extends react__WEBPACK_IMPORTED_MODULE_3___default.a.Compone
     };
     this.handleNewBackdrop(vmBackdrop, shouldActivateTab);
   }
-
   handleClick() {
     this.props.onSelect(this.props.id);
   }
-
   handleNewBackdrop(backdrops_) {
     let shouldActivateTab = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
     const backdrops = Array.isArray(backdrops_) ? backdrops_ : [backdrops_];
@@ -26528,25 +25120,20 @@ class StageSelector extends react__WEBPACK_IMPORTED_MODULE_3___default.a.Compone
       }
     });
   }
-
   async handleSurpriseBackdrop(e) {
     e.stopPropagation(); // Prevent click from falling through to selecting stage.
-
-    const backdropLibraryContent = await Object(_lib_libraries_tw_async_libraries__WEBPACK_IMPORTED_MODULE_18__["getBackdropLibrary"])(); // @todo should this not add a backdrop you already have?
-
+    const backdropLibraryContent = await Object(_lib_libraries_tw_async_libraries__WEBPACK_IMPORTED_MODULE_18__["getBackdropLibrary"])();
+    // @todo should this not add a backdrop you already have?
     const item = backdropLibraryContent[Math.floor(Math.random() * backdropLibraryContent.length)];
     this.addBackdropFromLibraryItem(item, false);
   }
-
   handleEmptyBackdrop(e) {
     e.stopPropagation(); // Prevent click from falling through to stage selector, select it manually below
-
     this.props.vm.setEditingTarget(this.props.id);
     this.handleNewBackdrop(Object(_lib_empty_assets__WEBPACK_IMPORTED_MODULE_13__["emptyCostume"])(this.props.intl.formatMessage(_lib_shared_messages__WEBPACK_IMPORTED_MODULE_14__["default"].backdrop, {
       index: 1
     })));
   }
-
   handleBackdropUpload(e) {
     const vm = this.props.vm;
     this.props.onShowImporting();
@@ -26564,21 +25151,16 @@ class StageSelector extends react__WEBPACK_IMPORTED_MODULE_3___default.a.Compone
       }, this.props.onCloseImporting);
     }, this.props.onCloseImporting);
   }
-
   handleFileUploadClick(e) {
     e.stopPropagation(); // Prevent click from selecting the stage, that is handled manually in backdrop upload
-
     this.fileInput.click();
   }
-
   handleMouseEnter() {
     this.props.dispatchSetHoveredSprite(this.props.id);
   }
-
   handleMouseLeave() {
     this.props.dispatchSetHoveredSprite(null);
   }
-
   handleDrop(dragInfo) {
     if (dragInfo.dragType === _lib_drag_constants__WEBPACK_IMPORTED_MODULE_10__["default"].COSTUME) {
       this.props.vm.shareCostumeToTarget(dragInfo.index, this.props.id);
@@ -26600,15 +25182,12 @@ class StageSelector extends react__WEBPACK_IMPORTED_MODULE_3___default.a.Compone
       });
     }
   }
-
   setFileInput(input) {
     this.fileInput = input;
   }
-
   setRef(ref) {
     this.ref = ref;
   }
-
   render() {
     const componentProps = lodash_omit__WEBPACK_IMPORTED_MODULE_1___default()(this.props, ['asset', 'dispatchSetHoveredSprite', 'id', 'intl', 'onActivateTab', 'onSelect', 'onShowImporting', 'onCloseImporting']);
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(DroppableThrottledStage, _extends({
@@ -26624,9 +25203,7 @@ class StageSelector extends react__WEBPACK_IMPORTED_MODULE_3___default.a.Compone
       onSurpriseBackdropClick: this.handleSurpriseBackdrop
     }, componentProps));
   }
-
 }
-
 StageSelector.propTypes = _objectSpread(_objectSpread({}, _components_stage_selector_stage_selector_jsx__WEBPACK_IMPORTED_MODULE_17__["default"].propTypes), {}, {
   id: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string,
   intl: react_intl__WEBPACK_IMPORTED_MODULE_4__["intlShape"].isRequired,
@@ -26634,7 +25211,6 @@ StageSelector.propTypes = _objectSpread(_objectSpread({}, _components_stage_sele
   onSelect: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.func,
   onShowImporting: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.func
 });
-
 const mapStateToProps = (state, _ref) => {
   let {
     asset,
@@ -26647,7 +25223,6 @@ const mapStateToProps = (state, _ref) => {
     raised: state.scratchGui.blockDrag
   };
 };
-
 const mapDispatchToProps = dispatch => ({
   onNewBackdropClick: e => {
     e.stopPropagation();
@@ -26662,7 +25237,6 @@ const mapDispatchToProps = dispatch => ({
   onCloseImporting: () => dispatch(Object(_reducers_alerts__WEBPACK_IMPORTED_MODULE_8__["closeAlertWithId"])('importingAsset')),
   onShowImporting: () => dispatch(Object(_reducers_alerts__WEBPACK_IMPORTED_MODULE_8__["showStandardAlert"])('importingAsset'))
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_intl__WEBPACK_IMPORTED_MODULE_4__["injectIntl"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_5__["connect"])(mapStateToProps, mapDispatchToProps)(StageSelector)));
 
 /***/ }),
@@ -26689,9 +25263,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const StageWrapper = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_stage_wrapper_stage_wrapper_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], props);
-
 StageWrapper.propTypes = {
   isRendererSupported: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.bool.isRequired,
   stageSize: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.oneOf(Object.keys(_lib_layout_constants_js__WEBPACK_IMPORTED_MODULE_3__["STAGE_DISPLAY_SIZES"])).isRequired,
@@ -26730,19 +25302,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _reducers_color_picker__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../reducers/color-picker */ "./src/reducers/color-picker.js");
 /* harmony import */ var _reducers_tw__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../reducers/tw */ "./src/reducers/tw.js");
 const _excluded = ["vm", "onActivateColorPicker", "disableEditingTargetChange"];
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -26772,7 +25337,6 @@ class Stage extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
       colorInfo: null,
       question: null
     };
-
     if (this.props.vm.renderer) {
       this.renderer = this.props.vm.renderer;
       this.canvas = this.renderer.canvas;
@@ -26780,56 +25344,51 @@ class Stage extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
       this.canvas = document.createElement('canvas');
       this.renderer = new scratch_render__WEBPACK_IMPORTED_MODULE_3___default.a(this.canvas, -this.props.customStageSize.width / 2, this.props.customStageSize.width / 2, -this.props.customStageSize.height / 2, this.props.customStageSize.height / 2);
       this.props.vm.setStageSize(this.props.customStageSize.width, this.props.customStageSize.height);
-      this.props.vm.attachRenderer(this.renderer); // Only attach a video provider once because it is stateful
+      this.props.vm.attachRenderer(this.renderer);
 
-      this.props.vm.setVideoProvider(new _lib_video_video_provider__WEBPACK_IMPORTED_MODULE_8__["default"]()); // Calling draw a single time before any project is loaded just makes
+      // Only attach a video provider once because it is stateful
+      this.props.vm.setVideoProvider(new _lib_video_video_provider__WEBPACK_IMPORTED_MODULE_8__["default"]());
+
+      // Calling draw a single time before any project is loaded just makes
       // the canvas white instead of solid black–needed because it is not
       // possible to use CSS to style the canvas to have a different
       // default color
+      this.props.vm.renderer.draw();
 
-      this.props.vm.renderer.draw(); // tw: handle changes to high quality pen
-
+      // tw: handle changes to high quality pen
       this.props.vm.renderer.on('UseHighQualityRenderChanged', this.props.onHighQualityPenChanged);
     }
-
     this.props.vm.attachV2BitmapAdapter(new scratch_svg_renderer__WEBPACK_IMPORTED_MODULE_9__["BitmapAdapter"]());
   }
-
   componentDidMount() {
     this.attachRectEvents();
     this.attachMouseEvents(this.canvas);
     this.updateRect();
     this.props.vm.runtime.addListener('QUESTION', this.questionListener);
   }
-
   shouldComponentUpdate(nextProps, nextState) {
     return this.props.stageSize !== nextProps.stageSize || this.props.isColorPicking !== nextProps.isColorPicking || this.state.colorInfo !== nextState.colorInfo || this.props.isFullScreen !== nextProps.isFullScreen || this.props.isWindowFullScreen !== nextProps.isWindowFullScreen || this.props.dimensions !== nextProps.dimensions || this.state.question !== nextState.question || this.props.micIndicator !== nextProps.micIndicator || this.props.isStarted !== nextProps.isStarted || this.props.customStageSize !== nextProps.customStageSize;
   }
-
   componentDidUpdate(prevProps) {
     if (this.props.isColorPicking && !prevProps.isColorPicking) {
       this.startColorPickingLoop();
     } else if (!this.props.isColorPicking && prevProps.isColorPicking) {
       this.stopColorPickingLoop();
     }
-
     this.updateRect();
     this.renderer.resize(this.rect.width, this.rect.height);
   }
-
   componentWillUnmount() {
     this.detachMouseEvents(this.canvas);
     this.detachRectEvents();
     this.stopColorPickingLoop();
     this.props.vm.runtime.removeListener('QUESTION', this.questionListener);
   }
-
   questionListener(question) {
     this.setState({
       question: question
     });
   }
-
   handleQuestionAnswered(answer) {
     this.setState({
       question: null
@@ -26837,25 +25396,20 @@ class Stage extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
       this.props.vm.runtime.emit('ANSWER', answer);
     });
   }
-
   startColorPickingLoop() {
     const callback = () => {
       this.animationFrameId = requestAnimationFrame(callback);
-
       if (typeof this.pickX === 'number') {
         this.setState({
           colorInfo: this.getColorInfo(this.pickX, this.pickY)
         });
       }
     };
-
     this.animationFrameId = requestAnimationFrame(callback);
   }
-
   stopColorPickingLoop() {
     cancelAnimationFrame(this.animationFrameId);
   }
-
   attachMouseEvents(canvas) {
     document.addEventListener('mousemove', this.onMouseMove);
     document.addEventListener('mouseup', this.onMouseUp);
@@ -26866,7 +25420,6 @@ class Stage extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
     canvas.addEventListener('wheel', this.onWheel);
     canvas.addEventListener('contextmenu', this.onContextMenu);
   }
-
   detachMouseEvents(canvas) {
     document.removeEventListener('mousemove', this.onMouseMove);
     document.removeEventListener('mouseup', this.onMouseUp);
@@ -26877,44 +25430,37 @@ class Stage extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
     canvas.removeEventListener('wheel', this.onWheel);
     canvas.removeEventListener('contextmenu', this.onContextMenu);
   }
-
   attachRectEvents() {
     window.addEventListener('resize', this.updateRect);
     window.addEventListener('scroll', this.updateRect);
   }
-
   detachRectEvents() {
     window.removeEventListener('resize', this.updateRect);
     window.removeEventListener('scroll', this.updateRect);
   }
-
   updateRect() {
     this.rect = this.canvas.getBoundingClientRect();
   }
-
   getScratchCoords(x, y) {
     const nativeSize = this.renderer.getNativeSize();
     return [nativeSize[0] / this.rect.width * (x - this.rect.width / 2), nativeSize[1] / this.rect.height * (y - this.rect.height / 2)];
   }
-
   getColorInfo(x, y) {
     return _objectSpread({
       x: x,
       y: y
     }, this.renderer.extractColor(x, y, colorPickerRadius));
   }
-
   handleDoubleClick(e) {
     // tw: Disable editing target changing in certain circumstances to avoid lag
     if (this.props.disableEditingTargetChange) {
       return;
     }
-
     const {
       x,
       y
-    } = Object(_lib_touch_utils__WEBPACK_IMPORTED_MODULE_7__["getEventXY"])(e); // Set editing target from cursor position, if clicking on a sprite.
-
+    } = Object(_lib_touch_utils__WEBPACK_IMPORTED_MODULE_7__["getEventXY"])(e);
+    // Set editing target from cursor position, if clicking on a sprite.
     const mousePosition = [x - this.rect.left, y - this.rect.top];
     const drawableId = this.renderer.pick(mousePosition[0], mousePosition[1]);
     if (drawableId === null) return;
@@ -26922,29 +25468,24 @@ class Stage extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
     if (targetId === null) return;
     this.props.vm.setEditingTarget(targetId);
   }
-
   onMouseMove(e) {
     const {
       x,
       y
     } = Object(_lib_touch_utils__WEBPACK_IMPORTED_MODULE_7__["getEventXY"])(e);
     const mousePosition = [x - this.rect.left, y - this.rect.top];
-
     if (this.props.isColorPicking) {
       // Set the pickX/Y for the color picker loop to pick up
       this.pickX = mousePosition[0];
       this.pickY = mousePosition[1];
     }
-
     if (this.state.mouseDown && !this.state.isDragging) {
       const distanceFromMouseDown = Math.sqrt(Math.pow(mousePosition[0] - this.state.mouseDownPosition[0], 2) + Math.pow(mousePosition[1] - this.state.mouseDownPosition[1], 2));
-
       if (distanceFromMouseDown > dragThreshold) {
         this.cancelMouseDownTimeout();
         this.onStartDrag(...this.state.mouseDownPosition);
       }
     }
-
     if (this.state.mouseDown && this.state.isDragging) {
       // Editor drag style only updates the drag canvas, does full update at the end of drag
       // Non-editor drag style just updates the sprite continuously.
@@ -26959,7 +25500,6 @@ class Stage extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
         });
       }
     }
-
     const coordinates = {
       x: mousePosition[0],
       y: mousePosition[1],
@@ -26968,7 +25508,6 @@ class Stage extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
     };
     this.props.vm.postIOData('mouse', coordinates);
   }
-
   onMouseUp(e) {
     const {
       x,
@@ -26989,25 +25528,20 @@ class Stage extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
       canvasHeight: this.rect.height,
       wasDragged: this.state.isDragging
     };
-
     if (this.state.isDragging) {
       this.onStopDrag(mousePosition[0], mousePosition[1]);
     }
-
     this.props.vm.postIOData('mouse', data);
-
     if (this.props.isColorPicking && mousePosition[0] > 0 && mousePosition[0] < this.rect.width && mousePosition[1] > 0 && mousePosition[1] < this.rect.height) {
       const {
         r,
         g,
         b
       } = this.state.colorInfo.color;
-
       const componentToString = c => {
         const hex = c.toString(16);
         return hex.length === 1 ? "0".concat(hex) : hex;
       };
-
       const colorString = "#".concat(componentToString(r)).concat(componentToString(g)).concat(componentToString(b));
       this.props.onDeactivateColorPicker(colorString);
       this.setState({
@@ -27017,7 +25551,6 @@ class Stage extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
       this.pickY = null;
     }
   }
-
   onMouseDown(e) {
     this.updateRect();
     const {
@@ -27025,18 +25558,16 @@ class Stage extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
       y
     } = Object(_lib_touch_utils__WEBPACK_IMPORTED_MODULE_7__["getEventXY"])(e);
     const mousePosition = [x - this.rect.left, y - this.rect.top];
-
     if (this.props.isColorPicking) {
       // Set the pickX/Y for the color picker loop to pick up
       this.pickX = mousePosition[0];
-      this.pickY = mousePosition[1]; // Immediately update the color picker info
-
+      this.pickY = mousePosition[1];
+      // Immediately update the color picker info
       this.setState({
         colorInfo: this.getColorInfo(this.pickX, this.pickY)
       });
     } else {
       const isTouchEvent = window.TouchEvent && e instanceof TouchEvent;
-
       if (e.button === 0 || isTouchEvent) {
         this.setState({
           mouseDown: true,
@@ -27044,7 +25575,6 @@ class Stage extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
           mouseDownTimeoutId: setTimeout(this.onStartDrag.bind(this, mousePosition[0], mousePosition[1]), 400)
         });
       }
-
       const data = {
         isDown: true,
         button: e.button,
@@ -27054,18 +25584,16 @@ class Stage extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
         canvasHeight: this.rect.height
       };
       this.props.vm.postIOData('mouse', data);
-
       if (isTouchEvent && e.preventDefault) {
         // Prevent default to prevent touch from dragging page
-        e.preventDefault(); // But we do want any active input to be blurred
-
+        e.preventDefault();
+        // But we do want any active input to be blurred
         if (document.activeElement && document.activeElement.blur) {
           document.activeElement.blur();
         }
       }
     }
   }
-
   onWheel(e) {
     const data = {
       deltaX: e.deltaX,
@@ -27073,18 +25601,15 @@ class Stage extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
     };
     this.props.vm.postIOData('mouseWheel', data);
   }
-
   onContextMenu(e) {
     if (this.props.vm.runtime.ioDevices.mouse.usesRightClickDown) {
       e.preventDefault();
     }
   }
-
   cancelMouseDownTimeout() {
     if (this.state.mouseDownTimeoutId !== null) {
       clearTimeout(this.state.mouseDownTimeoutId);
     }
-
     this.setState({
       mouseDownTimeoutId: null
     });
@@ -27095,8 +25620,6 @@ class Stage extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
    * @param {number} x The x position of the initial drag event
    * @param {number} y The y position of the initial drag event
    */
-
-
   drawDragCanvas(drawableData, x, y) {
     const {
       imageData,
@@ -27106,39 +25629,38 @@ class Stage extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
       height: boundsHeight
     } = drawableData;
     this.dragCanvas.width = imageData.width;
-    this.dragCanvas.height = imageData.height; // On high-DPI devices, the canvas size in layout-pixels is not equal to the size of the extracted data.
-
+    this.dragCanvas.height = imageData.height;
+    // On high-DPI devices, the canvas size in layout-pixels is not equal to the size of the extracted data.
     this.dragCanvas.style.width = "".concat(boundsWidth, "px");
     this.dragCanvas.style.height = "".concat(boundsHeight, "px");
-    this.dragCanvas.getContext('2d').putImageData(imageData, 0, 0); // Position so that pick location is at (0, 0) so that  positionDragCanvas()
+    this.dragCanvas.getContext('2d').putImageData(imageData, 0, 0);
+    // Position so that pick location is at (0, 0) so that  positionDragCanvas()
     // can use translation to move to mouse position smoothly.
-
     this.dragCanvas.style.left = "".concat(boundsX - x, "px");
     this.dragCanvas.style.top = "".concat(boundsY - y, "px");
     this.dragCanvas.style.display = 'block';
   }
-
   clearDragCanvas() {
     this.dragCanvas.width = this.dragCanvas.height = 0;
     this.dragCanvas.style.display = 'none';
   }
-
   positionDragCanvas(mouseX, mouseY) {
     // mouseX/Y are relative to stage top/left, and dragCanvas is already
     // positioned so that the pick location is at (0,0).
     this.dragCanvas.style.transform = "translate(".concat(mouseX, "px, ").concat(mouseY, "px)");
   }
-
   onStartDrag(x, y) {
     if (this.state.dragId) return;
     const drawableId = this.renderer.pick(x, y);
     if (drawableId === null) return;
     const targetId = this.props.vm.getTargetIdForDrawableId(drawableId);
     if (targetId === null) return;
-    const target = this.props.vm.runtime.getTargetById(targetId); // Do not start drag unless in editor drag mode or target is draggable
+    const target = this.props.vm.runtime.getTargetById(targetId);
 
-    if (!(this.props.useEditorDragStyle || target.draggable)) return; // Dragging always brings the target to the front
+    // Do not start drag unless in editor drag mode or target is draggable
+    if (!(this.props.useEditorDragStyle || target.draggable)) return;
 
+    // Dragging always brings the target to the front
     target.goToFront();
     const [scratchMouseX, scratchMouseY] = this.getScratchCoords(x, y);
     const offsetX = target.x - scratchMouseX;
@@ -27149,7 +25671,6 @@ class Stage extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
       dragId: targetId,
       dragOffset: [offsetX, offsetY]
     });
-
     if (this.props.useEditorDragStyle) {
       // Extract the drawable art
       const drawableData = this.renderer.extractDrawableScreenSpace(drawableId);
@@ -27161,10 +25682,8 @@ class Stage extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
       this.props.vm.renderer.draw();
     }
   }
-
   onStopDrag(mouseX, mouseY) {
     const dragId = this.state.dragId;
-
     const commonStopDragActions = () => {
       this.props.vm.stopDrag(dragId);
       this.setState({
@@ -27173,22 +25692,20 @@ class Stage extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
         dragId: null
       });
     };
-
     if (this.props.useEditorDragStyle) {
       // Need to sequence these actions to prevent flickering.
       const spriteInfo = {
         visible: true
-      }; // First update the sprite position if dropped in the stage.
-
+      };
+      // First update the sprite position if dropped in the stage.
       if (mouseX > 0 && mouseX < this.rect.width && mouseY > 0 && mouseY < this.rect.height) {
         const spritePosition = this.getScratchCoords(mouseX, mouseY);
         spriteInfo.x = spritePosition[0] + this.state.dragOffset[0];
         spriteInfo.y = -(spritePosition[1] + this.state.dragOffset[1]);
         spriteInfo.force = true;
       }
-
-      this.props.vm.postSpriteInfo(spriteInfo); // Then clear the dragging canvas and stop drag (potentially slow if selecting sprite)
-
+      this.props.vm.postSpriteInfo(spriteInfo);
+      // Then clear the dragging canvas and stop drag (potentially slow if selecting sprite)
       this.clearDragCanvas();
       commonStopDragActions();
       this.props.vm.renderer.draw();
@@ -27196,22 +25713,19 @@ class Stage extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
       commonStopDragActions();
     }
   }
-
   setDragCanvas(canvas) {
     this.dragCanvas = canvas;
   }
-
   render() {
     const _this$props = this.props,
-          {
-      vm,
-      // eslint-disable-line no-unused-vars
-      onActivateColorPicker,
-      // eslint-disable-line no-unused-vars
-      disableEditingTargetChange
-    } = _this$props,
-          props = _objectWithoutProperties(_this$props, _excluded);
-
+      {
+        vm,
+        // eslint-disable-line no-unused-vars
+        onActivateColorPicker,
+        // eslint-disable-line no-unused-vars
+        disableEditingTargetChange
+      } = _this$props,
+      props = _objectWithoutProperties(_this$props, _excluded);
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_stage_stage_jsx__WEBPACK_IMPORTED_MODULE_10__["default"], _extends({
       canvas: this.canvas,
       colorInfo: this.state.colorInfo,
@@ -27221,9 +25735,7 @@ class Stage extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
       onQuestionAnswered: this.handleQuestionAnswered
     }, props));
   }
-
 }
-
 Stage.propTypes = {
   onHighQualityPenChanged: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
   highQualityPen: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
@@ -27248,7 +25760,6 @@ Stage.propTypes = {
 Stage.defaultProps = {
   useEditorDragStyle: true
 };
-
 const mapStateToProps = state => ({
   highQualityPen: state.scratchGui.tw.highQualityPen,
   customStageSize: state.scratchGui.customStageSize,
@@ -27263,14 +25774,12 @@ const mapStateToProps = state => ({
   // Do not use editor drag style in fullscreen or player mode.
   useEditorDragStyle: !(state.scratchGui.mode.isFullScreen || state.scratchGui.mode.isPlayerOnly)
 });
-
 const mapDispatchToProps = dispatch => ({
   // tw: handler for syncing high quality pen option changes
   onHighQualityPenChanged: enabled => dispatch(Object(_reducers_tw__WEBPACK_IMPORTED_MODULE_12__["setHighQualityPenState"])(enabled)),
   onActivateColorPicker: () => dispatch(Object(_reducers_color_picker__WEBPACK_IMPORTED_MODULE_11__["activateColorPicker"])()),
   onDeactivateColorPicker: color => dispatch(Object(_reducers_color_picker__WEBPACK_IMPORTED_MODULE_11__["deactivateColorPicker"])(color))
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_5__["connect"])(mapStateToProps, mapDispatchToProps)(Stage));
 
 /***/ }),
@@ -27292,14 +25801,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_tag_button_tag_button_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/tag-button/tag-button.jsx */ "./src/components/tag-button/tag-button.jsx");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-
 
 
 
@@ -27309,19 +25813,15 @@ class TagButton extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
     super(props);
     lodash_bindall__WEBPACK_IMPORTED_MODULE_0___default()(this, ['handleClick']);
   }
-
   handleClick() {
     this.props.onClick(this.props.tag);
   }
-
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_tag_button_tag_button_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({}, this.props, {
       onClick: this.handleClick
     }));
   }
-
 }
-
 TagButton.propTypes = _objectSpread(_objectSpread({}, _components_tag_button_tag_button_jsx__WEBPACK_IMPORTED_MODULE_3__["default"].propTypes), {}, {
   onClick: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func
 });
@@ -27352,25 +25852,23 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 class TargetHighlight extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
   constructor(props) {
     super(props);
     lodash_bindall__WEBPACK_IMPORTED_MODULE_0___default()(this, ['getPageCoords']);
-  } // Transform scratch coordinates into page coordinates
+  }
 
-
+  // Transform scratch coordinates into page coordinates
   getPageCoords(x, y) {
     const {
       stageWidth,
       stageHeight,
       vm
-    } = this.props; // The renderers "nativeSize" is the [width, height] of the stage in scratch-units
-
+    } = this.props;
+    // The renderers "nativeSize" is the [width, height] of the stage in scratch-units
     const nativeSize = vm.renderer.getNativeSize();
     return [stageWidth / nativeSize[0] * x + stageWidth / 2, -(stageHeight / nativeSize[1] * y) + stageHeight / 2];
   }
-
   render() {
     const {
       className,
@@ -27386,7 +25884,8 @@ class TargetHighlight extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Compo
     const pad = 2; // px
 
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-      className: className // Ensure new DOM element each update to restart animation
+      className: className
+      // Ensure new DOM element each update to restart animation
       ,
       key: highlightedTargetTime,
       style: {
@@ -27398,9 +25897,7 @@ class TargetHighlight extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Compo
       }
     });
   }
-
 }
-
 TargetHighlight.propTypes = {
   className: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string,
   highlightedTargetId: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string,
@@ -27409,15 +25906,12 @@ TargetHighlight.propTypes = {
   stageWidth: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.number,
   vm: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.instanceOf(scratch_vm__WEBPACK_IMPORTED_MODULE_4___default.a)
 };
-
 const mapStateToProps = state => ({
   highlightedTargetTime: state.scratchGui.targets.highlightedTargetTime,
   highlightedTargetId: state.scratchGui.targets.highlightedTargetId,
   vm: state.scratchGui.vm
 });
-
 const mapDispatchToProps = () => ({});
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps, mapDispatchToProps)(TargetHighlight));
 
 /***/ }),
@@ -27457,20 +25951,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_download_blob__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../lib/download-blob */ "./src/lib/download-blob.js");
 /* harmony import */ var _lib_log__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../lib/log */ "./src/lib/log.js");
 const _excluded = ["dispatchUpdateRestore", "isRtl", "onActivateTab", "onCloseImporting", "onHighlightTarget", "onReceivedBlocks", "onShowImporting", "workspaceMetrics"];
-
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
 
 
 
@@ -27498,70 +25984,56 @@ class TargetPane extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
     super(props);
     lodash_bindall__WEBPACK_IMPORTED_MODULE_0___default()(this, ['handleActivateBlocksTab', 'handleBlockDragEnd', 'handleChangeSpriteRotationStyle', 'handleChangeSpriteDirection', 'handleChangeSpriteName', 'handleChangeSpriteSize', 'handleChangeSpriteVisibility', 'handleChangeSpriteX', 'handleChangeSpriteY', 'handleDeleteSprite', 'handleDrop', 'handleDuplicateSprite', 'handleExportSprite', 'handleNewSprite', 'handleSelectSprite', 'handleSurpriseSpriteClick', 'handlePaintSpriteClick', 'handleFileUploadClick', 'handleSpriteUpload', 'setFileInput']);
   }
-
   componentDidMount() {
     this.props.vm.addListener('BLOCK_DRAG_END', this.handleBlockDragEnd);
   }
-
   componentWillUnmount() {
     this.props.vm.removeListener('BLOCK_DRAG_END', this.handleBlockDragEnd);
   }
-
   handleChangeSpriteDirection(direction) {
     this.props.vm.postSpriteInfo({
       direction
     });
   }
-
   handleChangeSpriteRotationStyle(rotationStyle) {
     this.props.vm.postSpriteInfo({
       rotationStyle
     });
   }
-
   handleChangeSpriteName(name) {
     this.props.vm.renameSprite(this.props.editingTarget, name);
   }
-
   handleChangeSpriteSize(size) {
     this.props.vm.postSpriteInfo({
       size
     });
   }
-
   handleChangeSpriteVisibility(visible) {
     this.props.vm.postSpriteInfo({
       visible
     });
   }
-
   handleChangeSpriteX(x) {
     this.props.vm.postSpriteInfo({
       x
     });
   }
-
   handleChangeSpriteY(y) {
     this.props.vm.postSpriteInfo({
       y
     });
   }
-
   handleDeleteSprite(id) {
     const restoreSprite = this.props.vm.deleteSprite(id);
-
     const restoreFun = () => restoreSprite().then(this.handleActivateBlocksTab);
-
     this.props.dispatchUpdateRestore({
       restoreFun: restoreFun,
       deletedItem: 'Sprite'
     });
   }
-
   handleDuplicateSprite(id) {
     this.props.vm.duplicateSprite(id);
   }
-
   handleExportSprite(id) {
     const spriteName = this.props.vm.runtime.getTargetById(id).getName();
     const saveLink = document.createElement('a');
@@ -27570,15 +26042,12 @@ class TargetPane extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
       Object(_lib_download_blob__WEBPACK_IMPORTED_MODULE_20__["default"])("".concat(spriteName, ".sprite3"), content);
     });
   }
-
   handleSelectSprite(id) {
     this.props.vm.setEditingTarget(id);
-
     if (this.props.stage && id !== this.props.stage.id) {
       this.props.onHighlightTarget(id);
     }
   }
-
   async handleSurpriseSpriteClick() {
     const spriteLibraryContent = await Object(_lib_libraries_tw_async_libraries__WEBPACK_IMPORTED_MODULE_13__["getSpriteLibrary"])();
     const surpriseSprites = spriteLibraryContent.filter(sprite => sprite.tags.indexOf('letters') === -1 && sprite.tags.indexOf('numbers') === -1);
@@ -27586,7 +26055,6 @@ class TargetPane extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
     Object(_lib_randomize_sprite_position__WEBPACK_IMPORTED_MODULE_19__["default"])(item);
     this.props.vm.addSprite(JSON.stringify(item)).then(this.handleActivateBlocksTab);
   }
-
   handlePaintSpriteClick() {
     const formatMessage = this.props.intl.formatMessage;
     const emptyItem = Object(_lib_empty_assets__WEBPACK_IMPORTED_MODULE_16__["emptySprite"])(formatMessage(_lib_shared_messages__WEBPACK_IMPORTED_MODULE_15__["default"].sprite, {
@@ -27601,21 +26069,17 @@ class TargetPane extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
       });
     });
   }
-
   handleActivateBlocksTab() {
     this.props.onActivateTab(_reducers_editor_tab__WEBPACK_IMPORTED_MODULE_6__["BLOCKS_TAB_INDEX"]);
   }
-
   handleNewSprite(spriteJSONString) {
     return this.props.vm.addSprite(spriteJSONString).then(this.handleActivateBlocksTab).catch(err => {
       _lib_log__WEBPACK_IMPORTED_MODULE_21__["default"].error(err);
     });
   }
-
   handleFileUploadClick() {
     this.fileInput.click();
   }
-
   handleSpriteUpload(e) {
     const vm = this.props.vm;
     this.props.onShowImporting();
@@ -27629,25 +26093,20 @@ class TargetPane extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
       }, this.props.onCloseImporting);
     }, this.props.onCloseImporting);
   }
-
   setFileInput(input) {
     this.fileInput = input;
   }
-
   handleBlockDragEnd(blocks) {
     if (this.props.hoveredTarget.sprite && this.props.hoveredTarget.sprite !== this.props.editingTarget) {
       this.shareBlocks(blocks, this.props.hoveredTarget.sprite, this.props.editingTarget);
       this.props.onReceivedBlocks(true);
     }
   }
-
   shareBlocks(blocks, targetId, optFromTargetId) {
     // Position the top-level block based on the scroll position.
     const topBlock = blocks.find(block => block.topLevel);
-
     if (topBlock) {
       let metrics;
-
       if (this.props.workspaceMetrics.targets[targetId]) {
         metrics = this.props.workspaceMetrics.targets[targetId];
       } else {
@@ -27656,9 +26115,9 @@ class TargetPane extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
           scrollY: 0,
           scale: _lib_layout_constants__WEBPACK_IMPORTED_MODULE_12__["BLOCKS_DEFAULT_SCALE"]
         };
-      } // Determine position of the top-level block based on the target's workspace metrics.
+      }
 
-
+      // Determine position of the top-level block based on the target's workspace metrics.
       const {
         scrollX,
         scrollY,
@@ -27666,26 +26125,22 @@ class TargetPane extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
       } = metrics;
       const posY = -scrollY + 30;
       let posX;
-
       if (this.props.isRtl) {
         posX = scrollX + 30;
       } else {
         posX = -scrollX + 30;
-      } // Actually apply the position!
+      }
 
-
+      // Actually apply the position!
       topBlock.x = posX / scale;
       topBlock.y = posY / scale;
     }
-
     return this.props.vm.shareBlocksToTarget(blocks, targetId, optFromTargetId);
   }
-
   handleDrop(dragInfo) {
     const {
       sprite: targetId
     } = this.props.hoveredTarget;
-
     if (dragInfo.dragType === _lib_drag_constants__WEBPACK_IMPORTED_MODULE_10__["default"].SPRITE) {
       // Add one to both new and target index because we are not counting/moving the stage
       this.props.vm.reorderTarget(dragInfo.index + 1, dragInfo.newIndex + 1);
@@ -27721,24 +26176,21 @@ class TargetPane extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
       }
     }
   }
-
   render() {
     /* eslint-disable no-unused-vars */
     const _this$props = this.props,
-          {
-      dispatchUpdateRestore,
-      isRtl,
-      onActivateTab,
-      onCloseImporting,
-      onHighlightTarget,
-      onReceivedBlocks,
-      onShowImporting,
-      workspaceMetrics
-    } = _this$props,
-          componentProps = _objectWithoutProperties(_this$props, _excluded);
+      {
+        dispatchUpdateRestore,
+        isRtl,
+        onActivateTab,
+        onCloseImporting,
+        onHighlightTarget,
+        onReceivedBlocks,
+        onShowImporting,
+        workspaceMetrics
+      } = _this$props,
+      componentProps = _objectWithoutProperties(_this$props, _excluded);
     /* eslint-enable no-unused-vars */
-
-
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_target_pane_target_pane_jsx__WEBPACK_IMPORTED_MODULE_11__["default"], _extends({}, componentProps, {
       fileInputRef: this.setFileInput,
       onActivateBlocksTab: this.handleActivateBlocksTab,
@@ -27760,23 +26212,19 @@ class TargetPane extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component 
       onSurpriseSpriteClick: this.handleSurpriseSpriteClick
     }));
   }
-
 }
-
 const _TargetPaneComponent$ = _components_target_pane_target_pane_jsx__WEBPACK_IMPORTED_MODULE_11__["default"].propTypes,
-      {
-  onSelectSprite,
-  // eslint-disable-line no-unused-vars
-  onActivateBlocksTab
-} = _TargetPaneComponent$,
-      targetPaneProps = _objectWithoutProperties(_TargetPaneComponent$, ["onSelectSprite", "onActivateBlocksTab"]);
-
+  {
+    onSelectSprite,
+    // eslint-disable-line no-unused-vars
+    onActivateBlocksTab
+  } = _TargetPaneComponent$,
+  targetPaneProps = _objectWithoutProperties(_TargetPaneComponent$, ["onSelectSprite", "onActivateBlocksTab"]);
 TargetPane.propTypes = _objectSpread({
   intl: react_intl__WEBPACK_IMPORTED_MODULE_4__["intlShape"].isRequired,
   onCloseImporting: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.func,
   onShowImporting: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.func
 }, targetPaneProps);
-
 const mapStateToProps = state => ({
   editingTarget: state.scratchGui.targets.editingTarget,
   hoveredTarget: state.scratchGui.hoveredTarget,
@@ -27787,7 +26235,6 @@ const mapStateToProps = state => ({
   raiseSprites: state.scratchGui.blockDrag,
   workspaceMetrics: state.scratchGui.workspaceMetrics
 });
-
 const mapDispatchToProps = dispatch => ({
   onNewSpriteClick: e => {
     e.preventDefault();
@@ -27811,7 +26258,6 @@ const mapDispatchToProps = dispatch => ({
   onCloseImporting: () => dispatch(Object(_reducers_alerts__WEBPACK_IMPORTED_MODULE_8__["closeAlertWithId"])('importingAsset')),
   onShowImporting: () => dispatch(Object(_reducers_alerts__WEBPACK_IMPORTED_MODULE_8__["showStandardAlert"])('importingAsset'))
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_intl__WEBPACK_IMPORTED_MODULE_4__["injectIntl"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps, mapDispatchToProps)(TargetPane)));
 
 /***/ }),
@@ -27858,19 +26304,18 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_3__["defineMessages"
     "defaultMessage": "Choose a Tutorial"
   }
 });
-
 class TipsLibrary extends react__WEBPACK_IMPORTED_MODULE_2___default.a.PureComponent {
   constructor(props) {
     super(props);
     lodash_bindall__WEBPACK_IMPORTED_MODULE_0___default()(this, ['handleItemSelect']);
   }
-
   handleItemSelect(item) {
     _lib_analytics__WEBPACK_IMPORTED_MODULE_6__["default"].event({
       category: 'library',
       action: 'Select How-to',
       label: item.id
     });
+
     /*
         Support tutorials that require specific starter projects.
         If a tutorial declares "requiredProjectId", check that the URL contains
@@ -27880,25 +26325,21 @@ class TipsLibrary extends react__WEBPACK_IMPORTED_MODULE_2___default.a.PureCompo
         UPDATE well now Paul is wrapped into this as well. Sigh...
             eventually we will find a solution that doesn't involve loading a whole project
     */
-
     if (item.requiredProjectId && item.requiredProjectId !== this.props.projectId) {
       const urlParams = "/projects/".concat(item.requiredProjectId, "/editor?tutorial=").concat(item.urlId);
       return window.open(window.location.origin + urlParams, '_blank');
     }
-
     this.props.onActivateDeck(item.id);
   }
-
   render() {
     const decksLibraryThumbnailData = Object.keys(_lib_libraries_decks_index_jsx__WEBPACK_IMPORTED_MODULE_4__["default"]).filter(id => {
       if (Object(_lib_isScratchDesktop__WEBPACK_IMPORTED_MODULE_7__["notScratchDesktop"])()) return true; // Do not filter anything in online editor
-
-      const deck = _lib_libraries_decks_index_jsx__WEBPACK_IMPORTED_MODULE_4__["default"][id]; // Scratch Desktop doesn't want tutorials with `requiredProjectId`
-
-      if (deck.hasOwnProperty('requiredProjectId')) return false; // Scratch Desktop should not load tutorials that are _only_ videos
-
-      if (deck.steps.filter(s => s.title).length === 0) return false; // Allow any other tutorials
-
+      const deck = _lib_libraries_decks_index_jsx__WEBPACK_IMPORTED_MODULE_4__["default"][id];
+      // Scratch Desktop doesn't want tutorials with `requiredProjectId`
+      if (deck.hasOwnProperty('requiredProjectId')) return false;
+      // Scratch Desktop should not load tutorials that are _only_ videos
+      if (deck.steps.filter(s => s.title).length === 0) return false;
+      // Allow any other tutorials
       return true;
     }).map(id => ({
       rawURL: _lib_libraries_decks_index_jsx__WEBPACK_IMPORTED_MODULE_4__["default"][id].img,
@@ -27922,9 +26363,7 @@ class TipsLibrary extends react__WEBPACK_IMPORTED_MODULE_2___default.a.PureCompo
       onRequestClose: this.props.onRequestClose
     });
   }
-
 }
-
 TipsLibrary.propTypes = {
   intl: react_intl__WEBPACK_IMPORTED_MODULE_3__["intlShape"].isRequired,
   onActivateDeck: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func.isRequired,
@@ -27932,17 +26371,14 @@ TipsLibrary.propTypes = {
   projectId: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number]),
   visible: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool
 };
-
 const mapStateToProps = state => ({
   visible: state.scratchGui.modals.tipsLibrary,
   projectId: state.scratchGui.projectState.projectId
 });
-
 const mapDispatchToProps = dispatch => ({
   onActivateDeck: id => dispatch(Object(_reducers_cards__WEBPACK_IMPORTED_MODULE_11__["activateDeck"])(id)),
   onRequestClose: () => dispatch(Object(_reducers_modals__WEBPACK_IMPORTED_MODULE_10__["closeTipsLibrary"])())
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_intl__WEBPACK_IMPORTED_MODULE_3__["injectIntl"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_9__["connect"])(mapStateToProps, mapDispatchToProps)(TipsLibrary)));
 
 /***/ }),
@@ -27964,9 +26400,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 const _excluded = ["children", "vm"];
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 
@@ -27989,31 +26423,25 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
  *     />
  * )}</TurboMode>
  */
-
 class TurboMode extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
   constructor(props) {
     super(props);
     lodash_bindall__WEBPACK_IMPORTED_MODULE_0___default()(this, ['toggleTurboMode']);
   }
-
   toggleTurboMode() {
     this.props.vm.setTurboMode(!this.props.turboMode);
   }
-
   render() {
     const _this$props = this.props,
-          {
-      /* eslint-disable no-unused-vars */
-      children,
-      vm
-    } = _this$props,
-          props = _objectWithoutProperties(_this$props, _excluded);
-
+      {
+        /* eslint-disable no-unused-vars */
+        children,
+        vm
+      } = _this$props,
+      props = _objectWithoutProperties(_this$props, _excluded);
     return this.props.children(this.toggleTurboMode, props);
   }
-
 }
-
 TurboMode.propTypes = {
   children: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
   turboMode: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
@@ -28021,12 +26449,10 @@ TurboMode.propTypes = {
     setTurboMode: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func
   })
 };
-
 const mapStateToProps = state => ({
   vm: state.scratchGui.vm,
   turboMode: state.scratchGui.vmStatus.turbo
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps, () => ({}) // omit dispatch prop
 )(TurboMode));
 
@@ -28064,47 +26490,38 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_4__["defineMessages"
     "defaultMessage": "Username cannot be changed while the project is running."
   }
 });
-
 class ChangeUsername extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
   constructor(props) {
     super(props);
     lodash_bindall__WEBPACK_IMPORTED_MODULE_0___default()(this, ['changeUsername']);
   }
-
   changeUsername() {
     if (this.props.running) {
       // eslint-disable-next-line no-alert
       alert(this.props.intl.formatMessage(messages.cannotChangeWhileRunning));
       return;
     }
-
     this.props.onOpenUsernameModal();
   }
-
   render() {
     return this.props.children(this.changeUsername);
   }
-
 }
-
 ChangeUsername.propTypes = {
   children: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
   onOpenUsernameModal: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
   running: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
   intl: react_intl__WEBPACK_IMPORTED_MODULE_4__["intlShape"]
 };
-
 const mapStateToProps = state => ({
   running: state.scratchGui.vmStatus.running
 });
-
 const mapDispatchToProps = dispatch => ({
   onOpenUsernameModal: () => {
     dispatch(Object(_reducers_modals__WEBPACK_IMPORTED_MODULE_5__["openUsernameModal"])());
     dispatch(Object(_reducers_menus__WEBPACK_IMPORTED_MODULE_6__["closeEditMenu"])());
   }
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_intl__WEBPACK_IMPORTED_MODULE_4__["injectIntl"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps, mapDispatchToProps)(ChangeUsername)));
 
 /***/ }),
@@ -28128,11 +26545,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _reducers_tw__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../reducers/tw */ "./src/reducers/tw.js");
 const _excluded = ["children"];
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
 
 
 
@@ -28145,36 +26559,29 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_3__["defineMessages"
     "defaultMessage": "Cannot use cloud variables, most likely because you opened the editor."
   }
 });
-
 class CloudVariablesToggler extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
   constructor(props) {
     super(props);
     lodash_bindall__WEBPACK_IMPORTED_MODULE_0___default()(this, ['toggleCloudVariables']);
   }
-
   toggleCloudVariables() {
     if (!this.props.canUseCloudVariables) {
       // eslint-disable-next-line no-alert
       alert(this.props.intl.formatMessage(messages.cloudUnavailableAlert));
       return;
     }
-
     this.props.onCloudChange(!this.props.enabled);
   }
-
   render() {
     const _this$props = this.props,
-          {
-      /* eslint-disable no-unused-vars */
-      children
-    } = _this$props,
-          props = _objectWithoutProperties(_this$props, _excluded);
-
+      {
+        /* eslint-disable no-unused-vars */
+        children
+      } = _this$props,
+      props = _objectWithoutProperties(_this$props, _excluded);
     return this.props.children(this.toggleCloudVariables, props);
   }
-
 }
-
 CloudVariablesToggler.propTypes = {
   intl: react_intl__WEBPACK_IMPORTED_MODULE_3__["intlShape"],
   children: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
@@ -28183,17 +26590,14 @@ CloudVariablesToggler.propTypes = {
   onCloudChange: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
   canUseCloudVariables: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool
 };
-
 const mapStateToProps = state => ({
   username: state.scratchGui.tw.username,
   enabled: state.scratchGui.tw.cloud,
   canUseCloudVariables: !state.scratchGui.mode.hasEverEnteredEditor
 });
-
 const mapDispatchToProps = dispatch => ({
   onCloudChange: enabled => dispatch(Object(_reducers_tw__WEBPACK_IMPORTED_MODULE_5__["setCloud"])(enabled))
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_intl__WEBPACK_IMPORTED_MODULE_3__["injectIntl"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["connect"])(mapStateToProps, mapDispatchToProps)(CloudVariablesToggler)));
 
 /***/ }),
@@ -28218,11 +26622,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var scratch_vm__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! scratch-vm */ "./node_modules/scratch-vm/src/index.js");
 /* harmony import */ var scratch_vm__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(scratch_vm__WEBPACK_IMPORTED_MODULE_5__);
 const _excluded = ["intl", "children", "vm"];
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
 
 
 
@@ -28235,24 +26636,19 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_4__["defineMessages"
     "defaultMessage": "New framerate:"
   }
 });
-
 class FramerateChanger extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
   constructor(props) {
     super(props);
     lodash_bindall__WEBPACK_IMPORTED_MODULE_0___default()(this, ['changeFramerate']);
   }
-
   changeFramerate(e) {
     if (e && (e.ctrlKey || e.shiftKey)) {
       // eslint-disable-next-line no-alert
       const newFPS = prompt(this.props.intl.formatMessage(messages.newFramerate), this.props.framerate);
-
       if (newFPS === null) {
         return;
       }
-
       const fps = +newFPS;
-
       if (isFinite(fps) && fps > 0) {
         this.props.vm.setFramerate(fps);
       }
@@ -28262,34 +26658,28 @@ class FramerateChanger extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Comp
       this.props.vm.setFramerate(60);
     }
   }
-
   render() {
     const _this$props = this.props,
-          {
-      /* eslint-disable no-unused-vars */
-      intl,
-      children,
-      vm
-    } = _this$props,
-          props = _objectWithoutProperties(_this$props, _excluded);
-
+      {
+        /* eslint-disable no-unused-vars */
+        intl,
+        children,
+        vm
+      } = _this$props,
+      props = _objectWithoutProperties(_this$props, _excluded);
     return this.props.children(this.changeFramerate, props);
   }
-
 }
-
 FramerateChanger.propTypes = {
   intl: react_intl__WEBPACK_IMPORTED_MODULE_4__["intlShape"],
   children: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
   framerate: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
   vm: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.instanceOf(scratch_vm__WEBPACK_IMPORTED_MODULE_5___default.a)
 };
-
 const mapStateToProps = state => ({
   framerate: state.scratchGui.tw.framerate,
   vm: state.scratchGui.vm
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_intl__WEBPACK_IMPORTED_MODULE_4__["injectIntl"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps, () => ({}) // omit dispatch prop
 )(FramerateChanger)));
 
@@ -28340,38 +26730,32 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_4__["defineMessages"
     "defaultMessage": "The editor automatically records one restore point in case something goes wrong and you forget to save. You shouldn't rely on this and we can't guarantee it will recover your project. Try to load it?"
   }
 });
-
 class RestorePointLoader extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
   constructor(props) {
     super(props);
     lodash_bindall__WEBPACK_IMPORTED_MODULE_0___default()(this, ['loadRestorePoint']);
   }
-
   loadRestorePoint() {
     // eslint-disable-next-line no-alert
     if (!confirm(this.props.intl.formatMessage(messages.confirm))) {
       return;
     }
-
     this.props.onLoadingStarted();
     this.props.requestProjectUpload(this.props.loadingState);
     _lib_tw_restore_point_api__WEBPACK_IMPORTED_MODULE_10__["default"].load().then(arrayBuffer => this.props.vm.loadProject(arrayBuffer)).then(() => {
       this.props.onLoadingFinished(this.props.loadingState, true);
     }).catch(error => {
-      this.props.onLoadingFinished(this.props.loadingState, false); // eslint-disable-next-line no-alert
-
+      this.props.onLoadingFinished(this.props.loadingState, false);
+      // eslint-disable-next-line no-alert
       alert(this.props.intl.formatMessage(messages.error, {
         error
       }));
     });
   }
-
   render() {
     return this.props.children(this.props.className, this.loadRestorePoint);
   }
-
 }
-
 RestorePointLoader.propTypes = {
   intl: react_intl__WEBPACK_IMPORTED_MODULE_4__["intlShape"],
   children: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
@@ -28382,12 +26766,10 @@ RestorePointLoader.propTypes = {
   requestProjectUpload: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
   vm: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.instanceOf(scratch_vm__WEBPACK_IMPORTED_MODULE_5___default.a)
 };
-
 const mapStateToProps = state => ({
   loadingState: state.scratchGui.projectState.loadingState,
   vm: state.scratchGui.vm
 });
-
 const mapDispatchToProps = dispatch => ({
   onLoadingFinished: (loadingState, success) => {
     dispatch(Object(_reducers_project_state__WEBPACK_IMPORTED_MODULE_8__["onLoadedProject"])(loadingState, false, success));
@@ -28398,7 +26780,6 @@ const mapDispatchToProps = dispatch => ({
   requestProjectUpload: loadingState => dispatch(Object(_reducers_project_state__WEBPACK_IMPORTED_MODULE_8__["requestProjectUpload"])(loadingState)),
   onLoadingStarted: () => dispatch(Object(_reducers_modals__WEBPACK_IMPORTED_MODULE_7__["openLoadingProject"])())
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_intl__WEBPACK_IMPORTED_MODULE_4__["injectIntl"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps, mapDispatchToProps)(RestorePointLoader)));
 
 /***/ }),
@@ -28424,13 +26805,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_tw_settings_modal_settings_modal_jsx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/tw-settings-modal/settings-modal.jsx */ "./src/components/tw-settings-modal/settings-modal.jsx");
 /* harmony import */ var _reducers_custom_stage_size__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../reducers/custom-stage-size */ "./src/reducers/custom-stage-size.js");
 const _excluded = ["onClose", "vm"];
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
 
 
 
@@ -28445,86 +26822,70 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_2__["defineMessages"
     "defaultMessage": "New framerate:"
   }
 });
-
 class UsernameModal extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
   constructor(props) {
     super(props);
     lodash_bindall__WEBPACK_IMPORTED_MODULE_3___default()(this, ['handleFramerateChange', 'handleCustomizeFramerate', 'handleHighQualityPenChange', 'handleInterpolationChange', 'handleInfiniteClonesChange', 'handleRemoveFencingChange', 'handleRemoveLimitsChange', 'handleWarpTimerChange', 'handleStageWidthChange', 'handleStageHeightChange', 'handleDisableCompilerChange', 'handleStoreProjectOptions']);
   }
-
   handleFramerateChange(e) {
     this.props.vm.setFramerate(e.target.checked ? 60 : 30);
   }
-
   handleCustomizeFramerate() {
     // eslint-disable-next-line no-alert
     const newFramerate = prompt(this.props.intl.formatMessage(messages.newFramerate), this.props.framerate);
     const parsed = parseFloat(newFramerate);
-
     if (isFinite(parsed)) {
       this.props.vm.setFramerate(parsed);
     }
   }
-
   handleHighQualityPenChange(e) {
     this.props.vm.renderer.setUseHighQualityRender(e.target.checked);
   }
-
   handleInterpolationChange(e) {
     this.props.vm.setInterpolation(e.target.checked);
   }
-
   handleInfiniteClonesChange(e) {
     this.props.vm.setRuntimeOptions({
       maxClones: e.target.checked ? Infinity : 300
     });
   }
-
   handleRemoveFencingChange(e) {
     this.props.vm.setRuntimeOptions({
       fencing: !e.target.checked
     });
   }
-
   handleRemoveLimitsChange(e) {
     this.props.vm.setRuntimeOptions({
       miscLimits: !e.target.checked
     });
   }
-
   handleWarpTimerChange(e) {
     this.props.vm.setCompilerOptions({
       warpTimer: e.target.checked
     });
   }
-
   handleDisableCompilerChange(e) {
     this.props.vm.setCompilerOptions({
       enabled: !e.target.checked
     });
   }
-
   handleStageWidthChange(value) {
     this.props.vm.setStageSize(value, this.props.customStageSize.height);
   }
-
   handleStageHeightChange(value) {
     this.props.vm.setStageSize(this.props.customStageSize.width, value);
   }
-
   handleStoreProjectOptions() {
     this.props.vm.storeProjectOptions();
   }
-
   render() {
     const _this$props = this.props,
-          {
-      /* eslint-disable no-unused-vars */
-      onClose,
-      vm
-    } = _this$props,
-          props = _objectWithoutProperties(_this$props, _excluded);
-
+      {
+        /* eslint-disable no-unused-vars */
+        onClose,
+        vm
+      } = _this$props,
+      props = _objectWithoutProperties(_this$props, _excluded);
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_tw_settings_modal_settings_modal_jsx__WEBPACK_IMPORTED_MODULE_6__["default"], _extends({
       onClose: this.props.onClose,
       onFramerateChange: this.handleFramerateChange,
@@ -28544,9 +26905,7 @@ class UsernameModal extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Compone
       onStoreProjectOptions: this.handleStoreProjectOptions
     }, props));
   }
-
 }
-
 UsernameModal.propTypes = {
   intl: react_intl__WEBPACK_IMPORTED_MODULE_2__["intlShape"],
   onClose: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func,
@@ -28575,7 +26934,6 @@ UsernameModal.propTypes = {
   }),
   disableCompiler: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.bool
 };
-
 const mapStateToProps = state => ({
   vm: state.scratchGui.vm,
   isEmbedded: state.scratchGui.mode.isEmbedded,
@@ -28589,11 +26947,9 @@ const mapStateToProps = state => ({
   customStageSize: state.scratchGui.customStageSize,
   disableCompiler: !state.scratchGui.tw.compilerOptions.enabled
 });
-
 const mapDispatchToProps = dispatch => ({
   onClose: () => dispatch(Object(_reducers_modals__WEBPACK_IMPORTED_MODULE_5__["closeSettingsModal"])())
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_intl__WEBPACK_IMPORTED_MODULE_2__["injectIntl"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["connect"])(mapStateToProps, mapDispatchToProps)(UsernameModal)));
 
 /***/ }),
@@ -28626,7 +26982,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 class UsernameModal extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
   constructor(props) {
     super(props);
@@ -28636,39 +26991,32 @@ class UsernameModal extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Compone
       valueValid: !this.props.usernameInvalid
     };
   }
-
   handleKeyPress(event) {
     if (event.key === 'Enter' && this.state.valueValid) {
       this.handleOk();
     }
   }
-
   handleFocus(event) {
     event.target.select();
   }
-
   handleOk() {
     this.props.onSetUsername(this.state.value);
     this.props.onCloseUsernameModal();
   }
-
   handleCancel() {
     this.props.onCloseUsernameModal();
   }
-
   handleChange(e) {
     this.setState({
       value: e.target.value,
       valueValid: e.target.checkValidity()
     });
   }
-
   handleReset() {
     const randomUsername = Object(_lib_tw_username__WEBPACK_IMPORTED_MODULE_7__["generateRandomUsername"])();
     this.props.onCloseUsernameModal();
     this.props.onSetUsername(randomUsername);
   }
-
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_tw_username_modal_username_modal_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], {
       mustChangeUsername: this.props.usernameInvalid,
@@ -28682,21 +27030,17 @@ class UsernameModal extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Compone
       onReset: this.handleReset
     });
   }
-
 }
-
 UsernameModal.propTypes = {
   onCloseUsernameModal: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func,
   onSetUsername: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func,
   username: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
   usernameInvalid: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.bool
 };
-
 const mapStateToProps = state => ({
   username: state.scratchGui.tw.username,
   usernameInvalid: state.scratchGui.tw.usernameInvalid
 });
-
 const mapDispatchToProps = dispatch => ({
   onCloseUsernameModal: () => dispatch(Object(_reducers_modals__WEBPACK_IMPORTED_MODULE_6__["closeUsernameModal"])()),
   onSetUsername: username => {
@@ -28704,7 +27048,6 @@ const mapDispatchToProps = dispatch => ({
     dispatch(Object(_reducers_tw__WEBPACK_IMPORTED_MODULE_4__["setUsernameInvalid"])(false));
   }
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps, mapDispatchToProps)(UsernameModal));
 
 /***/ }),
@@ -28744,38 +27087,30 @@ function _extends() { _extends = Object.assign ? Object.assign.bind() : function
 
 
 
-
-
 class Watermark extends react__WEBPACK_IMPORTED_MODULE_3___default.a.Component {
   constructor(props) {
     super(props);
     lodash_bindall__WEBPACK_IMPORTED_MODULE_0___default()(this, ['getCostumeData']);
   }
-
   getCostumeData() {
     if (!this.props.asset) return null;
     return Object(_lib_get_costume_url__WEBPACK_IMPORTED_MODULE_8__["default"])(this.props.asset);
   }
-
   render() {
     const componentProps = lodash_omit__WEBPACK_IMPORTED_MODULE_1___default()(this.props, ['asset', 'vm']);
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_components_watermark_watermark_jsx__WEBPACK_IMPORTED_MODULE_9__["default"], _extends({
       costumeURL: this.getCostumeData()
     }, componentProps));
   }
-
 }
-
 Watermark.propTypes = {
   asset: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.instanceOf(_lib_storage__WEBPACK_IMPORTED_MODULE_7__["default"].Asset),
   vm: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.instanceOf(scratch_vm__WEBPACK_IMPORTED_MODULE_6___default.a).isRequired
 };
-
 const mapStateToProps = state => {
   const targets = state.scratchGui.targets;
   const currentTargetId = targets.editingTarget;
   let asset;
-
   if (currentTargetId) {
     if (targets.stage.id === currentTargetId) {
       asset = targets.stage.costume.asset;
@@ -28784,13 +27119,11 @@ const mapStateToProps = state => {
       asset = currentSprite.costume.asset;
     }
   }
-
   return {
     vm: state.scratchGui.vm,
     asset: asset
   };
 };
-
 const ConnectedComponent = Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["connect"])(mapStateToProps)(Object(_lib_throttled_property_hoc_jsx__WEBPACK_IMPORTED_MODULE_5__["default"])('asset', 500)(Watermark));
 /* harmony default export */ __webpack_exports__["default"] = (ConnectedComponent);
 
@@ -28813,16 +27146,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 class WebGlModal extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_webgl_modal_webgl_modal_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
       isRtl: this.props.isRtl
     });
   }
-
 }
-
 WebGlModal.propTypes = {
   isRtl: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool
 };
@@ -28994,6 +27324,7 @@ const alerts = [{
   content: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__["FormattedMessage"], {
     defaultMessage: "Please note, cloud variables only support numbers, not letters or symbols. {learnMoreLink}" // eslint-disable-line max-len
     ,
+
     id: "gui.alerts.cloudInfo",
     values: {
       learnMoreLink: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
@@ -29036,7 +27367,6 @@ __webpack_require__.r(__webpack_exports__);
 const GoogleAnalytics = {
   // Disable Scratch's analytics
   event() {}
-
 };
 /* harmony default export */ __webpack_exports__["default"] = (GoogleAnalytics);
 
@@ -29064,9 +27394,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _turbowarp_scratch_l10n__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @turbowarp/scratch-l10n */ "./node_modules/@turbowarp/scratch-l10n/src/index.js");
 /* harmony import */ var _detect_locale__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./detect-locale */ "./src/lib/detect-locale.js");
 const _excluded = ["isFullScreen", "isPlayerOnly", "showTelemetryModal"];
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 
@@ -29078,8 +27406,8 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 
 
-
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || redux__WEBPACK_IMPORTED_MODULE_3__["compose"];
+
 /*
  * Higher Order Component to provide redux state. If an `intl` prop is provided
  * it will override the internal `intl` redux state
@@ -29089,7 +27417,6 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || redux__W
                         only rendering modals, not the GUI.
  * @returns {React.Component} component with redux and intl state provided
  */
-
 const AppStateHOC = function AppStateHOC(WrappedComponent, localesOnly) {
   class AppStateWrapper extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
     constructor(props) {
@@ -29099,11 +27426,9 @@ const AppStateHOC = function AppStateHOC(WrappedComponent, localesOnly) {
       let enhancer;
       let initializedLocales = _reducers_locales__WEBPACK_IMPORTED_MODULE_6__["localesInitialState"];
       const locale = Object(_detect_locale__WEBPACK_IMPORTED_MODULE_9__["detectLocale"])(Object.keys(_turbowarp_scratch_l10n__WEBPACK_IMPORTED_MODULE_8__["default"]));
-
       if (locale !== 'en') {
         initializedLocales = Object(_reducers_locales__WEBPACK_IMPORTED_MODULE_6__["initLocale"])(initializedLocales, locale);
       }
-
       if (localesOnly) {
         // Used for instantiating minimal state for the unsupported
         // browser modal
@@ -29118,7 +27443,6 @@ const AppStateHOC = function AppStateHOC(WrappedComponent, localesOnly) {
         // You are right, this is gross. But it's necessary to avoid
         // importing unneeded code that will crash unsupported browsers.
         const guiRedux = __webpack_require__(/*! ../reducers/gui */ "./src/reducers/gui.js");
-
         const guiReducer = guiRedux.default;
         const {
           guiInitialState,
@@ -29128,29 +27452,23 @@ const AppStateHOC = function AppStateHOC(WrappedComponent, localesOnly) {
           initEmbedded,
           initTelemetryModal
         } = guiRedux;
-
         const {
           ScratchPaintReducer
         } = __webpack_require__(/*! ./tw-scratch-paint */ "./src/lib/tw-scratch-paint.js");
-
         let initializedGui = guiInitialState;
-
         if (props.isFullScreen || props.isPlayerOnly) {
           if (props.isFullScreen) {
             initializedGui = initFullScreen(initializedGui);
           }
-
           if (props.isPlayerOnly) {
             initializedGui = initPlayer(initializedGui);
           }
         } else if (props.showTelemetryModal) {
           initializedGui = initTelemetryModal(initializedGui);
         }
-
         if (props.isEmbedded) {
           initializedGui = initEmbedded(initializedGui);
         }
-
         reducers = {
           locales: _reducers_locales__WEBPACK_IMPORTED_MODULE_6__["default"],
           scratchGui: guiReducer,
@@ -29162,50 +27480,40 @@ const AppStateHOC = function AppStateHOC(WrappedComponent, localesOnly) {
         };
         enhancer = composeEnhancers(guiMiddleware);
       }
-
       const reducer = Object(redux__WEBPACK_IMPORTED_MODULE_3__["combineReducers"])(reducers);
-
       const reducer2 = (previousState, action) => {
         const nextState = reducer(previousState, action);
         _addons_hooks__WEBPACK_IMPORTED_MODULE_5__["default"].appStateReducer(action, previousState, nextState);
         return nextState;
       };
-
       this.store = Object(redux__WEBPACK_IMPORTED_MODULE_3__["createStore"])(reducer2, initialState, enhancer);
       window.ReduxStore = this.store;
       _addons_hooks__WEBPACK_IMPORTED_MODULE_5__["default"].appStateStore = this.store;
     }
-
     componentDidUpdate(prevProps) {
       if (localesOnly) return;
-
       if (prevProps.isPlayerOnly !== this.props.isPlayerOnly) {
         this.store.dispatch(Object(_reducers_mode_js__WEBPACK_IMPORTED_MODULE_7__["setPlayer"])(this.props.isPlayerOnly));
       }
-
       if (prevProps.isFullScreen !== this.props.isFullScreen) {
         this.store.dispatch(Object(_reducers_mode_js__WEBPACK_IMPORTED_MODULE_7__["setFullScreen"])(this.props.isFullScreen));
       }
     }
-
     render() {
       const _this$props = this.props,
-            {
-        isFullScreen,
-        // eslint-disable-line no-unused-vars
-        isPlayerOnly,
-        // eslint-disable-line no-unused-vars
-        showTelemetryModal
-      } = _this$props,
-            componentProps = _objectWithoutProperties(_this$props, _excluded);
-
+        {
+          isFullScreen,
+          // eslint-disable-line no-unused-vars
+          isPlayerOnly,
+          // eslint-disable-line no-unused-vars
+          showTelemetryModal
+        } = _this$props,
+        componentProps = _objectWithoutProperties(_this$props, _excluded);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_2__["Provider"], {
         store: this.store
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_connected_intl_provider_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(WrappedComponent, componentProps)));
     }
-
   }
-
   AppStateWrapper.propTypes = {
     isFullScreen: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
     isPlayerOnly: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
@@ -29215,7 +27523,6 @@ const AppStateHOC = function AppStateHOC(WrappedComponent, localesOnly) {
   };
   return AppStateWrapper;
 };
-
 /* harmony default export */ __webpack_exports__["default"] = (AppStateHOC);
 
 /***/ }),
@@ -29275,7 +27582,6 @@ module.exports = __webpack_require__.p + "static/assets/b433ee02a13fa2a12f7f7059
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shared_audio_context_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./shared-audio-context.js */ "./src/lib/audio/shared-audio-context.js");
 
-
 class AudioBufferPlayer {
   constructor(samples, sampleRate) {
     this.audioContext = new _shared_audio_context_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
@@ -29287,7 +27593,6 @@ class AudioBufferPlayer {
     this.trimStart = null;
     this.trimEnd = null;
   }
-
   play(trimStart, trimEnd, onUpdate, onEnded) {
     this.updateCallback = onUpdate;
     this.trimStart = trimStart;
@@ -29302,11 +27607,9 @@ class AudioBufferPlayer {
     this.source.start(0, trimStartTime, trimmedDuration);
     this.update();
   }
-
   update() {
     const timeSinceStart = (Date.now() - this.startTime) / 1000;
     const percentage = timeSinceStart / this.buffer.duration;
-
     if (percentage + this.trimStart < this.trimEnd && this.source.onended) {
       requestAnimationFrame(this.update.bind(this));
       this.updateCallback(percentage + this.trimStart);
@@ -29314,11 +27617,9 @@ class AudioBufferPlayer {
       this.updateCallback = null;
     }
   }
-
   stop() {
     if (this.source) {
       this.source.onended = null; // Do not call onEnded callback if manually stopped
-
       try {
         this.source.stop();
       } catch (e) {
@@ -29328,7 +27629,6 @@ class AudioBufferPlayer {
       }
     }
   }
-
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (AudioBufferPlayer);
@@ -29366,50 +27666,43 @@ const effectTypes = {
   FADEOUT: 'fade out',
   MUTE: 'mute'
 };
-
 class AudioEffects {
   static get effectTypes() {
     return effectTypes;
   }
-
   constructor(buffer, name, trimStart, trimEnd) {
     this.trimStartSeconds = trimStart * buffer.length / buffer.sampleRate;
     this.trimEndSeconds = trimEnd * buffer.length / buffer.sampleRate;
     this.adjustedTrimStartSeconds = this.trimStartSeconds;
-    this.adjustedTrimEndSeconds = this.trimEndSeconds; // Some effects will modify the playback rate and/or number of samples.
+    this.adjustedTrimEndSeconds = this.trimEndSeconds;
+
+    // Some effects will modify the playback rate and/or number of samples.
     // Need to precompute those values to create the offline audio context.
-
     const pitchRatio = Math.pow(2, 4 / 12); // A major third
-
     let sampleCount = buffer.length;
     const affectedSampleCount = Math.floor((this.trimEndSeconds - this.trimStartSeconds) * buffer.sampleRate);
     let adjustedAffectedSampleCount = affectedSampleCount;
     const unaffectedSampleCount = sampleCount - affectedSampleCount;
     this.playbackRate = 1;
-
     switch (name) {
       case effectTypes.ECHO:
         sampleCount = Math.max(sampleCount, Math.floor((this.trimEndSeconds + _effects_echo_effect_js__WEBPACK_IMPORTED_MODULE_0__["default"].TAIL_SECONDS) * buffer.sampleRate));
         break;
-
       case effectTypes.FASTER:
         this.playbackRate = pitchRatio;
         adjustedAffectedSampleCount = Math.floor(affectedSampleCount / this.playbackRate);
         sampleCount = unaffectedSampleCount + adjustedAffectedSampleCount;
         break;
-
       case effectTypes.SLOWER:
         this.playbackRate = 1 / pitchRatio;
         adjustedAffectedSampleCount = Math.floor(affectedSampleCount / this.playbackRate);
         sampleCount = unaffectedSampleCount + adjustedAffectedSampleCount;
         break;
     }
-
     const durationSeconds = sampleCount / buffer.sampleRate;
     this.adjustedTrimEndSeconds = this.trimStartSeconds + adjustedAffectedSampleCount / buffer.sampleRate;
     this.adjustedTrimStart = this.adjustedTrimStartSeconds / durationSeconds;
     this.adjustedTrimEnd = this.adjustedTrimEndSeconds / durationSeconds;
-
     if (window.OfflineAudioContext) {
       this.audioContext = new window.OfflineAudioContext(1, sampleCount, buffer.sampleRate);
     } else {
@@ -29417,11 +27710,11 @@ class AudioEffects {
       // Resample by adjusting sample count to make room and set offline context to desired sample rate.
       const sampleScale = 44100 / buffer.sampleRate;
       this.audioContext = new window.webkitOfflineAudioContext(1, sampleScale * sampleCount, 44100);
-    } // For the reverse effect we need to manually reverse the data into a new audio buffer
+    }
+
+    // For the reverse effect we need to manually reverse the data into a new audio buffer
     // to prevent overwriting the original, so that the undo stack works correctly.
     // Doing buffer.reverse() would mutate the original data.
-
-
     if (name === effectTypes.REVERSE) {
       const originalBufferData = buffer.getChannelData(0);
       const newBuffer = this.audioContext.createBuffer(1, buffer.length, buffer.sampleRate);
@@ -29430,7 +27723,6 @@ class AudioEffects {
       const startSamples = Math.floor(this.trimStartSeconds * buffer.sampleRate);
       const endSamples = Math.floor(this.trimEndSeconds * buffer.sampleRate);
       let counter = 0;
-
       for (let i = 0; i < bufferLength; i++) {
         if (i >= startSamples && i < endSamples) {
           newBufferData[i] = originalBufferData[endSamples - counter - 1];
@@ -29439,72 +27731,61 @@ class AudioEffects {
           newBufferData[i] = originalBufferData[i];
         }
       }
-
       this.buffer = newBuffer;
     } else {
       // All other effects use the original buffer because it is not modified.
       this.buffer = buffer;
     }
-
     this.source = this.audioContext.createBufferSource();
     this.source.buffer = this.buffer;
     this.name = name;
   }
-
   process(done) {
     // Some effects need to use more nodes and must expose an input and output
     let input;
     let output;
-
     switch (this.name) {
       case effectTypes.FASTER:
       case effectTypes.SLOWER:
         this.source.playbackRate.setValueAtTime(this.playbackRate, this.adjustedTrimStartSeconds);
         this.source.playbackRate.setValueAtTime(1.0, this.adjustedTrimEndSeconds);
         break;
-
       case effectTypes.LOUDER:
         ({
           input,
           output
         } = new _effects_volume_effect_js__WEBPACK_IMPORTED_MODULE_2__["default"](this.audioContext, 1.25, this.adjustedTrimStartSeconds, this.adjustedTrimEndSeconds));
         break;
-
       case effectTypes.SOFTER:
         ({
           input,
           output
         } = new _effects_volume_effect_js__WEBPACK_IMPORTED_MODULE_2__["default"](this.audioContext, 0.75, this.adjustedTrimStartSeconds, this.adjustedTrimEndSeconds));
         break;
-
       case effectTypes.ECHO:
         ({
           input,
           output
         } = new _effects_echo_effect_js__WEBPACK_IMPORTED_MODULE_0__["default"](this.audioContext, this.adjustedTrimStartSeconds, this.adjustedTrimEndSeconds));
         break;
-
       case effectTypes.ROBOT:
         ({
           input,
           output
         } = new _effects_robot_effect_js__WEBPACK_IMPORTED_MODULE_1__["default"](this.audioContext, this.adjustedTrimStartSeconds, this.adjustedTrimEndSeconds));
         break;
-
       case effectTypes.FADEIN:
         ({
           input,
           output
         } = new _effects_fade_effect_js__WEBPACK_IMPORTED_MODULE_3__["default"](this.audioContext, true, this.adjustedTrimStartSeconds, this.adjustedTrimEndSeconds));
         break;
-
       case effectTypes.FADEOUT:
         ({
           input,
           output
         } = new _effects_fade_effect_js__WEBPACK_IMPORTED_MODULE_3__["default"](this.audioContext, false, this.adjustedTrimStartSeconds, this.adjustedTrimEndSeconds));
         break;
-
       case effectTypes.MUTE:
         ({
           input,
@@ -29512,7 +27793,6 @@ class AudioEffects {
         } = new _effects_mute_effect_js__WEBPACK_IMPORTED_MODULE_4__["default"](this.audioContext, this.adjustedTrimStartSeconds, this.adjustedTrimEndSeconds));
         break;
     }
-
     if (input && output) {
       this.source.connect(input);
       output.connect(this.audioContext.destination);
@@ -29520,10 +27800,8 @@ class AudioEffects {
       // No effects nodes are needed, wire directly to the output
       this.source.connect(this.audioContext.destination);
     }
-
     this.source.start();
     this.audioContext.startRendering();
-
     this.audioContext.oncomplete = _ref => {
       let {
         renderedBuffer
@@ -29531,9 +27809,7 @@ class AudioEffects {
       done(renderedBuffer, this.adjustedTrimStart, this.adjustedTrimEnd);
     };
   }
-
 }
-
 /* harmony default export */ __webpack_exports__["default"] = (AudioEffects);
 
 /***/ }),
@@ -29557,7 +27833,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 class AudioRecorder {
   constructor() {
     this.audioContext = new _shared_audio_context_js__WEBPACK_IMPORTED_MODULE_2__["default"]();
@@ -29572,7 +27847,6 @@ class AudioRecorder {
     this.buffers = [];
     this.disposed = false;
   }
-
   startListening(onStarted, onUpdate, onError) {
     try {
       get_user_media_promise__WEBPACK_IMPORTED_MODULE_1___default()({
@@ -29594,74 +27868,64 @@ class AudioRecorder {
       }
     }
   }
-
   startRecording() {
     this.recording = true;
   }
-
   attachUserMediaStream(userMediaStream, onUpdate) {
     this.userMediaStream = userMediaStream;
     this.mediaStreamSource = this.audioContext.createMediaStreamSource(userMediaStream);
     this.sourceNode = this.audioContext.createGain();
     this.scriptProcessorNode = this.audioContext.createScriptProcessor(this.bufferLength, 1, 1);
-
     this.scriptProcessorNode.onaudioprocess = processEvent => {
       if (this.recording && !this.disposed) {
         this.buffers.push(new Float32Array(processEvent.inputBuffer.getChannelData(0)));
       }
     };
-
     this.analyserNode = this.audioContext.createAnalyser();
     this.analyserNode.fftSize = 2048;
     const bufferLength = this.analyserNode.frequencyBinCount;
     const dataArray = new Float32Array(bufferLength);
-
     const update = () => {
       if (this.disposed) return;
       this.analyserNode.getFloatTimeDomainData(dataArray);
       onUpdate(Object(_audio_util_js__WEBPACK_IMPORTED_MODULE_3__["computeRMS"])(dataArray));
       requestAnimationFrame(update);
     };
+    requestAnimationFrame(update);
 
-    requestAnimationFrame(update); // Wire everything together, ending in the destination
-
+    // Wire everything together, ending in the destination
     this.mediaStreamSource.connect(this.sourceNode);
     this.sourceNode.connect(this.analyserNode);
     this.analyserNode.connect(this.scriptProcessorNode);
     this.scriptProcessorNode.connect(this.audioContext.destination);
   }
-
   stop() {
     const buffer = new Float32Array(this.buffers.length * this.bufferLength);
     let offset = 0;
-
     for (let i = 0; i < this.buffers.length; i++) {
       const bufferChunk = this.buffers[i];
       buffer.set(bufferChunk, offset);
       offset += bufferChunk.length;
     }
-
     const chunkLevels = Object(_audio_util_js__WEBPACK_IMPORTED_MODULE_3__["computeChunkedRMS"])(buffer);
     const maxRMS = Math.max.apply(null, chunkLevels);
     const threshold = maxRMS / 8;
     let firstChunkAboveThreshold = null;
     let lastChunkAboveThreshold = null;
-
     for (let i = 0; i < chunkLevels.length; i++) {
       if (chunkLevels[i] > threshold) {
         if (firstChunkAboveThreshold === null) firstChunkAboveThreshold = i + 1;
         lastChunkAboveThreshold = i + 1;
       }
     }
-
     let trimStart = Math.max(2, firstChunkAboveThreshold - 2) / this.buffers.length;
-    let trimEnd = Math.min(this.buffers.length - 2, lastChunkAboveThreshold + 2) / this.buffers.length; // With very few samples, the automatic trimming can produce invalid values
+    let trimEnd = Math.min(this.buffers.length - 2, lastChunkAboveThreshold + 2) / this.buffers.length;
 
+    // With very few samples, the automatic trimming can produce invalid values
     if (trimStart >= trimEnd) {
       trimStart = 0;
       trimEnd = 1;
     }
-
     return {
       levels: chunkLevels,
       samples: buffer,
@@ -29670,7 +27934,6 @@ class AudioRecorder {
       trimEnd: trimEnd
     };
   }
-
   dispose() {
     if (this.started) {
       this.scriptProcessorNode.onaudioprocess = null;
@@ -29680,12 +27943,9 @@ class AudioRecorder {
       this.mediaStreamSource.disconnect();
       this.userMediaStream.getAudioTracks()[0].stop();
     }
-
     this.disposed = true;
   }
-
 }
-
 /* harmony default export */ __webpack_exports__["default"] = (AudioRecorder);
 
 /***/ }),
@@ -29713,35 +27973,28 @@ const SOUND_BYTE_LIMIT = 10 * 1000 * 1000; // 10mb
 const _computeRMS = function _computeRMS(samples, start, end) {
   let scaling = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0.55;
   const length = end - start;
-  if (length === 0) return 0; // Calculate RMS, adapted from https://github.com/Tonejs/Tone.js/blob/master/Tone/component/Meter.js#L88
-
+  if (length === 0) return 0;
+  // Calculate RMS, adapted from https://github.com/Tonejs/Tone.js/blob/master/Tone/component/Meter.js#L88
   let sum = 0;
-
   for (let i = start; i < end; i++) {
     const sample = samples[i];
     sum += sample ** 2;
   }
-
   const rms = Math.sqrt(sum / length);
   const val = rms / scaling;
   return Math.sqrt(val);
 };
-
 const computeRMS = (samples, scaling) => _computeRMS(samples, 0, samples.length, scaling);
-
 const computeChunkedRMS = function computeChunkedRMS(samples) {
   let chunkSize = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1024;
   const sampleCount = samples.length;
   const chunkLevels = [];
-
   for (let i = 0; i < sampleCount; i += chunkSize) {
     const maxIndex = Math.min(sampleCount, i + chunkSize);
     chunkLevels.push(_computeRMS(samples, i, maxIndex));
   }
-
   return chunkLevels;
 };
-
 const encodeAndAddSoundToVM = function encodeAndAddSoundToVM(vm, samples, sampleRate, name, callback) {
   wav_encoder__WEBPACK_IMPORTED_MODULE_0___default.a.encode({
     sampleRate: sampleRate,
@@ -29752,21 +28005,25 @@ const encodeAndAddSoundToVM = function encodeAndAddSoundToVM(vm, samples, sample
       dataFormat: 'wav',
       rate: sampleRate,
       sampleCount: samples.length
-    }; // Create an asset from the encoded .wav and get resulting md5
+    };
 
+    // Create an asset from the encoded .wav and get resulting md5
     const storage = vm.runtime.storage;
     vmSound.asset = storage.createAsset(storage.AssetType.Sound, storage.DataFormat.WAV, new Uint8Array(wavBuffer), null, true // generate md5
     );
-    vmSound.assetId = vmSound.asset.assetId; // update vmSound object with md5 property
 
-    vmSound.md5 = "".concat(vmSound.assetId, ".").concat(vmSound.dataFormat); // The VM will update the sound name to a fresh name
+    vmSound.assetId = vmSound.asset.assetId;
 
+    // update vmSound object with md5 property
+    vmSound.md5 = "".concat(vmSound.assetId, ".").concat(vmSound.dataFormat);
+    // The VM will update the sound name to a fresh name
     vmSound.name = name;
     vm.addSound(vmSound).then(() => {
       if (callback) callback();
     });
   });
 };
+
 /**
  @typedef SoundBuffer
  @type {Object}
@@ -29780,52 +28037,43 @@ const encodeAndAddSoundToVM = function encodeAndAddSoundToVM(vm, samples, sample
  * @param {function(SoundBuffer):Promise<SoundBuffer>} resampler - resampler function
  * @returns {SoundBuffer} Downsampled buffer with half the sample rate
  */
-
-
 const downsampleIfNeeded = (buffer, resampler) => {
   const {
     samples,
     sampleRate
   } = buffer;
-  const encodedByteLength = samples.length * 2;
-  /* bitDepth 16 bit */
+  const encodedByteLength = samples.length * 2; /* bitDepth 16 bit */
   // Resolve immediately if already within byte limit
-
   if (encodedByteLength < SOUND_BYTE_LIMIT) {
     return Promise.resolve({
       samples,
       sampleRate
     });
-  } // TW: Don't check if the sound will still fit at this reduced sample rate.
+  }
+  // TW: Don't check if the sound will still fit at this reduced sample rate.
   // Instead the GUI will show a warning if it's too large.
-
-
   return resampler({
     samples,
     sampleRate
   }, 22050);
 };
+
 /**
  * Drop every other sample of an audio buffer as a last-resort way of downsampling.
  * @param {SoundBuffer} buffer - Buffer to resample
  * @returns {SoundBuffer} Downsampled buffer with half the sample rate
  */
-
-
 const dropEveryOtherSample = buffer => {
   const newLength = Math.floor(buffer.samples.length / 2);
   const newSamples = new Float32Array(newLength);
-
   for (let i = 0; i < newLength; i++) {
     newSamples[i] = buffer.samples[i * 2];
   }
-
   return {
     samples: newSamples,
     sampleRate: buffer.sampleRate / 2
   };
 };
-
 
 
 /***/ }),
@@ -29843,11 +28091,9 @@ class EchoEffect {
   static get DELAY_TIME() {
     return 0.25;
   }
-
   static get TAIL_SECONDS() {
     return 0.75;
   }
-
   constructor(audioContext, startTime, endTime) {
     this.audioContext = audioContext;
     this.input = this.audioContext.createGain();
@@ -29874,9 +28120,7 @@ class EchoEffect {
     this.decay.connect(this.delay);
     this.compressor.connect(this.output);
   }
-
 }
-
 /* harmony default export */ __webpack_exports__["default"] = (EchoEffect);
 
 /***/ }),
@@ -29897,7 +28141,6 @@ class FadeEffect {
     this.output = this.audioContext.createGain();
     this.gain = this.audioContext.createGain();
     this.gain.gain.setValueAtTime(1, 0);
-
     if (fadeIn) {
       this.gain.gain.setValueAtTime(0, startSeconds);
       this.gain.gain.linearRampToValueAtTime(1, endSeconds);
@@ -29905,14 +28148,11 @@ class FadeEffect {
       this.gain.gain.setValueAtTime(1, startSeconds);
       this.gain.gain.linearRampToValueAtTime(0, endSeconds);
     }
-
     this.gain.gain.setValueAtTime(1, endSeconds);
     this.input.connect(this.gain);
     this.gain.connect(this.output);
   }
-
 }
-
 /* harmony default export */ __webpack_exports__["default"] = (FadeEffect);
 
 /***/ }),
@@ -29931,8 +28171,9 @@ class MuteEffect {
     this.audioContext = audioContext;
     this.input = this.audioContext.createGain();
     this.output = this.audioContext.createGain();
-    this.gain = this.audioContext.createGain(); // Smoothly ramp the gain down before the start time, and up after the end time.
+    this.gain = this.audioContext.createGain();
 
+    // Smoothly ramp the gain down before the start time, and up after the end time.
     this.rampLength = 0.001;
     this.gain.gain.setValueAtTime(1.0, Math.max(0, startSeconds - this.rampLength));
     this.gain.gain.linearRampToValueAtTime(0, startSeconds);
@@ -29941,9 +28182,7 @@ class MuteEffect {
     this.input.connect(this.gain);
     this.gain.connect(this.output);
   }
-
 }
-
 /* harmony default export */ __webpack_exports__["default"] = (MuteEffect);
 
 /***/ }),
@@ -29969,16 +28208,19 @@ class RobotEffect {
     this.passthrough.gain.setValueAtTime(0, startTime);
     this.passthrough.gain.setValueAtTime(1, endTime);
     this.effectInput.gain.setValueAtTime(1, startTime);
-    this.effectInput.gain.setValueAtTime(0, endTime); // Ring modulator inspired by BBC Dalek voice
+    this.effectInput.gain.setValueAtTime(0, endTime);
+
+    // Ring modulator inspired by BBC Dalek voice
     // http://recherche.ircam.fr/pub/dafx11/Papers/66_e.pdf
     // https://github.com/bbc/webaudio.prototyping.bbc.co.uk
+
     // > There are four parallel signal paths, two which process the
     // > combination Vc + Vin / 2 and two which process Vc - Vin/2.
     // > Each branch consists of a non-linearity [diode]...
-
     const createDiodeNode = () => {
-      const node = this.audioContext.createWaveShaper(); // Piecewise function given by (2) in Parker paper
+      const node = this.audioContext.createWaveShaper();
 
+      // Piecewise function given by (2) in Parker paper
       const transform = function transform(v) {
         let vb = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.2;
         let vl = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0.4;
@@ -29986,21 +28228,18 @@ class RobotEffect {
         if (v <= vb) return 0;
         if (v <= vl) return h * (Math.pow(v - vb, 2) / (2 * vl - 2 * vb));
         return h * v - h * vl + h * (Math.pow(v - vb, 2) / (2 * vl - 2 * vb));
-      }; // Create the waveshaper curve with the voltage transform above
+      };
 
-
+      // Create the waveshaper curve with the voltage transform above
       const bufferLength = 1024;
       const curve = new Float32Array(bufferLength);
-
       for (let i = 0; i < bufferLength; i++) {
         const voltage = 2 * (i / bufferLength) - 1;
         curve[i] = transform(voltage);
       }
-
       node.curve = curve;
       return node;
     };
-
     const oscillator = this.audioContext.createOscillator();
     oscillator.frequency.value = 50;
     oscillator.start(0);
@@ -30050,9 +28289,7 @@ class RobotEffect {
     biquadFilter.connect(compressor);
     compressor.connect(this.output);
   }
-
 }
-
 /* harmony default export */ __webpack_exports__["default"] = (RobotEffect);
 
 /***/ }),
@@ -30071,8 +28308,9 @@ class VolumeEffect {
     this.audioContext = audioContext;
     this.input = this.audioContext.createGain();
     this.output = this.audioContext.createGain();
-    this.gain = this.audioContext.createGain(); // Smoothly ramp the gain up before the start time, and down after the end time.
+    this.gain = this.audioContext.createGain();
 
+    // Smoothly ramp the gain up before the start time, and down after the end time.
     this.rampLength = 0.01;
     this.gain.gain.setValueAtTime(1.0, Math.max(0, startSeconds - this.rampLength));
     this.gain.gain.exponentialRampToValueAtTime(volume, startSeconds);
@@ -30081,9 +28319,7 @@ class VolumeEffect {
     this.input.connect(this.gain);
     this.gain.connect(this.output);
   }
-
 }
-
 /* harmony default export */ __webpack_exports__["default"] = (VolumeEffect);
 
 /***/ }),
@@ -30104,27 +28340,23 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let AUDIO_CONTEXT;
-
 if (!bowser__WEBPACK_IMPORTED_MODULE_1___default.a.msie) {
   /**
    * AudioContext can be initialized only when user interaction event happens
    */
   const event = typeof document.ontouchstart === 'undefined' ? 'mousedown' : 'touchstart';
-
   const initAudioContext = () => {
     document.removeEventListener(event, initAudioContext);
     AUDIO_CONTEXT = new (window.AudioContext || window.webkitAudioContext)();
     startaudiocontext__WEBPACK_IMPORTED_MODULE_0___default()(AUDIO_CONTEXT);
   };
-
   document.addEventListener(event, initAudioContext);
 }
+
 /**
  * Wrap browser AudioContext because we shouldn't create more than one
  * @return {AudioContext} The singleton AudioContext
  */
-
-
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   return AUDIO_CONTEXT;
 });
@@ -30168,15 +28400,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const LOCAL_API = '_local_'; // Add a new property for the full thumbnail url, which includes the host.
+const LOCAL_API = '_local_';
+
+// Add a new property for the full thumbnail url, which includes the host.
 // Also include a full body url for loading sprite zips
 // TODO retreiving the images through storage would allow us to remove this.
-
 const includeFullUrls = (item, host) => Object.assign({}, item, {
   thumbnailUrl: "".concat(host, "/").concat(item.thumbnail),
   bodyUrl: "".concat(host, "/").concat(item.body)
 });
-
 const getBackpackContents = _ref => {
   let {
     host,
@@ -30192,7 +28424,6 @@ const getBackpackContents = _ref => {
         offset
       }));
     }
-
     xhr__WEBPACK_IMPORTED_MODULE_0___default()({
       method: 'GET',
       uri: "".concat(host, "/").concat(username, "?limit=").concat(limit, "&offset=").concat(offset),
@@ -30204,12 +28435,10 @@ const getBackpackContents = _ref => {
       if (error || response.statusCode !== 200) {
         return reject(new Error(response.status));
       }
-
       return resolve(response.body.map(item => includeFullUrls(item, host)));
     });
   });
 };
-
 const saveBackpackObject = _ref2 => {
   let {
     host,
@@ -30224,7 +28453,6 @@ const saveBackpackObject = _ref2 => {
     body,
     // Base64-encoded body of the object being saved
     thumbnail // Base64-encoded JPEG thumbnail of the object being saved
-
   } = _ref2;
   return new Promise((resolve, reject) => {
     if (host === LOCAL_API) {
@@ -30236,7 +28464,6 @@ const saveBackpackObject = _ref2 => {
         thumbnail
       }));
     }
-
     xhr__WEBPACK_IMPORTED_MODULE_0___default()({
       method: 'POST',
       uri: "".concat(host, "/").concat(username),
@@ -30254,12 +28481,10 @@ const saveBackpackObject = _ref2 => {
       if (error || response.statusCode !== 200) {
         return reject(new Error(response.status));
       }
-
       return resolve(includeFullUrls(response.body, host));
     });
   });
 };
-
 const deleteBackpackObject = _ref3 => {
   let {
     host,
@@ -30273,7 +28498,6 @@ const deleteBackpackObject = _ref3 => {
         id
       }));
     }
-
     xhr__WEBPACK_IMPORTED_MODULE_0___default()({
       method: 'DELETE',
       uri: "".concat(host, "/").concat(username, "/").concat(id),
@@ -30284,12 +28508,10 @@ const deleteBackpackObject = _ref3 => {
       if (error || response.statusCode !== 200) {
         return reject(new Error(response.status));
       }
-
       return resolve(response.body);
     });
   });
 };
-
 const updateBackpackObject = _ref4 => {
   let {
     host,
@@ -30303,13 +28525,12 @@ const updateBackpackObject = _ref4 => {
         name
       }));
     }
-
     reject(new Error('updateBackpackObject not supported'));
   });
-}; // Two types of backpack items are not retreivable through storage
+};
+
+// Two types of backpack items are not retreivable through storage
 // code, as json and sprite3 as arraybuffer zips.
-
-
 const fetchAs = (responseType, uri) => new Promise((resolve, reject) => {
   xhr__WEBPACK_IMPORTED_MODULE_0___default()({
     uri,
@@ -30318,13 +28539,12 @@ const fetchAs = (responseType, uri) => new Promise((resolve, reject) => {
     if (error || response.statusCode !== 200) {
       return reject(new Error(response.status));
     }
-
     return resolve(response.body);
   });
-}); // These two helpers allow easy fetching of backpack code and sprite zips
+});
+
+// These two helpers allow easy fetching of backpack code and sprite zips
 // Use the curried fetchAs here so the consumer does not worry about XHR responseTypes
-
-
 const fetchCode = fetchAs.bind(null, 'json');
 const fetchSprite = fetchAs.bind(null, 'arraybuffer');
 
@@ -30345,32 +28565,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tw_lazy_scratch_blocks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../tw-lazy-scratch-blocks */ "./src/lib/tw-lazy-scratch-blocks.js");
 
 
+
 /**
  * Given a blockId, return a data-uri image that can be used to create a thumbnail.
  * @param {string} blockId the ID of the block to imagify
  * @return {Promise} resolves to a data-url of a picture of the blocks
  */
-
 /* harmony default export */ __webpack_exports__["default"] = (function (blockId) {
-  const ScratchBlocks = _tw_lazy_scratch_blocks__WEBPACK_IMPORTED_MODULE_1__["default"].get(); // Not sure any better way to access the scratch-blocks workspace than this...
-
+  const ScratchBlocks = _tw_lazy_scratch_blocks__WEBPACK_IMPORTED_MODULE_1__["default"].get();
+  // Not sure any better way to access the scratch-blocks workspace than this...
   const block = ScratchBlocks.getMainWorkspace().getBlockById(blockId);
-  const blockSvg = block.getSvgRoot().cloneNode(true
-  /* deep */
-  ); // Once we have the cloned SVG, do the rest in a setTimeout to prevent
-  // blocking the drag end from finishing promptly.
+  const blockSvg = block.getSvgRoot().cloneNode(true /* deep */);
 
+  // Once we have the cloned SVG, do the rest in a setTimeout to prevent
+  // blocking the drag end from finishing promptly.
   return new Promise(resolve => {
     setTimeout(() => {
       // TW: Fixes issues caused by scratch-blocks block hiding
-      blockSvg.style.display = ''; // Strip &nbsp; entities that cannot be inlined
+      blockSvg.style.display = '';
 
-      blockSvg.innerHTML = blockSvg.innerHTML.replace(/&nbsp;/g, ' '); // Create an <svg> element to put the cloned blockSvg inside
+      // Strip &nbsp; entities that cannot be inlined
+      blockSvg.innerHTML = blockSvg.innerHTML.replace(/&nbsp;/g, ' ');
 
+      // Create an <svg> element to put the cloned blockSvg inside
       const NS = 'http://www.w3.org/2000/svg';
       const svg = document.createElementNS(NS, 'svg');
-      svg.appendChild(blockSvg); // Needs to be on the DOM to get CSS properties and correct sizing
+      svg.appendChild(blockSvg);
 
+      // Needs to be on the DOM to get CSS properties and correct sizing
       document.body.appendChild(svg);
       const padding = 10;
       const extraHatPadding = 16;
@@ -30379,19 +28601,21 @@ __webpack_require__.r(__webpack_exports__);
       blockSvg.setAttribute('transform', "translate(".concat(leftPadding, " ").concat(topPadding, ")"));
       const bounds = blockSvg.getBoundingClientRect();
       svg.setAttribute('width', bounds.width + 2 * padding);
-      svg.setAttribute('height', bounds.height + 2 * padding); // We need to inline the styles set by CSS rules because
+      svg.setAttribute('height', bounds.height + 2 * padding);
+
+      // We need to inline the styles set by CSS rules because
       // not all the styles are set directly on the SVG. This makes the
       // image styled the same way the block actually appears.
       // TODO this doesn't handle images that are xlink:href in the SVG
-
       computed_style_to_inline_style__WEBPACK_IMPORTED_MODULE_0___default()(svg, {
         recursive: true,
         // Enumerate the specific properties we need to inline.
         // Specifically properties that are set from CSS in scratch-blocks
         properties: ['fill', 'font-family', 'font-size', 'font-weight']
       });
-      const svgString = new XMLSerializer().serializeToString(svg); // Once we have the svg as a string, remove it from the DOM
+      const svgString = new XMLSerializer().serializeToString(svg);
 
+      // Once we have the svg as a string, remove it from the DOM
       svg.parentNode.removeChild(svg);
       resolve("data:image/svg+xml;utf-8,".concat(encodeURIComponent(svgString)));
     }, 10);
@@ -30416,7 +28640,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const codePayload = _ref => {
   let {
     blockObjects,
@@ -30431,14 +28654,13 @@ const codePayload = _ref => {
     // Backpack expects a base64 encoded string to store. Cannot use btoa because
     // the code can contain characters outside the 0-255 code-point range supported by btoa
     body: js_base64__WEBPACK_IMPORTED_MODULE_2__["Base64"].encode(JSON.stringify(blockObjects)) // Base64 encode the json
-
   };
+
   return Object(_block_to_image__WEBPACK_IMPORTED_MODULE_0__["default"])(topBlockId).then(_thumbnail__WEBPACK_IMPORTED_MODULE_1__["default"]).then(thumbnail => {
     payload.thumbnail = thumbnail;
     return payload;
   });
 };
-
 /* harmony default export */ __webpack_exports__["default"] = (codePayload);
 
 /***/ }),
@@ -30456,7 +28678,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _get_costume_url__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../get-costume-url */ "./src/lib/get-costume-url.js");
 
 
-
 const costumePayload = (costume, vm) => {
   // TODO is it ok to base64 encode SVGs? What about unicode text inside them?
   const assetDataUrl = vm.getExportedCostumeBase64(costume);
@@ -30469,37 +28690,32 @@ const costumePayload = (costume, vm) => {
     body: '',
     thumbnail: ''
   };
-
   switch (assetDataFormat) {
     case 'svg':
       payload.mime = 'image/svg+xml';
       payload.body = assetDataUrl;
       break;
-
     case 'png':
       payload.mime = 'image/png';
       payload.body = assetDataUrl;
       break;
-
     case 'jpg':
       payload.mime = 'image/jpeg';
       payload.body = assetDataUrl;
       break;
-
     default:
       alert("Cannot serialize for format: ".concat(assetDataFormat));
     // eslint-disable-line
-  } // Do not generate the thumbnail from the raw asset. Instead use the getCostumeUrl
+  }
+
+  // Do not generate the thumbnail from the raw asset. Instead use the getCostumeUrl
   // utility which inlines the fonts to make the thumbnail show the right fonts.
-
-
   const inlinedFontDataUrl = Object(_get_costume_url__WEBPACK_IMPORTED_MODULE_1__["default"])(costume.asset);
   return Object(_thumbnail__WEBPACK_IMPORTED_MODULE_0__["default"])(inlinedFontDataUrl).then(thumbnail => {
     payload.thumbnail = thumbnail;
     return payload;
   });
 };
-
 /* harmony default export */ __webpack_exports__["default"] = (costumePayload);
 
 /***/ }),
@@ -30519,7 +28735,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (default from non-harmony) */ __webpack_require__.d(__webpack_exports__, "soundThumbnail", function() { return _base64_loader_sound_thumbnail_png__WEBPACK_IMPORTED_MODULE_0___default.a; });
 // eslint-disable-next-line import/no-unresolved
 
-
 const soundPayload = sound => {
   const assetDataUrl = sound.asset.encodeDataURI();
   const assetDataFormat = sound.dataFormat;
@@ -30531,30 +28746,26 @@ const soundPayload = sound => {
     mime: '',
     body: ''
   };
-
   switch (assetDataFormat) {
     case 'wav':
       payload.mime = 'audio/x-wav';
       payload.body = assetDataUrl.replace('data:audio/x-wav;base64,', '');
       break;
-
     case 'mp3':
-      payload.mime = 'audio/mp3'; // TODO scratch-storage should be fixed so that encodeDataURI does not
+      payload.mime = 'audio/mp3';
+      // TODO scratch-storage should be fixed so that encodeDataURI does not
       // always prepend the wave format header; Once that is fixed, the following
       // line will have to change.
-
       payload.body = assetDataUrl.replace('data:audio/x-wav;base64,', '');
       break;
-
     default:
       alert("Cannot serialize for format: ".concat(assetDataFormat));
     // eslint-disable-line
-  } // Return a promise to make it consistent with other payload constructors like costume-payload
+  }
 
-
+  // Return a promise to make it consistent with other payload constructors like costume-payload
   return new Promise(resolve => resolve(payload));
 };
-
 
 
 /***/ }),
@@ -30569,7 +28780,6 @@ const soundPayload = sound => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _thumbnail__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./thumbnail */ "./src/lib/backpack/thumbnail.js");
-
 
 const spritePayload = (id, vm) => {
   const target = vm.runtime.getTargetById(id);
@@ -30590,7 +28800,6 @@ const spritePayload = (id, vm) => {
     });
   });
 };
-
 /* harmony default export */ __webpack_exports__["default"] = (spritePayload);
 
 /***/ }),
@@ -30606,15 +28815,16 @@ const spritePayload = (id, vm) => {
 __webpack_require__.r(__webpack_exports__);
 const jpegThumbnail = dataUrl => new Promise((resolve, reject) => {
   const image = new Image();
-
   image.onload = () => {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
     const maxDimension = 96; // 3x the maximum displayed size of 32px
+
     // TW: After setting canvas width/height, the canvas is automatically cleared.
 
     if (image.height < 1 || image.width < 1) {
-      canvas.width = canvas.height = maxDimension; // drawImage can fail if image height/width is less than 1
+      canvas.width = canvas.height = maxDimension;
+      // drawImage can fail if image height/width is less than 1
       // Use blank image; the costume is too small to render anyway
     } else {
       if (image.height > image.width) {
@@ -30624,23 +28834,19 @@ const jpegThumbnail = dataUrl => new Promise((resolve, reject) => {
         canvas.width = maxDimension;
         canvas.height = maxDimension / image.width * image.height;
       }
-
       ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
-    } // TW: PNG allows using transparency while JPEG does not.
+    }
+
+    // TW: PNG allows using transparency while JPEG does not.
     // A white background looks quite ugly in dark mode.
-
-
     const dataURL = canvas.toDataURL('image/png').replace('data:image/png;base64,', '');
     resolve(dataURL);
   };
-
   image.onerror = err => {
     reject(err);
   };
-
   image.src = dataUrl;
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (jpegThumbnail);
 
 /***/ }),
@@ -30656,15 +28862,14 @@ const jpegThumbnail = dataUrl => new Promise((resolve, reject) => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tw_lazy_scratch_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tw-lazy-scratch-blocks */ "./src/lib/tw-lazy-scratch-blocks.js");
 
+
 /**
  * Connect scratch blocks with the vm
  * @param {VirtualMachine} vm - The scratch vm
  * @return {ScratchBlocks} ScratchBlocks connected with the vm
  */
-
 /* harmony default export */ __webpack_exports__["default"] = (function (vm) {
   const ScratchBlocks = _tw_lazy_scratch_blocks__WEBPACK_IMPORTED_MODULE_0__["default"].get();
-
   const jsonForMenuBlock = function jsonForMenuBlock(name, menuOptionsFn, colors, start) {
     return {
       message0: '%1',
@@ -30683,7 +28888,6 @@ __webpack_require__.r(__webpack_exports__);
       outputShape: ScratchBlocks.OUTPUT_SHAPE_ROUND
     };
   };
-
   const jsonForHatBlockMenu = function jsonForHatBlockMenu(hatName, name, menuOptionsFn, colors, start) {
     return {
       message0: hatName,
@@ -30700,7 +28904,6 @@ __webpack_require__.r(__webpack_exports__);
       extensions: ['shape_hat']
     };
   };
-
   const jsonForSensingMenus = function jsonForSensingMenus(menuOptionsFn) {
     return {
       message0: ScratchBlocks.Msg.SENSING_OF,
@@ -30721,271 +28924,224 @@ __webpack_require__.r(__webpack_exports__);
       outputShape: ScratchBlocks.OUTPUT_SHAPE_ROUND
     };
   };
-
   const soundsMenu = function soundsMenu() {
     let menu = [['', '']];
-
     if (vm.editingTarget && vm.editingTarget.sprite.sounds.length > 0) {
       menu = vm.editingTarget.sprite.sounds.map(sound => [sound.name, sound.name]);
     }
-
     menu.push([ScratchBlocks.ScratchMsgs.translate('SOUND_RECORD', 'record...'), ScratchBlocks.recordSoundCallback]);
     return menu;
   };
-
   const costumesMenu = function costumesMenu() {
     if (vm.editingTarget && vm.editingTarget.getCostumes().length > 0) {
       return vm.editingTarget.getCostumes().map(costume => [costume.name, costume.name]);
     }
-
     return [['', '']];
   };
-
   const backdropsMenu = function backdropsMenu() {
     const next = ScratchBlocks.ScratchMsgs.translate('LOOKS_NEXTBACKDROP', 'next backdrop');
     const previous = ScratchBlocks.ScratchMsgs.translate('LOOKS_PREVIOUSBACKDROP', 'previous backdrop');
     const random = ScratchBlocks.ScratchMsgs.translate('LOOKS_RANDOMBACKDROP', 'random backdrop');
-
     if (vm.runtime.targets[0] && vm.runtime.targets[0].getCostumes().length > 0) {
       return vm.runtime.targets[0].getCostumes().map(costume => [costume.name, costume.name]).concat([[next, 'next backdrop'], [previous, 'previous backdrop'], [random, 'random backdrop']]);
     }
-
     return [['', '']];
   };
-
   const backdropNamesMenu = function backdropNamesMenu() {
     const stage = vm.runtime.getTargetForStage();
-
     if (stage && stage.getCostumes().length > 0) {
       return stage.getCostumes().map(costume => [costume.name, costume.name]);
     }
-
     return [['', '']];
   };
-
   const spriteMenu = function spriteMenu() {
     const sprites = [];
-
     for (const targetId in vm.runtime.targets) {
       if (!vm.runtime.targets.hasOwnProperty(targetId)) continue;
-
       if (vm.runtime.targets[targetId].isOriginal) {
         if (!vm.runtime.targets[targetId].isStage) {
           if (vm.runtime.targets[targetId] === vm.editingTarget) {
             continue;
           }
-
           sprites.push([vm.runtime.targets[targetId].sprite.name, vm.runtime.targets[targetId].sprite.name]);
         }
       }
     }
-
     return sprites;
   };
-
   const cloneMenu = function cloneMenu() {
     if (vm.editingTarget && vm.editingTarget.isStage) {
       const menu = spriteMenu();
-
       if (menu.length === 0) {
         return [['', '']]; // Empty menu matches Scratch 2 behavior
       }
 
       return menu;
     }
-
     const myself = ScratchBlocks.ScratchMsgs.translate('CONTROL_CREATECLONEOF_MYSELF', 'myself');
     return [[myself, '_myself_']].concat(spriteMenu());
   };
-
   const soundColors = ScratchBlocks.Colours.sounds;
   const looksColors = ScratchBlocks.Colours.looks;
   const motionColors = ScratchBlocks.Colours.motion;
   const sensingColors = ScratchBlocks.Colours.sensing;
   const controlColors = ScratchBlocks.Colours.control;
   const eventColors = ScratchBlocks.Colours.event;
-
   ScratchBlocks.Blocks.sound_sounds_menu.init = function () {
     const json = jsonForMenuBlock('SOUND_MENU', soundsMenu, soundColors, []);
     this.jsonInit(json);
   };
-
   ScratchBlocks.Blocks.looks_costume.init = function () {
     const json = jsonForMenuBlock('COSTUME', costumesMenu, looksColors, []);
     this.jsonInit(json);
   };
-
   ScratchBlocks.Blocks.looks_backdrops.init = function () {
     const json = jsonForMenuBlock('BACKDROP', backdropsMenu, looksColors, []);
     this.jsonInit(json);
   };
-
   ScratchBlocks.Blocks.event_whenbackdropswitchesto.init = function () {
     const json = jsonForHatBlockMenu(ScratchBlocks.Msg.EVENT_WHENBACKDROPSWITCHESTO, 'BACKDROP', backdropNamesMenu, eventColors, []);
     this.jsonInit(json);
   };
-
   ScratchBlocks.Blocks.motion_pointtowards_menu.init = function () {
     const mouse = ScratchBlocks.ScratchMsgs.translate('MOTION_POINTTOWARDS_POINTER', 'mouse-pointer');
     const json = jsonForMenuBlock('TOWARDS', spriteMenu, motionColors, [[mouse, '_mouse_']]);
     this.jsonInit(json);
   };
-
   ScratchBlocks.Blocks.motion_goto_menu.init = function () {
     const random = ScratchBlocks.ScratchMsgs.translate('MOTION_GOTO_RANDOM', 'random position');
     const mouse = ScratchBlocks.ScratchMsgs.translate('MOTION_GOTO_POINTER', 'mouse-pointer');
     const json = jsonForMenuBlock('TO', spriteMenu, motionColors, [[random, '_random_'], [mouse, '_mouse_']]);
     this.jsonInit(json);
   };
-
   ScratchBlocks.Blocks.motion_glideto_menu.init = function () {
     const random = ScratchBlocks.ScratchMsgs.translate('MOTION_GLIDETO_RANDOM', 'random position');
     const mouse = ScratchBlocks.ScratchMsgs.translate('MOTION_GLIDETO_POINTER', 'mouse-pointer');
     const json = jsonForMenuBlock('TO', spriteMenu, motionColors, [[random, '_random_'], [mouse, '_mouse_']]);
     this.jsonInit(json);
   };
-
   ScratchBlocks.Blocks.sensing_of_object_menu.init = function () {
     const stage = ScratchBlocks.ScratchMsgs.translate('SENSING_OF_STAGE', 'Stage');
     const json = jsonForMenuBlock('OBJECT', spriteMenu, sensingColors, [[stage, '_stage_']]);
     this.jsonInit(json);
   };
-
   ScratchBlocks.Blocks.sensing_of.init = function () {
     const blockId = this.id;
-    const blockType = this.type; // Get the sensing_of block from vm.
+    const blockType = this.type;
 
+    // Get the sensing_of block from vm.
     let defaultSensingOfBlock;
     const blocks = vm.runtime.flyoutBlocks._blocks;
     Object.keys(blocks).forEach(id => {
       const block = blocks[id];
-
       if (id === blockType || block && block.opcode === blockType) {
         defaultSensingOfBlock = block;
       }
-    }); // Function that fills in menu for the first input in the sensing block.
-    // Called every time it opens since it depends on the values in the other block input.
+    });
 
+    // Function that fills in menu for the first input in the sensing block.
+    // Called every time it opens since it depends on the values in the other block input.
     const menuFn = function menuFn() {
       const stageOptions = [[ScratchBlocks.Msg.SENSING_OF_BACKDROPNUMBER, 'backdrop #'], [ScratchBlocks.Msg.SENSING_OF_BACKDROPNAME, 'backdrop name'], [ScratchBlocks.Msg.SENSING_OF_VOLUME, 'volume']];
       const spriteOptions = [[ScratchBlocks.Msg.SENSING_OF_XPOSITION, 'x position'], [ScratchBlocks.Msg.SENSING_OF_YPOSITION, 'y position'], [ScratchBlocks.Msg.SENSING_OF_DIRECTION, 'direction'], [ScratchBlocks.Msg.SENSING_OF_COSTUMENUMBER, 'costume #'], [ScratchBlocks.Msg.SENSING_OF_COSTUMENAME, 'costume name'], [ScratchBlocks.Msg.SENSING_OF_SIZE, 'size'], [ScratchBlocks.Msg.SENSING_OF_VOLUME, 'volume']];
-
       if (vm.editingTarget) {
         let lookupBlocks = vm.editingTarget.blocks;
-        let sensingOfBlock = lookupBlocks.getBlock(blockId); // The block doesn't exist, but should be in the flyout. Look there.
+        let sensingOfBlock = lookupBlocks.getBlock(blockId);
 
+        // The block doesn't exist, but should be in the flyout. Look there.
         if (!sensingOfBlock) {
-          sensingOfBlock = vm.runtime.flyoutBlocks.getBlock(blockId) || defaultSensingOfBlock; // If we still don't have a block, just return an empty list . This happens during
+          sensingOfBlock = vm.runtime.flyoutBlocks.getBlock(blockId) || defaultSensingOfBlock;
+          // If we still don't have a block, just return an empty list . This happens during
           // scratch blocks construction.
-
           if (!sensingOfBlock) {
             return [['', '']];
-          } // The block was in the flyout so look up future block info there.
-
-
+          }
+          // The block was in the flyout so look up future block info there.
           lookupBlocks = vm.runtime.flyoutBlocks;
         }
-
         const sort = function sort(options) {
           options.sort(ScratchBlocks.scratchBlocksUtils.compareStrings);
-        }; // Get all the stage variables (no lists) so we can add them to menu when the stage is selected.
-
-
+        };
+        // Get all the stage variables (no lists) so we can add them to menu when the stage is selected.
         const stageVariableOptions = vm.runtime.getTargetForStage().getAllVariableNamesInScopeByType('');
         sort(stageVariableOptions);
         const stageVariableMenuItems = stageVariableOptions.map(variable => [variable, variable]);
-
         if (sensingOfBlock.inputs.OBJECT.shadow !== sensingOfBlock.inputs.OBJECT.block) {
           // There's a block dropped on top of the menu. It'd be nice to evaluate it and
           // return the correct list, but that is tricky. Scratch2 just returns stage options
           // so just do that here too.
           return stageOptions.concat(stageVariableMenuItems);
         }
-
         const menuBlock = lookupBlocks.getBlock(sensingOfBlock.inputs.OBJECT.shadow);
         const selectedItem = menuBlock.fields.OBJECT.value;
-
         if (selectedItem === '_stage_') {
           return stageOptions.concat(stageVariableMenuItems);
-        } // Get all the local variables (no lists) and add them to the menu.
-
-
+        }
+        // Get all the local variables (no lists) and add them to the menu.
         const target = vm.runtime.getSpriteTargetByName(selectedItem);
-        let spriteVariableOptions = []; // The target should exist, but there are ways for it not to (e.g. #4203).
-
+        let spriteVariableOptions = [];
+        // The target should exist, but there are ways for it not to (e.g. #4203).
         if (target) {
           spriteVariableOptions = target.getAllVariableNamesInScopeByType('', true);
           sort(spriteVariableOptions);
         }
-
         const spriteVariableMenuItems = spriteVariableOptions.map(variable => [variable, variable]);
         return spriteOptions.concat(spriteVariableMenuItems);
       }
-
       return [['', '']];
     };
-
     const json = jsonForSensingMenus(menuFn);
     this.jsonInit(json);
   };
-
   ScratchBlocks.Blocks.sensing_distancetomenu.init = function () {
     const mouse = ScratchBlocks.ScratchMsgs.translate('SENSING_DISTANCETO_POINTER', 'mouse-pointer');
     const json = jsonForMenuBlock('DISTANCETOMENU', spriteMenu, sensingColors, [[mouse, '_mouse_']]);
     this.jsonInit(json);
   };
-
   ScratchBlocks.Blocks.sensing_touchingobjectmenu.init = function () {
     const mouse = ScratchBlocks.ScratchMsgs.translate('SENSING_TOUCHINGOBJECT_POINTER', 'mouse-pointer');
     const edge = ScratchBlocks.ScratchMsgs.translate('SENSING_TOUCHINGOBJECT_EDGE', 'edge');
     const json = jsonForMenuBlock('TOUCHINGOBJECTMENU', spriteMenu, sensingColors, [[mouse, '_mouse_'], [edge, '_edge_']]);
     this.jsonInit(json);
   };
-
   ScratchBlocks.Blocks.control_create_clone_of_menu.init = function () {
     const json = jsonForMenuBlock('CLONE_OPTION', cloneMenu, controlColors, []);
     this.jsonInit(json);
   };
-
   ScratchBlocks.VerticalFlyout.getCheckboxState = function (blockId) {
     const monitoredBlock = vm.runtime.monitorBlocks._blocks[blockId];
     return monitoredBlock ? monitoredBlock.isMonitored : false;
   };
-
   ScratchBlocks.FlyoutExtensionCategoryHeader.getExtensionState = function (extensionId) {
     if (vm.getPeripheralIsConnected(extensionId)) {
       return ScratchBlocks.StatusButtonState.READY;
     }
-
     return ScratchBlocks.StatusButtonState.NOT_READY;
   };
-
   ScratchBlocks.FieldNote.playNote_ = function (noteNum, extensionId) {
     vm.runtime.emit('PLAY_NOTE', noteNum, extensionId);
-  }; // Use a collator's compare instead of localeCompare which internally
+  };
+
+  // Use a collator's compare instead of localeCompare which internally
   // creates a collator. Using this is a lot faster in browsers that create a
   // collator for every localeCompare call.
-
-
   const collator = new Intl.Collator([], {
     sensitivity: 'base',
     numeric: true
   });
-
   ScratchBlocks.scratchBlocksUtils.compareStrings = function (str1, str2) {
     return collator.compare(str1, str2);
-  }; // Blocks wants to know if 3D CSS transforms are supported. The cross
+  };
+
+  // Blocks wants to know if 3D CSS transforms are supported. The cross
   // section of browsers Scratch supports and browsers that support 3D CSS
   // transforms will make the return always true.
   //
   // Shortcutting to true lets us skip an expensive style recalculation when
   // first loading the Scratch editor.
-
-
   ScratchBlocks.utils.is3dSupported = function () {
     return true;
   };
-
   return ScratchBlocks;
 });
 
@@ -31015,8 +29171,9 @@ __webpack_require__.r(__webpack_exports__);
       canvas.width = image.naturalWidth;
       canvas.height = image.naturalHeight;
       ctx.drawImage(image, 0, 0);
-      const dataUrl = canvas.toDataURL('image/png'); // Revoke URL. If a blob URL was generated earlier, this allows the blob to be GC'd and prevents a memory leak.
+      const dataUrl = canvas.toDataURL('image/png');
 
+      // Revoke URL. If a blob URL was generated earlier, this allows the blob to be GC'd and prevents a memory leak.
       window.URL.revokeObjectURL(imageUrl);
       resolve(dataUrl);
     });
@@ -31050,11 +29207,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _reducers_modals__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../reducers/modals */ "./src/reducers/modals.js");
 /* harmony import */ var _reducers_tw__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../reducers/tw */ "./src/reducers/tw.js");
 const _excluded = ["canModifyCloudData", "cloudHost", "projectId", "username", "hasCloudPermission", "isShowingWithId", "onShowCloudInfo", "onInvalidUsername", "vm"];
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 
@@ -31072,7 +29226,6 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
  * @param {React.Component} WrappedComponent component to manage VM events for
  * @returns {React.Component} connected component with vm events bound to redux
  */
-
 const cloudManagerHOC = function cloudManagerHOC(WrappedComponent) {
   class CloudManager extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
     constructor(props) {
@@ -31081,73 +29234,62 @@ const cloudManagerHOC = function cloudManagerHOC(WrappedComponent) {
       lodash_bindall__WEBPACK_IMPORTED_MODULE_3___default()(this, ['handleCloudDataUpdate', 'onInvalidUsername']);
       this.props.vm.on('HAS_CLOUD_DATA_UPDATE', this.handleCloudDataUpdate);
     }
-
     componentDidMount() {
       if (this.shouldConnect(this.props)) {
         this.connectToCloud();
       }
     }
-
     componentDidUpdate(prevProps) {
       // TODO need to add cloud provider disconnection logic and cloud data clearing logic
       // when loading a new project e.g. via file upload
       // (and eventually move it out of the vm.clear function)
+
       // tw: handle cases where we should explicitly close and reconnect() in the same update
       if (this.shouldReconnect(this.props, prevProps)) {
         this.disconnectFromCloud();
-
         if (this.shouldConnect(this.props)) {
           this.connectToCloud();
         }
-
         return;
       }
-
       if (this.shouldConnect(this.props) && !this.shouldConnect(prevProps)) {
         this.connectToCloud();
       }
-
       if (this.shouldDisconnect(this.props, prevProps)) {
         this.disconnectFromCloud();
       }
     }
-
     componentWillUnmount() {
       this.disconnectFromCloud();
     }
-
     canUseCloud(props) {
       return !!(props.cloudHost && props.username && props.vm && props.projectId && props.hasCloudPermission);
     }
-
     shouldConnect(props) {
       return !this.isConnected() && this.canUseCloud(props) && props.isShowingWithId && props.vm.runtime.hasCloudData() && props.canModifyCloudData;
     }
-
     shouldDisconnect(props, prevProps) {
-      return this.isConnected() && ( // Can no longer use cloud or cloud provider info is now stale
-      !this.canUseCloud(props) || !props.vm.runtime.hasCloudData() || props.projectId !== prevProps.projectId || // tw: username changes are handled in "reconnect"
+      return this.isConnected() && (
+      // Can no longer use cloud or cloud provider info is now stale
+      !this.canUseCloud(props) || !props.vm.runtime.hasCloudData() || props.projectId !== prevProps.projectId ||
+      // tw: username changes are handled in "reconnect"
       // (props.username !== prevProps.username) ||
       // Editing someone else's project
       !props.canModifyCloudData);
-    } // tw: handle cases where we should explicitly close and reconnect() in the same update
-
-
+    }
+    // tw: handle cases where we should explicitly close and reconnect() in the same update
     shouldReconnect(props, prevProps) {
       // reconnect when username changes
       return this.isConnected() && props.username !== prevProps.username;
     }
-
     isConnected() {
       return this.cloudProvider && !!this.cloudProvider.connection;
     }
-
     connectToCloud() {
       this.cloudProvider = new _lib_cloud_provider__WEBPACK_IMPORTED_MODULE_5__["default"](this.props.cloudHost, this.props.vm, this.props.username, this.props.projectId);
       this.cloudProvider.onInvalidUsername = this.onInvalidUsername;
       this.props.vm.setCloudProvider(this.cloudProvider);
     }
-
     disconnectFromCloud() {
       if (this.cloudProvider) {
         this.cloudProvider.requestCloseConnection();
@@ -31155,7 +29297,6 @@ const cloudManagerHOC = function cloudManagerHOC(WrappedComponent) {
         this.props.vm.setCloudProvider(null);
       }
     }
-
     handleCloudDataUpdate(projectHasCloudData) {
       if (this.isConnected() && !projectHasCloudData) {
         this.disconnectFromCloud();
@@ -31164,37 +29305,31 @@ const cloudManagerHOC = function cloudManagerHOC(WrappedComponent) {
         this.connectToCloud();
       }
     }
-
     onInvalidUsername() {
       this.props.onInvalidUsername();
     }
-
     render() {
       const _this$props = this.props,
-            {
-        /* eslint-disable no-unused-vars */
-        canModifyCloudData,
-        cloudHost,
-        projectId,
-        username,
-        hasCloudPermission,
-        isShowingWithId,
-        onShowCloudInfo,
-        onInvalidUsername,
-
-        /* eslint-enable no-unused-vars */
-        vm
-      } = _this$props,
-            componentProps = _objectWithoutProperties(_this$props, _excluded);
-
+        {
+          /* eslint-disable no-unused-vars */
+          canModifyCloudData,
+          cloudHost,
+          projectId,
+          username,
+          hasCloudPermission,
+          isShowingWithId,
+          onShowCloudInfo,
+          onInvalidUsername,
+          /* eslint-enable no-unused-vars */
+          vm
+        } = _this$props,
+        componentProps = _objectWithoutProperties(_this$props, _excluded);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(WrappedComponent, _extends({
         canUseCloud: this.canUseCloud(this.props),
         vm: vm
       }, componentProps));
     }
-
   }
-
   CloudManager.propTypes = {
     canModifyCloudData: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.bool.isRequired,
     cloudHost: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
@@ -31211,7 +29346,6 @@ const cloudManagerHOC = function cloudManagerHOC(WrappedComponent) {
     onShowCloudInfo: () => {},
     username: null
   };
-
   const mapStateToProps = (state, ownProps) => {
     const loadingState = state.scratchGui.projectState.loadingState;
     return {
@@ -31222,21 +29356,18 @@ const cloudManagerHOC = function cloudManagerHOC(WrappedComponent) {
       canModifyCloudData: !state.scratchGui.mode.hasEverEnteredEditor || ownProps.canSave
     };
   };
-
   const mapDispatchToProps = dispatch => ({
     onShowCloudInfo: () => Object(_reducers_alerts__WEBPACK_IMPORTED_MODULE_7__["showAlertWithTimeout"])(dispatch, 'cloudInfo'),
     onInvalidUsername: () => {
       dispatch(Object(_reducers_tw__WEBPACK_IMPORTED_MODULE_9__["setUsernameInvalid"])(true));
       dispatch(Object(_reducers_modals__WEBPACK_IMPORTED_MODULE_8__["openUsernameModal"])());
     }
-  }); // Allow incoming props to override redux-provided props. Used to mock in tests.
+  });
 
-
+  // Allow incoming props to override redux-provided props. Used to mock in tests.
   const mergeProps = (stateProps, dispatchProps, ownProps) => Object.assign({}, stateProps, dispatchProps, ownProps);
-
   return Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, mapDispatchToProps, mergeProps)(CloudManager);
 };
-
 /* harmony default export */ __webpack_exports__["default"] = (cloudManagerHOC);
 
 /***/ }),
@@ -31255,15 +29386,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash_throttle__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_throttle__WEBPACK_IMPORTED_MODULE_1__);
 
 
-
 const anonymizeUsername = username => {
   if (/^player\d{2,7}$/i.test(username)) {
     return 'player';
   }
-
   return username;
 };
-
 class CloudProvider {
   /**
    * A cloud data provider which creates and manages a web socket connection
@@ -31280,51 +29408,49 @@ class CloudProvider {
     this.username = anonymizeUsername(username);
     this.projectId = projectId;
     this.cloudHost = cloudHost;
-    this.connectionAttempts = 0; // A queue of messages to send which were received before the
-    // connection was ready
+    this.connectionAttempts = 0;
 
+    // A queue of messages to send which were received before the
+    // connection was ready
     this.queuedData = [];
-    this.openConnection(); // Send a message to the cloud server at a rate of no more
+    this.openConnection();
+
+    // Send a message to the cloud server at a rate of no more
     // than 10 messages/sec.
     // tw: we let cloud variables change at a greater rate
-
     this.sendCloudData = lodash_throttle__WEBPACK_IMPORTED_MODULE_1___default()(this._sendCloudData, 50);
   }
+
   /**
    * Open a new websocket connection to the clouddata server.
    * @param {string} cloudHost The cloud data server to connect to.
    */
-
-
   openConnection() {
     this.connectionAttempts += 1;
-
     try {
       // tw: only add ws:// or wss:// if it not already present in the cloudHost
       if (!this.cloudHost || !this.cloudHost.includes('ws://') && !this.cloudHost.includes('wss://')) {
         this.cloudHost = (location.protocol === 'http:' ? 'ws://' : 'wss://') + this.cloudHost;
       }
-
       this.connection = new WebSocket(this.cloudHost);
     } catch (e) {
       _log_js__WEBPACK_IMPORTED_MODULE_0__["default"].warn('Websocket support is not available in this browser', e);
       this.connection = null;
       return;
     }
-
     this.connection.onerror = this.onError.bind(this);
     this.connection.onmessage = this.onMessage.bind(this);
     this.connection.onopen = this.onOpen.bind(this);
     this.connection.onclose = this.onClose.bind(this);
   }
-
   onError(event) {
-    _log_js__WEBPACK_IMPORTED_MODULE_0__["default"].error("Websocket connection error: ".concat(JSON.stringify(event))); // Error is always followed by close, which handles reconnect logic.
+    _log_js__WEBPACK_IMPORTED_MODULE_0__["default"].error("Websocket connection error: ".concat(JSON.stringify(event)));
+    // Error is always followed by close, which handles reconnect logic.
   }
 
   onMessage(event) {
-    const messageString = event.data; // Multiple commands can be received, newline separated
-
+    const messageString = event.data;
+    // Multiple commands can be received, newline separated
     messageString.split('\n').forEach(message => {
       if (message) {
         // .split can also contain '' in the array it returns
@@ -31333,62 +29459,52 @@ class CloudProvider {
       }
     });
   }
-
   onOpen() {
     // Reset connection attempts to 1 to make sure any subsequent reconnects
     // use connectionAttempts=1 to calculate timeout
     this.connectionAttempts = 1;
     this.writeToServer('handshake');
-    _log_js__WEBPACK_IMPORTED_MODULE_0__["default"].info("Successfully connected to clouddata server."); // Go through the queued data and send off messages that we weren't
-    // ready to send before
+    _log_js__WEBPACK_IMPORTED_MODULE_0__["default"].info("Successfully connected to clouddata server.");
 
+    // Go through the queued data and send off messages that we weren't
+    // ready to send before
     this.queuedData.forEach(data => {
       this.sendCloudData(data);
-    }); // Reset the queue
-
+    });
+    // Reset the queue
     this.queuedData = [];
   }
-
   onClose(e) {
     // tw: code 4002 is "Username Error" -- do not try to reconnect
     if (e && e.code === 4002) {
       _log_js__WEBPACK_IMPORTED_MODULE_0__["default"].info('Cloud username is invalid. Not reconnecting.');
       this.onInvalidUsername();
       return;
-    } // tw: code 4004 is "Project Unavailable" -- do not try to reconnect
-
-
+    }
+    // tw: code 4004 is "Project Unavailable" -- do not try to reconnect
     if (e && e.code === 4004) {
       _log_js__WEBPACK_IMPORTED_MODULE_0__["default"].info('Cloud variables are disabled for this project. Not reconnecting.');
       return;
     }
-
     _log_js__WEBPACK_IMPORTED_MODULE_0__["default"].info("Closed connection to websocket");
     const randomizedTimeout = this.randomizeDuration(this.exponentialTimeout());
     this.setTimeout(this.openConnection.bind(this), randomizedTimeout);
-  } // tw: method called when username is invalid
-
-
-  onInvalidUsername() {
-    /* no-op */
   }
 
+  // tw: method called when username is invalid
+  onInvalidUsername() {/* no-op */}
   exponentialTimeout() {
     return (Math.pow(2, Math.min(this.connectionAttempts, 5)) - 1) * 1000;
   }
-
   randomizeDuration(t) {
     return Math.random() * t;
   }
-
   setTimeout(fn, time) {
     _log_js__WEBPACK_IMPORTED_MODULE_0__["default"].info("Reconnecting in ".concat((time / 1000).toFixed(1), "s, attempt ").concat(this.connectionAttempts));
     this._connectionTimeout = window.setTimeout(fn, time);
   }
-
   parseMessage(message) {
     const varData = {};
-
     switch (message.method) {
       case 'set':
         {
@@ -31399,9 +29515,9 @@ class CloudProvider {
           break;
         }
     }
-
     return varData;
   }
+
   /**
    * Format and send a message to the cloud data server.
    * @param {string} methodName The message method, indicating the action to perform.
@@ -31409,20 +29525,19 @@ class CloudProvider {
    * @param {string | number} dataValue The value to set the cloud variable to
    * @param {string} dataNewName The new name for the cloud variable (if renaming)
    */
-
-
   writeToServer(methodName, dataName, dataValue, dataNewName) {
     const msg = {};
     msg.method = methodName;
     msg.user = this.username;
-    msg.project_id = this.projectId; // Optional string params can use simple falsey undefined check
+    msg.project_id = this.projectId;
 
+    // Optional string params can use simple falsey undefined check
     if (dataName) msg.name = dataName;
-    if (dataNewName) msg.new_name = dataNewName; // Optional number params need different undefined check
+    if (dataNewName) msg.new_name = dataNewName;
 
+    // Optional number params need different undefined check
     if (typeof dataValue !== 'undefined' && dataValue !== null) msg.value = dataValue;
     const dataToWrite = JSON.stringify(msg);
-
     if (this.connection && this.connection.readyState === WebSocket.OPEN) {
       this.sendCloudData(dataToWrite);
     } else if (msg.method === 'create' || msg.method === 'delete' || msg.method === 'rename') {
@@ -31431,99 +29546,85 @@ class CloudProvider {
       this.queuedData.push(dataToWrite);
     }
   }
+
   /**
    * Send a formatted message to the cloud data server.
    * @param {string} data The formatted message to send.
    */
-
-
   _sendCloudData(data) {
     this.connection.send("".concat(data, "\n"));
   }
+
   /**
    * Provides an API for the VM's cloud IO device to create
    * a new cloud variable on the server.
    * @param {string} name The name of the variable to create
    * @param {string | number} value The value of the new cloud variable.
    */
-
-
   createVariable(name, value) {
     this.writeToServer('create', name, value);
   }
+
   /**
    * Provides an API for the VM's cloud IO device to update
    * a cloud variable on the server.
    * @param {string} name The name of the variable to update
    * @param {string | number} value The new value for the variable
    */
-
-
   updateVariable(name, value) {
     this.writeToServer('set', name, value);
   }
+
   /**
    * Provides an API for the VM's cloud IO device to rename
    * a cloud variable on the server.
    * @param {string} oldName The old name of the variable to rename
    * @param {string} newName The new name for the cloud variable.
    */
-
-
   renameVariable(oldName, newName) {
     this.writeToServer('rename', oldName, null, newName);
   }
+
   /**
    * Provides an API for the VM's cloud IO device to delete
    * a cloud variable on the server.
    * @param {string} name The name of the variable to delete
    */
-
-
   deleteVariable(name) {
     this.writeToServer('delete', name);
   }
+
   /**
    * Closes the connection to the web socket and clears the cloud
    * provider of references related to the cloud data project.
    */
-
-
   requestCloseConnection() {
     if (this.connection && this.connection.readyState !== WebSocket.CLOSING && this.connection.readyState !== WebSocket.CLOSED) {
-      _log_js__WEBPACK_IMPORTED_MODULE_0__["default"].info('Request close cloud connection without reconnecting'); // Remove listeners, after this point we do not want to react to connection updates
-
+      _log_js__WEBPACK_IMPORTED_MODULE_0__["default"].info('Request close cloud connection without reconnecting');
+      // Remove listeners, after this point we do not want to react to connection updates
       this.connection.onclose = () => {};
-
       this.connection.onerror = () => {};
-
       this.connection.close();
     }
-
     this.clear();
   }
+
   /**
    * Clear this provider of references related to the project
    * and current state.
    */
-
-
   clear() {
     this.connection = null;
     this.vm = null;
     this.username = null;
     this.projectId = null;
-
     if (this._connectionTimeout) {
       clearTimeout(this._connectionTimeout);
       this._connectionTimeout = null;
     }
-
     this.connectionAttempts = 0;
   }
-
 }
-
 /* harmony default export */ __webpack_exports__["default"] = (CloudProvider);
 
 /***/ }),
@@ -31557,17 +29658,14 @@ const collectMetadata = function collectMetadata(vm) {
     soundsCount: 0,
     variablesCount: 0
   };
-
   for (const target of vm.runtime.targets) {
     ++metadata.spriteCount;
     metadata.blocksCount += Object.keys(target.sprite.blocks._blocks).length;
     metadata.costumesCount += target.sprite.costumes_.length;
     metadata.scriptCount += target.sprite.blocks._scripts.length;
     metadata.soundsCount += target.sprite.sounds.length;
-
     for (const variableName in target.variables) {
       const variable = target.variables[variableName];
-
       if (variable.type === 'list') {
         ++metadata.listsCount;
       } else {
@@ -31575,10 +29673,8 @@ const collectMetadata = function collectMetadata(vm) {
       }
     }
   }
-
   return metadata;
 };
-
 /* harmony default export */ __webpack_exports__["default"] = (collectMetadata);
 
 /***/ }),
@@ -31596,13 +29692,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
 
-
 const mapStateToProps = state => ({
   key: state.locales.locale,
   locale: state.locales.locale,
   messages: state.locales.messages
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps)(react_intl__WEBPACK_IMPORTED_MODULE_0__["IntlProvider"]));
 
 /***/ }),
@@ -31628,11 +29722,9 @@ function dataURItoBlob(dataURI) {
   const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
   const arrayBuffer = new ArrayBuffer(byteString.length);
   const uintArray = new Uint8Array(arrayBuffer);
-
   for (let i = 0; i < byteString.length; i++) {
     uintArray[i] = byteString.charCodeAt(i);
   }
-
   const blob = new Blob([arrayBuffer], {
     type: mimeString
   });
@@ -31663,16 +29755,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _raw_loader_5456a723f3b35eaa946b974a59888793_svg__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_raw_loader_5456a723f3b35eaa946b974a59888793_svg__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _tw_text_encoder__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../tw-text-encoder */ "./src/lib/tw-text-encoder.js");
 
+
 /* eslint-disable import/no-unresolved */
 
 
 
 
 
-
 /* eslint-enable import/no-unresolved */
-
-
 
 const defaultProject = translator => {
   const encoder = new _tw_text_encoder__WEBPACK_IMPORTED_MODULE_6__["TextEncoder"]();
@@ -31709,7 +29799,6 @@ const defaultProject = translator => {
     data: encoder.encode(_raw_loader_5456a723f3b35eaa946b974a59888793_svg__WEBPACK_IMPORTED_MODULE_5___default.a)
   }];
 };
-
 /* harmony default export */ __webpack_exports__["default"] = (defaultProject);
 
 /***/ }),
@@ -31726,11 +29815,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-intl */ "./node_modules/react-intl/lib/index.es.js");
 /* harmony import */ var _shared_messages__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../shared-messages */ "./src/lib/shared-messages.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 let messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_0__["defineMessages"])({
@@ -31739,16 +29825,16 @@ let messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_0__["defineMessages"])
     "defaultMessage": "my variable"
   }
 });
-messages = _objectSpread(_objectSpread({}, messages), _shared_messages__WEBPACK_IMPORTED_MODULE_1__["default"]); // use the default message if a translation function is not passed
+messages = _objectSpread(_objectSpread({}, messages), _shared_messages__WEBPACK_IMPORTED_MODULE_1__["default"]);
 
+// use the default message if a translation function is not passed
 const defaultTranslator = msgObj => msgObj.defaultMessage;
+
 /**
  * Generate a localized version of the default project
  * @param {function} translateFunction a function to use for translating the default names
  * @return {object} the project data json for the default project
  */
-
-
 const projectData = translateFunction => {
   const translator = translateFunction || defaultTranslator;
   return {
@@ -31831,7 +29917,6 @@ const projectData = translateFunction => {
     }
   };
 };
-
 /* harmony default export */ __webpack_exports__["default"] = (projectData);
 
 /***/ }),
@@ -31853,6 +29938,7 @@ __webpack_require__.r(__webpack_exports__);
 // Should we move these into a new extension support module or something?
 
 
+
 /**
  * Define a block using extension info which has the ability to dynamically determine (and update) its layout.
  * This functionality is used for extension blocks which can change its properties based on different state
@@ -31864,7 +29950,6 @@ __webpack_require__.r(__webpack_exports__);
  * @param {string} extendedOpcode - The opcode for the block (including the extension ID).
  */
 // TODO: grow this until it can fully replace `_convertForScratchBlocks` in the VM runtime
-
 const defineDynamicBlock = (ScratchBlocks, categoryInfo, staticBlockInfo, extendedOpcode) => ({
   init: function init() {
     const blockJson = {
@@ -31874,20 +29959,19 @@ const defineDynamicBlock = (ScratchBlocks, categoryInfo, staticBlockInfo, extend
       colour: categoryInfo.color1,
       colourSecondary: categoryInfo.color2,
       colourTertiary: categoryInfo.color3
-    }; // There is a scratch-blocks / Blockly extension called "scratch_extension" which adjusts the styling of
+    };
+    // There is a scratch-blocks / Blockly extension called "scratch_extension" which adjusts the styling of
     // blocks to allow for an icon, a feature of Scratch extension blocks. However, Scratch "core" extension
     // blocks don't have icons and so they should not use 'scratch_extension'. Adding a scratch-blocks / Blockly
     // extension after `jsonInit` isn't fully supported (?), so we decide now whether there will be an icon.
-
     if (staticBlockInfo.blockIconURI || categoryInfo.blockIconURI) {
       blockJson.extensions = ['scratch_extension'];
-    } // initialize the basics of the block, to be overridden & extended later by `domToMutation`
-
-
-    this.jsonInit(blockJson); // initialize the cached block info used to carry block info from `domToMutation` to `mutationToDom`
-
-    this.blockInfoText = '{}'; // we need a block info update (through `domToMutation`) before we have a completely initialized block
-
+    }
+    // initialize the basics of the block, to be overridden & extended later by `domToMutation`
+    this.jsonInit(blockJson);
+    // initialize the cached block info used to carry block info from `domToMutation` to `mutationToDom`
+    this.blockInfoText = '{}';
+    // we need a block info update (through `domToMutation`) before we have a completely initialized block
     this.needsBlockInfoUpdate = true;
   },
   mutationToDom: function mutationToDom() {
@@ -31898,15 +29982,12 @@ const defineDynamicBlock = (ScratchBlocks, categoryInfo, staticBlockInfo, extend
   domToMutation: function domToMutation(xmlElement) {
     const blockInfoText = xmlElement.getAttribute('blockInfo');
     if (!blockInfoText) return;
-
     if (!this.needsBlockInfoUpdate) {
       throw new Error('Attempted to update block info twice');
     }
-
     delete this.needsBlockInfoUpdate;
     this.blockInfoText = blockInfoText;
     const blockInfo = JSON.parse(blockInfoText);
-
     switch (blockInfo.blockType) {
       case scratch_vm_src_extension_support_block_type__WEBPACK_IMPORTED_MODULE_1___default.a.COMMAND:
       case scratch_vm_src_extension_support_block_type__WEBPACK_IMPORTED_MODULE_1___default.a.CONDITIONAL:
@@ -31915,42 +29996,35 @@ const defineDynamicBlock = (ScratchBlocks, categoryInfo, staticBlockInfo, extend
         this.setPreviousStatement(true);
         this.setNextStatement(!blockInfo.isTerminal);
         break;
-
       case scratch_vm_src_extension_support_block_type__WEBPACK_IMPORTED_MODULE_1___default.a.REPORTER:
         this.setOutput(true);
         this.setOutputShape(ScratchBlocks.OUTPUT_SHAPE_ROUND);
-
         if (!blockInfo.disableMonitor) {
           this.setCheckboxInFlyout(true);
         }
-
         break;
-
       case scratch_vm_src_extension_support_block_type__WEBPACK_IMPORTED_MODULE_1___default.a.BOOLEAN:
         this.setOutput(true);
         this.setOutputShape(ScratchBlocks.OUTPUT_SHAPE_HEXAGONAL);
         break;
-
       case scratch_vm_src_extension_support_block_type__WEBPACK_IMPORTED_MODULE_1___default.a.HAT:
       case scratch_vm_src_extension_support_block_type__WEBPACK_IMPORTED_MODULE_1___default.a.EVENT:
         this.setOutputShape(ScratchBlocks.OUTPUT_SHAPE_SQUARE);
         this.setNextStatement(true);
         break;
     }
-
     if (blockInfo.color1 || blockInfo.color2 || blockInfo.color3) {
       // `setColour` handles undefined parameters by adjusting defined colors
       this.setColour(blockInfo.color1, blockInfo.color2, blockInfo.color3);
-    } // Layout block arguments
+    }
+
+    // Layout block arguments
     // TODO handle E/C Blocks
-
-
     const blockText = blockInfo.text;
     const args = [];
     let argCount = 0;
     const scratchBlocksStyleText = blockText.replace(/\[(.+?)]/g, (match, argName) => {
       const arg = blockInfo.arguments[argName];
-
       switch (arg.type) {
         case scratch_vm_src_extension_support_argument_type__WEBPACK_IMPORTED_MODULE_0___default.a.STRING:
           args.push({
@@ -31958,7 +30032,6 @@ const defineDynamicBlock = (ScratchBlocks, categoryInfo, staticBlockInfo, extend
             name: argName
           });
           break;
-
         case scratch_vm_src_extension_support_argument_type__WEBPACK_IMPORTED_MODULE_0___default.a.BOOLEAN:
           args.push({
             type: 'input_value',
@@ -31967,13 +30040,11 @@ const defineDynamicBlock = (ScratchBlocks, categoryInfo, staticBlockInfo, extend
           });
           break;
       }
-
       return "%".concat(++argCount);
     });
     this.interpolate_(scratchBlocksStyleText, args);
   }
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (defineDynamicBlock);
 
 /***/ }),
@@ -31995,60 +30066,50 @@ __webpack_require__.r(__webpack_exports__);
  * @fileoverview
  * Utility function to detect locale from the browser setting or paramenter on the URL.
  */
- // tw: read language from localStorage
 
+
+
+// tw: read language from localStorage
 const LANGUAGE_KEY = 'tw:language';
+
 /**
  * look for language setting in the browser. Check against supported locales.
  * If there's a parameter in the URL, override the browser setting
  * @param {Array.string} supportedLocales An array of supported locale codes.
  * @return {string} the preferred locale
  */
-
 const detectLocale = supportedLocales => {
   // tw: read language from localStorage
   try {
     const storedLanguage = localStorage.getItem(LANGUAGE_KEY);
-
     if (storedLanguage && supportedLocales.includes(storedLanguage)) {
       return storedLanguage;
     }
-  } catch (e) {
-    /* ignore */
-  }
-
+  } catch (e) {/* ignore */}
   let locale = 'en'; // default
-
   let browserLocale = window.navigator.userLanguage || window.navigator.language;
-  browserLocale = browserLocale.toLowerCase(); // try to set locale from browserLocale
-
+  browserLocale = browserLocale.toLowerCase();
+  // try to set locale from browserLocale
   if (supportedLocales.includes(browserLocale)) {
     locale = browserLocale;
   } else {
     browserLocale = browserLocale.split('-')[0];
-
     if (supportedLocales.includes(browserLocale)) {
       locale = browserLocale;
     }
   }
-
-  const queryParams = query_string__WEBPACK_IMPORTED_MODULE_0___default.a.parse(location.search); // Flatten potential arrays and remove falsy values
-
+  const queryParams = query_string__WEBPACK_IMPORTED_MODULE_0___default.a.parse(location.search);
+  // Flatten potential arrays and remove falsy values
   const potentialLocales = [].concat(queryParams.locale, queryParams.lang).filter(l => l);
-
   if (!potentialLocales.length) {
     return locale;
   }
-
   const urlLocale = potentialLocales[0].toLowerCase();
-
   if (supportedLocales.includes(urlLocale)) {
     return urlLocale;
   }
-
   return locale;
 };
-
 
 
 /***/ }),
@@ -32064,20 +30125,20 @@ const detectLocale = supportedLocales => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ((filename, blob) => {
   const downloadLink = document.createElement('a');
-  document.body.appendChild(downloadLink); // Use special ms version if available to get it working on Edge.
+  document.body.appendChild(downloadLink);
 
+  // Use special ms version if available to get it working on Edge.
   if (navigator.msSaveOrOpenBlob) {
     navigator.msSaveOrOpenBlob(blob, filename);
     return;
   }
-
   if ('download' in HTMLAnchorElement.prototype) {
     const url = window.URL.createObjectURL(blob);
     downloadLink.href = url;
     downloadLink.download = filename;
     downloadLink.type = blob.type;
-    downloadLink.click(); // remove the link after a timeout to prevent a crash on iOS 13 Safari
-
+    downloadLink.click();
+    // remove the link after a timeout to prevent a crash on iOS 13 Safari
     window.setTimeout(() => {
       document.body.removeChild(downloadLink);
       window.URL.revokeObjectURL(url);
@@ -32086,12 +30147,10 @@ __webpack_require__.r(__webpack_exports__);
     // iOS 12 Safari, open a new page and set href to data-uri
     let popup = window.open('', '_blank');
     const reader = new FileReader();
-
     reader.onloadend = function () {
       popup.location.href = reader.result;
       popup = null;
     };
-
     reader.readAsDataURL(blob);
   }
 });
@@ -32134,21 +30193,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_touch_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../lib/touch-utils */ "./src/lib/touch-utils.js");
 
 
-
 class DragRecognizer {
   /* Gesture states */
   static get STATE_UNIDENTIFIED() {
     return 'unidentified';
   }
-
   static get STATE_SCROLL() {
     return 'scroll';
   }
-
   static get STATE_DRAG() {
     return 'drag';
   }
-
   constructor(_ref) {
     let {
       onDrag = () => {},
@@ -32165,41 +30220,35 @@ class DragRecognizer {
     this._gestureState = DragRecognizer.STATE_UNIDENTIFIED;
     lodash_bindall__WEBPACK_IMPORTED_MODULE_0___default()(this, ['start', 'gestureInProgress', 'reset', '_handleMove', '_handleEnd']);
   }
-
   start(event) {
     if (typeof event.button === 'number' && event.button !== 0) {
       return;
     }
-
     this._initialOffset = Object(_lib_touch_utils__WEBPACK_IMPORTED_MODULE_1__["getEventXY"])(event);
-
     this._bindListeners();
   }
-
   gestureInProgress() {
     return this._gestureState !== DragRecognizer.STATE_UNIDENTIFIED;
   }
-
   reset() {
     this._unbindListeners();
-
     this._initialOffset = null;
     this._gestureState = DragRecognizer.STATE_UNIDENTIFIED;
-  } //
+  }
+
+  //
   // Internal functions
   //
-
 
   _bindListeners() {
     window.addEventListener('mouseup', this._handleEnd);
     window.addEventListener('mousemove', this._handleMove);
-    window.addEventListener('touchend', this._handleEnd); // touchmove must be marked as non-passive, or else it cannot prevent scrolling
-
+    window.addEventListener('touchend', this._handleEnd);
+    // touchmove must be marked as non-passive, or else it cannot prevent scrolling
     window.addEventListener('touchmove', this._handleMove, {
       passive: false
     });
   }
-
   _unbindListeners() {
     window.removeEventListener('mouseup', this._handleEnd);
     window.removeEventListener('mousemove', this._handleMove);
@@ -32208,26 +30257,26 @@ class DragRecognizer {
       passive: false
     });
   }
-
   _handleMove(event) {
     // For gestures identified as vertical scrolls, do not process movement events
     if (this._isScroll()) return;
-    const currentOffset = Object(_lib_touch_utils__WEBPACK_IMPORTED_MODULE_1__["getEventXY"])(event); // Try to identify this gesture if it hasn't been identified already
+    const currentOffset = Object(_lib_touch_utils__WEBPACK_IMPORTED_MODULE_1__["getEventXY"])(event);
 
+    // Try to identify this gesture if it hasn't been identified already
     if (!this.gestureInProgress()) {
       const dx = currentOffset.x - this._initialOffset.x;
       const dy = currentOffset.y - this._initialOffset.y;
       const dragDistance = Math.sqrt(dx * dx + dy * dy);
-      if (dragDistance < this._distanceThreshold) return; // For touch moves, additionally check if the angle suggests drag vs. scroll
+      if (dragDistance < this._distanceThreshold) return;
 
+      // For touch moves, additionally check if the angle suggests drag vs. scroll
       if (event.type === 'touchmove') {
         // Direction goes from -180 to 180, with 0 toward the right.
-        let angle = Math.atan2(dy, dx) / Math.PI * 180; // Fold over horizontal axis, range now 0 to 180
-
-        angle = Math.abs(angle); // Fold over vertical axis, range now 0 to 90
-
+        let angle = Math.atan2(dy, dx) / Math.PI * 180;
+        // Fold over horizontal axis, range now 0 to 180
+        angle = Math.abs(angle);
+        // Fold over vertical axis, range now 0 to 90
         if (angle > 90) angle = 180 - angle;
-
         if (angle > this._touchDragAngle) {
           this._gestureState = DragRecognizer.STATE_SCROLL;
         } else {
@@ -32238,31 +30287,24 @@ class DragRecognizer {
         this._gestureState = DragRecognizer.STATE_DRAG;
       }
     }
-
     if (this._isDrag()) {
       this._onDrag(currentOffset, this._initialOffset);
-
       event.preventDefault();
     }
   }
-
   _handleEnd() {
-    this.reset(); // Call the callback after reset to make sure if gestureInProgress()
+    this.reset();
+    // Call the callback after reset to make sure if gestureInProgress()
     // is used in response, it get the correct value (i.e. no gesture in progress)
-
     this._onDragEnd();
   }
-
   _isDrag() {
     return this._gestureState === DragRecognizer.STATE_DRAG;
   }
-
   _isScroll() {
     return this._gestureState === DragRecognizer.STATE_SCROLL;
   }
-
 }
-
 /* harmony default export */ __webpack_exports__["default"] = (DragRecognizer);
 
 /***/ }),
@@ -32305,27 +30347,26 @@ const indexForPositionOnList = (_ref, boxes, isRtl) => {
   const rightEdge = Math.max.apply(null, boxes.map(b => b.right));
   const topEdge = Math.min.apply(null, boxes.map(b => b.top));
   const bottomEdge = Math.max.apply(null, boxes.map(b => b.bottom));
-
   for (let n = 0; n < boxes.length; n++) {
-    const box = boxes[n]; // Construct an "extended" box for each, extending out to infinity if
+    const box = boxes[n];
+    // Construct an "extended" box for each, extending out to infinity if
     // the box is along a boundary.
-
     let minX = box.left === leftEdge ? -Infinity : box.left;
     let maxX = box.right === rightEdge ? Infinity : box.right;
     const minY = box.top === topEdge ? -Infinity : box.top;
-    const maxY = box.bottom === bottomEdge ? Infinity : box.bottom; // The last item in the wrapped list gets a right edge at infinity, even
+    const maxY = box.bottom === bottomEdge ? Infinity : box.bottom;
+    // The last item in the wrapped list gets a right edge at infinity, even
     // if it isn't the farthest right, in RTL mode. In LTR mode, it gets a
     // left edge at infinity.
-
     if (n === boxes.length - 1) {
       if (isRtl) {
         minX = -Infinity;
       } else {
         maxX = Infinity;
       }
-    } // Check if the point is in the bounds.
+    }
 
-
+    // Check if the point is in the bounds.
     if (x >= minX && x <= maxX && y >= minY && y <= maxY) {
       index = n;
       break; // No need to keep looking.
@@ -32334,7 +30375,6 @@ const indexForPositionOnList = (_ref, boxes, isRtl) => {
 
   return index;
 };
-
 
 
 /***/ }),
@@ -32386,7 +30426,6 @@ function _extends() { _extends = Object.assign ? Object.assign.bind() : function
  * @param {Array.<string>} dragTypes Types to respond to, from DragConstants
  * @returns {function} The HOC, specialized for those drag types
  */
-
 const DropAreaHOC = function DropAreaHOC(dragTypes) {
   /**
    * Return the HOC, specialized for the dragTypes
@@ -32404,20 +30443,20 @@ const DropAreaHOC = function DropAreaHOC(dragTypes) {
         this.ref = null;
         this.containerBox = null;
       }
-
       componentWillReceiveProps(newProps) {
         // If `dragging` becomes true, record the drop area rectangle
         if (newProps.dragInfo.dragging && !this.props.dragInfo.dragging) {
-          this.dropAreaRect = this.ref && this.ref.getBoundingClientRect(); // If `dragging` becomes false, call the drop handler
+          this.dropAreaRect = this.ref && this.ref.getBoundingClientRect();
+          // If `dragging` becomes false, call the drop handler
         } else if (!newProps.dragInfo.dragging && this.props.dragInfo.dragging && this.state.dragOver) {
           this.props.onDrop(this.props.dragInfo);
           this.setState({
             dragOver: false
           });
-        } // If a drag is in progress (currentOffset) and it matches the relevant drag types,
+        }
+
+        // If a drag is in progress (currentOffset) and it matches the relevant drag types,
         // test if the drag is within the drop area rect and set the state accordingly.
-
-
         if (this.dropAreaRect && newProps.dragInfo.currentOffset && dragTypes.includes(newProps.dragInfo.dragType)) {
           const {
             x,
@@ -32429,7 +30468,6 @@ const DropAreaHOC = function DropAreaHOC(dragTypes) {
             bottom,
             left
           } = this.dropAreaRect;
-
           if (x > left && x < right && y > top && y < bottom) {
             this.setState({
               dragOver: true
@@ -32441,15 +30479,12 @@ const DropAreaHOC = function DropAreaHOC(dragTypes) {
           }
         }
       }
-
       setRef(el) {
         this.ref = el;
-
         if (this.props.componentRef) {
           this.props.componentRef(this.ref);
         }
       }
-
       render() {
         const componentProps = lodash_omit__WEBPACK_IMPORTED_MODULE_3___default()(this.props, ['onDrop', 'dragInfo', 'componentRef']);
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(WrappedComponent, _extends({
@@ -32457,9 +30492,7 @@ const DropAreaHOC = function DropAreaHOC(dragTypes) {
           dragOver: this.state.dragOver
         }, componentProps));
       }
-
     }
-
     DropAreaWrapper.propTypes = {
       componentRef: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
       dragInfo: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.shape({
@@ -32473,17 +30506,13 @@ const DropAreaHOC = function DropAreaHOC(dragTypes) {
       }),
       onDrop: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func
     };
-
     const mapStateToProps = state => ({
       dragInfo: state.scratchGui.assetDrag
     });
-
     const mapDispatchToProps = () => ({});
-
     return Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["connect"])(mapStateToProps, mapDispatchToProps)(DropAreaWrapper);
   };
 };
-
 /* harmony default export */ __webpack_exports__["default"] = (DropAreaHOC);
 
 /***/ }),
@@ -32517,6 +30546,7 @@ const emptyCostume = name => ({
   bitmapResolution: 1,
   skinId: null
 });
+
 /**
  * Generate a new empty sprite. The caller should provide localized versions of the
  * default names.
@@ -32525,8 +30555,6 @@ const emptyCostume = name => ({
  * @param {string} costumeName the name to use for the default costume
  * @return {object} object expected by vm.addSprite
  */
-
-
 const emptySprite = (name, soundName, costumeName) => ({
   objName: name,
   sounds: [],
@@ -32550,7 +30578,6 @@ const emptySprite = (name, soundName, costumeName) => ({
 });
 
 
-
 /***/ }),
 
 /***/ "./src/lib/error-boundary-hoc.jsx":
@@ -32567,13 +30594,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _containers_error_boundary_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../containers/error-boundary.jsx */ "./src/containers/error-boundary.jsx");
 
 
+
 /*
  * Higher Order Component to provide error boundary for wrapped component.
  * A curried function, call like errorHOC(<tracking label>)(<Component>).
  * @param {string} action - Label for GA tracking of errors.
  * @returns {function} a function that accepts a component to wrap.
  */
-
 const ErrorBoundaryHOC = function ErrorBoundaryHOC(action) {
   /**
    * The function to be called with a React component to wrap it.
@@ -32584,11 +30611,9 @@ const ErrorBoundaryHOC = function ErrorBoundaryHOC(action) {
     const ErrorBoundaryWrapper = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_error_boundary_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
       action: action
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(WrappedComponent, props));
-
     return ErrorBoundaryWrapper;
   };
 };
-
 /* harmony default export */ __webpack_exports__["default"] = (ErrorBoundaryHOC);
 
 /***/ }),
@@ -32617,19 +30642,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /**
  * Extract the file name given a string of the form fileName + ext
  * @param {string} nameExt File name + extension (e.g. 'my_image.png')
  * @return {string} The name without the extension, or the full name if
  * there was no '.' in the string (e.g. 'my_image')
  */
-
 const extractFileName = function extractFileName(nameExt) {
   // There could be multiple dots, but get the stuff before the first .
   const nameParts = nameExt.split('.', 1); // we only care about the first .
-
   return nameParts[0];
 };
+
 /**
  * Handle a file upload given the input element that contains the file,
  * and a function to handle loading the file.
@@ -32637,8 +30662,6 @@ const extractFileName = function extractFileName(nameExt) {
  * @param {Function} onload The function that handles loading the file
  * @param {Function} onerror The function that handles any error loading the file
  */
-
-
 const handleFileUpload = function handleFileUpload(fileInput, onload, onerror) {
   const readFile = (i, files) => {
     if (i === files.length) {
@@ -32648,23 +30671,20 @@ const handleFileUpload = function handleFileUpload(fileInput, onload, onerror) {
       fileInput.value = null;
       return;
     }
-
     const file = files[i];
     const reader = new FileReader();
-
     reader.onload = () => {
       const fileType = file.type;
       const fileName = extractFileName(file.name);
       onload(reader.result, fileType, fileName, i, files.length);
       readFile(i + 1, files);
     };
-
     reader.onerror = onerror;
     reader.readAsArrayBuffer(file);
   };
-
   readFile(0, fileInput.files);
 };
+
 /**
  * @typedef VMAsset
  * @property {string} name The user-readable name of this asset - This will
@@ -32688,11 +30708,10 @@ const handleFileUpload = function handleFileUpload(fileInput, onload, onerror) {
  * @return {VMAsset} An object representing this asset and relevant information
  * which can be used to look up the data in storage
  */
-
-
 const createVMAsset = function createVMAsset(storage, assetType, dataFormat, data) {
   const asset = storage.createAsset(assetType, dataFormat, data, null, true // generate md5
   );
+
   return {
     name: null,
     // Needs to be set by caller
@@ -32702,6 +30721,7 @@ const createVMAsset = function createVMAsset(storage, assetType, dataFormat, dat
     assetId: asset.assetId
   };
 };
+
 /**
  * Handles loading a costume or a backdrop using the provided, context-relevant information.
  * @param {ArrayBuffer | string} fileData The costume data to load (this can be a base64 string
@@ -32713,14 +30733,11 @@ const createVMAsset = function createVMAsset(storage, assetType, dataFormat, dat
  * adding the costume to the VM and handling other UI flow that should come after adding the costume
  * @param {Function} handleError The function to execute if there is an error parsing the costume
  */
-
-
 const costumeUpload = function costumeUpload(fileData, fileType, vm, handleCostume) {
   let handleError = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : () => {};
   const storage = vm.runtime.storage;
   let costumeFormat = null;
   let assetType = null;
-
   switch (fileType) {
     case 'image/svg+xml':
       {
@@ -32731,14 +30748,12 @@ const costumeUpload = function costumeUpload(fileData, fileType, vm, handleCostu
         fileData = Object(_tw_svg_fixer__WEBPACK_IMPORTED_MODULE_4__["default"])(fileData);
         break;
       }
-
     case 'image/jpeg':
       {
         costumeFormat = storage.DataFormat.JPG;
         assetType = storage.AssetType.ImageBitmap;
         break;
       }
-
     case 'image/bmp':
       {
         // Convert .bmp files to .png to compress them. .bmps are completely uncompressed,
@@ -32755,7 +30770,6 @@ const costumeUpload = function costumeUpload(fileData, fileType, vm, handleCostu
         assetType = storage.AssetType.ImageBitmap;
         break;
       }
-
     case 'image/webp':
       {
         // Scratch does not natively support webp, so convert to png
@@ -32765,14 +30779,12 @@ const costumeUpload = function costumeUpload(fileData, fileType, vm, handleCostu
         });
         return;
       }
-
     case 'image/gif':
       {
         let costumes = [];
         Object(_gif_decoder__WEBPACK_IMPORTED_MODULE_3__["default"])(fileData, (frameNumber, dataUrl, numFrames) => {
           costumeUpload(dataUrl, 'image/png', vm, costumes_ => {
             costumes = costumes.concat(costumes_);
-
             if (frameNumber === numFrames - 1) {
               handleCostume(costumes);
             }
@@ -32785,20 +30797,16 @@ const costumeUpload = function costumeUpload(fileData, fileType, vm, handleCostu
       handleError("Encountered unexpected file type: ".concat(fileType));
       return;
   }
-
   const bitmapAdapter = new scratch_svg_renderer__WEBPACK_IMPORTED_MODULE_0__["BitmapAdapter"]();
-
   if (bitmapAdapter.setStageSize) {
     const width = vm.runtime.stageWidth;
     const height = vm.runtime.stageHeight;
     bitmapAdapter.setStageSize(width, height);
   }
-
   const addCostumeFromBuffer = function addCostumeFromBuffer(dataBuffer) {
     const vmCostume = createVMAsset(storage, assetType, costumeFormat, dataBuffer);
     handleCostume([vmCostume]);
   };
-
   if (costumeFormat === storage.DataFormat.SVG) {
     // Must pass in file data as a Uint8Array,
     // passing in an array buffer causes the sprite/costume
@@ -32810,6 +30818,7 @@ const costumeUpload = function costumeUpload(fileData, fileType, vm, handleCostu
     bitmapAdapter.importBitmap(fileData, fileType).then(addCostumeFromBuffer).catch(handleError);
   }
 };
+
 /**
  * Handles loading a sound using the provided, context-relevant information.
  * @param {ArrayBuffer} fileData The sound data to load
@@ -32821,11 +30830,8 @@ const costumeUpload = function costumeUpload(fileData, fileType, vm, handleCostu
  * as well as handling other UI flow that should come after adding the sound
  * @param {Function} handleError The function to execute if there is an error parsing the sound
  */
-
-
 const soundUpload = function soundUpload(fileData, fileType, storage, handleSound, handleError) {
   let soundFormat;
-
   switch (fileType) {
     case 'audio/mp3':
     case 'audio/mpeg':
@@ -32833,7 +30839,6 @@ const soundUpload = function soundUpload(fileData, fileType, storage, handleSoun
         soundFormat = storage.DataFormat.MP3;
         break;
       }
-
     case 'audio/wav':
     case 'audio/wave':
     case 'audio/x-wav':
@@ -32842,19 +30847,15 @@ const soundUpload = function soundUpload(fileData, fileType, storage, handleSoun
         soundFormat = storage.DataFormat.WAV;
         break;
       }
-
     default:
       handleError("Encountered unexpected file type: ".concat(fileType));
       return;
   }
-
   const vmSound = createVMAsset(storage, storage.AssetType.Sound, soundFormat, new Uint8Array(fileData));
   handleSound(vmSound);
 };
-
 const spriteUpload = function spriteUpload(fileData, fileType, spriteName, vm, handleSprite) {
   let handleError = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : () => {};
-
   switch (fileType) {
     case '':
     case 'application/zip':
@@ -32863,7 +30864,6 @@ const spriteUpload = function spriteUpload(fileData, fileType, spriteName, vm, h
         handleSprite(new Uint8Array(fileData));
         return;
       }
-
     case 'image/svg+xml':
     case 'image/png':
     case 'image/bmp':
@@ -32892,15 +30892,14 @@ const spriteUpload = function spriteUpload(fileData, fileType, spriteName, vm, h
             variables: {},
             costumes: vmCostumes,
             sounds: [] // TODO are all of these necessary?
-
           };
-          Object(_randomize_sprite_position_js__WEBPACK_IMPORTED_MODULE_1__["default"])(newSprite); // TODO probably just want sprite upload to handle this object directly
 
+          Object(_randomize_sprite_position_js__WEBPACK_IMPORTED_MODULE_1__["default"])(newSprite);
+          // TODO probably just want sprite upload to handle this object directly
           handleSprite(JSON.stringify(newSprite));
         }, handleError);
         return;
       }
-
     default:
       {
         handleError("Encountered unexpected file type: ".concat(fileType));
@@ -32908,7 +30907,6 @@ const spriteUpload = function spriteUpload(fileData, fileType, spriteName, vm, h
       }
   }
 };
-
 
 
 /***/ }),
@@ -32939,41 +30937,34 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /* Higher Order Component to provide behavior for loading fonts.
  * @param {React.Component} WrappedComponent component to receive fontsLoaded prop
  * @returns {React.Component} component with font loading behavior
  */
-
 const FontLoaderHOC = function FontLoaderHOC(WrappedComponent) {
   class FontLoaderComponent extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
     componentDidMount() {
       if (this.props.fontsLoaded) return;
       Object(scratch_render_fonts__WEBPACK_IMPORTED_MODULE_5__["loadFonts"])().then(() => this.props.onSetFontsLoaded());
     }
-
     render() {
       const componentProps = lodash_omit__WEBPACK_IMPORTED_MODULE_2___default()(this.props, ['onSetFontsLoaded']);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(WrappedComponent, componentProps);
     }
-
   }
-
   FontLoaderComponent.propTypes = {
     fontsLoaded: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool.isRequired,
     onSetFontsLoaded: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func.isRequired
   };
-
   const mapStateToProps = state => ({
     fontsLoaded: state.scratchGui.fontsLoaded
   });
-
   const mapDispatchToProps = dispatch => ({
     onSetFontsLoaded: () => dispatch(Object(_reducers_fonts_loaded__WEBPACK_IMPORTED_MODULE_4__["setFontsLoaded"])())
   });
-
   return Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps, mapDispatchToProps)(FontLoaderComponent);
 };
-
 
 
 /***/ }),
@@ -32993,10 +30984,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var scratch_svg_renderer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! scratch-svg-renderer */ "./node_modules/scratch-svg-renderer/src/index.js");
 /* harmony import */ var scratch_svg_renderer__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(scratch_svg_renderer__WEBPACK_IMPORTED_MODULE_1__);
 
- // Contains 'font-family', but doesn't only contain 'font-family="none"'
 
+
+// Contains 'font-family', but doesn't only contain 'font-family="none"'
 const HAS_FONT_REGEXP = 'font-family(?!="none")';
-
 const getCostumeUrl = function () {
   let cachedAssetId;
   let cachedUrl;
@@ -33004,13 +30995,12 @@ const getCostumeUrl = function () {
     if (cachedAssetId === asset.assetId) {
       return cachedUrl;
     }
+    cachedAssetId = asset.assetId;
 
-    cachedAssetId = asset.assetId; // If the SVG refers to fonts, they must be inlined in order to display correctly in the img tag.
+    // If the SVG refers to fonts, they must be inlined in order to display correctly in the img tag.
     // Avoid parsing the SVG when possible, since it's expensive.
-
     if (asset.assetType === _storage__WEBPACK_IMPORTED_MODULE_0__["default"].AssetType.ImageVector) {
       const svgString = asset.decodeText();
-
       if (svgString.match(HAS_FONT_REGEXP)) {
         const svgText = Object(scratch_svg_renderer__WEBPACK_IMPORTED_MODULE_1__["inlineSvgFonts"])(svgString);
         cachedUrl = "data:image/svg+xml;utf8,".concat(encodeURIComponent(svgText));
@@ -33020,11 +31010,9 @@ const getCostumeUrl = function () {
     } else {
       cachedUrl = asset.encodeDataURI();
     }
-
     return cachedUrl;
   };
 }();
-
 
 
 /***/ }),
@@ -33050,7 +31038,6 @@ __webpack_require__.r(__webpack_exports__);
   canvas.height = gifReader.height;
   let imageData = ctx.createImageData(canvas.width, canvas.height);
   let previousData = ctx.createImageData(canvas.width, canvas.height);
-
   const loadFrame = i => {
     const framePixels = [];
     gifReader.decodeAndBlitFrameRGBA(i, framePixels);
@@ -33061,12 +31048,10 @@ __webpack_require__.r(__webpack_exports__);
       height,
       disposal
     } = gifReader.frameInfo(i);
-
     for (let row = 0; row < height; row++) {
       for (let column = 0; column < width; column++) {
         const indexOffset = 4 * (x + y * canvas.width);
         const j = indexOffset + 4 * (column + row * canvas.width);
-
         if (framePixels[j + 3]) {
           imageData.data[j + 0] = framePixels[j + 0];
           imageData.data[j + 1] = framePixels[j + 1];
@@ -33075,39 +31060,32 @@ __webpack_require__.r(__webpack_exports__);
         }
       }
     }
-
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.putImageData(imageData, 0, 0);
     const dataUrl = canvas.toDataURL();
-
     switch (disposal) {
       case 2:
         // "Return to background", blank out the current frame
         ctx.clearRect(x, y, width, height);
         imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
         break;
-
       case 3:
         // "Restore to previous", copy previous data to current
         imageData = ctx.createImageData(canvas.width, canvas.height);
         imageData.data.set(previousData.data);
         break;
-
       default:
         // 0 and 1, as well as 4+ modes = do-not-dispose, so cache frame
         previousData = ctx.getImageData(0, 0, canvas.width, canvas.height);
         break;
     }
-
     onFrame(i, dataUrl, numFrames);
-
     if (i < numFrames - 1) {
       setTimeout(() => {
         loadFrame(i + 1);
       });
     }
   };
-
   loadFrame(0);
 });
 
@@ -33129,11 +31107,9 @@ __webpack_require__.r(__webpack_exports__);
   const fileInput = document.createElement('input');
   fileInput.setAttribute('type', 'file');
   fileInput.setAttribute('accept', '.csv, .tsv, .txt'); // parser auto-detects delimiter
-
   fileInput.onchange = e => {
     const file = e.target.files[0];
     const fr = new FileReader();
-
     fr.onload = () => {
       document.body.removeChild(fileInput);
       const text = fr.result;
@@ -33150,15 +31126,12 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     };
-
     fr.onerror = () => {
       document.body.removeChild(fileInput);
       reject(new Error('Cannot read file'));
     };
-
     fr.readAsText(file);
   };
-
   document.body.appendChild(fileInput);
   fileInput.click();
 }));
@@ -33187,29 +31160,24 @@ let _isScratchDesktop; // undefined = not ready yet
  * Tell the `isScratchDesktop()` whether or not the GUI is running under Scratch Desktop.
  * @param {boolean} value - the new value which `isScratchDesktop()` should return in the future.
  */
-
-
 const setIsScratchDesktop = function setIsScratchDesktop(value) {
   _isScratchDesktop = value;
 };
+
 /**
  * @returns {boolean} - true if it seems like the GUI is running under Scratch Desktop; false otherwise.
  * If `setIsScratchDesktop()` has not yet been called, this can return `undefined`.
  */
-
-
 const isScratchDesktop = function isScratchDesktop() {
   return _isScratchDesktop;
 };
+
 /**
  * @returns {boolean} - false if it seems like the GUI is running under Scratch Desktop; true otherwise.
  */
-
-
 const notScratchDesktop = function notScratchDesktop() {
   return !isScratchDesktop();
 };
-
 /* harmony default export */ __webpack_exports__["default"] = (isScratchDesktop);
 
 
@@ -33231,50 +31199,46 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var keymirror__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! keymirror */ "./node_modules/keymirror/index.js");
 /* harmony import */ var keymirror__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(keymirror__WEBPACK_IMPORTED_MODULE_0__);
 
+
 /**
  * Names for each state of the stage size toggle
  * @enum {string}
  */
-
 const STAGE_SIZE_MODES = keymirror__WEBPACK_IMPORTED_MODULE_0___default()({
   /**
    * The "large stage" button is pressed; the user would like a large stage.
    */
   large: null,
-
   /**
    * The "small stage" button is pressed; the user would like a small stage.
    */
   small: null
 });
+
 /**
  * Names for each stage render size
  * @enum {string}
  */
-
 const STAGE_DISPLAY_SIZES = keymirror__WEBPACK_IMPORTED_MODULE_0___default()({
   /**
    * Large stage with wide browser
    */
   large: null,
-
   /**
    * Large stage with narrow browser
    */
   largeConstrained: null,
-
   /**
    * Small stage (ignores browser width)
    */
   small: null
-}); // zoom level to start with
+});
 
+// zoom level to start with
 const BLOCKS_DEFAULT_SCALE = 0.675;
 const STAGE_DISPLAY_SCALES = {};
 STAGE_DISPLAY_SCALES[STAGE_DISPLAY_SIZES.large] = 1; // large mode, wide browser (standard)
-
 STAGE_DISPLAY_SCALES[STAGE_DISPLAY_SIZES.largeConstrained] = 0.85; // large mode but narrow browser
-
 STAGE_DISPLAY_SCALES[STAGE_DISPLAY_SIZES.small] = 0.5; // small mode, regardless of browser size
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -33333,7 +31297,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ({// tw: remove decks. we don't use them.
+/* harmony default export */ __webpack_exports__["default"] = ({
+  // tw: remove decks. we don't use them.
 });
 
 /***/ }),
@@ -33353,11 +31318,11 @@ __webpack_require__.r(__webpack_exports__);
  * @fileoverview
  * Utility functions for handling tutorial images in multiple languages
  */
+
 const defaultImages = {};
 let savedImages = {};
 let savedLocale = '';
 const translations = {};
-
 const loadImageData = locale => {
   if (translations.hasOwnProperty(locale)) {
     translations[locale]().then(newImages => {
@@ -33366,22 +31331,19 @@ const loadImageData = locale => {
     });
   }
 };
+
 /**
  * Return image data for tutorials based on locale (default: en)
  * @param {string} imageId key in the images object, or id string.
  * @param {string} locale requested locale
  * @return {string} image
  */
-
-
 const translateImage = (imageId, locale) => {
   if (locale !== savedLocale || !savedImages.hasOwnProperty(imageId)) {
     return defaultImages[imageId];
   }
-
   return savedImages[imageId];
 };
-
 
 
 /***/ }),
@@ -33400,27 +31362,26 @@ __webpack_require__.r(__webpack_exports__);
  * @fileoverview
  * Utility function to look up whether a translated video exists for a locale.
  */
+
 // TODO: ja-Hira are copies of ja, replace with real ja-Hira when available.
-const videos = {// tw: we don't use the videos, remove them
+const videos = {
+  // tw: we don't use the videos, remove them
 };
+
 /**
  * Return a video identifier (on our video hosting service)
  * @param {string} videoId key in the videos object, or id string.
  * @param {string} locale locale to look up. If locale is not defined return the id for 'en' by default
  * @return {string} identifier for the video on our video hosting service.
  */
-
 const translateVideo = (videoId, locale) => {
   // if the videoId is not recognized in the videos object, assume it's already a video id on wistia
   if (!videos.hasOwnProperty(videoId)) return videoId;
-
   if (videos[videoId].hasOwnProperty(locale)) {
     return videos[videoId][locale];
   }
-
   return videos[videoId].en;
 };
-
 
 
 /***/ }),
@@ -34069,7 +32030,6 @@ const asyncLibrary = callback => {
     return callback().then(mod => data = mod.default);
   };
 };
-
 const getBackdropLibrary = asyncLibrary(() => __webpack_require__.e(/*! import() | library-backdrops */ "library-backdrops").then(__webpack_require__.t.bind(null, /*! ./backdrops.json */ "./src/lib/libraries/backdrops.json", 3)));
 const getCostumeLibrary = asyncLibrary(() => __webpack_require__.e(/*! import() | library-costumes */ "library-costumes").then(__webpack_require__.t.bind(null, /*! ./costumes.json */ "./src/lib/libraries/costumes.json", 3)));
 const getSoundLibrary = asyncLibrary(() => __webpack_require__.e(/*! import() | library-sounds */ "library-sounds").then(__webpack_require__.t.bind(null, /*! ./sounds.json */ "./src/lib/libraries/sounds.json", 3)));
@@ -34092,7 +32052,9 @@ __webpack_require__.r(__webpack_exports__);
  * @fileoverview
  * Utility functions related to localization specific to the GUI
  */
+
 const wideLocales = ['ab', 'ca', 'de', 'el', 'it', 'ja', 'ja-Hira', 'ko', 'hu', 'ru', 'vi'];
+
 /**
  * Identify the languages where translations are too long to fit in fixed width parts of the gui.
  * @param {string} locale The current locale.
@@ -34100,7 +32062,6 @@ const wideLocales = ['ab', 'ca', 'de', 'el', 'it', 'ja', 'ja-Hira', 'ko', 'hu', 
  */
 
 const isWideLocale = locale => wideLocales.indexOf(locale) !== -1;
-
 
 
 /***/ }),
@@ -34121,9 +32082,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _connected_intl_provider_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./connected-intl-provider.jsx */ "./src/lib/connected-intl-provider.jsx");
 const _excluded = ["locale", "onSetLanguage"];
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 
@@ -34137,7 +32096,6 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
  * @param {React.Component} WrappedComponent - component to provide state for
  * @returns {React.Component} component with intl state provided from redux
  */
-
 const LocalizationHOC = function LocalizationHOC(WrappedComponent) {
   class LocalizationWrapper extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
     componentDidUpdate(prevProps) {
@@ -34145,21 +32103,17 @@ const LocalizationHOC = function LocalizationHOC(WrappedComponent) {
         this.props.onSetLanguage(this.props.locale);
       }
     }
-
     render() {
       const _this$props = this.props,
-            {
-        locale,
-        // eslint-disable-line no-unused-vars
-        onSetLanguage
-      } = _this$props,
-            componentProps = _objectWithoutProperties(_this$props, _excluded);
-
+        {
+          locale,
+          // eslint-disable-line no-unused-vars
+          onSetLanguage
+        } = _this$props,
+        componentProps = _objectWithoutProperties(_this$props, _excluded);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_connected_intl_provider_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(WrappedComponent, componentProps));
     }
-
   }
-
   LocalizationWrapper.propTypes = {
     locale: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
     onSetLanguage: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func
@@ -34167,16 +32121,12 @@ const LocalizationHOC = function LocalizationHOC(WrappedComponent) {
   LocalizationWrapper.defaultProps = {
     onSetLanguage: () => {}
   };
-
   const mapStateToProps = state => ({
     locale: state.locales.locale
   });
-
   const mapDispatchToProps = () => ({});
-
   return Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, mapDispatchToProps)(LocalizationWrapper);
 };
-
 /* harmony default export */ __webpack_exports__["default"] = (LocalizationHOC);
 
 /***/ }),
@@ -34217,82 +32167,68 @@ const translate = (id, english) => {
     const ScratchBlocks = _tw_lazy_scratch_blocks__WEBPACK_IMPORTED_MODULE_0__["default"].get();
     return ScratchBlocks.ScratchMsgs.translate(id, english);
   }
-
   return english;
 };
+
 /* eslint-disable no-unused-vars */
-
-
 const motion = function motion(isInitialSetup, isStage, targetId) {
   const stageSelected = translate('MOTION_STAGE_SELECTED', 'Stage selected: no motion blocks');
   return "\n    <category name=\"%{BKY_CATEGORY_MOTION}\" id=\"motion\" colour=\"#4C97FF\" secondaryColour=\"#3373CC\">\n        ".concat(isStage ? "\n        <label text=\"".concat(stageSelected, "\"></label>\n        ") : "\n        <block type=\"motion_movesteps\">\n            <value name=\"STEPS\">\n                <shadow type=\"math_number\">\n                    <field name=\"NUM\">10</field>\n                </shadow>\n            </value>\n        </block>\n        <block type=\"motion_turnright\">\n            <value name=\"DEGREES\">\n                <shadow type=\"math_number\">\n                    <field name=\"NUM\">15</field>\n                </shadow>\n            </value>\n        </block>\n        <block type=\"motion_turnleft\">\n            <value name=\"DEGREES\">\n                <shadow type=\"math_number\">\n                    <field name=\"NUM\">15</field>\n                </shadow>\n            </value>\n        </block>\n        ".concat(blockSeparator, "\n        <block type=\"motion_goto\">\n            <value name=\"TO\">\n                <shadow type=\"motion_goto_menu\">\n                </shadow>\n            </value>\n        </block>\n        <block type=\"motion_gotoxy\">\n            <value name=\"X\">\n                <shadow id=\"movex\" type=\"math_number\">\n                    <field name=\"NUM\">0</field>\n                </shadow>\n            </value>\n            <value name=\"Y\">\n                <shadow id=\"movey\" type=\"math_number\">\n                    <field name=\"NUM\">0</field>\n                </shadow>\n            </value>\n        </block>\n        <block type=\"motion_glideto\" id=\"motion_glideto\">\n            <value name=\"SECS\">\n                <shadow type=\"math_number\">\n                    <field name=\"NUM\">1</field>\n                </shadow>\n            </value>\n            <value name=\"TO\">\n                <shadow type=\"motion_glideto_menu\">\n                </shadow>\n            </value>\n        </block>\n        <block type=\"motion_glidesecstoxy\">\n            <value name=\"SECS\">\n                <shadow type=\"math_number\">\n                    <field name=\"NUM\">1</field>\n                </shadow>\n            </value>\n            <value name=\"X\">\n                <shadow id=\"glidex\" type=\"math_number\">\n                    <field name=\"NUM\">0</field>\n                </shadow>\n            </value>\n            <value name=\"Y\">\n                <shadow id=\"glidey\" type=\"math_number\">\n                    <field name=\"NUM\">0</field>\n                </shadow>\n            </value>\n        </block>\n        ").concat(blockSeparator, "\n        <block type=\"motion_pointindirection\">\n            <value name=\"DIRECTION\">\n                <shadow type=\"math_angle\">\n                    <field name=\"NUM\">90</field>\n                </shadow>\n            </value>\n        </block>\n        <block type=\"motion_pointtowards\">\n            <value name=\"TOWARDS\">\n                <shadow type=\"motion_pointtowards_menu\">\n                </shadow>\n            </value>\n        </block>\n        ").concat(blockSeparator, "\n        <block type=\"motion_changexby\">\n            <value name=\"DX\">\n                <shadow type=\"math_number\">\n                    <field name=\"NUM\">10</field>\n                </shadow>\n            </value>\n        </block>\n        <block type=\"motion_setx\">\n            <value name=\"X\">\n                <shadow id=\"setx\" type=\"math_number\">\n                    <field name=\"NUM\">0</field>\n                </shadow>\n            </value>\n        </block>\n        <block type=\"motion_changeyby\">\n            <value name=\"DY\">\n                <shadow type=\"math_number\">\n                    <field name=\"NUM\">10</field>\n                </shadow>\n            </value>\n        </block>\n        <block type=\"motion_sety\">\n            <value name=\"Y\">\n                <shadow id=\"sety\" type=\"math_number\">\n                    <field name=\"NUM\">0</field>\n                </shadow>\n            </value>\n        </block>\n        ").concat(blockSeparator, "\n        <block type=\"motion_ifonedgebounce\"/>\n        ").concat(blockSeparator, "\n        <block type=\"motion_setrotationstyle\"/>\n        ").concat(blockSeparator, "\n        <block id=\"").concat(targetId, "_xposition\" type=\"motion_xposition\"/>\n        <block id=\"").concat(targetId, "_yposition\" type=\"motion_yposition\"/>\n        <block id=\"").concat(targetId, "_direction\" type=\"motion_direction\"/>"), "\n        ").concat(categorySeparator, "\n    </category>\n    ");
 };
-
 const xmlEscape = function xmlEscape(unsafe) {
   return unsafe.replace(/[<>&'"]/g, c => {
     switch (c) {
       case '<':
         return '&lt;';
-
       case '>':
         return '&gt;';
-
       case '&':
         return '&amp;';
-
       case '\'':
         return '&apos;';
-
       case '"':
         return '&quot;';
     }
   });
 };
-
 const looks = function looks(isInitialSetup, isStage, targetId, costumeName, backdropName) {
   const hello = translate('LOOKS_HELLO', 'Hello!');
   const hmm = translate('LOOKS_HMM', 'Hmm...');
   return "\n    <category name=\"%{BKY_CATEGORY_LOOKS}\" id=\"looks\" colour=\"#9966FF\" secondaryColour=\"#774DCB\">\n        ".concat(isStage ? '' : "\n        <block type=\"looks_sayforsecs\">\n            <value name=\"MESSAGE\">\n                <shadow type=\"text\">\n                    <field name=\"TEXT\">".concat(hello, "</field>\n                </shadow>\n            </value>\n            <value name=\"SECS\">\n                <shadow type=\"math_number\">\n                    <field name=\"NUM\">2</field>\n                </shadow>\n            </value>\n        </block>\n        <block type=\"looks_say\">\n            <value name=\"MESSAGE\">\n                <shadow type=\"text\">\n                    <field name=\"TEXT\">").concat(hello, "</field>\n                </shadow>\n            </value>\n        </block>\n        <block type=\"looks_thinkforsecs\">\n            <value name=\"MESSAGE\">\n                <shadow type=\"text\">\n                    <field name=\"TEXT\">").concat(hmm, "</field>\n                </shadow>\n            </value>\n            <value name=\"SECS\">\n                <shadow type=\"math_number\">\n                    <field name=\"NUM\">2</field>\n                </shadow>\n            </value>\n        </block>\n        <block type=\"looks_think\">\n            <value name=\"MESSAGE\">\n                <shadow type=\"text\">\n                    <field name=\"TEXT\">").concat(hmm, "</field>\n                </shadow>\n            </value>\n        </block>\n        ").concat(blockSeparator, "\n        "), "\n        ").concat(isStage ? "\n            <block type=\"looks_switchbackdropto\">\n                <value name=\"BACKDROP\">\n                    <shadow type=\"looks_backdrops\">\n                        <field name=\"BACKDROP\">".concat(backdropName, "</field>\n                    </shadow>\n                </value>\n            </block>\n            <block type=\"looks_switchbackdroptoandwait\">\n                <value name=\"BACKDROP\">\n                    <shadow type=\"looks_backdrops\">\n                        <field name=\"BACKDROP\">").concat(backdropName, "</field>\n                    </shadow>\n                </value>\n            </block>\n            <block type=\"looks_nextbackdrop\"/>\n        ") : "\n            <block id=\"".concat(targetId, "_switchcostumeto\" type=\"looks_switchcostumeto\">\n                <value name=\"COSTUME\">\n                    <shadow type=\"looks_costume\">\n                        <field name=\"COSTUME\">").concat(costumeName, "</field>\n                    </shadow>\n                </value>\n            </block>\n            <block type=\"looks_nextcostume\"/>\n            <block type=\"looks_switchbackdropto\">\n                <value name=\"BACKDROP\">\n                    <shadow type=\"looks_backdrops\">\n                        <field name=\"BACKDROP\">").concat(backdropName, "</field>\n                    </shadow>\n                </value>\n            </block>\n            <block type=\"looks_nextbackdrop\"/>\n            ").concat(blockSeparator, "\n            <block type=\"looks_changesizeby\">\n                <value name=\"CHANGE\">\n                    <shadow type=\"math_number\">\n                        <field name=\"NUM\">10</field>\n                    </shadow>\n                </value>\n            </block>\n            <block type=\"looks_setsizeto\">\n                <value name=\"SIZE\">\n                    <shadow type=\"math_number\">\n                        <field name=\"NUM\">100</field>\n                    </shadow>\n                </value>\n            </block>\n        "), "\n        ").concat(blockSeparator, "\n        <block type=\"looks_changeeffectby\">\n            <value name=\"CHANGE\">\n                <shadow type=\"math_number\">\n                    <field name=\"NUM\">25</field>\n                </shadow>\n            </value>\n        </block>\n        <block type=\"looks_seteffectto\">\n            <value name=\"VALUE\">\n                <shadow type=\"math_number\">\n                    <field name=\"NUM\">0</field>\n                </shadow>\n            </value>\n        </block>\n        <block type=\"looks_cleargraphiceffects\"/>\n        ").concat(blockSeparator, "\n        ").concat(isStage ? '' : "\n            <block type=\"looks_show\"/>\n            <block type=\"looks_hide\"/>\n        ".concat(blockSeparator, "\n            <block type=\"looks_gotofrontback\"/>\n            <block type=\"looks_goforwardbackwardlayers\">\n                <value name=\"NUM\">\n                    <shadow type=\"math_integer\">\n                        <field name=\"NUM\">1</field>\n                    </shadow>\n                </value>\n            </block>\n        "), "\n        ").concat(isStage ? "\n            <block id=\"backdropnumbername\" type=\"looks_backdropnumbername\"/>\n        " : "\n            <block id=\"".concat(targetId, "_costumenumbername\" type=\"looks_costumenumbername\"/>\n            <block id=\"backdropnumbername\" type=\"looks_backdropnumbername\"/>\n            <block id=\"").concat(targetId, "_size\" type=\"looks_size\"/>\n        "), "\n        ").concat(categorySeparator, "\n    </category>\n    ");
 };
-
 const sound = function sound(isInitialSetup, isStage, targetId, soundName) {
   return "\n    <category name=\"%{BKY_CATEGORY_SOUND}\" id=\"sound\" colour=\"#D65CD6\" secondaryColour=\"#BD42BD\">\n        <block id=\"".concat(targetId, "_sound_playuntildone\" type=\"sound_playuntildone\">\n            <value name=\"SOUND_MENU\">\n                <shadow type=\"sound_sounds_menu\">\n                    <field name=\"SOUND_MENU\">").concat(soundName, "</field>\n                </shadow>\n            </value>\n        </block>\n        <block id=\"").concat(targetId, "_sound_play\" type=\"sound_play\">\n            <value name=\"SOUND_MENU\">\n                <shadow type=\"sound_sounds_menu\">\n                    <field name=\"SOUND_MENU\">").concat(soundName, "</field>\n                </shadow>\n            </value>\n        </block>\n        <block type=\"sound_stopallsounds\"/>\n        ").concat(blockSeparator, "\n        <block type=\"sound_changeeffectby\">\n            <value name=\"VALUE\">\n                <shadow type=\"math_number\">\n                    <field name=\"NUM\">10</field>\n                </shadow>\n            </value>\n        </block>\n        <block type=\"sound_seteffectto\">\n            <value name=\"VALUE\">\n                <shadow type=\"math_number\">\n                    <field name=\"NUM\">100</field>\n                </shadow>\n            </value>\n        </block>\n        <block type=\"sound_cleareffects\"/>\n        ").concat(blockSeparator, "\n        <block type=\"sound_changevolumeby\">\n            <value name=\"VOLUME\">\n                <shadow type=\"math_number\">\n                    <field name=\"NUM\">-10</field>\n                </shadow>\n            </value>\n        </block>\n        <block type=\"sound_setvolumeto\">\n            <value name=\"VOLUME\">\n                <shadow type=\"math_number\">\n                    <field name=\"NUM\">100</field>\n                </shadow>\n            </value>\n        </block>\n        <block id=\"").concat(targetId, "_volume\" type=\"sound_volume\"/>\n        ").concat(categorySeparator, "\n    </category>\n    ");
 };
-
 const events = function events(isInitialSetup, isStage) {
   return "\n    <category name=\"%{BKY_CATEGORY_EVENTS}\" id=\"events\" colour=\"#FFD500\" secondaryColour=\"#CC9900\">\n        <block type=\"event_whenflagclicked\"/>\n        <block type=\"event_whenkeypressed\">\n        </block>\n        ".concat(isStage ? "\n            <block type=\"event_whenstageclicked\"/>\n        " : "\n            <block type=\"event_whenthisspriteclicked\"/>\n        ", "\n        <block type=\"event_whenbackdropswitchesto\">\n        </block>\n        ").concat(blockSeparator, "\n        <block type=\"event_whengreaterthan\">\n            <value name=\"VALUE\">\n                <shadow type=\"math_number\">\n                    <field name=\"NUM\">10</field>\n                </shadow>\n            </value>\n        </block>\n        ").concat(blockSeparator, "\n        <block type=\"event_whenbroadcastreceived\">\n        </block>\n        <block type=\"event_broadcast\">\n            <value name=\"BROADCAST_INPUT\">\n                <shadow type=\"event_broadcast_menu\"></shadow>\n            </value>\n        </block>\n        <block type=\"event_broadcastandwait\">\n            <value name=\"BROADCAST_INPUT\">\n              <shadow type=\"event_broadcast_menu\"></shadow>\n            </value>\n        </block>\n        ").concat(categorySeparator, "\n    </category>\n    ");
 };
-
 const control = function control(isInitialSetup, isStage) {
   return "\n    <category name=\"%{BKY_CATEGORY_CONTROL}\" id=\"control\" colour=\"#FFAB19\" secondaryColour=\"#CF8B17\">\n        <block type=\"control_wait\">\n            <value name=\"DURATION\">\n                <shadow type=\"math_positive_number\">\n                    <field name=\"NUM\">1</field>\n                </shadow>\n            </value>\n        </block>\n        ".concat(blockSeparator, "\n        <block type=\"control_repeat\">\n            <value name=\"TIMES\">\n                <shadow type=\"math_whole_number\">\n                    <field name=\"NUM\">10</field>\n                </shadow>\n            </value>\n        </block>\n        <block id=\"forever\" type=\"control_forever\"/>\n        ").concat(blockSeparator, "\n        <block type=\"control_if\"/>\n        <block type=\"control_if_else\"/>\n        <block id=\"wait_until\" type=\"control_wait_until\"/>\n        <block id=\"repeat_until\" type=\"control_repeat_until\"/>\n        <block id=\"while\" type=\"control_while\"/>\n        <block id=\"for_each\" type=\"control_for_each\">\n            <value name=\"VALUE\">\n                <shadow type=\"math_whole_number\">\n                    <field name=\"NUM\">10</field>\n                </shadow>\n            </value>\n        </block>\n        ").concat(blockSeparator, "\n        <block type=\"control_stop\"/>\n        ").concat(blockSeparator, "\n        ").concat(isStage ? "\n            <block type=\"control_create_clone_of\">\n                <value name=\"CLONE_OPTION\">\n                    <shadow type=\"control_create_clone_of_menu\"/>\n                </value>\n            </block>\n        " : "\n            <block type=\"control_start_as_clone\"/>\n            <block type=\"control_create_clone_of\">\n                <value name=\"CLONE_OPTION\">\n                    <shadow type=\"control_create_clone_of_menu\"/>\n                </value>\n            </block>\n            <block type=\"control_delete_this_clone\"/>\n        ", "\n        ").concat(categorySeparator, "\n    </category>\n    ");
 };
-
 const sensing = function sensing(isInitialSetup, isStage) {
   const name = translate('SENSING_ASK_TEXT', 'What\'s your name?');
   return "\n    <category name=\"%{BKY_CATEGORY_SENSING}\" id=\"sensing\" colour=\"#4CBFE6\" secondaryColour=\"#2E8EB8\">\n        ".concat(isStage ? '' : "\n            <block type=\"sensing_touchingobject\">\n                <value name=\"TOUCHINGOBJECTMENU\">\n                    <shadow type=\"sensing_touchingobjectmenu\"/>\n                </value>\n            </block>\n            <block type=\"sensing_touchingcolor\">\n                <value name=\"COLOR\">\n                    <shadow type=\"colour_picker\"/>\n                </value>\n            </block>\n            <block type=\"sensing_coloristouchingcolor\">\n                <value name=\"COLOR\">\n                    <shadow type=\"colour_picker\"/>\n                </value>\n                <value name=\"COLOR2\">\n                    <shadow type=\"colour_picker\"/>\n                </value>\n            </block>\n            <block type=\"sensing_distanceto\">\n                <value name=\"DISTANCETOMENU\">\n                    <shadow type=\"sensing_distancetomenu\"/>\n                </value>\n            </block>\n            ".concat(blockSeparator, "\n        "), "\n        ").concat(isInitialSetup ? '' : "\n            <block id=\"askandwait\" type=\"sensing_askandwait\">\n                <value name=\"QUESTION\">\n                    <shadow type=\"text\">\n                        <field name=\"TEXT\">".concat(name, "</field>\n                    </shadow>\n                </value>\n            </block>\n        "), "\n        <block id=\"answer\" type=\"sensing_answer\"/>\n        ").concat(blockSeparator, "\n        <block type=\"sensing_keypressed\">\n            <value name=\"KEY_OPTION\">\n                <shadow type=\"sensing_keyoptions\"/>\n            </value>\n        </block>\n        <block type=\"sensing_mousedown\"/>\n        <block type=\"sensing_mousex\"/>\n        <block type=\"sensing_mousey\"/>\n        ").concat(isStage ? '' : "\n            ".concat(blockSeparator, "\n            '<block type=\"sensing_setdragmode\" id=\"sensing_setdragmode\"></block>'+\n            ").concat(blockSeparator, "\n        "), "\n        ").concat(blockSeparator, "\n        <block id=\"loudness\" type=\"sensing_loudness\"/>\n        ").concat(blockSeparator, "\n        <block id=\"timer\" type=\"sensing_timer\"/>\n        <block type=\"sensing_resettimer\"/>\n        ").concat(blockSeparator, "\n        <block id=\"of\" type=\"sensing_of\">\n            <value name=\"OBJECT\">\n                <shadow id=\"sensing_of_object_menu\" type=\"sensing_of_object_menu\"/>\n            </value>\n        </block>\n        ").concat(blockSeparator, "\n        <block id=\"current\" type=\"sensing_current\"/>\n        <block type=\"sensing_dayssince2000\"/>\n        ").concat(blockSeparator, "\n        <block type=\"sensing_username\"/>\n        ").concat(categorySeparator, "\n    </category>\n    ");
 };
-
 const operators = function operators(isInitialSetup) {
   const apple = translate('OPERATORS_JOIN_APPLE', 'apple');
   const banana = translate('OPERATORS_JOIN_BANANA', 'banana');
   const letter = translate('OPERATORS_LETTEROF_APPLE', 'a');
   return "\n    <category name=\"%{BKY_CATEGORY_OPERATORS}\" id=\"operators\" colour=\"#40BF4A\" secondaryColour=\"#389438\">\n        <block type=\"operator_add\">\n            <value name=\"NUM1\">\n                <shadow type=\"math_number\">\n                    <field name=\"NUM\"/>\n                </shadow>\n            </value>\n            <value name=\"NUM2\">\n                <shadow type=\"math_number\">\n                    <field name=\"NUM\"/>\n                </shadow>\n            </value>\n        </block>\n        <block type=\"operator_subtract\">\n            <value name=\"NUM1\">\n                <shadow type=\"math_number\">\n                    <field name=\"NUM\"/>\n                </shadow>\n            </value>\n            <value name=\"NUM2\">\n                <shadow type=\"math_number\">\n                    <field name=\"NUM\"/>\n                </shadow>\n            </value>\n        </block>\n        <block type=\"operator_multiply\">\n            <value name=\"NUM1\">\n                <shadow type=\"math_number\">\n                    <field name=\"NUM\"/>\n                </shadow>\n            </value>\n            <value name=\"NUM2\">\n                <shadow type=\"math_number\">\n                    <field name=\"NUM\"/>\n                </shadow>\n            </value>\n        </block>\n        <block type=\"operator_divide\">\n            <value name=\"NUM1\">\n                <shadow type=\"math_number\">\n                    <field name=\"NUM\"/>\n                </shadow>\n            </value>\n            <value name=\"NUM2\">\n                <shadow type=\"math_number\">\n                    <field name=\"NUM\"/>\n                </shadow>\n            </value>\n        </block>\n        ".concat(blockSeparator, "\n        <block type=\"operator_random\">\n            <value name=\"FROM\">\n                <shadow type=\"math_number\">\n                    <field name=\"NUM\">1</field>\n                </shadow>\n            </value>\n            <value name=\"TO\">\n                <shadow type=\"math_number\">\n                    <field name=\"NUM\">10</field>\n                </shadow>\n            </value>\n        </block>\n        ").concat(blockSeparator, "\n        <block type=\"operator_gt\">\n            <value name=\"OPERAND1\">\n                <shadow type=\"text\">\n                    <field name=\"TEXT\"/>\n                </shadow>\n            </value>\n            <value name=\"OPERAND2\">\n                <shadow type=\"text\">\n                    <field name=\"TEXT\">50</field>\n                </shadow>\n            </value>\n        </block>\n        <block type=\"operator_lt\">\n            <value name=\"OPERAND1\">\n                <shadow type=\"text\">\n                    <field name=\"TEXT\"/>\n                </shadow>\n            </value>\n            <value name=\"OPERAND2\">\n                <shadow type=\"text\">\n                    <field name=\"TEXT\">50</field>\n                </shadow>\n            </value>\n        </block>\n        <block type=\"operator_equals\">\n            <value name=\"OPERAND1\">\n                <shadow type=\"text\">\n                    <field name=\"TEXT\"/>\n                </shadow>\n            </value>\n            <value name=\"OPERAND2\">\n                <shadow type=\"text\">\n                    <field name=\"TEXT\">50</field>\n                </shadow>\n            </value>\n        </block>\n        ").concat(blockSeparator, "\n        <block type=\"operator_and\"/>\n        <block type=\"operator_or\"/>\n        <block type=\"operator_not\"/>\n        ").concat(blockSeparator, "\n        ").concat(isInitialSetup ? '' : "\n            <block type=\"operator_join\">\n                <value name=\"STRING1\">\n                    <shadow type=\"text\">\n                        <field name=\"TEXT\">".concat(apple, " </field>\n                    </shadow>\n                </value>\n                <value name=\"STRING2\">\n                    <shadow type=\"text\">\n                        <field name=\"TEXT\">").concat(banana, "</field>\n                    </shadow>\n                </value>\n            </block>\n            <block type=\"operator_letter_of\">\n                <value name=\"LETTER\">\n                    <shadow type=\"math_whole_number\">\n                        <field name=\"NUM\">1</field>\n                    </shadow>\n                </value>\n                <value name=\"STRING\">\n                    <shadow type=\"text\">\n                        <field name=\"TEXT\">").concat(apple, "</field>\n                    </shadow>\n                </value>\n            </block>\n            <block type=\"operator_length\">\n                <value name=\"STRING\">\n                    <shadow type=\"text\">\n                        <field name=\"TEXT\">").concat(apple, "</field>\n                    </shadow>\n                </value>\n            </block>\n            <block type=\"operator_contains\" id=\"operator_contains\">\n              <value name=\"STRING1\">\n                <shadow type=\"text\">\n                  <field name=\"TEXT\">").concat(apple, "</field>\n                </shadow>\n              </value>\n              <value name=\"STRING2\">\n                <shadow type=\"text\">\n                  <field name=\"TEXT\">").concat(letter, "</field>\n                </shadow>\n              </value>\n            </block>\n        "), "\n        ").concat(blockSeparator, "\n        <block type=\"operator_mod\">\n            <value name=\"NUM1\">\n                <shadow type=\"math_number\">\n                    <field name=\"NUM\"/>\n                </shadow>\n            </value>\n            <value name=\"NUM2\">\n                <shadow type=\"math_number\">\n                    <field name=\"NUM\"/>\n                </shadow>\n            </value>\n        </block>\n        <block type=\"operator_round\">\n            <value name=\"NUM\">\n                <shadow type=\"math_number\">\n                    <field name=\"NUM\"/>\n                </shadow>\n            </value>\n        </block>\n        ").concat(blockSeparator, "\n        <block type=\"operator_mathop\">\n            <value name=\"NUM\">\n                <shadow type=\"math_number\">\n                    <field name=\"NUM\"/>\n                </shadow>\n            </value>\n        </block>\n        ").concat(categorySeparator, "\n    </category>\n    ");
 };
-
 const variables = function variables() {
   return "\n    <category\n        name=\"%{BKY_CATEGORY_VARIABLES}\"\n        id=\"variables\"\n        colour=\"#FF8C1A\"\n        secondaryColour=\"#DB6E00\"\n        custom=\"VARIABLE\">\n    </category>\n    ";
 };
-
 const myBlocks = function myBlocks() {
   return "\n    <category\n        name=\"%{BKY_CATEGORY_MYBLOCKS}\"\n        id=\"myBlocks\"\n        colour=\"#FF6680\"\n        secondaryColour=\"#FF4D6A\"\n        custom=\"PROCEDURE\">\n    </category>\n    ";
-}; // eslint-disable-next-line max-len
+};
 
-
+// eslint-disable-next-line max-len
 const extraTurboWarpBlocks = "\n<block type=\"argument_reporter_boolean\"><field name=\"VALUE\">is compiled?</field></block>\n<block type=\"argument_reporter_boolean\"><field name=\"VALUE\">is TurboWarp?</field></block>\n";
 /* eslint-enable no-unused-vars */
 
 const xmlOpen = '<xml style="display: none">';
 const xmlClose = '</xml>';
+
 /**
  * @param {!boolean} isInitialSetup - Whether the toolbox is for initial setup. If the mode is "initial setup",
  * blocks with localized default parameters (e.g. ask and wait) should not be loaded. (LLK/scratch-gui#5445)
@@ -34308,7 +32244,6 @@ const xmlClose = '</xml>';
  * @param {?string} soundName -  The name of the default selected sound dropdown.
  * @returns {string} - a ScratchBlocks-style XML document for the contents of the toolbox.
  */
-
 const makeToolboxXML = function makeToolboxXML(isInitialSetup) {
   let isStage = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
   let targetId = arguments.length > 2 ? arguments[2] : undefined;
@@ -34322,16 +32257,14 @@ const makeToolboxXML = function makeToolboxXML(isInitialSetup) {
   backdropName = xmlEscape(backdropName);
   soundName = xmlEscape(soundName);
   categoriesXML = categoriesXML.slice();
-
   const moveCategory = categoryId => {
     const index = categoriesXML.findIndex(categoryInfo => categoryInfo.id === categoryId);
-
     if (index >= 0) {
       // remove the category from categoriesXML and return its XML
       const [categoryInfo] = categoriesXML.splice(index, 1);
       return categoryInfo.xml;
-    } // return `undefined`
-
+    }
+    // return `undefined`
   };
 
   const motionXML = moveCategory('motion') || motion(isInitialSetup, isStage, targetId);
@@ -34342,29 +32275,23 @@ const makeToolboxXML = function makeToolboxXML(isInitialSetup) {
   const sensingXML = moveCategory('sensing') || sensing(isInitialSetup, isStage, targetId);
   const operatorsXML = moveCategory('operators') || operators(isInitialSetup, isStage, targetId);
   const variablesXML = moveCategory('data') || variables(isInitialSetup, isStage, targetId);
-  const myBlocksXML = moveCategory('procedures') || myBlocks(isInitialSetup, isStage, targetId); // Always display TurboWarp blocks as the first extension, if it exists,
+  const myBlocksXML = moveCategory('procedures') || myBlocks(isInitialSetup, isStage, targetId);
+  // Always display TurboWarp blocks as the first extension, if it exists,
   // and also add an "is compiled?" block to the top.
-
   let turbowarpXML = moveCategory('tw');
-
   if (turbowarpXML && !turbowarpXML.includes(extraTurboWarpBlocks)) {
     turbowarpXML = turbowarpXML.replace('<block', "".concat(extraTurboWarpBlocks, "<block"));
   }
-
   const everything = [xmlOpen, motionXML, gap, looksXML, gap, soundXML, gap, eventsXML, gap, controlXML, gap, sensingXML, gap, operatorsXML, gap, variablesXML, gap, myBlocksXML, gap];
-
   if (turbowarpXML) {
     everything.push(turbowarpXML);
   }
-
   for (const extensionCategory of categoriesXML) {
     everything.push(gap, extensionCategory.xml);
   }
-
   everything.push(xmlClose);
   return everything.join('\n');
 };
-
 /* harmony default export */ __webpack_exports__["default"] = (makeToolboxXML);
 
 /***/ }),
@@ -34380,8 +32307,8 @@ const makeToolboxXML = function makeToolboxXML(isInitialSetup) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _opcode_labels_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./opcode-labels.js */ "./src/lib/opcode-labels.js");
 
-
 const isUndefined = a => typeof a === 'undefined';
+
 /**
  * Convert monitors from VM format to what the GUI needs to render.
  * - Convert opcode to a label and a category
@@ -34394,8 +32321,6 @@ const isUndefined = a => typeof a === 'undefined';
  * @param {VirtualMachine} block.vm - the VM instance which owns the block
  * @return {object} The adapted monitor with label and category
  */
-
-
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
   let {
     id,
@@ -34411,37 +32336,36 @@ const isUndefined = a => typeof a === 'undefined';
     label,
     category,
     labelFn
-  } = vm && vm.runtime.getLabelForOpcode(opcode) || _opcode_labels_js__WEBPACK_IMPORTED_MODULE_0__["default"].getLabel(opcode); // Use labelFn if provided for dynamic labelling (e.g. variables)
+  } = vm && vm.runtime.getLabelForOpcode(opcode) || _opcode_labels_js__WEBPACK_IMPORTED_MODULE_0__["default"].getLabel(opcode);
 
-  if (!isUndefined(labelFn)) label = labelFn(params); // Append sprite name for sprite-specific monitors
+  // Use labelFn if provided for dynamic labelling (e.g. variables)
+  if (!isUndefined(labelFn)) label = labelFn(params);
 
+  // Append sprite name for sprite-specific monitors
   if (spriteName) {
     label = "".concat(spriteName, ": ").concat(label);
-  } // If value is a number, round it to six decimal places
+  }
 
-
+  // If value is a number, round it to six decimal places
   if (typeof value === 'number') {
     value = Number(value.toFixed(6));
-  } // Turn the value to a string, for handle boolean values
+  }
 
-
+  // Turn the value to a string, for handle boolean values
   if (typeof value === 'boolean') {
     value = value.toString();
-  } // Lists can contain booleans, which should also be turned to strings
+  }
 
-
+  // Lists can contain booleans, which should also be turned to strings
   if (Array.isArray(value)) {
     value = value.slice();
-
     for (let i = 0; i < value.length; i++) {
       const item = value[i];
-
       if (typeof item === 'boolean') {
         value[i] = item.toString();
       }
     }
   }
-
   return {
     id,
     label,
@@ -34582,7 +32506,6 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_0__["defineMessages"
     "defaultMessage": "timer"
   }
 });
-
 class OpcodeLabels {
   constructor() {
     /**
@@ -34592,12 +32515,11 @@ class OpcodeLabels {
      * @return {string} Return the default string initially
      */
     this._translator = message => message.defaultMessage;
+
     /**
      * Initial opcode map, with categories defined
      * @private
      */
-
-
     this._opcodeMap = {
       // Motion
       motion_direction: {
@@ -34652,108 +32574,86 @@ class OpcodeLabels {
       sensing_timer: {
         category: 'sensing'
       }
-    }; // Initialize opcodeMap with default strings
+    };
 
+    // Initialize opcodeMap with default strings
     this._refreshOpcodeMap();
   }
+
   /**
    * Set the translation function for monitor labels. The function should accept
    * a message object as defined by react-intl defineMessages
    * @param {function} translator the function to use for localization
    */
-
-
   setTranslatorFunction(translator) {
     this._translator = translator;
-
     this._refreshOpcodeMap();
   }
+
   /**
    * Internal function to update opcode Map when translation function is defined
    * @private
    */
-
-
   _refreshOpcodeMap() {
     // Motion
     this._opcodeMap.motion_direction.labelFn = () => this._translator(messages.motion_direction);
-
     this._opcodeMap.motion_xposition.labelFn = () => this._translator(messages.motion_xposition);
+    this._opcodeMap.motion_yposition.labelFn = () => this._translator(messages.motion_yposition);
 
-    this._opcodeMap.motion_yposition.labelFn = () => this._translator(messages.motion_yposition); // Looks
-
-
+    // Looks
     this._opcodeMap.looks_size.labelFn = () => this._translator(messages.looks_size);
-
     this._opcodeMap.looks_costumenumbername.labelFn = params => {
       if (params.NUMBER_NAME === 'number') {
         return this._translator(messages.looks_costumenumber);
       }
-
       return this._translator(messages.looks_costumename);
     };
-
     this._opcodeMap.looks_backdropnumbername.labelFn = params => {
       if (params.NUMBER_NAME === 'number') {
         return this._translator(messages.looks_backdropnumber);
       }
-
       return this._translator(messages.looks_backdropname);
     };
+    this._opcodeMap.looks_backdropname.labelFn = () => this._translator(messages.looks_backdropname);
 
-    this._opcodeMap.looks_backdropname.labelFn = () => this._translator(messages.looks_backdropname); // Data
-
-
+    // Data
     this._opcodeMap.data_variable.labelFn = params => params.VARIABLE;
+    this._opcodeMap.data_listcontents.labelFn = params => params.LIST;
 
-    this._opcodeMap.data_listcontents.labelFn = params => params.LIST; // Sound
-
-
+    // Sound
     this._opcodeMap.sound_volume.labelFn = () => this._translator(messages.sound_volume);
+    this._opcodeMap.sound_tempo.labelFn = () => this._translator(messages.sound_tempo);
 
-    this._opcodeMap.sound_tempo.labelFn = () => this._translator(messages.sound_tempo); // Sensing
-
-
+    // Sensing
     this._opcodeMap.sensing_answer.labelFn = () => this._translator(messages.sensing_answer);
-
     this._opcodeMap.sensing_loudness.labelFn = () => this._translator(messages.sensing_loudness);
-
     this._opcodeMap.sensing_username.labelFn = () => this._translator(messages.sensing_username);
-
     this._opcodeMap.sensing_current.labelFn = params => {
       switch (params.CURRENTMENU.toLowerCase()) {
         case 'year':
           return this._translator(messages.sensing_current_year);
-
         case 'month':
           return this._translator(messages.sensing_current_month);
-
         case 'date':
           return this._translator(messages.sensing_current_date);
-
         case 'dayofweek':
           return this._translator(messages.sensing_current_dayofweek);
-
         case 'hour':
           return this._translator(messages.sensing_current_hour);
-
         case 'minute':
           return this._translator(messages.sensing_current_minute);
-
         case 'second':
           return this._translator(messages.sensing_current_second);
       }
     };
-
     this._opcodeMap.sensing_timer.labelFn = () => this._translator(messages.sensing_timer);
   }
+
   /**
    * Return the label for an opcode
    * @param {string} opcode the opcode you want a label for
    * @return {object} object with  label and category
    */
-
-
   getLabel(opcode) {
     if (opcode in this._opcodeMap) return this._opcodeMap[opcode];
     return {
@@ -34761,9 +32661,7 @@ class OpcodeLabels {
       label: opcode
     };
   }
-
 }
-
 /* harmony default export */ __webpack_exports__["default"] = (new OpcodeLabels());
 
 /***/ }),
@@ -34796,11 +32694,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var scratch_vm__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(scratch_vm__WEBPACK_IMPORTED_MODULE_11__);
 /* harmony import */ var _components_loader_tw_progress_monitor__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/loader/tw-progress-monitor */ "./src/components/loader/tw-progress-monitor.js");
 const _excluded = ["assetHost", "intl", "isLoadingProject", "loadingState", "onActivateTab", "onError", "onFetchedProjectData", "onProjectUnchanged", "projectHost", "projectId", "reduxProjectId", "setProjectId", "isFetchingWithId"];
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 
@@ -34815,27 +32710,22 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 
 
- // TW: Temporary hack for project tokens
 
+// TW: Temporary hack for project tokens
 const fetchProjectToken = projectId => {
   if (projectId === '0') {
     return Promise.resolve(null);
-  } // Parse ?token=abcdef
-
-
+  }
+  // Parse ?token=abcdef
   const searchParams = new URLSearchParams(location.search);
-
   if (searchParams.has('token')) {
     return Promise.resolve(searchParams.get('token'));
-  } // Parse #1?token=abcdef
-
-
+  }
+  // Parse #1?token=abcdef
   const hashParams = new URLSearchParams(location.hash.split('?')[1]);
-
   if (hashParams.has('token')) {
     return Promise.resolve(hashParams.get('token'));
   }
-
   return fetch("https://trampoline.turbowarp.org/proxy/projects/".concat(projectId)).then(r => {
     if (!r.ok) return null;
     return r.json();
@@ -34847,13 +32737,12 @@ const fetchProjectToken = projectId => {
     return null;
   });
 };
+
 /* Higher Order Component to provide behavior for loading projects by id. If
  * there's no id, the default project is loaded.
  * @param {React.Component} WrappedComponent component to receive projectData prop
  * @returns {React.Component} component with project loading behavior
  */
-
-
 const ProjectFetcherHOC = function ProjectFetcherHOC(WrappedComponent) {
   class ProjectFetcherComponent extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
     constructor(props) {
@@ -34862,64 +32751,53 @@ const ProjectFetcherHOC = function ProjectFetcherHOC(WrappedComponent) {
       _storage__WEBPACK_IMPORTED_MODULE_9__["default"].setProjectHost(props.projectHost);
       _storage__WEBPACK_IMPORTED_MODULE_9__["default"].setProjectToken(props.projectToken);
       _storage__WEBPACK_IMPORTED_MODULE_9__["default"].setAssetHost(props.assetHost);
-      _storage__WEBPACK_IMPORTED_MODULE_9__["default"].setTranslatorFunction(props.intl.formatMessage); // props.projectId might be unset, in which case we use our default;
+      _storage__WEBPACK_IMPORTED_MODULE_9__["default"].setTranslatorFunction(props.intl.formatMessage);
+      // props.projectId might be unset, in which case we use our default;
       // or it may be set by an even higher HOC, and passed to us.
       // Either way, we now know what the initial projectId should be, so
       // set it in the redux store.
-
       if (props.projectId !== '' && props.projectId !== null && typeof props.projectId !== 'undefined') {
         this.props.setProjectId(props.projectId.toString());
       }
     }
-
     componentDidUpdate(prevProps) {
       if (prevProps.projectHost !== this.props.projectHost) {
         _storage__WEBPACK_IMPORTED_MODULE_9__["default"].setProjectHost(this.props.projectHost);
       }
-
       if (prevProps.projectToken !== this.props.projectToken) {
         _storage__WEBPACK_IMPORTED_MODULE_9__["default"].setProjectToken(this.props.projectToken);
       }
-
       if (prevProps.assetHost !== this.props.assetHost) {
         _storage__WEBPACK_IMPORTED_MODULE_9__["default"].setAssetHost(this.props.assetHost);
       }
-
       if (this.props.isFetchingWithId && !prevProps.isFetchingWithId) {
         this.fetchProject(this.props.reduxProjectId, this.props.loadingState);
       }
-
       if (this.props.isShowingProject && !prevProps.isShowingProject) {
         this.props.onProjectUnchanged();
       }
-
       if (this.props.isShowingProject && (prevProps.isLoadingProject || prevProps.isCreatingNew)) {
         this.props.onActivateTab(_reducers_editor_tab__WEBPACK_IMPORTED_MODULE_7__["BLOCKS_TAB_INDEX"]);
       }
     }
-
     fetchProject(projectId, loadingState) {
       // tw: clear and stop the VM before fetching
       // these will also happen later after the project is fetched, but fetching may take a while and
       // the project shouldn't be running while fetching the new project
       this.props.vm.clear();
       this.props.vm.stop();
-      let assetPromise; // In case running in node...
-
+      let assetPromise;
+      // In case running in node...
       let projectUrl = typeof URLSearchParams === 'undefined' ? null : new URLSearchParams(location.search).get('project_url');
-
       if (projectUrl) {
         if (!projectUrl.startsWith('http:') && !projectUrl.startsWith('https:')) {
           projectUrl = "https://".concat(projectUrl);
         }
-
         assetPromise = _components_loader_tw_progress_monitor__WEBPACK_IMPORTED_MODULE_12__["fetchWithProgress"](projectUrl).then(r => {
           this.props.vm.runtime.renderer.setPrivateSkinAccess(false);
-
           if (!r.ok) {
             throw new Error("Request returned status ".concat(r.status));
           }
-
           return r.arrayBuffer();
         }).then(buffer => ({
           data: buffer
@@ -34931,19 +32809,16 @@ const ProjectFetcherHOC = function ProjectFetcherHOC(WrappedComponent) {
           return _storage__WEBPACK_IMPORTED_MODULE_9__["default"].load(_storage__WEBPACK_IMPORTED_MODULE_9__["default"].AssetType.Project, projectId, _storage__WEBPACK_IMPORTED_MODULE_9__["default"].DataFormat.JSON);
         });
       }
-
       return assetPromise.then(projectAsset => {
         // tw: If the project data appears to be HTML, then the result is probably an nginx 404 page,
         // and the "missing project" project should be loaded instead.
         // See: https://projects.scratch.mit.edu/9999999999999999999999
         if (projectAsset && projectAsset.data) {
           const firstChar = projectAsset.data[0];
-
           if (firstChar === '<' || firstChar === '<'.charCodeAt(0)) {
             return _storage__WEBPACK_IMPORTED_MODULE_9__["default"].load(_storage__WEBPACK_IMPORTED_MODULE_9__["default"].AssetType.Project, _tw_missing_project__WEBPACK_IMPORTED_MODULE_10__["MISSING_PROJECT_ID"], _storage__WEBPACK_IMPORTED_MODULE_9__["default"].DataFormat.JSON);
           }
         }
-
         return projectAsset;
       }).then(projectAsset => {
         if (projectAsset) {
@@ -34958,36 +32833,31 @@ const ProjectFetcherHOC = function ProjectFetcherHOC(WrappedComponent) {
         _log__WEBPACK_IMPORTED_MODULE_8__["default"].error(err);
       });
     }
-
     render() {
       const _this$props = this.props,
-            {
-        /* eslint-disable no-unused-vars */
-        assetHost,
-        intl,
-        isLoadingProject: isLoadingProjectProp,
-        loadingState,
-        onActivateTab,
-        onError: onErrorProp,
-        onFetchedProjectData: onFetchedProjectDataProp,
-        onProjectUnchanged,
-        projectHost,
-        projectId,
-        reduxProjectId,
-        setProjectId: setProjectIdProp,
-
-        /* eslint-enable no-unused-vars */
-        isFetchingWithId: isFetchingWithIdProp
-      } = _this$props,
-            componentProps = _objectWithoutProperties(_this$props, _excluded);
-
+        {
+          /* eslint-disable no-unused-vars */
+          assetHost,
+          intl,
+          isLoadingProject: isLoadingProjectProp,
+          loadingState,
+          onActivateTab,
+          onError: onErrorProp,
+          onFetchedProjectData: onFetchedProjectDataProp,
+          onProjectUnchanged,
+          projectHost,
+          projectId,
+          reduxProjectId,
+          setProjectId: setProjectIdProp,
+          /* eslint-enable no-unused-vars */
+          isFetchingWithId: isFetchingWithIdProp
+        } = _this$props,
+        componentProps = _objectWithoutProperties(_this$props, _excluded);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(WrappedComponent, _extends({
         fetchingProject: isFetchingWithIdProp
       }, componentProps));
     }
-
   }
-
   ProjectFetcherComponent.propTypes = {
     assetHost: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
     canSave: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
@@ -35012,7 +32882,6 @@ const ProjectFetcherHOC = function ProjectFetcherHOC(WrappedComponent) {
     assetHost: 'https://assets.scratch.mit.edu',
     projectHost: 'https://projects.scratch.mit.edu'
   };
-
   const mapStateToProps = state => ({
     isCreatingNew: Object(_reducers_project_state__WEBPACK_IMPORTED_MODULE_6__["getIsCreatingNew"])(state.scratchGui.projectState.loadingState),
     isFetchingWithId: Object(_reducers_project_state__WEBPACK_IMPORTED_MODULE_6__["getIsFetchingWithId"])(state.scratchGui.projectState.loadingState),
@@ -35022,21 +32891,17 @@ const ProjectFetcherHOC = function ProjectFetcherHOC(WrappedComponent) {
     reduxProjectId: state.scratchGui.projectState.projectId,
     vm: state.scratchGui.vm
   });
-
   const mapDispatchToProps = dispatch => ({
     onActivateTab: tab => dispatch(Object(_reducers_editor_tab__WEBPACK_IMPORTED_MODULE_7__["activateTab"])(tab)),
     onError: error => dispatch(Object(_reducers_project_state__WEBPACK_IMPORTED_MODULE_6__["projectError"])(error)),
     onFetchedProjectData: (projectData, loadingState) => dispatch(Object(_reducers_project_state__WEBPACK_IMPORTED_MODULE_6__["onFetchedProjectData"])(projectData, loadingState)),
     setProjectId: projectId => dispatch(Object(_reducers_project_state__WEBPACK_IMPORTED_MODULE_6__["setProjectId"])(projectId)),
     onProjectUnchanged: () => dispatch(Object(_reducers_project_changed__WEBPACK_IMPORTED_MODULE_5__["setProjectUnchanged"])())
-  }); // Allow incoming props to override redux-provided props. Used to mock in tests.
-
-
+  });
+  // Allow incoming props to override redux-provided props. Used to mock in tests.
   const mergeProps = (stateProps, dispatchProps, ownProps) => Object.assign({}, stateProps, dispatchProps, ownProps);
-
   return Object(react_intl__WEBPACK_IMPORTED_MODULE_2__["injectIntl"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["connect"])(mapStateToProps, mapDispatchToProps, mergeProps)(ProjectFetcherComponent));
 };
-
 
 
 /***/ }),
@@ -35070,11 +32935,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _reducers_project_changed__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../reducers/project-changed */ "./src/reducers/project-changed.js");
 /* harmony import */ var _reducers_project_state__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../reducers/project-state */ "./src/reducers/project-state.js");
 const _excluded = ["autoSaveTimeoutId", "autoSaveIntervalSecs", "isCreatingCopy", "isCreatingNew", "projectChanged", "isAnyCreatingNewState", "isLoading", "isManualUpdating", "isRemixing", "isShowingSaveable", "isShowingWithId", "isShowingWithoutId", "isUpdating", "loadingState", "onAutoUpdateProject", "onCreatedProject", "onCreateProject", "onProjectError", "onRemixing", "onSetProjectUnchanged", "onSetProjectThumbnailer", "onSetProjectSaver", "onShowAlert", "onShowCopySuccessAlert", "onShowRemixSuccessAlert", "onShowCreatingCopyAlert", "onShowCreatingRemixAlert", "onShowSaveSuccessAlert", "onShowSavingAlert", "onUpdatedProject", "onUpdateProjectData", "onUpdateProjectThumbnail", "reduxProjectId", "reduxProjectTitle", "setAutoSaveTimeoutId"];
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 
@@ -35100,100 +32962,87 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
  *     <WrappedComponent />
  * </ProjectSaverHOC>
  */
-
 const ProjectSaverHOC = function ProjectSaverHOC(WrappedComponent) {
   class ProjectSaverComponent extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
     constructor(props) {
       super(props);
       lodash_bindall__WEBPACK_IMPORTED_MODULE_0___default()(this, ['getProjectThumbnail', 'leavePageConfirm', 'tryToAutoSave']);
     }
-
     componentWillMount() {
       if (typeof window === 'object') {
         // Note: it might be better to use a listener instead of assigning onbeforeunload;
         // but then it'd be hard to turn this listening off in our tests
         window.onbeforeunload = e => this.leavePageConfirm(e);
-      } // Allow the GUI consumer to pass in a function to receive a trigger
+      }
+
+      // Allow the GUI consumer to pass in a function to receive a trigger
       // for triggering thumbnail or whole project saves.
       // These functions are called with null on unmount to prevent stale references.
-
-
       this.props.onSetProjectThumbnailer(this.getProjectThumbnail);
       this.props.onSetProjectSaver(this.tryToAutoSave);
     }
-
     componentDidUpdate(prevProps) {
       if (!this.props.isAnyCreatingNewState && prevProps.isAnyCreatingNewState) {
         this.reportTelemetryEvent('projectWasCreated');
       }
-
       if (!this.props.isLoading && prevProps.isLoading) {
         this.reportTelemetryEvent('projectDidLoad');
       }
-
       if (this.props.projectChanged && !prevProps.projectChanged) {
         this.scheduleAutoSave();
       }
-
       if (this.props.isUpdating && !prevProps.isUpdating) {
         this.updateProjectToStorage();
       }
-
       if (this.props.isCreatingNew && !prevProps.isCreatingNew) {
         this.createNewProjectToStorage();
       }
-
       if (this.props.isCreatingCopy && !prevProps.isCreatingCopy) {
         this.createCopyToStorage();
       }
-
       if (this.props.isRemixing && !prevProps.isRemixing) {
         this.props.onRemixing(true);
         this.createRemixToStorage();
       } else if (!this.props.isRemixing && prevProps.isRemixing) {
         this.props.onRemixing(false);
-      } // see if we should "create" the current project on the server
+      }
+
+      // see if we should "create" the current project on the server
       //
       // don't try to create or save immediately after trying to create
-
-
-      if (prevProps.isCreatingNew) return; // if we're newly able to create this project, create it!
-
+      if (prevProps.isCreatingNew) return;
+      // if we're newly able to create this project, create it!
       if (this.isShowingCreatable(this.props) && !this.isShowingCreatable(prevProps)) {
         this.props.onCreateProject();
-      } // see if we should save/update the current project on the server
+      }
+
+      // see if we should save/update the current project on the server
       //
       // don't try to save immediately after trying to save
-
-
-      if (prevProps.isUpdating) return; // if we're newly able to save this project, save it!
-
+      if (prevProps.isUpdating) return;
+      // if we're newly able to save this project, save it!
       const becameAbleToSave = this.props.canSave && !prevProps.canSave;
       const becameShared = this.props.isShared && !prevProps.isShared;
-
       if (this.props.isShowingSaveable && (becameAbleToSave || becameShared)) {
         this.props.onAutoUpdateProject();
       }
     }
-
     componentWillUnmount() {
-      this.clearAutoSaveTimeout(); // Cant unset the beforeunload because it might no longer belong to this component
+      this.clearAutoSaveTimeout();
+      // Cant unset the beforeunload because it might no longer belong to this component
       // i.e. if another of this component has been mounted before this one gets unmounted
       // which happens when going from project to editor view.
       // window.onbeforeunload = undefined; // eslint-disable-line no-undefined
       // Remove project thumbnailer function since the components are unmounting
-
       this.props.onSetProjectThumbnailer(null);
       this.props.onSetProjectSaver(null);
     }
-
     leavePageConfirm(e) {
       if (this.props.projectChanged) {
         // both methods of returning a value may be necessary for browser compatibility
         (e || window.event).returnValue = true;
         return true;
       }
-
       return; // Returning undefined prevents the prompt from coming up
     }
 
@@ -35203,24 +33052,20 @@ const ProjectSaverHOC = function ProjectSaverHOC(WrappedComponent) {
         this.props.setAutoSaveTimeoutId(null);
       }
     }
-
     scheduleAutoSave() {
       if (this.props.isShowingSaveable && this.props.autoSaveTimeoutId === null) {
         const timeoutId = setTimeout(this.tryToAutoSave, this.props.autoSaveIntervalSecs * 1000);
         this.props.setAutoSaveTimeoutId(timeoutId);
       }
     }
-
     tryToAutoSave() {
       if (this.props.projectChanged && this.props.isShowingSaveable) {
         this.props.onAutoUpdateProject();
       }
     }
-
     isShowingCreatable(props) {
       return props.canCreateNew && props.isShowingWithoutId;
     }
-
     updateProjectToStorage() {
       this.props.onShowSavingAlert();
       return this.storeProject(this.props.reduxProjectId).then(() => {
@@ -35235,7 +33080,6 @@ const ProjectSaverHOC = function ProjectSaverHOC(WrappedComponent) {
         this.props.onProjectError(err);
       });
     }
-
     createNewProjectToStorage() {
       return this.storeProject(null).then(response => {
         this.props.onCreatedProject(response.id.toString(), this.props.loadingState);
@@ -35244,7 +33088,6 @@ const ProjectSaverHOC = function ProjectSaverHOC(WrappedComponent) {
         this.props.onProjectError(err);
       });
     }
-
     createCopyToStorage() {
       this.props.onShowCreatingCopyAlert();
       return this.storeProject(null, {
@@ -35259,7 +33102,6 @@ const ProjectSaverHOC = function ProjectSaverHOC(WrappedComponent) {
         this.props.onProjectError(err);
       });
     }
-
     createRemixToStorage() {
       this.props.onShowCreatingRemixAlert();
       return this.storeProject(null, {
@@ -35280,17 +33122,15 @@ const ProjectSaverHOC = function ProjectSaverHOC(WrappedComponent) {
      * @return {Promise} - resolves with json object containing project's existing or new id
      * @param {?object} requestParams - object of params to add to request body
      */
-
-
     storeProject(projectId, requestParams) {
       requestParams = requestParams || {};
-      this.clearAutoSaveTimeout(); // Serialize VM state now before embarking on
+      this.clearAutoSaveTimeout();
+      // Serialize VM state now before embarking on
       // the asynchronous journey of storing assets to
       // the server. This ensures that assets don't update
       // while in the process of saving a project (e.g. the
       // serialized project refers to a newer asset than what
       // we just finished saving).
-
       const savedVMState = this.props.vm.toJSON();
       return Promise.all(this.props.vm.assets.filter(asset => !asset.clean).map(asset => _lib_storage__WEBPACK_IMPORTED_MODULE_7__["default"].store(asset.assetType, asset.dataFormat, asset.data, asset.assetId).then(response => {
         // Asset servers respond with {status: ok} for successful POSTs
@@ -35298,16 +33138,13 @@ const ProjectSaverHOC = function ProjectSaverHOC(WrappedComponent) {
           // Errors include a `code` property, e.g. "Forbidden"
           return Promise.reject(response.code);
         }
-
         asset.clean = true;
       }))).then(() => this.props.onUpdateProjectData(projectId, savedVMState, requestParams)).then(response => {
         this.props.onSetProjectUnchanged();
         const id = response.id.toString();
-
         if (id && this.props.onUpdateProjectThumbnail) {
           this.storeProjectThumbnail(id);
         }
-
         this.reportTelemetryEvent('projectDidSave');
         return response;
       }).catch(err => {
@@ -35315,20 +33152,20 @@ const ProjectSaverHOC = function ProjectSaverHOC(WrappedComponent) {
         throw err; // pass the error up the chain
       });
     }
+
     /**
      * Store a snapshot of the project once it has been saved/created.
      * Needs to happen _after_ save because the project must have an ID.
      * @param {!string} projectId - id of the project, must be defined.
      */
-
-
     storeProjectThumbnail(projectId) {
       try {
         this.getProjectThumbnail(dataURI => {
           this.props.onUpdateProjectThumbnail(projectId, Object(_lib_data_uri_to_blob__WEBPACK_IMPORTED_MODULE_8__["default"])(dataURI));
         });
       } catch (e) {
-        _lib_log__WEBPACK_IMPORTED_MODULE_6__["default"].error('Project thumbnail save error', e); // This is intentionally fire/forget because a failure
+        _lib_log__WEBPACK_IMPORTED_MODULE_6__["default"].error('Project thumbnail save error', e);
+        // This is intentionally fire/forget because a failure
         // to save the thumbnail is not vitally important to the user.
       }
     }
@@ -35345,13 +33182,12 @@ const ProjectSaverHOC = function ProjectSaverHOC(WrappedComponent) {
       });
       this.props.vm.renderer.draw();
     }
+
     /**
      * Report a telemetry event.
      * @param {string} event - one of `projectWasCreated`, `projectDidLoad`, `projectDidSave`, `projectWasUploaded`
      */
     // TODO make a telemetry HOC and move this stuff there
-
-
     reportTelemetryEvent(event) {
       try {
         if (this.props.onProjectTelemetryEvent) {
@@ -35359,60 +33195,58 @@ const ProjectSaverHOC = function ProjectSaverHOC(WrappedComponent) {
           this.props.onProjectTelemetryEvent(event, metadata);
         }
       } catch (e) {
-        _lib_log__WEBPACK_IMPORTED_MODULE_6__["default"].error('Telemetry error', event, e); // This is intentionally fire/forget because a failure
+        _lib_log__WEBPACK_IMPORTED_MODULE_6__["default"].error('Telemetry error', event, e);
+        // This is intentionally fire/forget because a failure
         // to report telemetry should not block saving
       }
     }
 
     render() {
       const _this$props = this.props,
-            {
-        /* eslint-disable no-unused-vars */
-        autoSaveTimeoutId,
-        autoSaveIntervalSecs,
-        isCreatingCopy,
-        isCreatingNew,
-        projectChanged,
-        isAnyCreatingNewState,
-        isLoading,
-        isManualUpdating,
-        isRemixing,
-        isShowingSaveable,
-        isShowingWithId,
-        isShowingWithoutId,
-        isUpdating,
-        loadingState,
-        onAutoUpdateProject,
-        onCreatedProject,
-        onCreateProject,
-        onProjectError,
-        onRemixing,
-        onSetProjectUnchanged,
-        onSetProjectThumbnailer,
-        onSetProjectSaver,
-        onShowAlert,
-        onShowCopySuccessAlert,
-        onShowRemixSuccessAlert,
-        onShowCreatingCopyAlert,
-        onShowCreatingRemixAlert,
-        onShowSaveSuccessAlert,
-        onShowSavingAlert,
-        onUpdatedProject,
-        onUpdateProjectData,
-        onUpdateProjectThumbnail,
-        reduxProjectId,
-        reduxProjectTitle,
-        setAutoSaveTimeoutId: setAutoSaveTimeoutIdProp
-      } = _this$props,
-            componentProps = _objectWithoutProperties(_this$props, _excluded);
-
+        {
+          /* eslint-disable no-unused-vars */
+          autoSaveTimeoutId,
+          autoSaveIntervalSecs,
+          isCreatingCopy,
+          isCreatingNew,
+          projectChanged,
+          isAnyCreatingNewState,
+          isLoading,
+          isManualUpdating,
+          isRemixing,
+          isShowingSaveable,
+          isShowingWithId,
+          isShowingWithoutId,
+          isUpdating,
+          loadingState,
+          onAutoUpdateProject,
+          onCreatedProject,
+          onCreateProject,
+          onProjectError,
+          onRemixing,
+          onSetProjectUnchanged,
+          onSetProjectThumbnailer,
+          onSetProjectSaver,
+          onShowAlert,
+          onShowCopySuccessAlert,
+          onShowRemixSuccessAlert,
+          onShowCreatingCopyAlert,
+          onShowCreatingRemixAlert,
+          onShowSaveSuccessAlert,
+          onShowSavingAlert,
+          onUpdatedProject,
+          onUpdateProjectData,
+          onUpdateProjectThumbnail,
+          reduxProjectId,
+          reduxProjectTitle,
+          setAutoSaveTimeoutId: setAutoSaveTimeoutIdProp
+        } = _this$props,
+        componentProps = _objectWithoutProperties(_this$props, _excluded);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(WrappedComponent, _extends({
         isCreating: isAnyCreatingNewState
       }, componentProps));
     }
-
   }
-
   ProjectSaverComponent.propTypes = {
     autoSaveIntervalSecs: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.number.isRequired,
     autoSaveTimeoutId: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.number,
@@ -35463,7 +33297,6 @@ const ProjectSaverHOC = function ProjectSaverHOC(WrappedComponent) {
     onSetProjectSaver: () => {},
     onUpdateProjectData: _lib_save_project_to_server__WEBPACK_IMPORTED_MODULE_9__["default"]
   };
-
   const mapStateToProps = (state, ownProps) => {
     const loadingState = state.scratchGui.projectState.loadingState;
     const isShowingWithId = Object(_reducers_project_state__WEBPACK_IMPORTED_MODULE_13__["getIsShowingWithId"])(loadingState);
@@ -35487,7 +33320,6 @@ const ProjectSaverHOC = function ProjectSaverHOC(WrappedComponent) {
       vm: state.scratchGui.vm
     };
   };
-
   const mapDispatchToProps = dispatch => ({
     onAutoUpdateProject: () => dispatch(Object(_reducers_project_state__WEBPACK_IMPORTED_MODULE_13__["autoUpdateProject"])()),
     onCreatedProject: (projectId, loadingState) => dispatch(Object(_reducers_project_state__WEBPACK_IMPORTED_MODULE_13__["doneCreatingProject"])(projectId, loadingState)),
@@ -35503,14 +33335,11 @@ const ProjectSaverHOC = function ProjectSaverHOC(WrappedComponent) {
     onShowSavingAlert: () => Object(_reducers_alerts__WEBPACK_IMPORTED_MODULE_10__["showAlertWithTimeout"])(dispatch, 'saving'),
     onUpdatedProject: loadingState => dispatch(Object(_reducers_project_state__WEBPACK_IMPORTED_MODULE_13__["doneUpdatingProject"])(loadingState)),
     setAutoSaveTimeoutId: id => dispatch(Object(_reducers_timeout__WEBPACK_IMPORTED_MODULE_11__["setAutoSaveTimeoutId"])(id))
-  }); // Allow incoming props to override redux-provided props. Used to mock in tests.
-
-
+  });
+  // Allow incoming props to override redux-provided props. Used to mock in tests.
   const mergeProps = (stateProps, dispatchProps, ownProps) => Object.assign({}, stateProps, dispatchProps, ownProps);
-
   return Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps, mapDispatchToProps, mergeProps)(ProjectSaverComponent);
 };
-
 
 
 /***/ }),
@@ -35536,9 +33365,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _reducers_cards__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../reducers/cards */ "./src/reducers/cards.js");
 /* harmony import */ var _reducers_modals__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../reducers/modals */ "./src/reducers/modals.js");
 const _excluded = ["onOpenTipsLibrary", "onUpdateReduxDeck"];
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 
@@ -35552,14 +33379,12 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
  * @param {React.Component} WrappedComponent: component to render
  * @returns {React.Component} component with query parsing behavior
  */
-
 const QueryParserHOC = function QueryParserHOC(WrappedComponent) {
   class QueryParserComponent extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
     constructor(props) {
       super(props);
       const queryParams = query_string__WEBPACK_IMPORTED_MODULE_2___default.a.parse(location.search);
       const tutorialId = Object(_tutorial_from_url__WEBPACK_IMPORTED_MODULE_4__["detectTutorialId"])(queryParams);
-
       if (tutorialId) {
         if (tutorialId === 'all') {
           this.openTutorials();
@@ -35568,34 +33393,27 @@ const QueryParserHOC = function QueryParserHOC(WrappedComponent) {
         }
       }
     }
-
     setActiveCards(tutorialId) {
       this.props.onUpdateReduxDeck(tutorialId);
     }
-
     openTutorials() {
       this.props.onOpenTipsLibrary();
     }
-
     render() {
       const _this$props = this.props,
-            {
-        onOpenTipsLibrary,
-        // eslint-disable-line no-unused-vars
-        onUpdateReduxDeck
-      } = _this$props,
-            componentProps = _objectWithoutProperties(_this$props, _excluded);
-
+        {
+          onOpenTipsLibrary,
+          // eslint-disable-line no-unused-vars
+          onUpdateReduxDeck
+        } = _this$props,
+        componentProps = _objectWithoutProperties(_this$props, _excluded);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(WrappedComponent, componentProps);
     }
-
   }
-
   QueryParserComponent.propTypes = {
     onOpenTipsLibrary: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
     onUpdateReduxDeck: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func
   };
-
   const mapDispatchToProps = dispatch => ({
     onOpenTipsLibrary: () => {
       dispatch(Object(_reducers_modals__WEBPACK_IMPORTED_MODULE_6__["openTipsLibrary"])());
@@ -35604,10 +33422,8 @@ const QueryParserHOC = function QueryParserHOC(WrappedComponent) {
       dispatch(Object(_reducers_cards__WEBPACK_IMPORTED_MODULE_5__["activateDeck"])(tutorialId));
     }
   });
-
   return Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(null, mapDispatchToProps)(QueryParserComponent);
 };
-
 
 
 /***/ }),
@@ -35626,7 +33442,6 @@ const randomizeSpritePosition = spriteObject => {
   spriteObject.x = Math.floor(200 * Math.random() - 100);
   spriteObject.y = Math.floor(100 * Math.random() - 50);
 };
-
 /* harmony default export */ __webpack_exports__["default"] = (randomizeSpritePosition);
 
 /***/ }),
@@ -35648,6 +33463,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /**
  * Save a project JSON to the project server.
  * This should eventually live in scratch-www.
@@ -35660,7 +33476,6 @@ __webpack_require__.r(__webpack_exports__);
  * @property {?string} params.title the title of the project.
  * @return {Promise} A promise that resolves when the network request resolves.
  */
-
 /* harmony default export */ __webpack_exports__["default"] = (function (projectId, vmState, params) {
   const opts = {
     body: vmState,
@@ -35678,7 +33493,6 @@ __webpack_require__.r(__webpack_exports__);
   if (params.hasOwnProperty('title')) queryParams.title = params.title;
   let qs = query_string__WEBPACK_IMPORTED_MODULE_0___default.a.stringify(queryParams);
   if (qs) qs = "?".concat(qs);
-
   if (creatingProject) {
     Object.assign(opts, {
       method: 'post',
@@ -35690,26 +33504,21 @@ __webpack_require__.r(__webpack_exports__);
       url: "".concat(_lib_storage__WEBPACK_IMPORTED_MODULE_2__["default"].projectHost, "/").concat(projectId).concat(qs)
     });
   }
-
   return new Promise((resolve, reject) => {
     xhr__WEBPACK_IMPORTED_MODULE_1___default()(opts, (err, response) => {
       if (err) return reject(err);
       if (response.statusCode !== 200) return reject(response.statusCode);
       let body;
-
       try {
         // Since we didn't set json: true, we have to parse manually
         body = JSON.parse(response.body);
       } catch (e) {
         return reject(e);
       }
-
       body.id = projectId;
-
       if (creatingProject) {
         body.id = body['content-name'];
       }
-
       resolve(body);
     });
   });
@@ -35744,13 +33553,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _reducers_modals__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../reducers/modals */ "./src/reducers/modals.js");
 /* harmony import */ var _reducers_menus__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../reducers/menus */ "./src/reducers/menus.js");
 const _excluded = ["cancelFileUpload", "closeFileMenu", "isLoadingUpload", "isShowingWithoutId", "loadingState", "onLoadingFinished", "onLoadingStarted", "onSetFileHandle", "onSetProjectTitle", "projectChanged", "requestProjectUpload", "userOwnsProject"];
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
 
 
 
@@ -35770,6 +33575,7 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_3__["defineMessages"
     "defaultMessage": "Could not load project: {error}"
   }
 });
+
 /**
  * Higher Order Component to provide behavior for loading local project files into editor.
  * @param {React.Component} WrappedComponent the component to add project file loading functionality to
@@ -35779,16 +33585,14 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_3__["defineMessages"
  *     <WrappedComponent />
  * </SBFileUploaderHOC>
  */
-
 const SBFileUploaderHOC = function SBFileUploaderHOC(WrappedComponent) {
   class SBFileUploaderComponent extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
     constructor(props) {
       super(props);
-      lodash_bindall__WEBPACK_IMPORTED_MODULE_0___default()(this, ['createFileObjects', 'getProjectTitleFromFilename', 'handleFinishedLoadingUpload', 'handleStartSelectingFileUpload', 'handleChange', 'onload', 'removeFileObjects']); // tw: We have multiple instances of this HOC alive at a time. This flag fixes issues that arise from that.
-
+      lodash_bindall__WEBPACK_IMPORTED_MODULE_0___default()(this, ['createFileObjects', 'getProjectTitleFromFilename', 'handleFinishedLoadingUpload', 'handleStartSelectingFileUpload', 'handleChange', 'onload', 'removeFileObjects']);
+      // tw: We have multiple instances of this HOC alive at a time. This flag fixes issues that arise from that.
       this.expectingFileUploadFinish = false;
     }
-
     componentDidUpdate(prevProps) {
       if (this.props.isLoadingUpload && !prevProps.isLoadingUpload && this.expectingFileUploadFinish) {
         this.handleFinishedLoadingUpload(); // cue step 5 below
@@ -35797,24 +33601,22 @@ const SBFileUploaderHOC = function SBFileUploaderHOC(WrappedComponent) {
 
     componentWillUnmount() {
       this.removeFileObjects();
-    } // step 1: this is where the upload process begins
-
-
+    }
+    // step 1: this is where the upload process begins
     handleStartSelectingFileUpload() {
       this.expectingFileUploadFinish = true;
       this.createFileObjects(); // go to step 2
-    } // step 2: create a FileReader and an <input> element, and issue a
+    }
+    // step 2: create a FileReader and an <input> element, and issue a
     // pseudo-click to it. That will open the file chooser dialog.
-
-
     createFileObjects() {
       // redo step 7, in case it got skipped last time and its objects are
       // still in memory
-      this.removeFileObjects(); // create fileReader
-
+      this.removeFileObjects();
+      // create fileReader
       this.fileReader = new FileReader();
-      this.fileReader.onload = this.onload; // tw: Use FS API when available
-
+      this.fileReader.onload = this.onload;
+      // tw: Use FS API when available
       if (_tw_filesystem_api__WEBPACK_IMPORTED_MODULE_7__["default"].available()) {
         (async () => {
           try {
@@ -35830,9 +33632,8 @@ const SBFileUploaderHOC = function SBFileUploaderHOC(WrappedComponent) {
             // If the user aborted it, that's not an error.
             if (err && err.name === 'AbortError') {
               return;
-            } // eslint-disable-next-line no-console
-
-
+            }
+            // eslint-disable-next-line no-console
             console.error(err);
           }
         })();
@@ -35843,15 +33644,13 @@ const SBFileUploaderHOC = function SBFileUploaderHOC(WrappedComponent) {
         this.inputElement.style = 'display: none;';
         this.inputElement.type = 'file';
         this.inputElement.onchange = this.handleChange; // connects to step 3
-
-        document.body.appendChild(this.inputElement); // simulate a click to open file chooser dialog
-
+        document.body.appendChild(this.inputElement);
+        // simulate a click to open file chooser dialog
         this.inputElement.click();
       }
-    } // step 3: user has picked a file using the file chooser dialog.
+    }
+    // step 3: user has picked a file using the file chooser dialog.
     // We don't actually load the file here, we only decide whether to do so.
-
-
     handleChange(e) {
       const {
         intl,
@@ -35861,142 +33660,129 @@ const SBFileUploaderHOC = function SBFileUploaderHOC(WrappedComponent) {
         userOwnsProject
       } = this.props;
       const thisFileInput = e.target;
-
       if (thisFileInput.files) {
         // Don't attempt to load if no file was selected
-        this.fileToUpload = thisFileInput.files[0]; // If user owns the project, or user has changed the project,
+        this.fileToUpload = thisFileInput.files[0];
+
+        // If user owns the project, or user has changed the project,
         // we must confirm with the user that they really intend to
         // replace it. (If they don't own the project and haven't
         // changed it, no need to confirm.)
-
         let uploadAllowed = true;
-
         if (userOwnsProject || projectChanged && isShowingWithoutId) {
-          uploadAllowed = confirm( // eslint-disable-line no-alert
+          uploadAllowed = confirm(
+          // eslint-disable-line no-alert
           intl.formatMessage(_shared_messages__WEBPACK_IMPORTED_MODULE_6__["default"].replaceProjectWarning));
         }
-
         if (uploadAllowed) {
           // Don't update file handle until after confirming replace.
           const handle = thisFileInput.handle;
-
           if (handle) {
             if (this.fileToUpload.name.endsWith('.sb3')) {
               this.props.onSetFileHandle(handle);
             } else {
               this.props.onSetFileHandle(null);
             }
-          } // cues step 4
+          }
 
-
+          // cues step 4
           this.props.requestProjectUpload(loadingState);
         } else {
           // skips ahead to step 7
           this.removeFileObjects();
         }
-
         this.props.closeFileMenu();
       }
-    } // step 4 is below, in mapDispatchToProps
+    }
+    // step 4 is below, in mapDispatchToProps
+
     // step 5: called from componentDidUpdate when project state shows
     // that project data has finished "uploading" into the browser
-
-
     handleFinishedLoadingUpload() {
       this.expectingFileUploadFinish = false;
-
       if (this.fileToUpload && this.fileReader) {
         // begin to read data from the file. When finished,
         // cues step 6 using the reader's onload callback
         this.fileReader.readAsArrayBuffer(this.fileToUpload);
       } else {
-        this.props.cancelFileUpload(this.props.loadingState); // skip ahead to step 7
-
+        this.props.cancelFileUpload(this.props.loadingState);
+        // skip ahead to step 7
         this.removeFileObjects();
       }
-    } // used in step 6 below
-
-
+    }
+    // used in step 6 below
     getProjectTitleFromFilename(fileInputFilename) {
-      if (!fileInputFilename) return ''; // only parse title with valid scratch project extensions
+      if (!fileInputFilename) return '';
+      // only parse title with valid scratch project extensions
       // (.sb, .sb2, and .sb3)
-
       const matches = fileInputFilename.match(/^(.*)\.sb[23]?$/);
       if (!matches) return '';
       return matches[1].substring(0, 100); // truncate project title to max 100 chars
-    } // step 6: attached as a handler on our FileReader object; called when
+    }
+    // step 6: attached as a handler on our FileReader object; called when
     // file upload raw data is available in the reader
-
-
     onload() {
       if (this.fileReader) {
         this.props.onLoadingStarted();
         const filename = this.fileToUpload && this.fileToUpload.name;
-        let loadingSuccess = false; // tw: stop when loading new project
-
+        let loadingSuccess = false;
+        // tw: stop when loading new project
         this.props.vm.stop();
         this.props.vm.loadProject(this.fileReader.result).then(() => {
           if (filename) {
             const uploadedProjectTitle = this.getProjectTitleFromFilename(filename);
             this.props.onSetProjectTitle(uploadedProjectTitle);
           }
-
           this.props.vm.renderer.draw();
           loadingSuccess = true;
         }).catch(error => {
-          _lib_log__WEBPACK_IMPORTED_MODULE_5__["default"].warn(error); // eslint-disable-next-line no-alert
-
+          _lib_log__WEBPACK_IMPORTED_MODULE_5__["default"].warn(error);
+          // eslint-disable-next-line no-alert
           alert(this.props.intl.formatMessage(messages.loadError, {
             error: "".concat(error)
           }));
         }).then(() => {
-          this.props.onLoadingFinished(this.props.loadingState, loadingSuccess); // go back to step 7: whether project loading succeeded
+          this.props.onLoadingFinished(this.props.loadingState, loadingSuccess);
+          // go back to step 7: whether project loading succeeded
           // or failed, reset file objects
-
           this.removeFileObjects();
         });
       }
-    } // step 7: remove the <input> element from the DOM and clear reader and
+    }
+    // step 7: remove the <input> element from the DOM and clear reader and
     // fileToUpload reference, so those objects can be garbage collected
-
-
     removeFileObjects() {
       if (this.inputElement) {
         this.inputElement.value = null;
         document.body.removeChild(this.inputElement);
       }
-
       this.inputElement = null;
       this.fileReader = null;
       this.fileToUpload = null;
     }
-
     render() {
       const _this$props = this.props,
-            {
-        /* eslint-disable no-unused-vars */
-        cancelFileUpload,
-        closeFileMenu: closeFileMenuProp,
-        isLoadingUpload,
-        isShowingWithoutId,
-        loadingState,
-        onLoadingFinished,
-        onLoadingStarted,
-        onSetFileHandle,
-        onSetProjectTitle,
-        projectChanged,
-        requestProjectUpload: requestProjectUploadProp,
-        userOwnsProject
-      } = _this$props,
-            componentProps = _objectWithoutProperties(_this$props, _excluded);
-
+        {
+          /* eslint-disable no-unused-vars */
+          cancelFileUpload,
+          closeFileMenu: closeFileMenuProp,
+          isLoadingUpload,
+          isShowingWithoutId,
+          loadingState,
+          onLoadingFinished,
+          onLoadingStarted,
+          onSetFileHandle,
+          onSetProjectTitle,
+          projectChanged,
+          requestProjectUpload: requestProjectUploadProp,
+          userOwnsProject
+        } = _this$props,
+        componentProps = _objectWithoutProperties(_this$props, _excluded);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(WrappedComponent, _extends({
         onStartSelectingFileUpload: this.handleStartSelectingFileUpload
       }, componentProps)));
     }
-
   }
-
   SBFileUploaderComponent.propTypes = {
     canSave: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.bool,
     cancelFileUpload: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.func,
@@ -36018,7 +33804,6 @@ const SBFileUploaderHOC = function SBFileUploaderHOC(WrappedComponent) {
     }),
     onSetFileHandle: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.func
   };
-
   const mapStateToProps = (state, ownProps) => {
     const loadingState = state.scratchGui.projectState.loadingState;
     const user = state.session && state.session.session && state.session.session.user;
@@ -36032,7 +33817,6 @@ const SBFileUploaderHOC = function SBFileUploaderHOC(WrappedComponent) {
       vm: state.scratchGui.vm
     };
   };
-
   const mapDispatchToProps = (dispatch, ownProps) => ({
     cancelFileUpload: loadingState => dispatch(Object(_reducers_project_state__WEBPACK_IMPORTED_MODULE_9__["onLoadedProject"])(loadingState, false, false)),
     closeFileMenu: () => dispatch(Object(_reducers_menus__WEBPACK_IMPORTED_MODULE_12__["closeFileMenu"])()),
@@ -36051,14 +33835,11 @@ const SBFileUploaderHOC = function SBFileUploaderHOC(WrappedComponent) {
     // noticed by componentDidUpdate()
     requestProjectUpload: loadingState => dispatch(Object(_reducers_project_state__WEBPACK_IMPORTED_MODULE_9__["requestProjectUpload"])(loadingState)),
     onSetFileHandle: fileHandle => dispatch(Object(_reducers_tw__WEBPACK_IMPORTED_MODULE_8__["setFileHandle"])(fileHandle))
-  }); // Allow incoming props to override redux-provided props. Used to mock in tests.
-
-
+  });
+  // Allow incoming props to override redux-provided props. Used to mock in tests.
   const mergeProps = (stateProps, dispatchProps, ownProps) => Object.assign({}, stateProps, dispatchProps, ownProps);
-
   return Object(react_intl__WEBPACK_IMPORTED_MODULE_3__["injectIntl"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["connect"])(mapStateToProps, mapDispatchToProps, mergeProps)(SBFileUploaderComponent));
 };
-
 
 
 /***/ }),
@@ -36079,6 +33860,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_layout_constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../lib/layout-constants */ "./src/lib/layout-constants.js");
 
 const maxScaleParam = typeof URLSearchParams !== 'undefined' && new URLSearchParams(location.search).get('scale');
+
 /**
  * @typedef {object} StageDimensions
  * @property {int} height - the height to be used for the stage in the current situation.
@@ -36097,24 +33879,23 @@ const STAGE_DIMENSION_DEFAULTS = {
   // menuHeightAdjustment = $stage-menu-height
   menuHeightAdjustment: 44
 };
+
 /**
  * Resolve the current GUI and browser state to an actual stage size enum value.
  * @param {STAGE_SIZE_MODES} stageSizeMode - the state of the stage size toggle button.
  * @param {boolean} isFullSize - true if the window is large enough for the large stage at its full size.
  * @return {STAGE_DISPLAY_SIZES} - the stage size enum value we should use in this situation.
  */
-
 const resolveStageSize = (stageSizeMode, isFullSize) => {
   if (stageSizeMode === _lib_layout_constants__WEBPACK_IMPORTED_MODULE_0__["STAGE_SIZE_MODES"].small) {
     return _lib_layout_constants__WEBPACK_IMPORTED_MODULE_0__["STAGE_DISPLAY_SIZES"].small;
   }
-
   if (isFullSize) {
     return _lib_layout_constants__WEBPACK_IMPORTED_MODULE_0__["STAGE_DISPLAY_SIZES"].large;
   }
-
   return _lib_layout_constants__WEBPACK_IMPORTED_MODULE_0__["STAGE_DISPLAY_SIZES"].largeConstrained;
 };
+
 /**
  * Retrieve info used to determine the actual stage size based on the current GUI and browser state.
  * @param {STAGE_DISPLAY_SIZES} stageSize - the current fully-resolved stage size.
@@ -36122,8 +33903,6 @@ const resolveStageSize = (stageSizeMode, isFullSize) => {
  * @param {boolean} isFullScreen - true if full-screen mode is enabled.
  * @return {StageDimensions} - an object describing the dimensions of the stage.
  */
-
-
 const getStageDimensions = (stageSize, customStageSize, isFullScreen) => {
   const stageDimensions = {
     heightDefault: customStageSize.height,
@@ -36132,31 +33911,28 @@ const getStageDimensions = (stageSize, customStageSize, isFullScreen) => {
     width: 0,
     scale: 0
   };
-
   if (isFullScreen) {
     stageDimensions.height = window.innerHeight - STAGE_DIMENSION_DEFAULTS.menuHeightAdjustment - STAGE_DIMENSION_DEFAULTS.fullScreenSpacingBorderAdjustment;
     stageDimensions.width = stageDimensions.height * (customStageSize.width / customStageSize.height);
     const maxWidth = maxScaleParam ? Math.min(window.innerWidth, maxScaleParam * customStageSize.width) : window.innerWidth;
-
     if (stageDimensions.width > maxWidth) {
       stageDimensions.width = maxWidth;
       stageDimensions.height = stageDimensions.width * (customStageSize.height / customStageSize.width);
     }
-
     stageDimensions.scale = stageDimensions.width / stageDimensions.widthDefault;
   } else {
     stageDimensions.scale = _lib_layout_constants__WEBPACK_IMPORTED_MODULE_0__["STAGE_DISPLAY_SCALES"][stageSize];
     stageDimensions.height = stageDimensions.scale * stageDimensions.heightDefault;
     stageDimensions.width = stageDimensions.scale * stageDimensions.widthDefault;
-  } // Round off dimensions to prevent resampling/blurriness
+  }
 
-
+  // Round off dimensions to prevent resampling/blurriness
   stageDimensions.height = Math.round(stageDimensions.height);
   stageDimensions.width = Math.round(stageDimensions.width);
   return stageDimensions;
 };
-
 const getMinWidth = stageSize => _lib_layout_constants__WEBPACK_IMPORTED_MODULE_0__["STAGE_DISPLAY_SCALES"][stageSize] * 480;
+
 /**
  * Take a pair of sizes for the stage (a target height and width and a default height and width),
  * calculate the ratio between them, and return a CSS transform to scale to that ratio.
@@ -36167,8 +33943,6 @@ const getMinWidth = stageSize => _lib_layout_constants__WEBPACK_IMPORTED_MODULE_
  * @param {number} sizeInfo.heightDefault The default height
  * @returns {object} the CSS transform
  */
-
-
 const stageSizeToTransform = _ref => {
   let {
     width,
@@ -36178,18 +33952,15 @@ const stageSizeToTransform = _ref => {
   } = _ref;
   const scaleX = width / widthDefault;
   const scaleY = height / heightDefault;
-
   if (scaleX === 1 && scaleY === 1) {
     // Do not set a transform if the scale is 1 because
     // it messes up `position: fixed` elements like the context menu.
     return;
   }
-
   return {
     transform: "scale(".concat(scaleX, ",").concat(scaleY, ")")
   };
 };
-
 
 
 /***/ }),
@@ -36257,8 +34028,6 @@ function _extends() { _extends = Object.assign ? Object.assign.bind() : function
 
 
 
-
-
 const SortableHOC = function SortableHOC(WrappedComponent) {
   class SortableWrapper extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
     constructor(props) {
@@ -36269,7 +34038,6 @@ const SortableHOC = function SortableHOC(WrappedComponent) {
       this.ref = null;
       this.containerBox = null;
     }
-
     componentWillReceiveProps(newProps) {
       if (newProps.dragInfo.dragging && !this.props.dragInfo.dragging) {
         // Drag just started, snapshot the sorted bounding boxes for sortables.
@@ -36279,15 +34047,12 @@ const SortableHOC = function SortableHOC(WrappedComponent) {
           if (a.top === b.top) return (a.left - b.left) * (this.props.isRtl ? -1 : 1);
           return a.top - b.top;
         });
-
         if (!this.ref) {
           throw new Error('The containerRef must be assigned to the sortable area');
         }
-
         this.containerBox = this.ref.getBoundingClientRect();
       } else if (!newProps.dragInfo.dragging && this.props.dragInfo.dragging) {
         const newIndex = this.getMouseOverIndex();
-
         if (newIndex !== null) {
           this.props.onDrop(Object.assign({}, this.props.dragInfo, {
             newIndex
@@ -36295,16 +34060,13 @@ const SortableHOC = function SortableHOC(WrappedComponent) {
         }
       }
     }
-
     handleAddSortable(node) {
       this.sortableRefs.push(node);
     }
-
     handleRemoveSortable(node) {
       const index = this.sortableRefs.indexOf(node);
       this.sortableRefs = this.sortableRefs.slice(0, index).concat(this.sortableRefs.slice(index + 1));
     }
-
     getOrdering(items, draggingIndex, newIndex) {
       // An "Ordering" is an array of indices, where the position array value corresponds
       // to the position of the item in props.items, and the index of the value
@@ -36315,23 +34077,18 @@ const SortableHOC = function SortableHOC(WrappedComponent) {
       // the `order` property for item N is ordering.indexOf(N).
       // If the user-facing order matches props.items, the ordering is just [0, 1, 2, ...]
       let ordering = Array(this.props.items.length).fill(0).map((_, i) => i);
-
       const isNumber = v => typeof v === 'number' && !isNaN(v);
-
       if (isNumber(draggingIndex) && isNumber(newIndex)) {
         ordering = ordering.slice(0, draggingIndex).concat(ordering.slice(draggingIndex + 1));
         ordering.splice(newIndex, 0, draggingIndex);
       }
-
       return ordering;
     }
-
     getMouseOverIndex() {
       // MouseOverIndex is the index that the current drag wants to place the
       // the dragging object. Obviously only exists if there is a drag (i.e. currentOffset).
       // Return null if outside the container, zero if there are no boxes.
       let mouseOverIndex = null;
-
       if (this.props.dragInfo.currentOffset) {
         const {
           x,
@@ -36343,7 +34100,6 @@ const SortableHOC = function SortableHOC(WrappedComponent) {
           bottom,
           right
         } = this.containerBox;
-
         if (x >= left && x <= right && y >= top && y <= bottom) {
           if (this.boxes.length === 0) {
             mouseOverIndex = 0;
@@ -36352,14 +34108,11 @@ const SortableHOC = function SortableHOC(WrappedComponent) {
           }
         }
       }
-
       return mouseOverIndex;
     }
-
     setRef(el) {
       this.ref = el;
     }
-
     render() {
       const {
         dragInfo: {
@@ -36380,9 +34133,7 @@ const SortableHOC = function SortableHOC(WrappedComponent) {
         onRemoveSortable: this.handleRemoveSortable
       }, this.props));
     }
-
   }
-
   SortableWrapper.propTypes = {
     dragInfo: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.shape({
       currentOffset: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.shape({
@@ -36401,17 +34152,13 @@ const SortableHOC = function SortableHOC(WrappedComponent) {
     onDrop: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
     isRtl: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool
   };
-
   const mapStateToProps = state => ({
     dragInfo: state.scratchGui.assetDrag,
     isRtl: state.locales.isRtl
   });
-
   const mapDispatchToProps = () => ({});
-
   return Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps, mapDispatchToProps)(SortableWrapper);
 };
-
 /* harmony default export */ __webpack_exports__["default"] = (SortableHOC);
 
 /***/ }),
@@ -36432,61 +34179,53 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /**
  * Wrapper for ScratchStorage which adds default web sources.
  * @todo make this more configurable
  */
-
 class Storage extends scratch_storage__WEBPACK_IMPORTED_MODULE_0___default.a {
   constructor() {
     super();
     this.cacheDefaultProject();
   }
-
   addOfficialScratchWebStores() {
     this.addWebStore([this.AssetType.Project], this.getProjectGetConfig.bind(this), this.getProjectCreateConfig.bind(this), this.getProjectUpdateConfig.bind(this));
-    this.addWebStore([this.AssetType.ImageVector, this.AssetType.ImageBitmap, this.AssetType.Sound], this.getAssetGetConfig.bind(this), // We set both the create and update configs to the same method because
+    this.addWebStore([this.AssetType.ImageVector, this.AssetType.ImageBitmap, this.AssetType.Sound], this.getAssetGetConfig.bind(this),
+    // We set both the create and update configs to the same method because
     // storage assumes it should update if there is an assetId, but the
     // asset store uses the assetId as part of the create URI.
     this.getAssetCreateConfig.bind(this), this.getAssetCreateConfig.bind(this));
   }
-
   setProjectHost(projectHost) {
     this.projectHost = projectHost;
   }
-
   setProjectToken(projectToken) {
     this.projectToken = projectToken;
   }
-
   getProjectGetConfig(projectAsset) {
     const path = "".concat(this.projectHost, "/").concat(projectAsset.assetId);
     const qs = this.projectToken ? "?token=".concat(this.projectToken) : '';
     return path + qs;
   }
-
   getProjectCreateConfig() {
     return {
       url: "".concat(this.projectHost, "/"),
       withCredentials: true
     };
   }
-
   getProjectUpdateConfig(projectAsset) {
     return {
       url: "".concat(this.projectHost, "/").concat(projectAsset.assetId),
       withCredentials: true
     };
   }
-
   setAssetHost(assetHost) {
     this.assetHost = assetHost;
   }
-
   getAssetGetConfig(asset) {
     return "".concat(this.assetHost, "/internalapi/asset/").concat(asset.assetId, ".").concat(asset.dataFormat, "/get/");
   }
-
   getAssetCreateConfig(asset) {
     return {
       // There is no such thing as updating assets, but storage assumes it
@@ -36498,21 +34237,17 @@ class Storage extends scratch_storage__WEBPACK_IMPORTED_MODULE_0___default.a {
       withCredentials: true
     };
   }
-
   setTranslatorFunction(translator) {
     this.translator = translator;
     this.cacheDefaultProject();
   }
-
   cacheDefaultProject() {
     const defaultProjectAssets = Object(_default_project__WEBPACK_IMPORTED_MODULE_1__["default"])(this.translator);
     defaultProjectAssets.forEach(asset => this.builtinHelper._store(this.AssetType[asset.assetType], this.DataFormat[asset.dataFormat], asset.data, asset.id));
     const missingProjectAssets = Object(_tw_missing_project__WEBPACK_IMPORTED_MODULE_2__["default"])(this.translator);
     missingProjectAssets.forEach(asset => this.builtinHelper._store(this.AssetType[asset.assetType], this.DataFormat[asset.dataFormat], asset.data, asset.id));
   }
-
 }
-
 const storage = new Storage();
 /* harmony default export */ __webpack_exports__["default"] = (storage);
 
@@ -36536,6 +34271,7 @@ __webpack_require__.r(__webpack_exports__);
  * @returns {boolean} False if the platform is definitely not supported.
  */
 const supportedBrowser = () => true;
+
 /**
  * Helper function to determine if the browser meets the minimum recommended version
  * @returns {boolean} False if the browser isn't a recommended browser, or doesn't
@@ -36544,9 +34280,7 @@ const supportedBrowser = () => true;
  *   always returns false
  */
 
-
 const recommendedBrowser = () => true;
-
 
 
 /***/ }),
@@ -36563,6 +34297,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
+
 /* Higher Order Component to throttle updates to specific props.
  * Why? Because certain prop updates are expensive, and need to be throttled.
  * This allows renders when other properties change, and will use the last
@@ -36571,7 +34306,6 @@ __webpack_require__.r(__webpack_exports__);
  * @param {string} throttleTime the minimum time between updates to that specific property.
  * @returns {function} a function that accepts a component to wrap.
  */
-
 const ThrottledPropertyHOC = function ThrottledPropertyHOC(propName, throttleTime) {
   /**
    * The function to be called with a React component to wrap it.
@@ -36585,29 +34319,25 @@ const ThrottledPropertyHOC = function ThrottledPropertyHOC(propName, throttleTim
           if (property !== propName && this.props[property] !== nextProps[property]) {
             return true; // Always update if another property has changed
           }
-        } // If only that prop has changed, allow update to go to render based
+        }
+
+        // If only that prop has changed, allow update to go to render based
         // on _lastRenderedTime and _lastRenderTime are updated in render
-
-
         if (nextProps[propName] !== this._lastRenderedValue && Date.now() - this._lastRenderTime > throttleTime) {
           return true; // Allow this update to go to render
         }
 
         return false;
       }
-
       render() {
         this._lastRenderTime = Date.now();
         this._lastRenderedValue = this.props[propName];
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(WrappedComponent, this.props);
       }
-
     }
-
     return ThrottledPropertyWrapper;
   };
 };
-
 /* harmony default export */ __webpack_exports__["default"] = (ThrottledPropertyHOC);
 
 /***/ }),
@@ -36631,11 +34361,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _reducers_project_state__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../reducers/project-state */ "./src/reducers/project-state.js");
 /* harmony import */ var _reducers_project_title__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../reducers/project-title */ "./src/reducers/project-title.js");
 const _excluded = ["intl", "isAnyCreatingNewState", "isShowingWithoutId", "onChangedProjectTitle", "onUpdateProjectTitle", "projectTitle", "reduxProjectTitle"];
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
 
 
 
@@ -36648,72 +34375,62 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_3__["defineMessages"
     "defaultMessage": "Project"
   }
 });
+
 /* Higher Order Component to get and set the project title
  * @param {React.Component} WrappedComponent component to receive project title related props
  * @returns {React.Component} component with project loading behavior
  */
-
 const TitledHOC = function TitledHOC(WrappedComponent) {
   class TitledComponent extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
     componentDidMount() {
       this.handleReceivedProjectTitle(this.props.projectTitle);
     }
-
     componentDidUpdate(prevProps) {
       if (this.props.projectTitle !== prevProps.projectTitle) {
         this.handleReceivedProjectTitle(this.props.projectTitle);
-      } // if project is a new default project, and has loaded,
-
-
+      }
+      // if project is a new default project, and has loaded,
       if (this.props.isShowingWithoutId && prevProps.isAnyCreatingNewState) {
         // reset title to default
         const defaultProjectTitle = this.handleReceivedProjectTitle();
         this.props.onUpdateProjectTitle(defaultProjectTitle, true);
-      } // if the projectTitle hasn't changed, but the reduxProjectTitle
+      }
+      // if the projectTitle hasn't changed, but the reduxProjectTitle
       // HAS changed, we need to report that change to the projectTitle's owner
-
-
       if (this.props.reduxProjectTitle !== prevProps.reduxProjectTitle && this.props.reduxProjectTitle !== this.props.projectTitle) {
         const defaultProjectTitle = this.props.intl.formatMessage(messages.defaultProjectTitle);
         this.props.onUpdateProjectTitle(this.props.reduxProjectTitle, this.props.reduxProjectTitle === defaultProjectTitle);
       }
     }
-
     handleReceivedProjectTitle(requestedTitle) {
       let newTitle = requestedTitle;
       let isDefault = false;
-
       if (newTitle === null || typeof newTitle === 'undefined') {
         newTitle = this.props.intl.formatMessage(messages.defaultProjectTitle);
         isDefault = true;
       }
-
       this.props.onChangedProjectTitle(newTitle, isDefault);
       return newTitle;
     }
-
     render() {
       const _this$props = this.props,
-            {
-        /* eslint-disable no-unused-vars */
-        intl,
-        isAnyCreatingNewState,
-        isShowingWithoutId,
-        onChangedProjectTitle,
-        // for children, we replace onUpdateProjectTitle with our own
-        onUpdateProjectTitle,
-        // we don't pass projectTitle prop to children -- they must use
-        // redux value
-        projectTitle,
-        reduxProjectTitle
-      } = _this$props,
-            componentProps = _objectWithoutProperties(_this$props, _excluded);
-
+        {
+          /* eslint-disable no-unused-vars */
+          intl,
+          isAnyCreatingNewState,
+          isShowingWithoutId,
+          onChangedProjectTitle,
+          // for children, we replace onUpdateProjectTitle with our own
+          onUpdateProjectTitle,
+          // we don't pass projectTitle prop to children -- they must use
+          // redux value
+          projectTitle,
+          reduxProjectTitle
+        } = _this$props,
+        componentProps = _objectWithoutProperties(_this$props, _excluded);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(WrappedComponent, componentProps);
     }
-
   }
-
   TitledComponent.propTypes = {
     intl: react_intl__WEBPACK_IMPORTED_MODULE_3__["intlShape"],
     isAnyCreatingNewState: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.bool,
@@ -36726,7 +34443,6 @@ const TitledHOC = function TitledHOC(WrappedComponent) {
   TitledComponent.defaultProps = {
     onUpdateProjectTitle: () => {}
   };
-
   const mapStateToProps = state => {
     const loadingState = state.scratchGui.projectState.loadingState;
     return {
@@ -36735,14 +34451,11 @@ const TitledHOC = function TitledHOC(WrappedComponent) {
       reduxProjectTitle: state.scratchGui.projectTitle
     };
   };
-
   const mapDispatchToProps = dispatch => ({
     onChangedProjectTitle: title => dispatch(Object(_reducers_project_title__WEBPACK_IMPORTED_MODULE_5__["setProjectTitle"])(title))
   });
-
   return Object(react_intl__WEBPACK_IMPORTED_MODULE_3__["injectIntl"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, mapDispatchToProps)(TitledComponent));
 };
-
 
 
 /***/ }),
@@ -36769,13 +34482,11 @@ const getEventXY = e => {
       y: e.changedTouches[0].clientY
     };
   }
-
   return {
     x: e.clientX,
     y: e.clientY
   };
 };
-
 
 
 /***/ }),
@@ -36798,6 +34509,8 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 
+
+
 /**
  * Get the tutorial id from the given numerical id (representing the
  * url id of the tutorial).
@@ -36805,7 +34518,6 @@ __webpack_require__.r(__webpack_exports__);
  * @returns {string} The string id for the tutorial, or null if the URL ID
  * was not found.
  */
-
 const getDeckIdFromUrlId = urlId => {
   for (const deckId in _libraries_decks_index_jsx__WEBPACK_IMPORTED_MODULE_0__["default"]) {
     if (_libraries_decks_index_jsx__WEBPACK_IMPORTED_MODULE_0__["default"][deckId].urlId === urlId) {
@@ -36817,9 +34529,9 @@ const getDeckIdFromUrlId = urlId => {
       return deckId;
     }
   }
-
   return null;
 };
+
 /**
  * Check if there's a tutorial id provided as a query parameter in the URL.
  * Return the corresponding tutorial id or null if not found.
@@ -36827,15 +34539,12 @@ const getDeckIdFromUrlId = urlId => {
  * @return {string} The ID of the requested tutorial or null if no tutorial was
  * requested or found.
  */
-
-
 const detectTutorialId = queryParams => {
   const tutorialID = Array.isArray(queryParams.tutorial) ? queryParams.tutorial[0] : queryParams.tutorial;
   if (typeof tutorialID === 'undefined') return null;
   if (tutorialID === 'all') return tutorialID;
   return getDeckIdFromUrlId(tutorialID);
 };
-
 
 
 /***/ }),
@@ -36852,8 +34561,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAXIMUM_CLOUD_VARIABLES", function() { return MAXIMUM_CLOUD_VARIABLES; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SCRATCH_MAX_CLOUD_VARIABLES", function() { return SCRATCH_MAX_CLOUD_VARIABLES; });
 // The maximum number of cloudv ariables that can be created in this scratch-gui instance.
-const MAXIMUM_CLOUD_VARIABLES = Infinity; // The maximum number of cloud variables that can be created in a vanilla Scratch.
+const MAXIMUM_CLOUD_VARIABLES = Infinity;
 
+// The maximum number of cloud variables that can be created in a vanilla Scratch.
 const SCRATCH_MAX_CLOUD_VARIABLES = 10;
 
 /***/ }),
@@ -36879,7 +34589,6 @@ const isRendererSupported = () => {
   if (_isRendererSupported === null) {
     _isRendererSupported = scratch_render__WEBPACK_IMPORTED_MODULE_0___default.a.isSupported();
   }
-
   return _isRendererSupported;
 };
 let _canConstructNewFunctions = null;
@@ -36894,7 +34603,6 @@ const canConstructNewFunctions = () => {
       _canConstructNewFunctions = true;
     }
   }
-
   return _canConstructNewFunctions;
 };
 const isAudioContextSupported = () => !!(window.AudioContext || window.webkitAudioContext);
@@ -36912,7 +34620,6 @@ const isBrowserSupported = () => canConstructNewFunctions() && isAudioContextSup
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 const available = () => !!window.showSaveFilePicker;
-
 const showSaveFilePicker = fileName => window.showSaveFilePicker({
   suggestedName: fileName,
   types: [{
@@ -36923,7 +34630,6 @@ const showSaveFilePicker = fileName => window.showSaveFilePicker({
   }],
   excludeAcceptAllOption: true
 });
-
 const showOpenFilePicker = async () => {
   const [handle] = await window.showOpenFilePicker({
     multiple: false,
@@ -36936,17 +34642,13 @@ const showOpenFilePicker = async () => {
   });
   return handle;
 };
-
 const createWritable = handle => handle.createWritable();
-
 const closeWritable = async writable => {
   await writable.close();
 };
-
 const writeToWritable = async (writable, content) => {
   await writable.write(content);
 };
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   available,
   showOpenFilePicker,
@@ -36972,28 +34674,24 @@ __webpack_require__.r(__webpack_exports__);
  * @returns {boolean} true if the fullscreen API is available
  */
 const available = () => document.fullscreenEnabled || document.webkitFullscreenEnabled;
+
 /**
  * Return whether fullscreen is currently enabled.
  * @returns {boolean} true if in fullscreen
  */
-
-
 const enabled = () => {
   if (typeof document.fullscreenElement !== 'undefined') {
     return document.fullscreenElement !== null;
   }
-
   if (typeof document.webkitFullscreenElement !== 'undefined') {
     return document.webkitFullscreenElement !== null;
   }
-
   return false;
 };
+
 /**
  * Request entering the document into fullscreen mode.
  */
-
-
 const request = () => {
   if (document.body.requestFullscreen) {
     document.body.requestFullscreen();
@@ -37001,11 +34699,10 @@ const request = () => {
     document.body.webkitRequestFullscreen();
   }
 };
+
 /**
  * Exit fullscreen mode.
  */
-
-
 const exit = () => {
   if (document.exitFullscreen) {
     document.exitFullscreen();
@@ -37013,7 +34710,6 @@ const exit = () => {
     document.webkitExitFullscreen();
   }
 };
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   available,
   enabled,
@@ -37042,12 +34738,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _reducers_tw__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../reducers/tw */ "./src/reducers/tw.js");
 const _excluded = ["onSetDimensions", "isFullScreen"];
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
 
 
 
@@ -37059,51 +34751,40 @@ const TWFullScreenResizerHOC = function TWFullScreenResizerHOC(WrappedComponent)
       super(props);
       lodash_bindall__WEBPACK_IMPORTED_MODULE_0___default()(this, ['handleResize']);
     }
-
     componentDidMount() {
       window.addEventListener('resize', this.handleResize);
     }
-
     componentWillUnmount() {
       window.removeEventListener('resize', this.handleResize);
     }
-
     handleResize() {
       if (this.props.isFullScreen) {
         this.props.onSetDimensions([window.innerWidth, window.innerHeight]);
       }
     }
-
     render() {
       const _this$props = this.props,
-            {
-        /* eslint-disable no-unused-vars */
-        onSetDimensions,
-        isFullScreen
-      } = _this$props,
-            props = _objectWithoutProperties(_this$props, _excluded);
-
+        {
+          /* eslint-disable no-unused-vars */
+          onSetDimensions,
+          isFullScreen
+        } = _this$props,
+        props = _objectWithoutProperties(_this$props, _excluded);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(WrappedComponent, props);
     }
-
   }
-
   FullScreenResizer.propTypes = {
     isFullScreen: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.bool,
     onSetDimensions: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.func
   };
-
   const mapStateToProps = state => ({
     isFullScreen: state.scratchGui.mode.isFullScreen || state.scratchGui.mode.isEmbedded
   });
-
   const mapDispatchToProps = dispatch => ({
     onSetDimensions: dimensions => dispatch(Object(_reducers_tw__WEBPACK_IMPORTED_MODULE_4__["setDimensions"])(dimensions))
   });
-
   return Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps, mapDispatchToProps)(FullScreenResizer);
 };
-
 
 
 /***/ }),
@@ -37118,28 +34799,22 @@ const TWFullScreenResizerHOC = function TWFullScreenResizerHOC(WrappedComponent)
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 let _ScratchBlocks = null;
-
 const isLoaded = () => !!_ScratchBlocks;
-
 const get = () => {
   if (!isLoaded()) {
     throw new Error('scratch-blocks is not loaded yet');
   }
-
   return _ScratchBlocks;
 };
-
 const load = () => {
   if (_ScratchBlocks) {
     return Promise.resolve();
   }
-
   return __webpack_require__.e(/*! import() | sb */ "sb").then(__webpack_require__.t.bind(null, /*! scratch-blocks */ "./node_modules/scratch-blocks/shim/vertical.js", 7)).then(m => {
     _ScratchBlocks = m.default;
     return _ScratchBlocks;
   });
 };
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   get,
   isLoaded,
@@ -37168,7 +34843,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const LoadScratchBlocksHOC = function LoadScratchBlocksHOC(WrappedComponent) {
   class LoadScratchBlocks extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
     constructor(props) {
@@ -37177,7 +34851,6 @@ const LoadScratchBlocksHOC = function LoadScratchBlocksHOC(WrappedComponent) {
         loaded: _tw_lazy_scratch_blocks__WEBPACK_IMPORTED_MODULE_2__["default"].isLoaded(),
         error: null
       };
-
       if (!this.state.loaded) {
         _tw_lazy_scratch_blocks__WEBPACK_IMPORTED_MODULE_2__["default"].load().then(() => {
           this.setState({
@@ -37191,11 +34864,9 @@ const LoadScratchBlocksHOC = function LoadScratchBlocksHOC(WrappedComponent) {
         });
       }
     }
-
     handleReload() {
       location.reload();
     }
-
     render() {
       if (this.state.error !== null) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_crash_message_crash_message_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -37203,19 +34874,14 @@ const LoadScratchBlocksHOC = function LoadScratchBlocksHOC(WrappedComponent) {
           onReload: this.handleReload
         });
       }
-
       if (!this.state.loaded) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_tw_loading_spinner_spinner_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], null);
       }
-
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(WrappedComponent, this.props);
     }
-
   }
-
   return LoadScratchBlocks;
 };
-
 /* harmony default export */ __webpack_exports__["default"] = (LoadScratchBlocksHOC);
 
 /***/ }),
@@ -37234,47 +34900,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var js_md5__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(js_md5__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _backpack_sound_payload__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./backpack/sound-payload */ "./src/lib/backpack/sound-payload.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
- // Special constants -- do not change without care.
 
+// Special constants -- do not change without care.
 const DATABASE_NAME = 'TW_Backpack';
 const DATABASE_VERSION = 1;
 const STORE_NAME = 'backpack';
-
 const base64ToArrayBuffer = base64 => {
   const binaryString = atob(base64);
   const len = binaryString.length;
   const array = new Uint8Array(len);
-
   for (let i = 0; i < len; i++) {
     array[i] = binaryString.charCodeAt(i);
   }
-
   return array.buffer;
 };
-
 const arrayBufferToBase64 = buffer => {
   let binary = '';
   const bytes = new Uint8Array(buffer);
   const len = bytes.byteLength;
-
   for (let i = 0; i < len; i++) {
     binary += String.fromCharCode(bytes[i]);
   }
-
   return btoa(binary);
 };
-
 const idbItemToBackpackItem = item => {
   // convert id to string
   item.id = "".concat(item.id);
-
   if (item.type === 'sound') {
     // For sounds, use the local thumbnail instead of what was stored in the backpack.
     // The thumbnail was updated and it doesn't make sense for already backpacked sounds to
@@ -37284,9 +34940,7 @@ const idbItemToBackpackItem = item => {
     // Thumbnail could be any image format. The browser will figure out which format it is.
     item.thumbnailUrl = "data:;base64,".concat(arrayBufferToBase64(item.thumbnailData));
   }
-
   let assetType;
-
   if (item.type === 'script') {
     item.bodyUrl = "data:application/json;base64,".concat(arrayBufferToBase64(item.bodyData));
   } else if (item.type === 'sprite') {
@@ -37300,34 +34954,26 @@ const idbItemToBackpackItem = item => {
   } else if (item.type === 'sound') {
     assetType = _storage__WEBPACK_IMPORTED_MODULE_0__["default"].AssetType.Sound;
   }
-
   if (assetType) {
     const extension = assetType.runtimeFormat;
     const itemMD5 = item.bodyMD5;
     const md5ext = "".concat(itemMD5, ".").concat(extension);
     item.body = md5ext;
-
     _storage__WEBPACK_IMPORTED_MODULE_0__["default"].builtinHelper._store(assetType, extension, new Uint8Array(item.bodyData), itemMD5);
   }
-
   return item;
 };
-
 let _db;
-
 const openDB = () => new Promise((resolve, reject) => {
   if (_db) {
     resolve(_db);
     return;
   }
-
   if (!window.indexedDB) {
     reject(new Error('indexedDB is not supported'));
     return;
   }
-
   const request = indexedDB.open(DATABASE_NAME, DATABASE_VERSION);
-
   request.onupgradeneeded = e => {
     const db = e.target.result;
     db.createObjectStore(STORE_NAME, {
@@ -37335,17 +34981,14 @@ const openDB = () => new Promise((resolve, reject) => {
       autoIncrement: true
     });
   };
-
   request.onsuccess = e => {
     _db = e.target.result;
     resolve(_db);
   };
-
   request.onerror = () => {
     reject(new Error("DB error: ".concat(request.error)));
   };
 });
-
 const getBackpackContents = async _ref => {
   let {
     limit,
@@ -37354,28 +34997,22 @@ const getBackpackContents = async _ref => {
   const db = await openDB();
   return new Promise((resolve, reject) => {
     const transaction = db.transaction(STORE_NAME, 'readonly');
-
     transaction.onerror = () => {
       reject(new Error("Transaction error: ".concat(transaction.error)));
     };
-
     const store = transaction.objectStore(STORE_NAME);
     const items = [];
     const request = store.openCursor(null, 'prev');
     let first = true;
-
     request.onsuccess = e => {
       const cursor = e.target.result;
-
       if (first) {
         first = false;
-
         if (cursor && offset !== 0) {
           cursor.advance(offset);
           return;
         }
       }
-
       if (cursor && items.length < limit) {
         items.push(idbItemToBackpackItem(cursor.value));
         cursor.continue();
@@ -37385,7 +35022,6 @@ const getBackpackContents = async _ref => {
     };
   });
 };
-
 const saveBackpackObject = async _ref2 => {
   let {
     type,
@@ -37397,11 +35033,9 @@ const saveBackpackObject = async _ref2 => {
   const db = await openDB();
   return new Promise((resolve, reject) => {
     const transaction = db.transaction(STORE_NAME, 'readwrite');
-
     transaction.onerror = () => {
       reject(new Error("Transaction error: ".concat(transaction.error)));
     };
-
     const store = transaction.objectStore(STORE_NAME);
     const bodyData = base64ToArrayBuffer(body);
     const bodyMD5 = js_md5__WEBPACK_IMPORTED_MODULE_1___default()(bodyData);
@@ -37414,14 +35048,12 @@ const saveBackpackObject = async _ref2 => {
       thumbnailData: base64ToArrayBuffer(thumbnail)
     };
     const putRequest = store.put(idbItem);
-
     putRequest.onsuccess = () => {
       idbItem.id = putRequest.result;
       resolve(idbItemToBackpackItem(idbItem));
     };
   });
 };
-
 const deleteBackpackObject = async _ref3 => {
   let {
     id
@@ -37430,21 +35062,17 @@ const deleteBackpackObject = async _ref3 => {
   const db = await openDB();
   return new Promise((resolve, reject) => {
     const transaction = db.transaction(STORE_NAME, 'readwrite');
-
     transaction.onerror = () => {
       reject(new Error("Transaction error: ".concat(transaction.error)));
     };
-
-    const store = transaction.objectStore(STORE_NAME); // Convert string IDs to number IDs
-
+    const store = transaction.objectStore(STORE_NAME);
+    // Convert string IDs to number IDs
     const deleteRequest = store.delete(id);
-
     deleteRequest.onsuccess = () => {
       resolve();
     };
   });
 };
-
 const updateBackpackObject = async _ref4 => {
   let {
     id,
@@ -37454,28 +35082,22 @@ const updateBackpackObject = async _ref4 => {
   const db = await openDB();
   return new Promise((resolve, reject) => {
     const transaction = db.transaction(STORE_NAME, 'readwrite');
-
     transaction.onerror = () => {
       reject(new Error("Transaction error: ".concat(transaction.error)));
     };
-
     const store = transaction.objectStore(STORE_NAME);
     const getRequest = store.get(id);
-
     getRequest.onsuccess = () => {
       const newItem = _objectSpread(_objectSpread({}, getRequest.result), {}, {
         name: name
       });
-
       const putRequest = store.put(newItem);
-
       putRequest.onsuccess = () => {
         resolve(idbItemToBackpackItem(newItem));
       };
     };
   });
 };
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   getBackpackContents,
   saveBackpackObject,
@@ -37506,7 +35128,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const MISSING_PROJECT_ID = '__missing__';
-
 const missingProject = () => {
   const encoder = new _tw_text_encoder__WEBPACK_IMPORTED_MODULE_2__["TextEncoder"]();
   const projectJson = Object(_project_data__WEBPACK_IMPORTED_MODULE_1__["default"])();
@@ -37522,7 +35143,6 @@ const missingProject = () => {
     data: encoder.encode(_raw_loader_c17163c6954e9422ac2405de4c9d68c8_svg__WEBPACK_IMPORTED_MODULE_0___default.a)
   }];
 };
-
 /* harmony default export */ __webpack_exports__["default"] = (missingProject);
 
 /***/ }),
@@ -37567,7 +35187,6 @@ const projectData = () => ({
     agent: ''
   }
 });
-
 /* harmony default export */ __webpack_exports__["default"] = (projectData);
 
 /***/ }),
@@ -37586,41 +35205,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setSearchParams", function() { return setSearchParams; });
 /* harmony import */ var _reducers_project_state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../reducers/project-state */ "./src/reducers/project-state.js");
 
-
 const setProjectId = (dispatch, projectId) => {
   if (false) {}
-
   dispatch(Object(_reducers_project_state__WEBPACK_IMPORTED_MODULE_0__["setProjectId"])(projectId));
 };
-
 const searchParamsToString = params => {
   let newSearch = params.toString();
-
   if (newSearch.length > 0) {
     // Add leading question mark
     newSearch = "?".concat(newSearch);
-    newSearch = newSearch // Remove '=' from empty values
+    newSearch = newSearch
+    // Remove '=' from empty values
     // eslint-disable-next-line no-div-regex
-    .replace(/=(?=$|&)/g, '') // Decode / and : (common in project_url setting)
+    .replace(/=(?=$|&)/g, '')
+    // Decode / and : (common in project_url setting)
     .replace(/%2F/g, '/').replace(/%3A/g, ':');
   }
-
   return newSearch;
 };
+
 /**
  * Change URL search params to something else in place
  * @param {URLSearchParams} params New URLSearchParams
  */
-
-
 const setSearchParams = params => {
   const newSearch = searchParamsToString(params);
-
   if (location.search !== newSearch) {
     history.replaceState(null, null, "".concat(location.pathname).concat(newSearch).concat(location.hash));
   }
 };
-
 
 
 /***/ }),
@@ -37636,49 +35249,42 @@ const setSearchParams = params => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jszip__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jszip */ "./node_modules/jszip/dist/jszip.min.js");
 /* harmony import */ var jszip__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jszip__WEBPACK_IMPORTED_MODULE_0__);
- // Special constants -- do not change without care.
 
+
+// Special constants -- do not change without care.
 const DATABASE_NAME = 'TW_AutoSave';
 const DATABASE_VERSION = 1;
 const STORE_NAME = 'project';
-
 let _db;
-
 const openDB = () => {
   if (_db) {
     return _db;
   }
-
   if (!window.indexedDB) {
     throw new Error('indexedDB is not supported');
   }
-
   return new Promise((resolve, reject) => {
     const request = indexedDB.open(DATABASE_NAME, DATABASE_VERSION);
-
     request.onupgradeneeded = e => {
       const db = e.target.result;
       db.createObjectStore(STORE_NAME, {
         keyPath: 'file'
       });
     };
-
     request.onsuccess = e => {
       _db = e.target.result;
       resolve(_db);
     };
-
     request.onerror = () => {
       reject(new Error("DB error: ".concat(request.error)));
     };
   });
 };
+
 /**
  * Save a project to IDB.
  * @param {VirtualMachine} vm Scratch VM
  */
-
-
 const save = async vm => {
   // To save a project, we will get all the assets inside it and save them to IDB.
   // We will not actually generate a zip as that is slow.
@@ -37686,28 +35292,23 @@ const save = async vm => {
   const db = await openDB();
   return new Promise((resolve, reject) => {
     const transaction = db.transaction(STORE_NAME, 'readwrite');
-
     transaction.onerror = () => {
       reject(new Error("Save transaction error: ".concat(transaction.error)));
-    }; // Remove unused assets and don't waste time updating assets that are already in IDB.
+    };
 
-
+    // Remove unused assets and don't waste time updating assets that are already in IDB.
     const exists = [];
     const projectStore = transaction.objectStore(STORE_NAME);
     const request = projectStore.openCursor();
-
     request.onsuccess = e => {
       const cursor = e.target.result;
-
       if (cursor) {
         const key = cursor.key;
-
         if (files[key]) {
           exists.push(key);
         } else {
           cursor.delete();
         }
-
         cursor.continue();
       } else {
         // Cursor is done, save all new files and project.json to IDB.
@@ -37719,46 +35320,39 @@ const save = async vm => {
             });
           }
         }
-
         resolve();
       }
     };
   });
 };
+
 /**
  * Load a project from IDB.
  * @returns {Promise<ArrayBuffer>} sb3 project to load.
  */
-
-
 const load = async () => {
   // To load a project, read the files from IDB and generate a .sb3
   const db = await openDB();
   return new Promise((resolve, reject) => {
     const transaction = db.transaction(STORE_NAME, 'readonly');
-
     transaction.onerror = () => {
       reject(new Error("Load transaction error: ".concat(transaction.error)));
     };
-
     const zip = new jszip__WEBPACK_IMPORTED_MODULE_0___default.a();
     const projectStore = transaction.objectStore(STORE_NAME);
     const request = projectStore.openCursor();
-
     request.onsuccess = e => {
       const cursor = e.target.result;
-
       if (cursor) {
         zip.file(cursor.key, cursor.value.data);
         cursor.continue();
       } else {
         // Cursor is done, all files added to zip.
         const hasJSON = zip.file('project.json');
-
         if (hasJSON) {
           resolve(zip.generateAsync({
-            type: 'arraybuffer' // No reason to compress this zip.
-
+            type: 'arraybuffer'
+            // No reason to compress this zip.
           }));
         } else {
           reject(new Error('Could not find project'));
@@ -37767,7 +35361,6 @@ const load = async () => {
     };
   });
 };
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   save,
   load
@@ -37790,31 +35383,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 let realScratchPaint;
-
 const getRealScratchPaint = () => {
   if (!realScratchPaint) {
     realScratchPaint = __webpack_require__(/*! scratch-paint */ "./node_modules/scratch-paint/src/index.js");
   }
-
   return realScratchPaint;
 };
-
 const PaintEditor = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(getRealScratchPaint().default, props);
-
 let hasSetupReducer = false;
-
 const ScratchPaintReducer = (state, action) => {
   if (!hasSetupReducer && action.type === 'scratch-gui/navigation/ACTIVATE_TAB' && action.activeTabIndex === 1) {
     hasSetupReducer = true;
   }
-
   if (hasSetupReducer) {
     return getRealScratchPaint().ScratchPaintReducer(state, action);
   }
-
   return {};
 };
-
 
 
 /***/ }),
@@ -37904,22 +35489,15 @@ module.exports = __webpack_require__.p + "static/assets/64bcfe1f13fce38e2ea26280
 /***/ (function(module, exports, __webpack_require__) {
 
 /* eslint-disable import/no-commonjs */
+
 const SansSerif = __webpack_require__(/*! ./NotoSans-Medium.ttf */ "./src/lib/tw-scratch-render-fonts/NotoSans-Medium.ttf");
-
 const Serif = __webpack_require__(/*! ./SourceSerifPro-Regular.otf */ "./src/lib/tw-scratch-render-fonts/SourceSerifPro-Regular.otf");
-
 const Handwriting = __webpack_require__(/*! ./handlee-regular.ttf */ "./src/lib/tw-scratch-render-fonts/handlee-regular.ttf");
-
 const Marker = __webpack_require__(/*! ./Knewave.ttf */ "./src/lib/tw-scratch-render-fonts/Knewave.ttf");
-
 const Curly = __webpack_require__(/*! ./Griffy-Regular.ttf */ "./src/lib/tw-scratch-render-fonts/Griffy-Regular.ttf");
-
 const Pixel = __webpack_require__(/*! ./Grand9K-Pixel.ttf */ "./src/lib/tw-scratch-render-fonts/Grand9K-Pixel.ttf");
-
 const Scratch = __webpack_require__(/*! ./Scratch.ttf */ "./src/lib/tw-scratch-render-fonts/Scratch.ttf");
-
 const log = __webpack_require__(/*! ../log */ "./src/lib/log.js").default;
-
 const fontSource = {
   'Sans Serif': SansSerif,
   'Serif': Serif,
@@ -37930,24 +35508,18 @@ const fontSource = {
   'Scratch': Scratch
 };
 const fontData = {};
-
 const fetchFonts = () => {
   const promises = [];
-
   for (const fontName of Object.keys(fontSource)) {
     promises.push(fetch(fontSource[fontName]).then(res => {
       if (!res.ok) {
         throw new Error("Cannot load font: ".concat(fontName, " (invalid HTTP response)"));
       }
-
       return res.blob();
     }).then(blob => new Promise((resolve, reject) => {
       const fr = new FileReader();
-
       fr.onload = () => resolve(fr.result);
-
       fr.onerror = () => reject(new Error("Cannot load font: ".concat(fontName, " (could not read)")));
-
       fr.readAsDataURL(blob);
     })).then(url => {
       fontData[fontName] = "@font-face{font-family:\"".concat(fontName, "\";src:url(\"").concat(url, "\");}");
@@ -37955,53 +35527,42 @@ const fetchFonts = () => {
       log.error(err);
     }));
   }
-
   return Promise.all(promises);
 };
-
 const addFontsToDocument = () => {
   if (document.getElementById('scratch-font-styles')) {
     return;
   }
-
   let css = '';
-
   for (const fontName of Object.keys(fontSource)) {
     const fontCSS = fontData[fontName];
-
     if (fontCSS) {
       css += fontCSS;
     }
   }
-
   const documentStyleTag = document.createElement('style');
   documentStyleTag.id = 'scratch-font-styles';
   documentStyleTag.textContent = css;
   document.body.insertBefore(documentStyleTag, document.body.firstChild);
 };
-
 const waitForFontsToLoad = () => {
   const promises = [];
-
   if (document.fonts && document.fonts.load) {
     for (const fontName in fontData) {
       promises.push(document.fonts.load("12px ".concat(fontName)));
     }
   }
-
   return Promise.all(promises);
 };
-
 const loadFonts = () => fetchFonts().then(() => {
   addFontsToDocument();
   return waitForFontsToLoad();
 }).catch(err => {
   log.error(err);
 });
+const getFonts = () => fontData;
 
-const getFonts = () => fontData; // We have to use legacy module.exports as some parts of Scratch expect require('scratch-render-font') to be a function
-
-
+// We have to use legacy module.exports as some parts of Scratch expect require('scratch-render-font') to be a function
 module.exports = getFonts;
 module.exports.loadFonts = loadFonts;
 module.exports.FONTS = fontData;
@@ -38036,9 +35597,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tw_navigation_utils__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./tw-navigation-utils */ "./src/lib/tw-navigation-utils.js");
 /* harmony import */ var _reducers_custom_stage_size__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../reducers/custom-stage-size */ "./src/reducers/custom-stage-size.js");
 const _excluded = ["intl", "customStageSize", "isFullScreen", "isPlayerOnly", "isEmbedded", "projectChanged", "compilerOptions", "runtimeOptions", "highQualityPen", "framerate", "interpolation", "turbo", "onSetIsFullScreen", "onSetIsPlayerOnly", "onSetProjectId", "onSetUsername", "reduxProjectId", "routingStyle", "username", "vm"];
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 
@@ -38067,6 +35626,7 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_6__["defineMessages"
   }
 });
 const USERNAME_KEY = 'tw:username';
+
 /**
  * The State Manager is responsible for managing persistent state and the URL.
  */
@@ -38074,24 +35634,22 @@ const USERNAME_KEY = 'tw:username';
 const setLocalStorage = (key, value) => {
   try {
     localStorage.setItem(key, value);
-  } catch (e) {// ignore
+  } catch (e) {
+    // ignore
   }
 };
-
 const getLocalStorage = key => {
   try {
     return localStorage.getItem(key);
-  } catch (e) {// ignore
+  } catch (e) {
+    // ignore
   }
-
   return null;
 };
-
 const readHashProjectId = () => {
   const match = location.hash.match(/#(\d+)/);
   return match === null ? null : match[1];
 };
-
 class Router {
   constructor(_ref) {
     let {
@@ -38103,22 +35661,16 @@ class Router {
     this.onSetIsPlayerOnly = onSetIsPlayerOnly;
     this.onSetIsFullScreen = onSetIsFullScreen;
   }
-
   onhashchange() {}
-
   onpathchange() {}
-
   generateURL() {
     return '';
   }
-
 }
-
 class HashRouter extends Router {
   onhashchange() {
     this.onSetProjectId(readHashProjectId() || _reducers_project_state__WEBPACK_IMPORTED_MODULE_8__["defaultProjectId"]);
   }
-
   generateURL(_ref2) {
     let {
       projectId
@@ -38126,9 +35678,7 @@ class HashRouter extends Router {
     const hashQuery = location.hash.split('?')[1];
     return "".concat(location.pathname).concat(location.search, "#").concat(projectId).concat(hashQuery ? "?".concat(hashQuery) : '');
   }
-
 }
-
 class FileHashRouter extends HashRouter {
   constructor(callbacks) {
     super(callbacks);
@@ -38136,10 +35686,8 @@ class FileHashRouter extends HashRouter {
     this.editorPath = "".concat(this.playerPath, "editor.html");
     this.fullscreenPath = "".concat(this.playerPath, "fullscreen.html");
   }
-
   onpathchange() {
     const pathName = location.pathname;
-
     if (pathName === this.playerPath) {
       this.onSetIsPlayerOnly(true);
       this.onSetIsFullScreen(false);
@@ -38150,7 +35698,6 @@ class FileHashRouter extends HashRouter {
       this.onSetIsFullScreen(true);
     }
   }
-
   generateURL(_ref3) {
     let {
       projectId,
@@ -38159,17 +35706,13 @@ class FileHashRouter extends HashRouter {
     } = _ref3;
     let newPathname = '';
     let newHash = '';
-
     if (projectId !== '0') {
       newHash = projectId;
     }
-
     const hashQuery = location.hash.split('?')[1];
-
     if (hashQuery) {
       newHash += "?".concat(hashQuery);
     }
-
     if (isFullScreen) {
       newPathname = this.fullscreenPath;
     } else if (isPlayerOnly) {
@@ -38177,36 +35720,27 @@ class FileHashRouter extends HashRouter {
     } else {
       newPathname = this.editorPath;
     }
-
     return "".concat(newPathname).concat(location.search).concat(newHash ? "#".concat(newHash) : '');
   }
-
 }
-
 const getCanonicalLinkElement = () => {
   let el = document.querySelector('link[rel=canonical]');
-
   if (!el) {
     el = document.createElement('link');
     el.rel = 'canonical';
     document.head.appendChild(el);
   }
-
   return el;
 };
-
 class WildcardRouter extends Router {
   constructor(callbacks) {
     super(callbacks);
     this.root = "";
   }
-
   onhashchange() {
     const hashProjectId = readHashProjectId();
-
     if (hashProjectId) {
       const ok = this.onSetProjectId(hashProjectId);
-
       if (ok) {
         // Completely remove the hash
         history.replaceState(null, null, "".concat(location.pathname).concat(location.search));
@@ -38216,15 +35750,12 @@ class WildcardRouter extends Router {
       this.parseURL(false);
     }
   }
-
   onpathchange() {
     this.parseURL(true);
   }
-
   parseURL(detectPageType) {
     const path = location.pathname.substr(this.root.length);
     const parts = path.split('/');
-
     const parseProjectId = id => {
       if (id) {
         this.onSetProjectId(id);
@@ -38232,12 +35763,10 @@ class WildcardRouter extends Router {
         this.onSetProjectId(_reducers_project_state__WEBPACK_IMPORTED_MODULE_8__["defaultProjectId"]);
       }
     };
-
     const parsePageType = type => {
       if (!detectPageType) {
         return;
       }
-
       if (type === 'fullscreen') {
         this.onSetIsFullScreen(true);
       } else if (type === 'editor') {
@@ -38248,7 +35777,6 @@ class WildcardRouter extends Router {
         this.onSetIsFullScreen(false);
       }
     };
-
     if (+parts[0] && Number.isFinite(+parts[0])) {
       parseProjectId(parts[0]);
       parsePageType(parts[1]);
@@ -38257,7 +35785,6 @@ class WildcardRouter extends Router {
       parsePageType(parts[0]);
     }
   }
-
   generateURL(_ref4) {
     let {
       projectId,
@@ -38265,75 +35792,63 @@ class WildcardRouter extends Router {
       isFullScreen
     } = _ref4;
     const parts = [];
-
     if (projectId !== '0') {
       parts.push(projectId);
     }
-
     if (isFullScreen) {
       parts.push('fullscreen');
     } else if (!isPlayerOnly) {
       parts.push('editor');
     }
-
     const path = "".concat(this.root).concat(parts.join('/'));
     const canonical = "".concat(location.origin).concat(this.root).concat(projectId === '0' ? '' : projectId);
     getCanonicalLinkElement().href = canonical;
     return "".concat(path).concat(location.search).concat(location.hash);
   }
-
 }
-
 const routers = {
   none: Router,
   hash: HashRouter,
   filehash: FileHashRouter,
   wildcard: WildcardRouter
 };
+
 /**
  * Return the optimal Router for the current environment
  * @param {string} style Routing style name
  * @param {*} callbacks Redux callbacks
  * @returns {Router} The optimal router for the current environment
  */
-
 const createRouter = (style, callbacks) => {
-  const supportedStyles = ['none', 'hash']; // FileHashRouter is not supported on non-http(s) protocols.
+  const supportedStyles = ['none', 'hash'];
 
+  // FileHashRouter is not supported on non-http(s) protocols.
   const isHTTP = location.protocol === 'http:' || location.protocol === 'https:';
-
   if (isHTTP) {
     supportedStyles.push('filehash');
-  } // WildcardRouter is not supported if ROOT is not set.
+  }
 
-
+  // WildcardRouter is not supported if ROOT is not set.
   if (false) {}
-
   if (!supportedStyles.includes(style)) {
     _log__WEBPACK_IMPORTED_MODULE_5__["default"].warn("routing style is unknown or not supported: ".concat(style, ", falling back to hash"));
     style = 'hash';
   }
-
   if (routers.hasOwnProperty(style)) {
     return new routers[style](callbacks);
   }
-
   throw new Error("unknown router: ".concat(style));
 };
-
 const TWStateManager = function TWStateManager(WrappedComponent) {
   class StateManagerComponent extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
     constructor(props) {
       super(props);
       lodash_bindall__WEBPACK_IMPORTED_MODULE_3___default()(this, ['handleHashChange', 'handlePopState', 'onSetProjectId', 'onSetIsPlayerOnly', 'onSetIsFullScreen']);
     }
-
     componentDidMount() {
       const urlParams = new URLSearchParams(location.search);
-
       if (urlParams.has('fps')) {
         const fps = +urlParams.get('fps');
-
         if (Number.isNaN(fps) || fps < 0) {
           alert(this.props.intl.formatMessage(messages.invalidFPS));
         } else {
@@ -38342,23 +35857,19 @@ const TWStateManager = function TWStateManager(WrappedComponent) {
       } else if (urlParams.has('60fps')) {
         this.props.vm.setFramerate(60);
       }
-
       if (urlParams.has('interpolate')) {
         this.props.vm.setInterpolation(true);
       }
-
       if (urlParams.has('username')) {
-        const username = urlParams.get('username'); // Do not save username when loaded from URL
-
+        const username = urlParams.get('username');
+        // Do not save username when loaded from URL
         this.doNotPersistUsername = username;
         this.props.onSetUsername(username);
       } else {
         const persistentUsername = this.props.isEmbedded ? null : getLocalStorage(USERNAME_KEY);
-
         if (persistentUsername === null) {
           const randomUsername = Object(_tw_username__WEBPACK_IMPORTED_MODULE_10__["generateRandomUsername"])();
           this.props.onSetUsername(randomUsername);
-
           if (this.props.isEmbedded) {
             this.doNotPersistUsername = randomUsername;
           }
@@ -38366,30 +35877,24 @@ const TWStateManager = function TWStateManager(WrappedComponent) {
           this.props.onSetUsername(persistentUsername);
         }
       }
-
       if (urlParams.has('hqpen')) {
         this.props.vm.renderer.setUseHighQualityRender(true);
       }
-
       if (urlParams.has('turbo')) {
         this.props.vm.setTurboMode(true);
       }
-
       if (urlParams.has('stuck') || urlParams.has('warp_timer')) {
         this.props.vm.setCompilerOptions({
           warpTimer: true
         });
       }
-
       if (urlParams.has('nocompile')) {
         this.props.vm.setCompilerOptions({
           enabled: false
         });
       }
-
       if (urlParams.has('clones')) {
         const clones = +urlParams.get('clones');
-
         if (Number.isNaN(clones) || clones < 0) {
           alert(this.props.intl.formatMessage(messages.invalidClones));
         } else {
@@ -38398,23 +35903,19 @@ const TWStateManager = function TWStateManager(WrappedComponent) {
           });
         }
       }
-
       if (urlParams.has('offscreen')) {
         this.props.vm.setRuntimeOptions({
           fencing: false
         });
       }
-
       if (urlParams.has('limitless')) {
         this.props.vm.setRuntimeOptions({
           miscLimits: false
         });
       }
-
       for (const extension of urlParams.getAll('extension')) {
         this.props.vm.extensionManager.loadExtensionURL(extension);
       }
-
       const routerCallbacks = {
         onSetProjectId: this.onSetProjectId,
         onSetIsPlayerOnly: this.onSetIsPlayerOnly,
@@ -38425,13 +35926,11 @@ const TWStateManager = function TWStateManager(WrappedComponent) {
       window.addEventListener('hashchange', this.handleHashChange);
       window.addEventListener('popstate', this.handlePopState);
     }
-
     componentDidUpdate(prevProps) {
       if (this.props.username !== prevProps.username && this.props.username !== this.doNotPersistUsername) {
         // TODO: this always restores the current username once at startup, which is unnecessary
         setLocalStorage(USERNAME_KEY, this.props.username);
       }
-
       if (this.props.reduxProjectId !== prevProps.reduxProjectId || this.props.isPlayerOnly !== prevProps.isPlayerOnly || this.props.isFullScreen !== prevProps.isFullScreen) {
         const oldPath = "".concat(location.pathname).concat(location.search).concat(location.hash);
         const routerState = {
@@ -38440,156 +35939,133 @@ const TWStateManager = function TWStateManager(WrappedComponent) {
           isFullScreen: this.props.isFullScreen
         };
         const newPath = this.router.generateURL(routerState);
-
         if (newPath && newPath !== oldPath) {
           history.pushState(null, null, newPath);
         }
       }
-
       if (this.props.customStageSize !== prevProps.customStageSize || this.props.runtimeOptions !== prevProps.runtimeOptions || this.props.compilerOptions !== prevProps.compilerOptions || this.props.highQualityPen !== prevProps.highQualityPen || this.props.framerate !== prevProps.framerate || this.props.interpolation !== prevProps.interpolation || this.props.turbo !== prevProps.turbo) {
         const searchParams = new URLSearchParams(location.search);
         const runtimeOptions = this.props.runtimeOptions;
-        const compilerOptions = this.props.compilerOptions; // Always remove legacy parameter
+        const compilerOptions = this.props.compilerOptions;
 
+        // Always remove legacy parameter
         searchParams.delete('60fps');
         const {
           width,
           height
         } = this.props.customStageSize;
-
         if (width === _reducers_custom_stage_size__WEBPACK_IMPORTED_MODULE_12__["defaultStageSize"].width && height === _reducers_custom_stage_size__WEBPACK_IMPORTED_MODULE_12__["defaultStageSize"].height) {
           searchParams.delete('size');
         } else {
           searchParams.set('size', "".concat(width, "x").concat(height));
         }
-
         if (this.props.framerate === 30) {
           searchParams.delete('fps');
         } else {
           searchParams.set('fps', this.props.framerate);
         }
-
         if (this.props.interpolation) {
           searchParams.set('interpolate', '');
         } else {
           searchParams.delete('interpolate');
         }
-
         if (this.props.turbo) {
           searchParams.set('turbo', '');
         } else {
           searchParams.delete('turbo');
         }
-
         if (this.props.highQualityPen) {
           searchParams.set('hqpen', '');
         } else {
           searchParams.delete('hqpen');
         }
-
         if (compilerOptions.enabled) {
           searchParams.delete('nocompile');
         }
-
         if (this.props.isPlayerOnly) {
           if (compilerOptions.warpTimer) {
             searchParams.set('stuck', '');
           } else {
             searchParams.delete('stuck');
           }
-        } else {// Leave ?stuck as-is when in editor
+        } else {
+          // Leave ?stuck as-is when in editor
         }
-
         if (runtimeOptions.maxClones === 300) {
           searchParams.delete('clones');
         } else {
           searchParams.set('clones', runtimeOptions.maxClones);
         }
-
         if (runtimeOptions.fencing) {
           searchParams.delete('offscreen');
         } else {
           searchParams.set('offscreen', '');
         }
-
         if (runtimeOptions.miscLimits) {
           searchParams.delete('limitless');
         } else {
           searchParams.set('limitless', '');
         }
-
         Object(_tw_navigation_utils__WEBPACK_IMPORTED_MODULE_11__["setSearchParams"])(searchParams);
       }
     }
-
     componentWillUnmount() {
       window.removeEventListener('hashchange', this.handleHashChange);
       window.removeEventListener('popstate', this.handlePopState);
     }
-
     handleHashChange() {
       this.router.onhashchange();
     }
-
     handlePopState() {
       this.router.onpathchange();
     }
-
     onSetProjectId(id) {
       if ("".concat(id) === "".concat(this.props.reduxProjectId)) {
         return true;
       }
-
       if (this.props.projectChanged) {
         if (!confirm('Are you sure you want to switch project?')) {
           return false;
         }
       }
-
       this.props.onSetProjectId(id);
       return true;
     }
-
     onSetIsPlayerOnly(isPlayerOnly) {
       this.props.onSetIsPlayerOnly(isPlayerOnly);
     }
-
     onSetIsFullScreen(isFullScreen) {
       this.props.onSetIsFullScreen(isFullScreen);
     }
-
     render() {
       const _this$props = this.props,
-            {
-        /* eslint-disable no-unused-vars */
-        intl,
-        customStageSize,
-        isFullScreen,
-        isPlayerOnly,
-        isEmbedded,
-        projectChanged,
-        compilerOptions,
-        runtimeOptions,
-        highQualityPen,
-        framerate,
-        interpolation,
-        turbo,
-        onSetIsFullScreen,
-        onSetIsPlayerOnly,
-        onSetProjectId,
-        onSetUsername,
-        reduxProjectId,
-        routingStyle,
-        username,
-        vm
-      } = _this$props,
-            props = _objectWithoutProperties(_this$props, _excluded);
-
+        {
+          /* eslint-disable no-unused-vars */
+          intl,
+          customStageSize,
+          isFullScreen,
+          isPlayerOnly,
+          isEmbedded,
+          projectChanged,
+          compilerOptions,
+          runtimeOptions,
+          highQualityPen,
+          framerate,
+          interpolation,
+          turbo,
+          onSetIsFullScreen,
+          onSetIsPlayerOnly,
+          onSetProjectId,
+          onSetUsername,
+          reduxProjectId,
+          routingStyle,
+          username,
+          vm
+        } = _this$props,
+        props = _objectWithoutProperties(_this$props, _excluded);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(WrappedComponent, props);
     }
-
   }
-
   StateManagerComponent.propTypes = {
     intl: react_intl__WEBPACK_IMPORTED_MODULE_6__["intlShape"],
     customStageSize: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.shape({
@@ -38626,7 +36102,6 @@ const TWStateManager = function TWStateManager(WrappedComponent) {
   StateManagerComponent.defaultProps = {
     routingStyle: "filehash"
   };
-
   const mapStateToProps = state => ({
     customStageSize: state.scratchGui.customStageSize,
     isFullScreen: state.scratchGui.mode.isFullScreen,
@@ -38643,17 +36118,14 @@ const TWStateManager = function TWStateManager(WrappedComponent) {
     username: state.scratchGui.tw.username,
     vm: state.scratchGui.vm
   });
-
   const mapDispatchToProps = dispatch => ({
     onSetIsFullScreen: isFullScreen => dispatch(Object(_reducers_mode__WEBPACK_IMPORTED_MODULE_9__["setFullScreen"])(isFullScreen)),
     onSetIsPlayerOnly: isPlayerOnly => dispatch(Object(_reducers_mode__WEBPACK_IMPORTED_MODULE_9__["setPlayer"])(isPlayerOnly)),
     onSetProjectId: projectId => dispatch(Object(_reducers_project_state__WEBPACK_IMPORTED_MODULE_8__["setProjectId"])(projectId)),
     onSetUsername: username => dispatch(Object(_reducers_tw__WEBPACK_IMPORTED_MODULE_7__["setUsername"])(username))
   });
-
   return Object(react_intl__WEBPACK_IMPORTED_MODULE_6__["injectIntl"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, mapDispatchToProps)(StateManagerComponent));
 };
-
 
 
 /***/ }),
@@ -38669,7 +36141,6 @@ const TWStateManager = function TWStateManager(WrappedComponent) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tw_text_encoder__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tw-text-encoder */ "./src/lib/tw-text-encoder.js");
 
-
 const fixSVG = fileData => {
   // width="100%" and height="100%" on SVGs can break things
   // Demo: https://scratch.mit.edu/projects/447085841/
@@ -38679,20 +36150,17 @@ const fixSVG = fileData => {
     const str = new _tw_text_encoder__WEBPACK_IMPORTED_MODULE_0__["TextDecoder"]().decode(bytes);
     const xmlDocument = new DOMParser().parseFromString(str, 'text/xml');
     const svgElement = xmlDocument.children[0];
-
     if (svgElement.height.baseVal.valueAsString === '100%' && svgElement.width.baseVal.valueAsString === '100%') {
       svgElement.removeAttribute('height');
       svgElement.removeAttribute('width');
       const fixed = xmlDocument.documentElement.outerHTML;
       return new _tw_text_encoder__WEBPACK_IMPORTED_MODULE_0__["TextEncoder"]().encode(fixed).buffer;
     }
-
     return fileData;
   } catch (e) {
     return fileData;
   }
 };
-
 /* harmony default export */ __webpack_exports__["default"] = (fixSVG);
 
 /***/ }),
@@ -38713,49 +36181,36 @@ const _TextEncoder = typeof TextEncoder === 'function' ? TextEncoder : class Tex
     if (typeof encoding !== 'undefined' && encoding !== null && encoding !== 'utf-8' && encoding !== 'utf8') {
       throw new Error('Encoding is not supported');
     }
-
     this.encoding = 'utf-8';
   }
-
   encode(str) {
     if (typeof str !== 'string') {
       throw new TypeError('Argument is not a string');
     }
-
     str = unescape(encodeURIComponent(str));
     const arr = new Uint8Array(str.length);
-
     for (let i = 0; i < str.length; i++) {
       arr[i] = str.charCodeAt(i);
     }
-
     return arr;
   }
-
 };
-
 const _TextDecoder = typeof TextDecoder === 'function' ? TextDecoder : class TextDecoder {
   constructor(encoding) {
     if (typeof encoding !== 'undefined' && encoding !== null && encoding !== 'utf-8' && encoding !== 'utf8') {
       throw new Error('Encoding is not supported');
     }
-
     this.encoding = 'utf-8';
   }
-
   decode(view) {
     const array = new Uint8Array(view.buffer, view.byteOffset, view.byteLength);
     let result = '';
-
     for (let i = 0; i < array.length; i++) {
       result += String.fromCharCode(array[i]);
     }
-
     return decodeURIComponent(escape(result));
   }
-
 };
-
 
 
 /***/ }),
@@ -38779,7 +36234,6 @@ const generateRandomUsername = () => {
 };
 
 
-
 /***/ }),
 
 /***/ "./src/lib/variable-utils.js":
@@ -38800,18 +36254,15 @@ const getVariable = (vm, targetId, variableId) => {
   const target = targetId ? vm.runtime.getTargetById(targetId) : vm.runtime.getTargetForStage();
   return target.variables[variableId];
 };
-
 const getVariableValue = (vm, targetId, variableId) => {
-  const variable = getVariable(vm, targetId, variableId); // If array, return a new copy for mutating, ensuring that updates stay immutable.
-
+  const variable = getVariable(vm, targetId, variableId);
+  // If array, return a new copy for mutating, ensuring that updates stay immutable.
   if (variable.value instanceof Array) return variable.value.slice();
   return variable.value;
 };
-
 const setVariableValue = (vm, targetId, variableId, value) => {
   getVariable(vm, targetId, variableId).value = value;
 };
-
 
 
 /***/ }),
@@ -38829,19 +36280,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "requestDisableVideo", function() { return requestDisableVideo; });
 /* harmony import */ var get_user_media_promise__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! get-user-media-promise */ "./node_modules/get-user-media-promise/lib/get-user-media-promise.js");
 /* harmony import */ var get_user_media_promise__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(get_user_media_promise__WEBPACK_IMPORTED_MODULE_0__);
- // Single Setup For All Video Streams used by the GUI
+
+
+// Single Setup For All Video Streams used by the GUI
 // While VideoProvider uses a private _singleSetup
 // property to ensure that each instance of a VideoProvider
 // use the same setup, this ensures that all instances
 // of VideoProviders use a single stream. This way, closing a camera modal
 // does not affect the video on the stage, and a program running and disabling
 // video on the stage will not affect the camera modal's video.
-
 const requestStack = [];
-
 const requestVideoStream = videoDesc => {
   let streamPromise;
-
   if (requestStack.length === 0) {
     streamPromise = get_user_media_promise__WEBPACK_IMPORTED_MODULE_0___default()({
       audio: false,
@@ -38852,16 +36302,13 @@ const requestVideoStream = videoDesc => {
     streamPromise = requestStack[0];
     requestStack.push(true);
   }
-
   return streamPromise;
 };
-
 const requestDisableVideo = () => {
   requestStack.pop();
   if (requestStack.length > 0) return false;
   return true;
 };
-
 
 
 /***/ }),
@@ -38879,10 +36326,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _log_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../log.js */ "./src/lib/log.js");
 
 
+
 /**
  * Video Manager for video extensions.
  */
-
 class VideoProvider {
   constructor() {
     /**
@@ -38890,109 +36337,100 @@ class VideoProvider {
      * @type boolean
      */
     this.mirror = true;
+
     /**
      * Cache frames for this many ms.
      * @type number
      */
-
     this._frameCacheTimeout = 16;
+
     /**
      * DOM Video element
      * @private
      */
-
     this._video = null;
+
     /**
      * Usermedia stream track
      * @private
      */
-
     this._track = null;
+
     /**
      * Stores some canvas/frame data per resolution/mirror states
      */
-
     this._workspace = [];
   }
-
   static get FORMAT_IMAGE_DATA() {
     return 'image-data';
   }
-
   static get FORMAT_CANVAS() {
     return 'canvas';
   }
+
   /**
    * Dimensions the video stream is analyzed at after its rendered to the
    * sample canvas.
    * @type {Array.<number>}
    */
-
-
   static get DIMENSIONS() {
     return [480, 360];
   }
+
   /**
    * Order preview drawable is inserted at in the renderer.
    * @type {number}
    */
-
-
   static get ORDER() {
     return 1;
   }
+
   /**
    * Get the HTML video element containing the stream
    */
-
-
   get video() {
     return this._video;
   }
+
   /**
    * Request video be enabled.  Sets up video, creates video skin and enables preview.
    *
    * @return {Promise.<Video>} resolves a promise to this video provider when video is ready.
    */
-
-
   enableVideo() {
     this.enabled = true;
     return this._setupVideo();
   }
+
   /**
    * Disable video stream (turn video off)
    */
-
-
   disableVideo() {
-    this.enabled = false; // If we have begun a setup process, call _teardown after it completes
-
+    this.enabled = false;
+    // If we have begun a setup process, call _teardown after it completes
     if (this._singleSetup) {
       this._singleSetup.then(this._teardown.bind(this)).catch(err => this.onError(err));
     }
   }
+
   /**
    * async part of disableVideo
    * @private
    */
-
-
   _teardown() {
     // we might be asked to re-enable before _teardown is called, just ignore it.
     if (this.enabled === false) {
       const disableTrack = Object(_camera_js__WEBPACK_IMPORTED_MODULE_0__["requestDisableVideo"])();
-      this._singleSetup = null; // by clearing refs to video and track, we should lose our hold over the camera
-
+      this._singleSetup = null;
+      // by clearing refs to video and track, we should lose our hold over the camera
       this._video = null;
-
       if (this._track && disableTrack) {
         this._track.stop();
       }
-
       this._track = null;
     }
   }
+
   /**
    * Return frame data from the video feed in a specified dimensions, format, and mirroring.
    *
@@ -39005,8 +36443,6 @@ class VideoProvider {
    *
    * @return {ArrayBuffer|Canvas|string|null} Frame data in requested format, null when errors.
    */
-
-
   getFrame(_ref) {
     let {
       dimensions = VideoProvider.DIMENSIONS,
@@ -39014,18 +36450,14 @@ class VideoProvider {
       format = VideoProvider.FORMAT_IMAGE_DATA,
       cacheTimeout = this._frameCacheTimeout
     } = _ref;
-
     if (!this.videoReady) {
       return null;
     }
-
     const [width, height] = dimensions;
-
     const workspace = this._getWorkspace({
       dimensions,
       mirror: Boolean(mirror)
     });
-
     const {
       videoWidth,
       videoHeight
@@ -39036,31 +36468,32 @@ class VideoProvider {
       lastUpdate,
       cacheData
     } = workspace;
-    const now = Date.now(); // if the canvas hasn't been updated...
+    const now = Date.now();
 
+    // if the canvas hasn't been updated...
     if (lastUpdate + cacheTimeout < now) {
       if (mirror) {
         context.scale(-1, 1);
         context.translate(width * -1, 0);
       }
+      context.drawImage(this._video,
+      // source x, y, width, height
+      0, 0, videoWidth, videoHeight,
+      // dest x, y, width, height
+      0, 0, width, height);
 
-      context.drawImage(this._video, // source x, y, width, height
-      0, 0, videoWidth, videoHeight, // dest x, y, width, height
-      0, 0, width, height); // context.resetTransform() doesn't work on Edge but the following should
-
+      // context.resetTransform() doesn't work on Edge but the following should
       context.setTransform(1, 0, 0, 1, 0, 0);
       workspace.lastUpdate = now;
-    } // each data type has it's own data cache, but the canvas is the same
+    }
 
-
+    // each data type has it's own data cache, but the canvas is the same
     if (!cacheData[format]) {
       cacheData[format] = {
         lastUpdate: 0
       };
     }
-
     const formatCache = cacheData[format];
-
     if (formatCache.lastUpdate + cacheTimeout < now) {
       if (format === VideoProvider.FORMAT_IMAGE_DATA) {
         formatCache.lastData = context.getImageData(0, 0, width, height);
@@ -39069,43 +36502,39 @@ class VideoProvider {
         formatCache.lastUpdate = Infinity;
         formatCache.lastData = canvas;
       } else {
-        _log_js__WEBPACK_IMPORTED_MODULE_1__["default"].error("video io error - unimplemented format ".concat(format)); // cache the null result forever, don't log about it again..
-
+        _log_js__WEBPACK_IMPORTED_MODULE_1__["default"].error("video io error - unimplemented format ".concat(format));
+        // cache the null result forever, don't log about it again..
         formatCache.lastUpdate = Infinity;
         formatCache.lastData = null;
-      } // rather than set to now, this data is as stale as it's canvas is
+      }
 
-
+      // rather than set to now, this data is as stale as it's canvas is
       formatCache.lastUpdate = Math.max(workspace.lastUpdate, formatCache.lastUpdate);
     }
-
     return formatCache.lastData;
   }
+
   /**
    * Method called when an error happens.  Default implementation is just to log error.
    *
    * @abstract
    * @param {Error} error An error object from getUserMedia or other source of error.
    */
-
-
   onError(error) {
     _log_js__WEBPACK_IMPORTED_MODULE_1__["default"].error('Unhandled video io device error', error);
   }
+
   /**
    * Create a video stream.
    * @private
    * @return {Promise} When video has been received, rejected if video is not received
    */
-
-
   _setupVideo() {
     // We cache the result of this setup so that we can only ever have a single
     // video/getUserMedia request happen at a time.
     if (this._singleSetup) {
       return this._singleSetup;
     }
-
     this._singleSetup = Object(_camera_js__WEBPACK_IMPORTED_MODULE_0__["requestVideoStream"])({
       width: {
         min: 480,
@@ -39116,22 +36545,20 @@ class VideoProvider {
         ideal: 480
       }
     }).then(stream => {
-      this._video = document.createElement('video'); // Use the new srcObject API, falling back to createObjectURL
+      this._video = document.createElement('video');
 
+      // Use the new srcObject API, falling back to createObjectURL
       try {
         this._video.srcObject = stream;
       } catch (error) {
         this._video.src = window.URL.createObjectURL(stream);
-      } // Hint to the stream that it should load. A standard way to do this
+      }
+      // Hint to the stream that it should load. A standard way to do this
       // is add the video tag to the DOM. Since this extension wants to
       // hide the video tag and instead render a sample of the stream into
       // the webgl rendered Scratch canvas, another hint like this one is
       // needed.
-
-
       this._video.play(); // Needed for Safari/Firefox, Chrome auto-plays.
-
-
       this._track = stream.getTracks()[0];
       return this;
     }).catch(error => {
@@ -39140,35 +36567,29 @@ class VideoProvider {
     });
     return this._singleSetup;
   }
-
   get videoReady() {
     if (!this.enabled) {
       return false;
     }
-
     if (!this._video) {
       return false;
     }
-
     if (!this._track) {
       return false;
     }
-
     const {
       videoWidth,
       videoHeight
     } = this._video;
-
     if (typeof videoWidth !== 'number' || typeof videoHeight !== 'number') {
       return false;
     }
-
     if (videoWidth === 0 || videoHeight === 0) {
       return false;
     }
-
     return true;
   }
+
   /**
    * get an internal workspace for canvas/context/caches
    * this uses some document stuff to create a canvas and what not, probably needs abstraction
@@ -39176,16 +36597,12 @@ class VideoProvider {
    * @private
    * @return {object} A workspace for canvas/data storage.  Internal format not documented intentionally
    */
-
-
   _getWorkspace(_ref2) {
     let {
       dimensions,
       mirror
     } = _ref2;
-
     let workspace = this._workspace.find(space => space.dimensions.join('-') === dimensions.join('-') && space.mirror === mirror);
-
     if (!workspace) {
       workspace = {
         dimensions,
@@ -39197,15 +36614,11 @@ class VideoProvider {
       workspace.canvas.width = dimensions[0];
       workspace.canvas.height = dimensions[1];
       workspace.context = workspace.canvas.getContext('2d');
-
       this._workspace.push(workspace);
     }
-
     return workspace;
   }
-
 }
-
 /* harmony default export */ __webpack_exports__["default"] = (VideoProvider);
 
 /***/ }),
@@ -39238,9 +36651,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _reducers_tw__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../reducers/tw */ "./src/reducers/tw.js");
 /* harmony import */ var _reducers_custom_stage_size__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../reducers/custom-stage-size */ "./src/reducers/custom-stage-size.js");
 const _excluded = ["attachKeyboardEvents", "projectChanged", "shouldUpdateTargets", "shouldUpdateProjectChanged", "onBlockDragUpdate", "onGreenFlag", "onKeyDown", "onKeyUp", "onMicListeningUpdate", "onMonitorsUpdate", "onTargetsUpdate", "onProjectChanged", "onProjectRunStart", "onProjectRunStop", "onProjectSaved", "onRuntimeStarted", "onRuntimeStopped", "onTurboModeOff", "onTurboModeOn", "hasCloudVariables", "onHasCloudVariablesChanged", "onFramerateChanged", "onInterpolationChanged", "onCompilerOptionsChanged", "onRuntimeOptionsChanged", "onStageSizeChanged", "onCompileError", "onClearCompileErrors", "onShowExtensionAlert"];
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 
@@ -39256,25 +36667,24 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 
 
-
 let compileErrorCounter = 0;
+
 /*
  * Higher Order Component to manage events emitted by the VM
  * @param {React.Component} WrappedComponent component to manage VM events for
  * @returns {React.Component} connected component with vm events bound to redux
  */
-
 const vmListenerHOC = function vmListenerHOC(WrappedComponent) {
   class VMListener extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
     constructor(props) {
       super(props);
-      lodash_bindall__WEBPACK_IMPORTED_MODULE_0___default()(this, ['handleKeyDown', 'handleKeyUp', 'handleProjectChanged', 'handleTargetsUpdate', 'handleCloudDataUpdate', 'handleCompileError']); // We have to start listening to the vm here rather than in
+      lodash_bindall__WEBPACK_IMPORTED_MODULE_0___default()(this, ['handleKeyDown', 'handleKeyUp', 'handleProjectChanged', 'handleTargetsUpdate', 'handleCloudDataUpdate', 'handleCompileError']);
+      // We have to start listening to the vm here rather than in
       // componentDidMount because the HOC mounts the wrapped component,
       // so the HOC componentDidMount triggers after the wrapped component
       // mounts.
       // If the wrapped component uses the vm in componentDidMount, then
       // we need to start listening before mounting the wrapped component.
-
       this.props.vm.on('targetsUpdate', this.handleTargetsUpdate);
       this.props.vm.on('MONITORS_UPDATE', this.props.onMonitorsUpdate);
       this.props.vm.on('BLOCK_DRAG_UPDATE', this.props.onBlockDragUpdate);
@@ -39288,8 +36698,8 @@ const vmListenerHOC = function vmListenerHOC(WrappedComponent) {
       this.props.vm.on('PROJECT_START', this.props.onGreenFlag);
       this.props.vm.on('PERIPHERAL_CONNECTION_LOST_ERROR', this.props.onShowExtensionAlert);
       this.props.vm.on('MIC_LISTENING', this.props.onMicListeningUpdate);
-      this.props.vm.on('MIC_LISTENING', this.props.onMicListeningUpdate); // tw: add handlers for our events
-
+      this.props.vm.on('MIC_LISTENING', this.props.onMicListeningUpdate);
+      // tw: add handlers for our events
       this.props.vm.on('HAS_CLOUD_DATA_UPDATE', this.handleCloudDataUpdate);
       this.props.vm.on('COMPILER_OPTIONS_CHANGED', this.props.onCompilerOptionsChanged);
       this.props.vm.on('RUNTIME_OPTIONS_CHANGED', this.props.onRuntimeOptionsChanged);
@@ -39299,82 +36709,69 @@ const vmListenerHOC = function vmListenerHOC(WrappedComponent) {
       this.props.vm.on('RUNTIME_STARTED', this.props.onClearCompileErrors);
       this.props.vm.on('STAGE_SIZE_CHANGED', this.props.onStageSizeChanged);
     }
-
     componentDidMount() {
       if (this.props.attachKeyboardEvents) {
         document.addEventListener('keydown', this.handleKeyDown);
         document.addEventListener('keyup', this.handleKeyUp);
       }
-
       this.props.vm.postIOData('userData', {
         username: this.props.username
       });
     }
-
     componentDidUpdate(prevProps) {
       if (prevProps.username !== this.props.username) {
         this.props.vm.postIOData('userData', {
           username: this.props.username
         });
-      } // Re-request a targets update when the shouldUpdateTargets state changes to true
+      }
+
+      // Re-request a targets update when the shouldUpdateTargets state changes to true
       // i.e. when the editor transitions out of fullscreen/player only modes
-
-
       if (this.props.shouldUpdateTargets && !prevProps.shouldUpdateTargets) {
-        this.props.vm.emitTargetsUpdate(false
-        /* Emit the event, but do not trigger project change */
-        );
+        this.props.vm.emitTargetsUpdate(false /* Emit the event, but do not trigger project change */);
       }
     }
 
     componentWillUnmount() {
       this.props.vm.removeListener('PERIPHERAL_CONNECTION_LOST_ERROR', this.props.onShowExtensionAlert);
-
       if (this.props.attachKeyboardEvents) {
         document.removeEventListener('keydown', this.handleKeyDown);
         document.removeEventListener('keyup', this.handleKeyUp);
       }
     }
-
     handleCloudDataUpdate(hasCloudVariables) {
       if (this.props.hasCloudVariables !== hasCloudVariables) {
         this.props.onHasCloudVariablesChanged(hasCloudVariables);
       }
-    } // tw: handling for compile errors
-
-
+    }
+    // tw: handling for compile errors
     handleCompileError(target, error) {
-      const errorMessage = "".concat(error); // Ignore certain types of known errors
+      const errorMessage = "".concat(error);
+      // Ignore certain types of known errors
       // TODO: fix the root cause of all of these
-
       if (errorMessage.includes('edge-activated hat')) {
         return;
-      } // Ignore intentonal errors
-
-
+      }
+      // Ignore intentonal errors
       if (errorMessage.includes('Script explicitly disables compilation')) {
         return;
       }
-
       this.props.onCompileError({
         sprite: target.getName(),
         error: errorMessage,
         id: compileErrorCounter++
       });
     }
-
     handleProjectChanged() {
       if (this.props.shouldUpdateProjectChanged && !this.props.projectChanged) {
         this.props.onProjectChanged();
       }
     }
-
     handleTargetsUpdate(data) {
       if (this.props.shouldUpdateTargets) {
         this.props.onTargetsUpdate(data);
       }
     }
-
     handleKeyDown(e) {
       // Don't capture keys intended for Blockly inputs.
       if (e.target !== document && e.target !== document.body) return;
@@ -39383,25 +36780,25 @@ const vmListenerHOC = function vmListenerHOC(WrappedComponent) {
         key: key,
         keyCode: e.keyCode,
         isDown: true
-      }); // Prevent space/arrow key from scrolling the page.
+      });
 
-      if (e.keyCode === 32 || // 32=space
+      // Prevent space/arrow key from scrolling the page.
+      if (e.keyCode === 32 ||
+      // 32=space
       e.keyCode >= 37 && e.keyCode <= 40) {
         // 37, 38, 39, 40 are arrows
         e.preventDefault();
-      } // tw: prevent backspace from going back
+      }
 
-
+      // tw: prevent backspace from going back
       if (e.keyCode === 8) {
         e.preventDefault();
-      } // tw: prevent ' and / from opening quick find in Firefox
-
-
+      }
+      // tw: prevent ' and / from opening quick find in Firefox
       if (e.keyCode === 222 || e.keyCode === 191) {
         e.preventDefault();
       }
     }
-
     handleKeyUp(e) {
       // Always capture up events,
       // even those that have switched to other targets.
@@ -39410,54 +36807,51 @@ const vmListenerHOC = function vmListenerHOC(WrappedComponent) {
         key: key,
         keyCode: e.keyCode,
         isDown: false
-      }); // E.g., prevent scroll.
+      });
 
+      // E.g., prevent scroll.
       if (e.target !== document && e.target !== document.body) {
         e.preventDefault();
       }
     }
-
     render() {
       const _this$props = this.props,
-            {
-        /* eslint-disable no-unused-vars */
-        attachKeyboardEvents,
-        projectChanged,
-        shouldUpdateTargets,
-        shouldUpdateProjectChanged,
-        onBlockDragUpdate,
-        onGreenFlag,
-        onKeyDown,
-        onKeyUp,
-        onMicListeningUpdate,
-        onMonitorsUpdate,
-        onTargetsUpdate,
-        onProjectChanged,
-        onProjectRunStart,
-        onProjectRunStop,
-        onProjectSaved,
-        onRuntimeStarted,
-        onRuntimeStopped,
-        onTurboModeOff,
-        onTurboModeOn,
-        hasCloudVariables,
-        onHasCloudVariablesChanged,
-        onFramerateChanged,
-        onInterpolationChanged,
-        onCompilerOptionsChanged,
-        onRuntimeOptionsChanged,
-        onStageSizeChanged,
-        onCompileError,
-        onClearCompileErrors,
-        onShowExtensionAlert
-      } = _this$props,
-            props = _objectWithoutProperties(_this$props, _excluded);
-
+        {
+          /* eslint-disable no-unused-vars */
+          attachKeyboardEvents,
+          projectChanged,
+          shouldUpdateTargets,
+          shouldUpdateProjectChanged,
+          onBlockDragUpdate,
+          onGreenFlag,
+          onKeyDown,
+          onKeyUp,
+          onMicListeningUpdate,
+          onMonitorsUpdate,
+          onTargetsUpdate,
+          onProjectChanged,
+          onProjectRunStart,
+          onProjectRunStop,
+          onProjectSaved,
+          onRuntimeStarted,
+          onRuntimeStopped,
+          onTurboModeOff,
+          onTurboModeOn,
+          hasCloudVariables,
+          onHasCloudVariablesChanged,
+          onFramerateChanged,
+          onInterpolationChanged,
+          onCompilerOptionsChanged,
+          onRuntimeOptionsChanged,
+          onStageSizeChanged,
+          onCompileError,
+          onClearCompileErrors,
+          onShowExtensionAlert
+        } = _this$props,
+        props = _objectWithoutProperties(_this$props, _excluded);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(WrappedComponent, props);
     }
-
   }
-
   VMListener.propTypes = {
     attachKeyboardEvents: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
     onBlockDragUpdate: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func.isRequired,
@@ -39495,7 +36889,6 @@ const vmListenerHOC = function vmListenerHOC(WrappedComponent) {
     attachKeyboardEvents: true,
     onGreenFlag: () => ({})
   };
-
   const mapStateToProps = state => ({
     hasCloudVariables: state.scratchGui.tw.hasCloudVariables,
     projectChanged: state.scratchGui.projectChanged,
@@ -39507,7 +36900,6 @@ const vmListenerHOC = function vmListenerHOC(WrappedComponent) {
     vm: state.scratchGui.vm,
     username: state.session && state.session.session && state.session.session.user ? state.session.session.user.username : state.scratchGui.tw ? state.scratchGui.tw.username : ''
   });
-
   const mapDispatchToProps = dispatch => ({
     onTargetsUpdate: data => {
       dispatch(Object(_reducers_targets__WEBPACK_IMPORTED_MODULE_5__["updateTargets"])(data.targetList, data.editingTarget));
@@ -39541,10 +36933,8 @@ const vmListenerHOC = function vmListenerHOC(WrappedComponent) {
       dispatch(Object(_reducers_mic_indicator__WEBPACK_IMPORTED_MODULE_11__["updateMicIndicator"])(listening));
     }
   });
-
   return Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["connect"])(mapStateToProps, mapDispatchToProps)(VMListener);
 };
-
 /* harmony default export */ __webpack_exports__["default"] = (vmListenerHOC);
 
 /***/ }),
@@ -39572,11 +36962,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _reducers_project_changed__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../reducers/project-changed */ "./src/reducers/project-changed.js");
 /* harmony import */ var _reducers_project_state__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../reducers/project-state */ "./src/reducers/project-state.js");
 const _excluded = ["fontsLoaded", "loadingState", "locale", "messages", "isStarted", "onError", "onLoadedProject", "onSetProjectUnchanged", "projectData", "isLoadingWithId", "vm"];
-
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 
@@ -39592,14 +36979,12 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
  * @param {React.Component} WrappedComponent component to manage VM events for
  * @returns {React.Component} connected component with vm events bound to redux
  */
-
 const vmManagerHOC = function vmManagerHOC(WrappedComponent) {
   class VMManager extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
     constructor(props) {
       super(props);
       lodash_bindall__WEBPACK_IMPORTED_MODULE_0___default()(this, ['loadProject']);
     }
-
     componentDidMount() {
       if (!this.props.vm.initialized) {
         window.vm = this.props.vm;
@@ -39608,38 +36993,35 @@ const vmManagerHOC = function vmManagerHOC(WrappedComponent) {
         this.props.vm.initialized = true;
         this.props.vm.setLocale(this.props.locale, this.props.messages);
       }
-
       if (!this.props.isPlayerOnly && !this.props.isStarted) {
         this.props.vm.start();
       }
     }
-
     componentDidUpdate(prevProps) {
       // if project is in loading state, AND fonts are loaded,
       // and they weren't both that way until now... load project!
       if (this.props.isLoadingWithId && this.props.fontsLoaded && (!prevProps.isLoadingWithId || !prevProps.fontsLoaded)) {
         this.loadProject();
-      } // Start the VM if entering editor mode with an unstarted vm
-
-
+      }
+      // Start the VM if entering editor mode with an unstarted vm
       if (!this.props.isPlayerOnly && !this.props.isStarted) {
         this.props.vm.start();
       }
     }
-
     loadProject() {
       // tw: stop when loading new project
       this.props.vm.stop();
       return this.props.vm.loadProject(this.props.projectData).then(() => {
-        this.props.onLoadedProject(this.props.loadingState, this.props.canSave); // Wrap in a setTimeout because skin loading in
+        this.props.onLoadedProject(this.props.loadingState, this.props.canSave);
+        // Wrap in a setTimeout because skin loading in
         // the renderer can be async.
+        setTimeout(() => this.props.onSetProjectUnchanged());
 
-        setTimeout(() => this.props.onSetProjectUnchanged()); // If the vm is not running, call draw on the renderer manually
+        // If the vm is not running, call draw on the renderer manually
         // This draws the state of the loaded project with no blocks running
         // which closely matches the 2.0 behavior, except for monitors–
         // 2.0 runs monitors and shows updates (e.g. timer monitor)
         // before the VM starts running other hat blocks.
-
         if (!this.props.isStarted) {
           // Wrap in a setTimeout because skin loading in
           // the renderer can be async.
@@ -39649,35 +37031,30 @@ const vmManagerHOC = function vmManagerHOC(WrappedComponent) {
         this.props.onError(e);
       });
     }
-
     render() {
       const _this$props = this.props,
-            {
-        /* eslint-disable no-unused-vars */
-        fontsLoaded,
-        loadingState,
-        locale,
-        messages,
-        isStarted,
-        onError: onErrorProp,
-        onLoadedProject: onLoadedProjectProp,
-        onSetProjectUnchanged,
-        projectData,
-
-        /* eslint-enable no-unused-vars */
-        isLoadingWithId: isLoadingWithIdProp,
-        vm
-      } = _this$props,
-            componentProps = _objectWithoutProperties(_this$props, _excluded);
-
+        {
+          /* eslint-disable no-unused-vars */
+          fontsLoaded,
+          loadingState,
+          locale,
+          messages,
+          isStarted,
+          onError: onErrorProp,
+          onLoadedProject: onLoadedProjectProp,
+          onSetProjectUnchanged,
+          projectData,
+          /* eslint-enable no-unused-vars */
+          isLoadingWithId: isLoadingWithIdProp,
+          vm
+        } = _this$props,
+        componentProps = _objectWithoutProperties(_this$props, _excluded);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(WrappedComponent, _extends({
         isLoading: isLoadingWithIdProp,
         vm: vm
       }, componentProps));
     }
-
   }
-
   VMManager.propTypes = {
     canSave: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
     cloudHost: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
@@ -39696,7 +37073,6 @@ const vmManagerHOC = function vmManagerHOC(WrappedComponent) {
     username: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
     vm: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.instanceOf(scratch_vm__WEBPACK_IMPORTED_MODULE_4___default.a).isRequired
   };
-
   const mapStateToProps = state => {
     const loadingState = state.scratchGui.projectState.loadingState;
     return {
@@ -39711,19 +37087,16 @@ const vmManagerHOC = function vmManagerHOC(WrappedComponent) {
       isStarted: state.scratchGui.vmStatus.started
     };
   };
-
   const mapDispatchToProps = dispatch => ({
     onError: error => dispatch(Object(_reducers_project_state__WEBPACK_IMPORTED_MODULE_7__["projectError"])(error)),
     onLoadedProject: (loadingState, canSave) => dispatch(Object(_reducers_project_state__WEBPACK_IMPORTED_MODULE_7__["onLoadedProject"])(loadingState, canSave, true)),
     onSetProjectUnchanged: () => dispatch(Object(_reducers_project_changed__WEBPACK_IMPORTED_MODULE_6__["setProjectUnchanged"])())
-  }); // Allow incoming props to override redux-provided props. Used to mock in tests.
+  });
 
-
+  // Allow incoming props to override redux-provided props. Used to mock in tests.
   const mergeProps = (stateProps, dispatchProps, ownProps) => Object.assign({}, stateProps, dispatchProps, ownProps);
-
   return Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps, mapDispatchToProps, mergeProps)(VMManager);
 };
-
 /* harmony default export */ __webpack_exports__["default"] = (vmManagerHOC);
 
 /***/ }),
@@ -39737,12 +37110,12 @@ const vmManagerHOC = function vmManagerHOC(WrappedComponent) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-const appTarget = document.getElementById('app'); // Remove everything from the target to fix macOS Safari "Save Page As",
+const appTarget = document.getElementById('app');
 
+// Remove everything from the target to fix macOS Safari "Save Page As",
 while (appTarget.firstChild) {
   appTarget.removeChild(appTarget.firstChild);
 }
-
 document.body.classList.add('tw-loaded');
 /* harmony default export */ __webpack_exports__["default"] = (appTarget);
 
@@ -39793,10 +37166,8 @@ __webpack_require__.r(__webpack_exports__);
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 
-
 const searchParams = new URLSearchParams(location.search);
 const cloudHost = searchParams.get('cloud_host') || 'wss://clouddata.turbowarp.org';
-
 const RenderGUI = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_gui_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], _extends({
   cloudHost: cloudHost,
   canSave: false,
@@ -39804,7 +37175,6 @@ const RenderGUI = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___defau
   canEditTitle: true,
   enableCommunity: true
 }, props));
-
 /* harmony default export */ __webpack_exports__["default"] = (RenderGUI);
 
 /***/ }),
@@ -39836,6 +37206,7 @@ const SHOW_EXTENSION_ALERT = 'scratch-gui/alerts/SHOW_EXTENSION_ALERT';
 const CLOSE_ALERT = 'scratch-gui/alerts/CLOSE_ALERT';
 const CLOSE_ALERTS_WITH_ID = 'scratch-gui/alerts/CLOSE_ALERTS_WITH_ID';
 const CLOSE_ALERT_WITH_ID = 'scratch-gui/alerts/CLOSE_ALERT_WITH_ID';
+
 /**
  * Initial state of alerts reducer
  *
@@ -39850,40 +37221,31 @@ const CLOSE_ALERT_WITH_ID = 'scratch-gui/alerts/CLOSE_ALERT_WITH_ID';
  *  * message (optional): string
  *  * showReconnect (optional): bool
  */
-
 const initialState = {
   visible: true,
   alertsList: []
 };
-
 const filterPopupAlerts = alertsList => alertsList.filter(curAlert => curAlert.alertType === _lib_alerts_index_jsx__WEBPACK_IMPORTED_MODULE_0__["AlertTypes"].STANDARD || curAlert.alertType === _lib_alerts_index_jsx__WEBPACK_IMPORTED_MODULE_0__["AlertTypes"].EXTENSION);
-
 const filterInlineAlerts = alertsList => alertsList.filter(curAlert => curAlert.alertType === _lib_alerts_index_jsx__WEBPACK_IMPORTED_MODULE_0__["AlertTypes"].INLINE);
-
 const reducer = function reducer(state, action) {
   if (typeof state === 'undefined') state = initialState;
-
   switch (action.type) {
     case SHOW_ALERT:
       {
         // intended to show standard and inline alerts, but not extensions
         const alertId = action.alertId;
-
         if (alertId) {
           const newAlert = {
             alertId: alertId,
             level: _lib_alerts_index_jsx__WEBPACK_IMPORTED_MODULE_0__["AlertLevels"].WARN // default level
-
           };
-          const alertData = _lib_alerts_index_jsx__WEBPACK_IMPORTED_MODULE_0__["default"].find(thisAlertData => thisAlertData.alertId === alertId);
 
+          const alertData = _lib_alerts_index_jsx__WEBPACK_IMPORTED_MODULE_0__["default"].find(thisAlertData => thisAlertData.alertId === alertId);
           if (alertData) {
             const newList = state.alertsList.filter(curAlert => !alertData.clearList || alertData.clearList.indexOf(curAlert.alertId) === -1);
-
             if (action.data && action.data.message) {
               newAlert.message = action.data.message;
             }
-
             newAlert.alertType = alertData.alertType || _lib_alerts_index_jsx__WEBPACK_IMPORTED_MODULE_0__["AlertTypes"].STANDARD;
             newAlert.closeButton = alertData.closeButton;
             newAlert.content = alertData.content;
@@ -39898,17 +37260,14 @@ const reducer = function reducer(state, action) {
             });
           }
         }
-
         return state; // if alert not found, show nothing
       }
 
     case SHOW_EXTENSION_ALERT:
       {
         const extensionId = action.data.extensionId;
-
         if (extensionId) {
           const extension = _lib_libraries_extensions_index_jsx__WEBPACK_IMPORTED_MODULE_1__["default"].find(ext => ext.extensionId === extensionId);
-
           if (extension) {
             const newList = state.alertsList.slice();
             const newAlert = {
@@ -39926,7 +37285,6 @@ const reducer = function reducer(state, action) {
             });
           }
         }
-
         return state; // if alert not found, show nothing
       }
 
@@ -39937,81 +37295,75 @@ const reducer = function reducer(state, action) {
           action.index = state.alertsList.findIndex(a => a.alertId === action.alertId);
           if (action.index === -1) return state;
         }
-
         const newList = state.alertsList.slice();
         newList.splice(action.index, 1);
         return Object.assign({}, state, {
           alertsList: newList
         });
       }
-
     case CLOSE_ALERTS_WITH_ID:
       {
         return Object.assign({}, state, {
           alertsList: state.alertsList.filter(curAlert => curAlert.alertId !== action.alertId)
         });
       }
-
     default:
       return state;
   }
 };
+
 /**
  * Action creator to close an alert with the given index.
  *
  * @param {object} index - the index of the alert to close.
  * @return {object} - an object to be passed to the reducer.
  */
-
-
 const closeAlert = function closeAlert(index) {
   return {
     type: CLOSE_ALERT,
     index
   };
 };
+
 /**
  * Action creator to close all alerts with a given ID.
  *
  * @param {string} alertId - id string of the alert to close
  * @return {object} - an object to be passed to the reducer.
  */
-
-
 const closeAlertsWithId = function closeAlertsWithId(alertId) {
   return {
     type: CLOSE_ALERTS_WITH_ID,
     alertId
   };
 };
+
 /**
  * Action creator to close a single alert with a given ID.
  *
  * @param {string} alertId - id string of the alert to close
  * @return {object} - an object to be passed to the reducer.
  */
-
-
 const closeAlertWithId = function closeAlertWithId(alertId) {
   return {
     type: CLOSE_ALERT_WITH_ID,
     alertId
   };
 };
+
 /**
  * Action creator to show an alert with the given alertId.
  *
  * @param {string} alertId - id string of the alert to show
  * @return {object} - an object to be passed to the reducer.
  */
-
-
 const showStandardAlert = function showStandardAlert(alertId) {
   return {
     type: SHOW_ALERT,
     alertId
   };
 };
+
 /**
  * Action creator to show an alert with the given input data.
  *
@@ -40020,14 +37372,13 @@ const showStandardAlert = function showStandardAlert(alertId) {
  * @param {string} data.extensionId - extension ID for the alert
  * @return {object} - an object to be passed to the reducer.
  */
-
-
 const showExtensionAlert = function showExtensionAlert(data) {
   return {
     type: SHOW_EXTENSION_ALERT,
     data
   };
 };
+
 /**
  * Function to dispatch showing an alert, with optional
  * timeout to make it close/go away.
@@ -40035,14 +37386,10 @@ const showExtensionAlert = function showExtensionAlert(data) {
  * @param {object} dispatch - dispatch function
  * @param {string} alertId - the ID of the alert
  */
-
-
 const showAlertWithTimeout = function showAlertWithTimeout(dispatch, alertId) {
   const alertData = _lib_alerts_index_jsx__WEBPACK_IMPORTED_MODULE_0__["default"].find(thisAlertData => thisAlertData.alertId === alertId);
-
   if (alertData) {
     dispatch(showStandardAlert(alertId));
-
     if (alertData.maxDisplaySecs) {
       setTimeout(() => {
         dispatch(closeAlertsWithId(alertId));
@@ -40050,7 +37397,6 @@ const showAlertWithTimeout = function showAlertWithTimeout(dispatch, alertId) {
     }
   }
 };
-
 
 
 /***/ }),
@@ -40073,26 +37419,21 @@ const initialState = {
   currentOffset: null,
   img: null
 };
-
 const reducer = function reducer(state, action) {
   if (typeof state === 'undefined') state = initialState;
-
   switch (action.type) {
     case DRAG_UPDATE:
       return Object.assign({}, state, action.state);
-
     default:
       return state;
   }
 };
-
 const updateAssetDrag = function updateAssetDrag(state) {
   return {
     type: DRAG_UPDATE,
     state: state
   };
 };
-
 
 
 /***/ }),
@@ -40111,19 +37452,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateBlockDrag", function() { return updateBlockDrag; });
 const BLOCK_DRAG_UPDATE = 'scratch-gui/block-drag/BLOCK_DRAG_UPDATE';
 const initialState = false;
-
 const reducer = function reducer(state, action) {
   if (typeof state === 'undefined') state = initialState;
-
   switch (action.type) {
     case BLOCK_DRAG_UPDATE:
       return action.areBlocksOverGui;
-
     default:
       return state;
   }
 };
-
 const updateBlockDrag = function updateBlockDrag(areBlocksOverGui) {
   return {
     type: BLOCK_DRAG_UPDATE,
@@ -40133,7 +37470,6 @@ const updateBlockDrag = function updateBlockDrag(areBlocksOverGui) {
     }
   };
 };
-
 
 
 /***/ }),
@@ -40181,26 +37517,21 @@ const initialState = {
   expanded: true,
   dragging: false
 };
-
 const reducer = function reducer(state, action) {
   if (typeof state === 'undefined') state = initialState;
-
   switch (action.type) {
     case CLOSE_CARDS:
       return Object.assign({}, state, {
         visible: false
       });
-
     case SHRINK_EXPAND_CARDS:
       return Object.assign({}, state, {
         expanded: !state.expanded
       });
-
     case VIEW_CARDS:
       return Object.assign({}, state, {
         visible: true
       });
-
     case ACTIVATE_DECK:
       return Object.assign({}, state, {
         activeDeckId: action.activeDeckId,
@@ -40210,7 +37541,6 @@ const reducer = function reducer(state, action) {
         expanded: true,
         visible: true
       });
-
     case NEXT_STEP:
       if (state.activeDeckId !== null) {
         _lib_analytics__WEBPACK_IMPORTED_MODULE_0__["default"].event({
@@ -40222,9 +37552,7 @@ const reducer = function reducer(state, action) {
           step: state.step + 1
         });
       }
-
       return state;
-
     case PREV_STEP:
       if (state.activeDeckId !== null) {
         if (state.step > 0) {
@@ -40233,67 +37561,55 @@ const reducer = function reducer(state, action) {
           });
         }
       }
-
       return state;
-
     case DRAG_CARD:
       return Object.assign({}, state, {
         x: action.x,
         y: action.y
       });
-
     case START_DRAG:
       return Object.assign({}, state, {
         dragging: true
       });
-
     case END_DRAG:
       return Object.assign({}, state, {
         dragging: false
       });
-
     default:
       return state;
   }
 };
-
 const activateDeck = function activateDeck(activeDeckId) {
   return {
     type: ACTIVATE_DECK,
     activeDeckId
   };
 };
-
 const viewCards = function viewCards() {
   return {
     type: VIEW_CARDS
   };
 };
-
 const closeCards = function closeCards() {
   return {
     type: CLOSE_CARDS
   };
 };
-
 const shrinkExpandCards = function shrinkExpandCards() {
   return {
     type: SHRINK_EXPAND_CARDS
   };
 };
-
 const nextStep = function nextStep() {
   return {
     type: NEXT_STEP
   };
 };
-
 const prevStep = function prevStep() {
   return {
     type: PREV_STEP
   };
 };
-
 const dragCard = function dragCard(x, y) {
   return {
     type: DRAG_CARD,
@@ -40301,19 +37617,16 @@ const dragCard = function dragCard(x, y) {
     y
   };
 };
-
 const startDrag = function startDrag() {
   return {
     type: START_DRAG
   };
 };
-
 const endDrag = function endDrag() {
   return {
     type: END_DRAG
   };
 };
-
 
 
 /***/ }),
@@ -40341,53 +37654,43 @@ const initialState = {
     throw new Error('Color picker callback not initialized');
   }
 };
-
 const reducer = function reducer(state, action) {
   if (typeof state === 'undefined') state = initialState;
-
   switch (action.type) {
     case ACTIVATE_COLOR_PICKER:
       return Object.assign({}, state, {
         active: true,
         callback: action.callback
       });
-
     case DEACTIVATE_COLOR_PICKER:
       // Can be called without a string to deactivate without setting color
       // i.e. when clicking on the modal background
       if (typeof action.color === 'string') {
         state.callback(action.color);
       }
-
       return Object.assign({}, state, {
         active: false
       });
-
     case SET_CALLBACK:
       return Object.assign({}, state, {
         callback: action.callback
       });
-
     default:
       return state;
   }
 };
-
 const activateColorPicker = callback => ({
   type: ACTIVATE_COLOR_PICKER,
   callback: callback
 });
-
 const deactivateColorPicker = color => ({
   type: DEACTIVATE_COLOR_PICKER,
   color: color
 });
-
 const setCallback = callback => ({
   type: SET_CALLBACK,
   callback: callback
 });
-
 
 
 /***/ }),
@@ -40408,28 +37711,23 @@ const SET_ID = 'scratch-gui/connection-modal/setId';
 const initialState = {
   extensionId: null
 };
-
 const reducer = function reducer(state, action) {
   if (typeof state === 'undefined') state = initialState;
-
   switch (action.type) {
     case SET_ID:
       return Object.assign({}, state, {
         extensionId: action.extensionId
       });
-
     default:
       return state;
   }
 };
-
 const setConnectionModalExtensionId = function setConnectionModalExtensionId(extensionId) {
   return {
     type: SET_ID,
     extensionId: extensionId
   };
 };
-
 
 
 /***/ }),
@@ -40455,10 +37753,8 @@ const initialState = {
   mutator: null,
   callback: null
 };
-
 const reducer = function reducer(state, action) {
   if (typeof state === 'undefined') state = initialState;
-
   switch (action.type) {
     case ACTIVATE_CUSTOM_PROCEDURES:
       return Object.assign({}, state, {
@@ -40466,29 +37762,26 @@ const reducer = function reducer(state, action) {
         mutator: action.mutator,
         callback: action.callback
       });
-
     case DEACTIVATE_CUSTOM_PROCEDURES:
       // Can be called without a mutator to deactivate without new procedure
       // i.e. when clicking on the modal background
       if (action.mutator) {
         state.callback(action.mutator);
       }
-
       return Object.assign({}, state, {
         active: false,
         mutator: null,
         callback: null
       });
-
     case SET_CALLBACK:
       return Object.assign({}, state, {
         callback: action.callback
       });
-
     default:
       return state;
   }
 };
+
 /**
  * Action creator to open the custom procedures modal.
  * @param {!Element} mutator The XML node of the mutator for the procedure.
@@ -40496,25 +37789,21 @@ const reducer = function reducer(state, action) {
  *     Expect the callback to be a function that takes a new XML mutator node.
  * @returns {object} An action object with type ACTIVATE_CUSTOM_PROCEDURES.
  */
-
-
 const activateCustomProcedures = (mutator, callback) => ({
   type: ACTIVATE_CUSTOM_PROCEDURES,
   mutator: mutator,
   callback: callback
 });
+
 /**
  * Action creator to close the custom procedures modal.
  * @param {?Element} mutator The new mutator, or null if the callback should not be called.
  * @returns {object} An action object with type ACTIVATE_CUSTOM_PROCEDURES.
  */
-
-
 const deactivateCustomProcedures = mutator => ({
   type: DEACTIVATE_CUSTOM_PROCEDURES,
   mutator: mutator
 });
-
 
 
 /***/ }),
@@ -40533,34 +37822,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "defaultStageSize", function() { return defaultStageSize; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setCustomStageSize", function() { return setCustomStageSize; });
 const SET_CUSTOM_STAGE_SIZE = 'tw/custom-stage-size/SET';
-
 const getDimensions = () => {
   // Running in node.js
   if (typeof URLSearchParams === 'undefined') {
     return null;
   }
-
   const urlParameters = new URLSearchParams(location.search);
   const dimensionsQuery = urlParameters.get('size');
-
   if (dimensionsQuery === null) {
     return null;
   }
-
   const match = dimensionsQuery.match(/^(\d+)[^\d]+(\d+)$/);
-
   if (!match) {
     // eslint-disable-next-line no-alert
     alert('Could not parse custom stage size');
     return null;
   }
-
   const [_, widthText, heightText] = match;
-
   if (!widthText || !heightText) {
     return null;
   }
-
   const width = Math.max(0, Math.min(4096, +widthText));
   const height = Math.max(0, Math.min(4096, +heightText));
   return {
@@ -40568,28 +37849,23 @@ const getDimensions = () => {
     height
   };
 };
-
 const defaultStageSize = {
   width: 480,
   height: 360
 };
 const initialState = getDimensions() || defaultStageSize;
-
 const reducer = function reducer(state, action) {
   if (typeof state === 'undefined') state = initialState;
-
   switch (action.type) {
     case SET_CUSTOM_STAGE_SIZE:
       return Object.assign({}, state, {
         width: action.width,
         height: action.height
       });
-
     default:
       return state;
   }
 };
-
 const setCustomStageSize = function setCustomStageSize(width, height) {
   return {
     type: SET_CUSTOM_STAGE_SIZE,
@@ -40597,7 +37873,6 @@ const setCustomStageSize = function setCustomStageSize(width, height) {
     height
   };
 };
-
 
 
 /***/ }),
@@ -40617,36 +37892,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BLOCKS_TAB_INDEX", function() { return BLOCKS_TAB_INDEX; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "COSTUMES_TAB_INDEX", function() { return COSTUMES_TAB_INDEX; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SOUNDS_TAB_INDEX", function() { return SOUNDS_TAB_INDEX; });
-const ACTIVATE_TAB = 'scratch-gui/navigation/ACTIVATE_TAB'; // Constants use numbers to make it easier to work with react-tabs
+const ACTIVATE_TAB = 'scratch-gui/navigation/ACTIVATE_TAB';
 
+// Constants use numbers to make it easier to work with react-tabs
 const BLOCKS_TAB_INDEX = 0;
 const COSTUMES_TAB_INDEX = 1;
 const SOUNDS_TAB_INDEX = 2;
 const initialState = {
   activeTabIndex: BLOCKS_TAB_INDEX
 };
-
 const reducer = function reducer(state, action) {
   if (typeof state === 'undefined') state = initialState;
-
   switch (action.type) {
     case ACTIVATE_TAB:
       return Object.assign({}, state, {
         activeTabIndex: action.activeTabIndex
       });
-
     default:
       return state;
   }
 };
-
 const activateTab = function activateTab(tab) {
   return {
     type: ACTIVATE_TAB,
     activeTabIndex: tab
   };
 };
-
 
 
 /***/ }),
@@ -40665,24 +37936,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setFontsLoaded", function() { return setFontsLoaded; });
 const SET_FONTS_LOADED = 'fontsLoaded/SET_FONTS_LOADED';
 const initialState = false;
-
 const reducer = function reducer(state, action) {
   if (typeof state === 'undefined') state = initialState;
-
   switch (action.type) {
     case SET_FONTS_LOADED:
       return action.loaded;
-
     default:
       return state;
   }
 };
-
 const setFontsLoaded = () => ({
   type: SET_FONTS_LOADED,
   loaded: true
 });
-
 
 
 /***/ }),
@@ -40804,7 +38070,6 @@ const guiInitialState = {
   vmStatus: _vm_status__WEBPACK_IMPORTED_MODULE_28__["vmStatusInitialState"],
   workspaceMetrics: _workspace_metrics__WEBPACK_IMPORTED_MODULE_29__["workspaceMetricsInitialState"]
 };
-
 const initPlayer = function initPlayer(currentState) {
   return Object.assign({}, currentState, {
     mode: {
@@ -40817,7 +38082,6 @@ const initPlayer = function initPlayer(currentState) {
     }
   });
 };
-
 const initFullScreen = function initFullScreen(currentState) {
   return Object.assign({}, currentState, {
     mode: {
@@ -40828,7 +38092,6 @@ const initFullScreen = function initFullScreen(currentState) {
     }
   });
 };
-
 const initEmbedded = function initEmbedded(currentState) {
   return Object.assign({}, currentState, {
     mode: {
@@ -40840,7 +38103,6 @@ const initEmbedded = function initEmbedded(currentState) {
     }
   });
 };
-
 const initTutorialCard = function initTutorialCard(currentState, deckId) {
   return Object.assign({}, currentState, {
     cards: {
@@ -40855,12 +38117,10 @@ const initTutorialCard = function initTutorialCard(currentState, deckId) {
     }
   });
 };
-
 const initTelemetryModal = function initTelemetryModal(currentState) {
   return Object.assign({}, currentState, {
     modals: {
       telemetryModal: true // this key must match `MODAL_TELEMETRY` in modals.js
-
     }
   });
 };
@@ -40919,28 +38179,23 @@ const initialState = {
   sprite: null,
   receivedBlocks: false
 };
-
 const reducer = function reducer(state, action) {
   if (typeof state === 'undefined') state = initialState;
-
   switch (action.type) {
     case SET_HOVERED_SPRITE:
       return {
         sprite: action.spriteId,
         receivedBlocks: false
       };
-
     case SET_RECEIVED_BLOCKS:
       return {
         sprite: state.sprite,
         receivedBlocks: action.receivedBlocks
       };
-
     default:
       return state;
   }
 };
-
 const setHoveredSprite = function setHoveredSprite(spriteId) {
   return {
     type: SET_HOVERED_SPRITE,
@@ -40950,14 +38205,12 @@ const setHoveredSprite = function setHoveredSprite(spriteId) {
     }
   };
 };
-
 const setReceivedBlocks = function setReceivedBlocks(receivedBlocks) {
   return {
     type: SET_RECEIVED_BLOCKS,
     receivedBlocks: receivedBlocks
   };
 };
-
 
 
 /***/ }),
@@ -40993,10 +38246,8 @@ const initialState = {
   messagesByLocale: _turbowarp_scratch_l10n_locales_editor_msgs__WEBPACK_IMPORTED_MODULE_2__["default"],
   messages: _turbowarp_scratch_l10n_locales_editor_msgs__WEBPACK_IMPORTED_MODULE_2__["default"].en
 };
-
 const reducer = function reducer(state, action) {
   if (typeof state === 'undefined') state = initialState;
-
   switch (action.type) {
     case SELECT_LOCALE:
       return Object.assign({}, state, {
@@ -41005,7 +38256,6 @@ const reducer = function reducer(state, action) {
         messagesByLocale: state.messagesByLocale,
         messages: state.messagesByLocale[action.locale]
       });
-
     case UPDATE_LOCALES:
       return Object.assign({}, state, {
         isRtl: state.isRtl,
@@ -41013,33 +38263,26 @@ const reducer = function reducer(state, action) {
         messagesByLocale: action.messagesByLocale,
         messages: action.messagesByLocale[state.locale]
       });
-
     default:
       return state;
   }
 };
-
 const selectLocale = function selectLocale(locale) {
   // tw: store language in localStorage
   try {
     localStorage.setItem(_lib_detect_locale_js__WEBPACK_IMPORTED_MODULE_3__["LANGUAGE_KEY"], locale);
-  } catch (e) {
-    /* ignore */
-  }
-
+  } catch (e) {/* ignore */}
   return {
     type: SELECT_LOCALE,
     locale: locale
   };
 };
-
 const setLocales = function setLocales(localesMessages) {
   return {
     type: UPDATE_LOCALES,
     messagesByLocale: localesMessages
   };
 };
-
 const initLocale = function initLocale(currentState, locale) {
   if (currentState.messagesByLocale.hasOwnProperty(locale)) {
     return Object.assign({}, currentState, {
@@ -41048,12 +38291,10 @@ const initLocale = function initLocale(currentState, locale) {
       messagesByLocale: currentState.messagesByLocale,
       messages: currentState.messagesByLocale[locale]
     });
-  } // don't change locale if it's not in the current messages
-
-
+  }
+  // don't change locale if it's not in the current messages
   return currentState;
 };
-
 
 
 /***/ }),
@@ -41108,78 +38349,50 @@ const initialState = {
   [MENU_LOGIN]: false,
   [MENU_ERRORS]: false
 };
-
 const reducer = function reducer(state, action) {
   if (typeof state === 'undefined') state = initialState;
-
   switch (action.type) {
     case OPEN_MENU:
       return Object.assign({}, state, {
         [action.menu]: true
       });
-
     case CLOSE_MENU:
       return Object.assign({}, state, {
         [action.menu]: false
       });
-
     default:
       return state;
   }
 };
-
 const openMenu = menu => ({
   type: OPEN_MENU,
   menu: menu
 });
-
 const closeMenu = menu => ({
   type: CLOSE_MENU,
   menu: menu
 });
-
 const openAboutMenu = () => openMenu(MENU_ABOUT);
-
 const closeAboutMenu = () => closeMenu(MENU_ABOUT);
-
 const aboutMenuOpen = state => state.scratchGui.menus[MENU_ABOUT];
-
 const openAccountMenu = () => openMenu(MENU_ACCOUNT);
-
 const closeAccountMenu = () => closeMenu(MENU_ACCOUNT);
-
 const accountMenuOpen = state => state.scratchGui.menus[MENU_ACCOUNT];
-
 const openFileMenu = () => openMenu(MENU_FILE);
-
 const closeFileMenu = () => closeMenu(MENU_FILE);
-
 const fileMenuOpen = state => state.scratchGui.menus[MENU_FILE];
-
 const openEditMenu = () => openMenu(MENU_EDIT);
-
 const closeEditMenu = () => closeMenu(MENU_EDIT);
-
 const editMenuOpen = state => state.scratchGui.menus[MENU_EDIT];
-
 const openLanguageMenu = () => openMenu(MENU_LANGUAGE);
-
 const closeLanguageMenu = () => closeMenu(MENU_LANGUAGE);
-
 const languageMenuOpen = state => state.scratchGui.menus[MENU_LANGUAGE];
-
 const openLoginMenu = () => openMenu(MENU_LOGIN);
-
 const closeLoginMenu = () => closeMenu(MENU_LOGIN);
-
 const loginMenuOpen = state => state.scratchGui.menus[MENU_LOGIN];
-
 const openErrorsMenu = () => openMenu(MENU_ERRORS);
-
 const closeErrorsMenu = () => closeMenu(MENU_ERRORS);
-
 const errorsMenuOpen = state => state.scratchGui.menus[MENU_ERRORS];
-
 
 
 /***/ }),
@@ -41198,26 +38411,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateMicIndicator", function() { return updateMicIndicator; });
 const UPDATE = 'scratch-gui/mic-indicator/UPDATE';
 const initialState = false;
-
 const reducer = function reducer(state, action) {
   if (typeof state === 'undefined') state = initialState;
-
   switch (action.type) {
     case UPDATE:
       return action.visible;
-
     default:
       return state;
   }
 };
-
 const updateMicIndicator = function updateMicIndicator(visible) {
   return {
     type: UPDATE,
     visible: visible
   };
 };
-
 
 
 /***/ }),
@@ -41285,136 +38493,105 @@ const initialState = {
   [MODAL_USERNAME]: false,
   [MODAL_SETTINGS]: false
 };
-
 const reducer = function reducer(state, action) {
   if (typeof state === 'undefined') state = initialState;
-
   switch (action.type) {
     case OPEN_MODAL:
       return Object.assign({}, state, {
         [action.modal]: true
       });
-
     case CLOSE_MODAL:
       return Object.assign({}, state, {
         [action.modal]: false
       });
-
     default:
       return state;
   }
 };
-
 const openModal = function openModal(modal) {
   return {
     type: OPEN_MODAL,
     modal: modal
   };
 };
-
 const closeModal = function closeModal(modal) {
   return {
     type: CLOSE_MODAL,
     modal: modal
   };
 };
-
 const openBackdropLibrary = function openBackdropLibrary() {
   return openModal(MODAL_BACKDROP_LIBRARY);
 };
-
 const openCostumeLibrary = function openCostumeLibrary() {
   return openModal(MODAL_COSTUME_LIBRARY);
 };
-
 const openExtensionLibrary = function openExtensionLibrary() {
   return openModal(MODAL_EXTENSION_LIBRARY);
 };
-
 const openLoadingProject = function openLoadingProject() {
   return openModal(MODAL_LOADING_PROJECT);
 };
-
 const openTelemetryModal = function openTelemetryModal() {
   return openModal(MODAL_TELEMETRY);
 };
-
 const openSoundLibrary = function openSoundLibrary() {
   return openModal(MODAL_SOUND_LIBRARY);
 };
-
 const openSpriteLibrary = function openSpriteLibrary() {
   return openModal(MODAL_SPRITE_LIBRARY);
 };
-
 const openSoundRecorder = function openSoundRecorder() {
   return openModal(MODAL_SOUND_RECORDER);
 };
-
 const openConnectionModal = function openConnectionModal() {
   return openModal(MODAL_CONNECTION);
 };
-
 const openTipsLibrary = function openTipsLibrary() {
   return openModal(MODAL_TIPS_LIBRARY);
 };
-
 const openUsernameModal = function openUsernameModal() {
   return openModal(MODAL_USERNAME);
 };
-
 const openSettingsModal = function openSettingsModal() {
   return openModal(MODAL_SETTINGS);
 };
-
 const closeBackdropLibrary = function closeBackdropLibrary() {
   return closeModal(MODAL_BACKDROP_LIBRARY);
 };
-
 const closeCostumeLibrary = function closeCostumeLibrary() {
   return closeModal(MODAL_COSTUME_LIBRARY);
 };
-
 const closeExtensionLibrary = function closeExtensionLibrary() {
   return closeModal(MODAL_EXTENSION_LIBRARY);
 };
-
 const closeLoadingProject = function closeLoadingProject() {
   return closeModal(MODAL_LOADING_PROJECT);
 };
-
 const closeTelemetryModal = function closeTelemetryModal() {
   return closeModal(MODAL_TELEMETRY);
 };
-
 const closeSpriteLibrary = function closeSpriteLibrary() {
   return closeModal(MODAL_SPRITE_LIBRARY);
 };
-
 const closeSoundLibrary = function closeSoundLibrary() {
   return closeModal(MODAL_SOUND_LIBRARY);
 };
-
 const closeSoundRecorder = function closeSoundRecorder() {
   return closeModal(MODAL_SOUND_RECORDER);
 };
-
 const closeTipsLibrary = function closeTipsLibrary() {
   return closeModal(MODAL_TIPS_LIBRARY);
 };
-
 const closeConnectionModal = function closeConnectionModal() {
   return closeModal(MODAL_CONNECTION);
 };
-
 const closeUsernameModal = function closeUsernameModal() {
   return closeModal(MODAL_USERNAME);
 };
-
 const closeSettingsModal = function closeSettingsModal() {
   return closeModal(MODAL_SETTINGS);
 };
-
 
 
 /***/ }),
@@ -41440,41 +38617,34 @@ const initialState = {
   isPlayerOnly: false,
   hasEverEnteredEditor: true
 };
-
 const reducer = function reducer(state, action) {
   if (typeof state === 'undefined') state = initialState;
-
   switch (action.type) {
     case SET_FULL_SCREEN:
       return Object.assign({}, state, {
         isFullScreen: action.isFullScreen
       });
-
     case SET_PLAYER:
       return Object.assign({}, state, {
         isPlayerOnly: action.isPlayerOnly,
         hasEverEnteredEditor: state.hasEverEnteredEditor || !action.isPlayerOnly
       });
-
     default:
       return state;
   }
 };
-
 const setFullScreen = function setFullScreen(isFullScreen) {
   return {
     type: SET_FULL_SCREEN,
     isFullScreen: isFullScreen
   };
 };
-
 const setPlayer = function setPlayer(isPlayerOnly) {
   return {
     type: SET_PLAYER,
     isPlayerOnly: isPlayerOnly
   };
 };
-
 
 
 /***/ }),
@@ -41509,35 +38679,30 @@ const RESET_MONITOR_LAYOUT = 'scratch-gui/monitors/RESET_MONITOR_LAYOUT';
 const initialState = {
   monitors: {},
   savedMonitorPositions: {}
-}; // Verify that the rectangle formed by the 2 points is well-formed
+};
 
+// Verify that the rectangle formed by the 2 points is well-formed
 const _verifyRect = function _verifyRect(upperStart, lowerEnd) {
   if (isNaN(upperStart.x) || isNaN(upperStart.y) || isNaN(lowerEnd.x) || isNaN(lowerEnd.y)) {
     return false;
   }
-
   if (!(upperStart.x < lowerEnd.x)) {
     return false;
   }
-
   if (!(upperStart.y < lowerEnd.y)) {
     return false;
   }
-
   return true;
 };
-
 const _addMonitorRect = function _addMonitorRect(state, action) {
   if (state.monitors.hasOwnProperty(action.monitorId)) {
     _lib_log__WEBPACK_IMPORTED_MODULE_0__["default"].error("Can't add monitor, monitor with id ".concat(action.monitorId, " already exists."));
     return state;
   }
-
   if (!_verifyRect(action.upperStart, action.lowerEnd)) {
     _lib_log__WEBPACK_IMPORTED_MODULE_0__["default"].error("Monitor rectangle not formatted correctly");
     return state;
   }
-
   return {
     monitors: Object.assign({}, state.monitors, {
       [action.monitorId]: {
@@ -41553,25 +38718,20 @@ const _addMonitorRect = function _addMonitorRect(state, action) {
     }) : state.savedMonitorPositions
   };
 };
-
 const _moveMonitorRect = function _moveMonitorRect(state, action) {
   if (!state.monitors.hasOwnProperty(action.monitorId)) {
     _lib_log__WEBPACK_IMPORTED_MODULE_0__["default"].error("Can't move monitor, monitor with id ".concat(action.monitorId, " does not exist."));
     return state;
   }
-
   if (isNaN(action.newX) || isNaN(action.newY)) {
     _lib_log__WEBPACK_IMPORTED_MODULE_0__["default"].error("Monitor rectangle not formatted correctly");
     return state;
   }
-
   const oldMonitor = state.monitors[action.monitorId];
-
   if (oldMonitor.upperStart.x === action.newX && oldMonitor.upperStart.y === action.newY) {
     // Hasn't moved
     return state;
   }
-
   const monitorWidth = oldMonitor.lowerEnd.x - oldMonitor.upperStart.x;
   const monitorHeight = oldMonitor.lowerEnd.y - oldMonitor.upperStart.y;
   return {
@@ -41596,18 +38756,15 @@ const _moveMonitorRect = function _moveMonitorRect(state, action) {
     })
   };
 };
-
 const _resizeMonitorRect = function _resizeMonitorRect(state, action) {
   if (!state.monitors.hasOwnProperty(action.monitorId)) {
     _lib_log__WEBPACK_IMPORTED_MODULE_0__["default"].error("Can't resize monitor, monitor with id ".concat(action.monitorId, " does not exist."));
     return state;
   }
-
   if (isNaN(action.newWidth) || isNaN(action.newHeight) || action.newWidth <= 0 || action.newHeight <= 0) {
     _lib_log__WEBPACK_IMPORTED_MODULE_0__["default"].error("Monitor rectangle not formatted correctly");
     return state;
   }
-
   const oldMonitor = state.monitors[action.monitorId];
   const newMonitor = {
     upperStart: oldMonitor.upperStart,
@@ -41616,12 +38773,10 @@ const _resizeMonitorRect = function _resizeMonitorRect(state, action) {
       y: oldMonitor.upperStart.y + action.newHeight
     }
   };
-
   if (newMonitor.lowerEnd.x === oldMonitor.lowerEnd.x && newMonitor.lowerEnd.y === oldMonitor.lowerEnd.y) {
     // no change
     return state;
   }
-
   return {
     monitors: Object.assign({}, state.monitors, {
       [action.monitorId]: newMonitor
@@ -41629,13 +38784,11 @@ const _resizeMonitorRect = function _resizeMonitorRect(state, action) {
     savedMonitorPositions: state.savedMonitorPositions
   };
 };
-
 const _removeMonitorRect = function _removeMonitorRect(state, action) {
   if (!state.monitors.hasOwnProperty(action.monitorId)) {
     _lib_log__WEBPACK_IMPORTED_MODULE_0__["default"].error("Can't remove monitor, monitor with id ".concat(action.monitorId, " does not exist."));
     return state;
   }
-
   const newMonitors = Object.assign({}, state.monitors);
   delete newMonitors[action.monitorId];
   return {
@@ -41643,47 +38796,39 @@ const _removeMonitorRect = function _removeMonitorRect(state, action) {
     savedMonitorPositions: state.savedMonitorPositions
   };
 };
-
 const reducer = function reducer(state, action) {
   if (typeof state === 'undefined') state = initialState;
-
   switch (action.type) {
     case ADD_MONITOR_RECT:
       return _addMonitorRect(state, action);
-
     case MOVE_MONITOR_RECT:
       return _moveMonitorRect(state, action);
-
     case RESIZE_MONITOR_RECT:
       return _resizeMonitorRect(state, action);
-
     case REMOVE_MONITOR_RECT:
       return _removeMonitorRect(state, action);
-
     case RESET_MONITOR_LAYOUT:
       return initialState;
-
     default:
       return state;
   }
-}; // Init position --------------------------
+};
 
-
-const PADDING = 5; // @todo fix these numbers when we fix https://github.com/LLK/scratch-gui/issues/980
-
+// Init position --------------------------
+const PADDING = 5;
+// @todo fix these numbers when we fix https://github.com/LLK/scratch-gui/issues/980
 const SCREEN_WIDTH = 400;
 const SCREEN_HEIGHT = 300;
 const SCREEN_EDGE_BUFFER = 40;
-
 const _rectsIntersect = function _rectsIntersect(rect1, rect2) {
   // If one rectangle is on left side of other
-  if (rect1.upperStart.x >= rect2.lowerEnd.x || rect2.upperStart.x >= rect1.lowerEnd.x) return false; // If one rectangle is above other
-
+  if (rect1.upperStart.x >= rect2.lowerEnd.x || rect2.upperStart.x >= rect1.lowerEnd.x) return false;
+  // If one rectangle is above other
   if (rect1.upperStart.y >= rect2.lowerEnd.y || rect2.upperStart.y >= rect1.lowerEnd.y) return false;
   return true;
-}; // We need to place a monitor with the given width and height. Return a rect defining where it should be placed.
+};
 
-
+// We need to place a monitor with the given width and height. Return a rect defining where it should be placed.
 const getInitialPosition = function getInitialPosition(state, monitorId, eltWidth, eltHeight) {
   // If this monitor was purposefully moved to a certain position before, put it back in that position
   if (state.savedMonitorPositions.hasOwnProperty(monitorId)) {
@@ -41695,39 +38840,32 @@ const getInitialPosition = function getInitialPosition(state, monitorId, eltWidt
         y: saved.y + eltHeight
       }
     };
-  } // Try all starting positions for the new monitor to find one that doesn't intersect others
+  }
 
-
+  // Try all starting positions for the new monitor to find one that doesn't intersect others
   const endXs = [0];
   const endYs = [0];
   let lastX = null;
   let lastY = null;
-
   for (const monitor in state.monitors) {
     let x = state.monitors[monitor].lowerEnd.x;
     x = Math.ceil(x / 50) * 50; // Try to choose a sensible "tab width" so more monitors line up
-
     endXs.push(x);
     endYs.push(Math.ceil(state.monitors[monitor].lowerEnd.y));
   }
-
   endXs.sort((a, b) => a - b);
-  endYs.sort((a, b) => a - b); // We'll use plan B if the monitor doesn't fit anywhere (too long or tall)
-
+  endYs.sort((a, b) => a - b);
+  // We'll use plan B if the monitor doesn't fit anywhere (too long or tall)
   let planB = null;
-
   for (const x of endXs) {
     if (x === lastX) {
       continue;
     }
-
     lastX = x;
-
     outer: for (const y of endYs) {
       if (y === lastY) {
         continue;
       }
-
       lastY = y;
       const monitorRect = {
         upperStart: {
@@ -41738,8 +38876,8 @@ const getInitialPosition = function getInitialPosition(state, monitorId, eltWidt
           x: x + PADDING + eltWidth,
           y: y + PADDING + eltHeight
         }
-      }; // Intersection testing rect that includes padding
-
+      };
+      // Intersection testing rect that includes padding
       const rect = {
         upperStart: {
           x,
@@ -41750,34 +38888,29 @@ const getInitialPosition = function getInitialPosition(state, monitorId, eltWidt
           y: y + eltHeight + 2 * PADDING
         }
       };
-
       for (const monitor in state.monitors) {
         if (_rectsIntersect(state.monitors[monitor], rect)) {
           continue outer;
         }
-      } // If the rect overlaps the ends of the screen
-
-
+      }
+      // If the rect overlaps the ends of the screen
       if (rect.lowerEnd.x > SCREEN_WIDTH || rect.lowerEnd.y > SCREEN_HEIGHT) {
         // If rect is not too close to completely off screen, set it as plan B
         if (!planB && !(rect.upperStart.x + SCREEN_EDGE_BUFFER > SCREEN_WIDTH || rect.upperStart.y + SCREEN_EDGE_BUFFER > SCREEN_HEIGHT)) {
           planB = monitorRect;
         }
-
         continue;
       }
-
       return monitorRect;
     }
-  } // If the monitor is too long to fit anywhere, put it in the leftmost spot available
+  }
+  // If the monitor is too long to fit anywhere, put it in the leftmost spot available
   // that intersects the right or bottom edge and isn't too close to the edge.
-
-
   if (planB) {
     return planB;
-  } // If plan B fails and there's nowhere reasonable to put it, plan C is to place the monitor randomly
+  }
 
-
+  // If plan B fails and there's nowhere reasonable to put it, plan C is to place the monitor randomly
   const randX = Math.ceil(Math.random() * (SCREEN_WIDTH / 2));
   const randY = Math.ceil(Math.random() * (SCREEN_HEIGHT - SCREEN_EDGE_BUFFER));
   return {
@@ -41790,8 +38923,9 @@ const getInitialPosition = function getInitialPosition(state, monitorId, eltWidt
       y: randY + eltHeight
     }
   };
-}; // Action creators ------------------------
+};
 
+// Action creators ------------------------
 /**
  * @param {!string} monitorId Id to add
  * @param {!object} upperStart upper point defining the rectangle
@@ -41803,8 +38937,6 @@ const getInitialPosition = function getInitialPosition(state, monitorId, eltWidt
  * @param {?boolean} savePosition True if the placement should be saved when adding the monitor
  * @returns {object} action to add a new monitor at the location
  */
-
-
 const addMonitorRect = function addMonitorRect(monitorId, upperStart, lowerEnd, savePosition) {
   return {
     type: ADD_MONITOR_RECT,
@@ -41814,14 +38946,13 @@ const addMonitorRect = function addMonitorRect(monitorId, upperStart, lowerEnd, 
     savePosition: savePosition
   };
 };
+
 /**
  * @param {!string} monitorId Id for monitor to move
  * @param {!number} newX X of top point that defines the monitor location
  * @param {!number} newY Y of top point that defines the monitor location
  * @returns {object} action to move an existing monitor to the location
  */
-
-
 const moveMonitorRect = function moveMonitorRect(monitorId, newX, newY) {
   return {
     type: MOVE_MONITOR_RECT,
@@ -41830,14 +38961,13 @@ const moveMonitorRect = function moveMonitorRect(monitorId, newX, newY) {
     newY: newY
   };
 };
+
 /**
  * @param {!string} monitorId Id for monitor to resize
  * @param {!number} newWidth Width to set monitor to
  * @param {!number} newHeight Height to set monitor to
  * @returns {object} action to resize an existing monitor to the given dimensions
  */
-
-
 const resizeMonitorRect = function resizeMonitorRect(monitorId, newWidth, newHeight) {
   return {
     type: RESIZE_MONITOR_RECT,
@@ -41846,25 +38976,22 @@ const resizeMonitorRect = function resizeMonitorRect(monitorId, newWidth, newHei
     newHeight: newHeight
   };
 };
+
 /**
  * @param {!string} monitorId Id for monitor to remove
  * @returns {object} action to remove an existing monitor
  */
-
-
 const removeMonitorRect = function removeMonitorRect(monitorId) {
   return {
     type: REMOVE_MONITOR_RECT,
     monitorId: monitorId
   };
 };
-
 const resetMonitorLayout = function resetMonitorLayout() {
   return {
     type: RESET_MONITOR_LAYOUT
   };
 };
-
 
 
 /***/ }),
@@ -41886,26 +39013,21 @@ __webpack_require__.r(__webpack_exports__);
 const UPDATE_MONITORS = 'scratch-gui/monitors/UPDATE_MONITORS';
 
 const initialState = Object(immutable__WEBPACK_IMPORTED_MODULE_0__["OrderedMap"])();
-
 const reducer = function reducer(state, action) {
   if (typeof state === 'undefined') state = initialState;
-
   switch (action.type) {
     case UPDATE_MONITORS:
       return action.monitors;
-
     default:
       return state;
   }
 };
-
 const updateMonitors = function updateMonitors(monitors) {
   return {
     type: UPDATE_MONITORS,
     monitors: monitors
   };
 };
-
 
 
 /***/ }),
@@ -41925,29 +39047,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setProjectUnchanged", function() { return setProjectUnchanged; });
 const SET_PROJECT_CHANGED = 'scratch-gui/project-changed/SET_PROJECT_CHANGED';
 const initialState = false;
-
 const reducer = function reducer(state, action) {
   if (typeof state === 'undefined') state = initialState;
-
   switch (action.type) {
     case SET_PROJECT_CHANGED:
       return action.changed;
-
     default:
       return state;
   }
 };
-
 const setProjectChanged = () => ({
   type: SET_PROJECT_CHANGED,
   changed: true
 });
-
 const setProjectUnchanged = () => ({
   type: SET_PROJECT_CHANGED,
   changed: false
 });
-
 
 
 /***/ }),
@@ -42040,48 +39156,31 @@ const LoadingState = keymirror__WEBPACK_IMPORTED_MODULE_0___default()({
   UPDATING_BEFORE_NEW: null
 });
 const LoadingStates = Object.keys(LoadingState);
-
-const getIsFetchingWithoutId = loadingState => // LOADING_VM_FILE_UPLOAD is an honorary fetch, since there is no fetching step for file uploads
+const getIsFetchingWithoutId = loadingState =>
+// LOADING_VM_FILE_UPLOAD is an honorary fetch, since there is no fetching step for file uploads
 loadingState === LoadingState.LOADING_VM_FILE_UPLOAD || loadingState === LoadingState.FETCHING_NEW_DEFAULT;
-
 const getIsFetchingWithId = loadingState => loadingState === LoadingState.FETCHING_WITH_ID || loadingState === LoadingState.FETCHING_NEW_DEFAULT;
-
 const getIsLoadingWithId = loadingState => loadingState === LoadingState.LOADING_VM_WITH_ID || loadingState === LoadingState.LOADING_VM_NEW_DEFAULT;
-
 const getIsLoading = loadingState => loadingState === LoadingState.LOADING_VM_FILE_UPLOAD || loadingState === LoadingState.LOADING_VM_WITH_ID || loadingState === LoadingState.LOADING_VM_NEW_DEFAULT;
-
 const getIsLoadingUpload = loadingState => loadingState === LoadingState.LOADING_VM_FILE_UPLOAD;
-
 const getIsCreatingNew = loadingState => loadingState === LoadingState.CREATING_NEW;
-
 const getIsAnyCreatingNewState = loadingState => loadingState === LoadingState.FETCHING_NEW_DEFAULT || loadingState === LoadingState.LOADING_VM_NEW_DEFAULT || loadingState === LoadingState.CREATING_NEW;
-
 const getIsCreatingCopy = loadingState => loadingState === LoadingState.CREATING_COPY;
-
 const getIsManualUpdating = loadingState => loadingState === LoadingState.MANUAL_UPDATING;
-
 const getIsRemixing = loadingState => loadingState === LoadingState.REMIXING;
-
 const getIsUpdating = loadingState => loadingState === LoadingState.AUTO_UPDATING || loadingState === LoadingState.MANUAL_UPDATING || loadingState === LoadingState.UPDATING_BEFORE_COPY || loadingState === LoadingState.UPDATING_BEFORE_NEW;
-
 const getIsShowingProject = loadingState => loadingState === LoadingState.SHOWING_WITH_ID || loadingState === LoadingState.SHOWING_WITHOUT_ID;
-
 const getIsShowingWithId = loadingState => loadingState === LoadingState.SHOWING_WITH_ID;
-
 const getIsShowingWithoutId = loadingState => loadingState === LoadingState.SHOWING_WITHOUT_ID;
-
 const getIsError = loadingState => loadingState === LoadingState.ERROR;
-
 const initialState = {
   error: null,
   projectData: null,
   projectId: null,
   loadingState: LoadingState.NOT_LOADED
 };
-
 const reducer = function reducer(state, action) {
   if (typeof state === 'undefined') state = initialState;
-
   switch (action.type) {
     case DONE_CREATING_NEW:
       // We need to set project id since we just created new project on the server.
@@ -42092,9 +39191,7 @@ const reducer = function reducer(state, action) {
           projectId: action.projectId
         });
       }
-
       return state;
-
     case DONE_FETCHING_WITH_ID:
       if (state.loadingState === LoadingState.FETCHING_WITH_ID) {
         return Object.assign({}, state, {
@@ -42102,9 +39199,7 @@ const reducer = function reducer(state, action) {
           projectData: action.projectData
         });
       }
-
       return state;
-
     case DONE_FETCHING_DEFAULT:
       if (state.loadingState === LoadingState.FETCHING_NEW_DEFAULT) {
         return Object.assign({}, state, {
@@ -42112,9 +39207,7 @@ const reducer = function reducer(state, action) {
           projectData: action.projectData
         });
       }
-
       return state;
-
     case DONE_LOADING_VM_WITHOUT_ID:
       if (state.loadingState === LoadingState.LOADING_VM_FILE_UPLOAD || state.loadingState === LoadingState.LOADING_VM_NEW_DEFAULT) {
         return Object.assign({}, state, {
@@ -42122,27 +39215,21 @@ const reducer = function reducer(state, action) {
           projectId: defaultProjectId
         });
       }
-
       return state;
-
     case DONE_LOADING_VM_WITH_ID:
       if (state.loadingState === LoadingState.LOADING_VM_WITH_ID) {
         return Object.assign({}, state, {
           loadingState: LoadingState.SHOWING_WITH_ID
         });
       }
-
       return state;
-
     case DONE_LOADING_VM_TO_SAVE:
       if (state.loadingState === LoadingState.LOADING_VM_FILE_UPLOAD) {
         return Object.assign({}, state, {
           loadingState: LoadingState.AUTO_UPDATING
         });
       }
-
       return state;
-
     case DONE_REMIXING:
       // We need to set project id since we just created new project on the server.
       // No need to load, we should have data already in vm.
@@ -42152,9 +39239,7 @@ const reducer = function reducer(state, action) {
           projectId: action.projectId
         });
       }
-
       return state;
-
     case DONE_CREATING_COPY:
       // We need to set project id since we just created new project on the server.
       // No need to load, we should have data already in vm.
@@ -42164,27 +39249,21 @@ const reducer = function reducer(state, action) {
           projectId: action.projectId
         });
       }
-
       return state;
-
     case DONE_UPDATING:
       if (state.loadingState === LoadingState.AUTO_UPDATING || state.loadingState === LoadingState.MANUAL_UPDATING) {
         return Object.assign({}, state, {
           loadingState: LoadingState.SHOWING_WITH_ID
         });
       }
-
       return state;
-
     case DONE_UPDATING_BEFORE_COPY:
       if (state.loadingState === LoadingState.UPDATING_BEFORE_COPY) {
         return Object.assign({}, state, {
           loadingState: LoadingState.CREATING_COPY
         });
       }
-
       return state;
-
     case DONE_UPDATING_BEFORE_NEW:
       if (state.loadingState === LoadingState.UPDATING_BEFORE_NEW) {
         return Object.assign({}, state, {
@@ -42192,9 +39271,7 @@ const reducer = function reducer(state, action) {
           projectId: defaultProjectId
         });
       }
-
       return state;
-
     case RETURN_TO_SHOWING:
       if (state.projectId === null || state.projectId === defaultProjectId) {
         return Object.assign({}, state, {
@@ -42202,19 +39279,16 @@ const reducer = function reducer(state, action) {
           projectId: defaultProjectId
         });
       }
-
       return Object.assign({}, state, {
         loadingState: LoadingState.SHOWING_WITH_ID
       });
-
     case SET_PROJECT_ID:
       // if the projectId hasn't actually changed do nothing
       if (state.projectId === action.projectId) {
         return state;
-      } // if we were already showing a project, and a different projectId is set, only fetch that project if
+      }
+      // if we were already showing a project, and a different projectId is set, only fetch that project if
       // projectId has changed. This prevents re-fetching projects unnecessarily.
-
-
       if (state.loadingState === LoadingState.SHOWING_WITH_ID) {
         // if setting the default project id, specifically fetch that project
         if (action.projectId === defaultProjectId || action.projectId === null) {
@@ -42223,7 +39297,6 @@ const reducer = function reducer(state, action) {
             projectId: defaultProjectId
           });
         }
-
         return Object.assign({}, state, {
           loadingState: LoadingState.FETCHING_WITH_ID,
           projectId: action.projectId
@@ -42245,33 +39318,26 @@ const reducer = function reducer(state, action) {
             projectId: defaultProjectId
           });
         }
-
         return Object.assign({}, state, {
           loadingState: LoadingState.FETCHING_WITH_ID,
           projectId: action.projectId
         });
       }
-
       return state;
-
     case START_AUTO_UPDATING:
       if (state.loadingState === LoadingState.SHOWING_WITH_ID) {
         return Object.assign({}, state, {
           loadingState: LoadingState.AUTO_UPDATING
         });
       }
-
       return state;
-
     case START_CREATING_NEW:
       if (state.loadingState === LoadingState.SHOWING_WITHOUT_ID) {
         return Object.assign({}, state, {
           loadingState: LoadingState.CREATING_NEW
         });
       }
-
       return state;
-
     case START_FETCHING_NEW:
       if ([LoadingState.SHOWING_WITH_ID, LoadingState.SHOWING_WITHOUT_ID].includes(state.loadingState)) {
         return Object.assign({}, state, {
@@ -42279,54 +39345,42 @@ const reducer = function reducer(state, action) {
           projectId: defaultProjectId
         });
       }
-
       return state;
-
     case START_LOADING_VM_FILE_UPLOAD:
       if ([LoadingState.NOT_LOADED, LoadingState.SHOWING_WITH_ID, LoadingState.SHOWING_WITHOUT_ID].includes(state.loadingState)) {
         return Object.assign({}, state, {
           loadingState: LoadingState.LOADING_VM_FILE_UPLOAD
         });
       }
-
       return state;
-
     case START_MANUAL_UPDATING:
       if (state.loadingState === LoadingState.SHOWING_WITH_ID) {
         return Object.assign({}, state, {
           loadingState: LoadingState.MANUAL_UPDATING
         });
       }
-
       return state;
-
     case START_REMIXING:
       if (state.loadingState === LoadingState.SHOWING_WITH_ID) {
         return Object.assign({}, state, {
           loadingState: LoadingState.REMIXING
         });
       }
-
       return state;
-
     case START_UPDATING_BEFORE_CREATING_COPY:
       if (state.loadingState === LoadingState.SHOWING_WITH_ID) {
         return Object.assign({}, state, {
           loadingState: LoadingState.UPDATING_BEFORE_COPY
         });
       }
-
       return state;
-
     case START_UPDATING_BEFORE_CREATING_NEW:
       if (state.loadingState === LoadingState.SHOWING_WITH_ID) {
         return Object.assign({}, state, {
           loadingState: LoadingState.UPDATING_BEFORE_NEW
         });
       }
-
       return state;
-
     case START_ERROR:
       // fatal errors: there's no correct editor state for us to show
       if ([LoadingState.FETCHING_NEW_DEFAULT, LoadingState.FETCHING_WITH_ID, LoadingState.LOADING_VM_NEW_DEFAULT, LoadingState.LOADING_VM_WITH_ID].includes(state.loadingState)) {
@@ -42334,18 +39388,16 @@ const reducer = function reducer(state, action) {
           loadingState: LoadingState.ERROR,
           error: action.error
         });
-      } // non-fatal errors: can keep showing editor state fine
-
-
+      }
+      // non-fatal errors: can keep showing editor state fine
       if ([LoadingState.AUTO_UPDATING, LoadingState.CREATING_COPY, LoadingState.MANUAL_UPDATING, LoadingState.REMIXING, LoadingState.UPDATING_BEFORE_COPY, LoadingState.UPDATING_BEFORE_NEW].includes(state.loadingState)) {
         return Object.assign({}, state, {
           loadingState: LoadingState.SHOWING_WITH_ID,
           error: action.error
         });
-      } // non-fatal error; state to show depends on whether project we're showing
+      }
+      // non-fatal error; state to show depends on whether project we're showing
       // has an id or not
-
-
       if (state.loadingState === LoadingState.CREATING_NEW) {
         if (state.projectId === defaultProjectId || state.projectId === null) {
           return Object.assign({}, state, {
@@ -42353,24 +39405,19 @@ const reducer = function reducer(state, action) {
             error: action.error
           });
         }
-
         return Object.assign({}, state, {
           loadingState: LoadingState.SHOWING_WITH_ID,
           error: action.error
         });
       }
-
       return state;
-
     default:
       return state;
   }
 };
-
 const createProject = () => ({
   type: START_CREATING_NEW
 });
-
 const doneCreatingProject = (id, loadingState) => {
   switch (loadingState) {
     case LoadingState.CREATING_NEW:
@@ -42378,24 +39425,20 @@ const doneCreatingProject = (id, loadingState) => {
         type: DONE_CREATING_NEW,
         projectId: id
       };
-
     case LoadingState.CREATING_COPY:
       return {
         type: DONE_CREATING_COPY,
         projectId: id
       };
-
     case LoadingState.REMIXING:
       return {
         type: DONE_REMIXING,
         projectId: id
       };
-
     default:
       break;
   }
 };
-
 const onFetchedProjectData = (projectData, loadingState) => {
   switch (loadingState) {
     case LoadingState.FETCHING_WITH_ID:
@@ -42403,18 +39446,15 @@ const onFetchedProjectData = (projectData, loadingState) => {
         type: DONE_FETCHING_WITH_ID,
         projectData: projectData
       };
-
     case LoadingState.FETCHING_NEW_DEFAULT:
       return {
         type: DONE_FETCHING_DEFAULT,
         projectData: projectData
       };
-
     default:
       break;
   }
 };
-
 const onLoadedProject = (loadingState, canSave, success) => {
   switch (loadingState) {
     case LoadingState.LOADING_VM_WITH_ID:
@@ -42422,13 +39462,11 @@ const onLoadedProject = (loadingState, canSave, success) => {
         return {
           type: DONE_LOADING_VM_WITH_ID
         };
-      } // failed to load project; just keep showing current project
-
-
+      }
+      // failed to load project; just keep showing current project
       return {
         type: RETURN_TO_SHOWING
       };
-
     case LoadingState.LOADING_VM_FILE_UPLOAD:
       if (success) {
         if (canSave) {
@@ -42436,34 +39474,28 @@ const onLoadedProject = (loadingState, canSave, success) => {
             type: DONE_LOADING_VM_TO_SAVE
           };
         }
-
         return {
           type: DONE_LOADING_VM_WITHOUT_ID
         };
-      } // failed to load project; just keep showing current project
-
-
+      }
+      // failed to load project; just keep showing current project
       return {
         type: RETURN_TO_SHOWING
       };
-
     case LoadingState.LOADING_VM_NEW_DEFAULT:
       if (success) {
         return {
           type: DONE_LOADING_VM_WITHOUT_ID
         };
-      } // failed to load default project; show error
-
-
+      }
+      // failed to load default project; show error
       return {
         type: START_ERROR
       };
-
     default:
       return;
   }
 };
-
 const doneUpdatingProject = loadingState => {
   switch (loadingState) {
     case LoadingState.AUTO_UPDATING:
@@ -42471,32 +39503,26 @@ const doneUpdatingProject = loadingState => {
       return {
         type: DONE_UPDATING
       };
-
     case LoadingState.UPDATING_BEFORE_COPY:
       return {
         type: DONE_UPDATING_BEFORE_COPY
       };
-
     case LoadingState.UPDATING_BEFORE_NEW:
       return {
         type: DONE_UPDATING_BEFORE_NEW
       };
-
     default:
       break;
   }
 };
-
 const projectError = error => ({
   type: START_ERROR,
   error: error
 });
-
 const setProjectId = id => ({
   type: SET_PROJECT_ID,
   projectId: id
 });
-
 const requestNewProject = needSave => {
   if (needSave) return {
     type: START_UPDATING_BEFORE_CREATING_NEW
@@ -42505,7 +39531,6 @@ const requestNewProject = needSave => {
     type: START_FETCHING_NEW
   };
 };
-
 const requestProjectUpload = loadingState => {
   switch (loadingState) {
     case LoadingState.NOT_LOADED:
@@ -42514,28 +39539,22 @@ const requestProjectUpload = loadingState => {
       return {
         type: START_LOADING_VM_FILE_UPLOAD
       };
-
     default:
       break;
   }
 };
-
 const autoUpdateProject = () => ({
   type: START_AUTO_UPDATING
 });
-
 const manualUpdateProject = () => ({
   type: START_MANUAL_UPDATING
 });
-
 const saveProjectAsCopy = () => ({
   type: START_UPDATING_BEFORE_CREATING_COPY
 });
-
 const remixProject = () => ({
   type: START_REMIXING
 });
-
 
 
 /***/ }),
@@ -42552,28 +39571,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return reducer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "projectTitleInitialState", function() { return initialState; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setProjectTitle", function() { return setProjectTitle; });
-const SET_PROJECT_TITLE = 'projectTitle/SET_PROJECT_TITLE'; // we are initializing to a blank string instead of an actual title,
+const SET_PROJECT_TITLE = 'projectTitle/SET_PROJECT_TITLE';
+
+// we are initializing to a blank string instead of an actual title,
 // because it would be hard to localize here
-
 const initialState = '';
-
 const reducer = function reducer(state, action) {
   if (typeof state === 'undefined') state = initialState;
-
   switch (action.type) {
     case SET_PROJECT_TITLE:
       return action.title;
-
     default:
       return state;
   }
 };
-
 const setProjectTitle = title => ({
   type: SET_PROJECT_TITLE,
   title: title
 });
-
 
 
 /***/ }),
@@ -42595,19 +39610,15 @@ const initialState = {
   restoreFun: null,
   deletedItem: ''
 };
-
 const reducer = function reducer(state, action) {
   if (typeof state === 'undefined') state = initialState;
-
   switch (action.type) {
     case RESTORE_UPDATE:
       return Object.assign({}, state, action.state);
-
     default:
       return state;
   }
 };
-
 const setRestore = function setRestore(state) {
   return {
     type: RESTORE_UPDATE,
@@ -42617,7 +39628,6 @@ const setRestore = function setRestore(state) {
     }
   };
 };
-
 
 
 /***/ }),
@@ -42640,28 +39650,23 @@ const SET_STAGE_SIZE = 'scratch-gui/StageSize/SET_STAGE_SIZE';
 const initialState = {
   stageSize: _lib_layout_constants_js__WEBPACK_IMPORTED_MODULE_0__["STAGE_DISPLAY_SIZES"].large
 };
-
 const reducer = function reducer(state, action) {
   if (typeof state === 'undefined') state = initialState;
-
   switch (action.type) {
     case SET_STAGE_SIZE:
       return {
         stageSize: action.stageSize
       };
-
     default:
       return state;
   }
 };
-
 const setStageSize = function setStageSize(stageSize) {
   return {
     type: SET_STAGE_SIZE,
     stageSize: stageSize
   };
 };
-
 
 
 /***/ }),
@@ -42680,11 +39685,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateTargets", function() { return updateTargets; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "highlightTarget", function() { return highlightTarget; });
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 const UPDATE_TARGET_LIST = 'scratch-gui/targets/UPDATE_TARGET_LIST';
 const HIGHLIGHT_TARGET = 'scratch-gui/targets/HIGHLIGHT_TARGET';
 const initialState = {
@@ -42693,10 +39695,8 @@ const initialState = {
   highlightedTargetId: null,
   highlightedTargetTime: null
 };
-
 const reducer = function reducer(state, action) {
   if (typeof state === 'undefined') state = initialState;
-
   switch (action.type) {
     case UPDATE_TARGET_LIST:
       return Object.assign({}, state, {
@@ -42708,18 +39708,15 @@ const reducer = function reducer(state, action) {
         stage: action.targets.filter(target => target.isStage)[0] || {},
         editingTarget: action.editingTarget
       });
-
     case HIGHLIGHT_TARGET:
       return Object.assign({}, state, {
         highlightedTargetId: action.targetId,
         highlightedTargetTime: action.updateTime
       });
-
     default:
       return state;
   }
 };
-
 const updateTargets = function updateTargets(targetList, editingTarget) {
   return {
     type: UPDATE_TARGET_LIST,
@@ -42727,7 +39724,6 @@ const updateTargets = function updateTargets(targetList, editingTarget) {
     editingTarget: editingTarget
   };
 };
-
 const highlightTarget = function highlightTarget(targetId) {
   return {
     type: HIGHLIGHT_TARGET,
@@ -42735,7 +39731,6 @@ const highlightTarget = function highlightTarget(targetId) {
     updateTime: Date.now()
   };
 };
-
 
 
 /***/ }),
@@ -42756,26 +39751,21 @@ const SET_AUTOSAVE_TIMEOUT_ID = 'timeout/SET_AUTOSAVE_TIMEOUT_ID';
 const initialState = {
   autoSaveTimeoutId: null
 };
-
 const reducer = function reducer(state, action) {
   if (typeof state === 'undefined') state = initialState;
-
   switch (action.type) {
     case SET_AUTOSAVE_TIMEOUT_ID:
       return Object.assign({}, state, {
         autoSaveTimeoutId: action.id
       });
-
     default:
       return state;
   }
 };
-
 const setAutoSaveTimeoutId = id => ({
   type: SET_AUTOSAVE_TIMEOUT_ID,
   id
 });
-
 
 
 /***/ }),
@@ -42798,28 +39788,23 @@ const UPDATE_TOOLBOX = 'scratch-gui/toolbox/UPDATE_TOOLBOX';
 const initialState = {
   toolboxXML: Object(_lib_make_toolbox_xml__WEBPACK_IMPORTED_MODULE_0__["default"])(true)
 };
-
 const reducer = function reducer(state, action) {
   if (typeof state === 'undefined') state = initialState;
-
   switch (action.type) {
     case UPDATE_TOOLBOX:
       return Object.assign({}, state, {
         toolboxXML: action.toolboxXML
       });
-
     default:
       return state;
   }
 };
-
 const updateToolbox = function updateToolbox(toolboxXML) {
   return {
     type: UPDATE_TOOLBOX,
     toolboxXML: toolboxXML
   };
 };
-
 
 
 /***/ }),
@@ -42898,207 +39883,172 @@ const initialState = {
   usernameInvalid: false,
   hasCloudVariables: false
 };
-
 const reducer = function reducer(state, action) {
   if (typeof state === 'undefined') state = initialState;
-
   switch (action.type) {
     case SET_FRAMERATE:
       return Object.assign({}, state, {
         framerate: action.framerate
       });
-
     case SET_INTERPOLATION:
       return Object.assign({}, state, {
         interpolation: action.interpolation
       });
-
     case SET_COMPILER_OPTIONS:
       return Object.assign({}, state, {
         compilerOptions: action.compilerOptions
       });
-
     case SET_RUNTIME_OPTIONS:
       return Object.assign({}, state, {
         runtimeOptions: action.runtimeOptions
       });
-
     case SET_USERNAME:
       return Object.assign({}, state, {
         username: action.username
       });
-
     case SET_CLOUD:
       return Object.assign({}, state, {
         cloud: action.cloud
       });
-
     case SET_HIGH_QUALITY_PEN:
       return Object.assign({}, state, {
         highQualityPen: action.highQualityPen
       });
-
     case SET_WINDOW_FULLSCREEN:
       return Object.assign({}, state, {
         isWindowFullScreen: action.isWindowFullScreen
       });
-
     case SET_DIMENSIONS:
       return Object.assign({}, state, {
         dimensions: action.dimensions
       });
-
     case SET_AUTHOR:
       return Object.assign({}, state, {
         author: action.author
       });
-
     case SET_DESCRIPTION:
       return Object.assign({}, state, {
         description: action.description
       });
-
     case ADD_COMPILE_ERROR:
       return Object.assign({}, state, {
         compileErrors: [action.error, ...state.compileErrors.slice(0, 4)]
       });
-
     case CLEAR_COMPILE_ERRORS:
       return Object.assign({}, state, {
         compileErrors: []
       });
-
     case SET_FILE_HANDLE:
       return Object.assign({}, state, {
         fileHandle: action.fileHandle
       });
-
     case SET_USERNAME_INVALID:
       return Object.assign({}, state, {
         usernameInvalid: action.usernameInvalid
       });
-
     case SET_HAS_CLOUD_VARIABLES:
       return Object.assign({}, state, {
         hasCloudVariables: action.hasCloudVariables
       });
-
     default:
       return state;
   }
 };
-
 const setFramerateState = function setFramerateState(framerate) {
   return {
     type: SET_FRAMERATE,
     framerate: framerate
   };
 };
-
 const setInterpolationState = function setInterpolationState(interpolation) {
   return {
     type: SET_INTERPOLATION,
     interpolation: interpolation
   };
 };
-
 const setCompilerOptionsState = function setCompilerOptionsState(compilerOptions) {
   return {
     type: SET_COMPILER_OPTIONS,
     compilerOptions: compilerOptions
   };
 };
-
 const setRuntimeOptionsState = function setRuntimeOptionsState(runtimeOptions) {
   return {
     type: SET_RUNTIME_OPTIONS,
     runtimeOptions: runtimeOptions
   };
 };
-
 const setUsername = function setUsername(username) {
   return {
     type: SET_USERNAME,
     username: username
   };
 };
-
 const setCloud = function setCloud(cloud) {
   return {
     type: SET_CLOUD,
     cloud: cloud
   };
 };
-
 const setHighQualityPenState = function setHighQualityPenState(highQualityPen) {
   return {
     type: SET_HIGH_QUALITY_PEN,
     highQualityPen: highQualityPen
   };
 };
-
 const setIsWindowFullScreen = function setIsWindowFullScreen(isWindowFullScreen) {
   return {
     type: SET_WINDOW_FULLSCREEN,
     isWindowFullScreen: isWindowFullScreen
   };
 };
-
 const setDimensions = function setDimensions(dimensions) {
   return {
     type: SET_DIMENSIONS,
     dimensions: dimensions
   };
 };
-
 const setAuthor = function setAuthor(author) {
   return {
     type: SET_AUTHOR,
     author: author
   };
 };
-
 const setDescription = function setDescription(description) {
   return {
     type: SET_DESCRIPTION,
     description: description
   };
 };
-
 const addCompileError = function addCompileError(error) {
   return {
     type: ADD_COMPILE_ERROR,
     error: error
   };
 };
-
 const clearCompileErrors = function clearCompileErrors() {
   return {
     type: CLEAR_COMPILE_ERRORS
   };
 };
-
 const setFileHandle = function setFileHandle(fileHandle) {
   return {
     type: SET_FILE_HANDLE,
     fileHandle: fileHandle
   };
 };
-
 const setUsernameInvalid = function setUsernameInvalid(usernameInvalid) {
   return {
     type: SET_USERNAME_INVALID,
     usernameInvalid: usernameInvalid
   };
 };
-
 const setHasCloudVariables = function setHasCloudVariables(hasCloudVariables) {
   return {
     type: SET_HAS_CLOUD_VARIABLES,
     hasCloudVariables: hasCloudVariables
   };
 };
-
 
 
 /***/ }),
@@ -43125,52 +40075,43 @@ const initialState = {
   started: false,
   turbo: false
 };
-
 const reducer = function reducer(state, action) {
   if (typeof state === 'undefined') state = initialState;
-
   switch (action.type) {
     case SET_STARTED_STATE:
       return Object.assign({}, state, {
         started: action.started
       });
-
     case SET_RUNNING_STATE:
       return Object.assign({}, state, {
         running: action.running
       });
-
     case SET_TURBO_STATE:
       return Object.assign({}, state, {
         turbo: action.turbo
       });
-
     default:
       return state;
   }
 };
-
 const setStartedState = function setStartedState(started) {
   return {
     type: SET_STARTED_STATE,
     started: started
   };
 };
-
 const setRunningState = function setRunningState(running) {
   return {
     type: SET_RUNNING_STATE,
     running: running
   };
 };
-
 const setTurboState = function setTurboState(turbo) {
   return {
     type: SET_TURBO_STATE,
     turbo: turbo
   };
 };
-
 
 
 /***/ }),
@@ -43201,26 +40142,21 @@ defaultVM.extensionManager.workerMode = 'iframe';
 defaultVM.runtime.cloudOptions.limit = _lib_tw_cloud_limits__WEBPACK_IMPORTED_MODULE_2__["MAXIMUM_CLOUD_VARIABLES"];
 defaultVM.attachStorage(_lib_storage__WEBPACK_IMPORTED_MODULE_1__["default"]);
 const initialState = defaultVM;
-
 const reducer = function reducer(state, action) {
   if (typeof state === 'undefined') state = initialState;
-
   switch (action.type) {
     case SET_VM:
       return action.vm;
-
     default:
       return state;
   }
 };
-
 const setVM = function setVM(vm) {
   return {
     type: SET_VM,
     vm: vm
   };
 };
-
 
 
 /***/ }),
@@ -43238,19 +40174,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "workspaceMetricsInitialState", function() { return initialState; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateMetrics", function() { return updateMetrics; });
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 const UPDATE_METRICS = 'scratch-gui/workspace-metrics/UPDATE_METRICS';
 const initialState = {
   targets: {}
 };
-
 const reducer = function reducer(state, action) {
   if (typeof state === 'undefined') state = initialState;
-
   switch (action.type) {
     case UPDATE_METRICS:
       return Object.assign({}, state, {
@@ -43262,18 +40193,15 @@ const reducer = function reducer(state, action) {
           }
         })
       });
-
     default:
       return state;
   }
 };
-
 const updateMetrics = function updateMetrics(metrics) {
   return _objectSpread({
     type: UPDATE_METRICS
   }, metrics);
 };
-
 
 
 /***/ }),

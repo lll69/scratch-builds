@@ -72,9 +72,7 @@ __webpack_require__.r(__webpack_exports__);
   vm.runtime.ioDevices.mouse.__scratchY = vm.runtime.ioDevices.mouse._scratchY;
   var x = vm.runtime.ioDevices.mouse.__scratchX ? vm.runtime.ioDevices.mouse.__scratchX : 0;
   var y = vm.runtime.ioDevices.mouse.__scratchY ? vm.runtime.ioDevices.mouse.__scratchY : 0;
-
   const showUpdatedValue = () => pos.setAttribute("data-content", "".concat(Math.round(x), ", ").concat(Math.round(y)));
-
   Object.defineProperty(vm.runtime.ioDevices.mouse, "_scratchX", {
     get: function get() {
       return this.__scratchX;
@@ -95,11 +93,9 @@ __webpack_require__.r(__webpack_exports__);
       this.__scratchY = sety;
     }
   });
-
   if (addon.tab.redux.state && addon.tab.redux.state.scratchGui.stageSize.stageSize === "small") {
     document.body.classList.add("sa-mouse-pos-small");
   }
-
   document.addEventListener("click", e => {
     if (e.target.closest("[class*='stage-header_stage-button-first']")) {
       document.body.classList.add("sa-mouse-pos-small");
@@ -109,13 +105,11 @@ __webpack_require__.r(__webpack_exports__);
   }, {
     capture: true
   });
-
   while (true) {
     await addon.tab.waitForElement('[class*="controls_controls-container"]', {
       markAsSeen: true,
       reduxEvents: ["scratch-gui/mode/SET_PLAYER", "fontsLoaded/SET_FONTS_LOADED", "scratch-gui/locales/SELECT_LOCALE"]
     });
-
     if (addon.tab.editorMode === "editor") {
       addon.tab.appendToSharedSpace({
         space: "afterStopButton",

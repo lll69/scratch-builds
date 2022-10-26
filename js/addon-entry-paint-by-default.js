@@ -105,18 +105,14 @@ __webpack_require__.r(__webpack_exports__);
       tooltip: "gui.soundTab.addSoundFromLibrary"
     }
   });
-
   const getSetting = id => {
     if (addon.self.disabled) {
       return "library";
     }
-
     return addon.settings.get(id);
   };
-
   const getButtonToClick = mainButton => {
     const assetPanelWrapper = mainButton.closest("[class*=asset-panel_wrapper_]");
-
     if (assetPanelWrapper) {
       if (addon.tab.redux.state.scratchGui.editorTab.activeTabIndex === 2) {
         return soundMeta[getSetting("sound")] || soundMeta.library;
@@ -129,25 +125,21 @@ __webpack_require__.r(__webpack_exports__);
       return spriteMeta[getSetting("sprite")] || spriteMeta.library;
     }
   };
-
   document.body.addEventListener("click", e => {
     if (addon.self.disabled) {
       return;
     }
-
     const mainButton = e.target.closest('[class*="action-menu_main-button_"]');
-
     if (!mainButton) {
       return;
     }
-
     e.stopPropagation();
     const moreButtonsElement = mainButton.parentElement.querySelector('[class*="action-menu_more-buttons_"]');
     const moreButtons = moreButtonsElement.children;
     const {
       index
-    } = getButtonToClick(mainButton); // better-img-uploads can add a button at the start, so search "from the end" for compatibility
-
+    } = getButtonToClick(mainButton);
+    // better-img-uploads can add a button at the start, so search "from the end" for compatibility
     const buttonToClick = moreButtons[moreButtons.length - (4 - index)];
     const elementToClick = buttonToClick.querySelector("button");
     elementToClick.click();
@@ -156,18 +148,15 @@ __webpack_require__.r(__webpack_exports__);
   });
   document.body.addEventListener("mouseover", e => {
     const mainButton = e.target.closest('[class*="action-menu_main-button_"]');
-
     if (!mainButton) {
       return;
     }
-
     const tooltipElement = mainButton.parentElement.querySelector(".__react_component_tooltip");
     const {
       tooltip
     } = getButtonToClick(mainButton);
     const translatedTooltip = addon.tab.redux.state.locales.messages[tooltip];
     const needToFixTooltipText = translatedTooltip && tooltipElement.textContent !== translatedTooltip;
-
     if (needToFixTooltipText) {
       tooltipElement.textContent = translatedTooltip;
       setTimeout(() => {

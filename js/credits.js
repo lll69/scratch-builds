@@ -214,24 +214,21 @@ __webpack_require__.r(__webpack_exports__);
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 
-
 const THEME_KEY = 'tw:theme';
 const darkMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 const getInitialDarkMode = () => {
   try {
     const item = localStorage.getItem(THEME_KEY);
-
     if (item !== null) {
       return item === 'dark';
     }
-  } catch (e) {// ignore
+  } catch (e) {
+    // ignore
   }
-
   return darkMediaQuery.matches;
 };
 const darkModeStylesheet = document.createElement('style');
 darkModeStylesheet.textContent = _raw_loader_tw_theme_dark_css__WEBPACK_IMPORTED_MODULE_1___default.a;
-
 const ThemeHOC = function ThemeHOC(WrappedComponent) {
   class ThemeComponent extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
     constructor(props) {
@@ -242,67 +239,55 @@ const ThemeHOC = function ThemeHOC(WrappedComponent) {
         dark: getInitialDarkMode()
       };
     }
-
     componentDidMount() {
       // media query does not have listeners in legacy edge
       if (darkMediaQuery.addEventListener) {
         darkMediaQuery.addEventListener('change', this.handleQueryChange);
       }
-
       this.updateDark();
     }
-
     componentDidUpdate() {
       try {
         localStorage.setItem(THEME_KEY, this.state.dark ? 'dark' : 'light');
-      } catch (e) {// ignore
+      } catch (e) {
+        // ignore
       }
-
       this.updateDark();
     }
-
     componentWillUnmount() {
       // media query does not have listeners in legacy edge
       if (darkMediaQuery.removeEventListener) {
         darkMediaQuery.removeEventListener('change', this.handleQueryChange);
       }
     }
-
     updateDark() {
       const dark = this.state.dark;
       document.body.setAttribute('theme', dark ? 'dark' : 'light');
-
       if (dark && !darkModeStylesheet.parentNode) {
         document.body.insertBefore(darkModeStylesheet, document.body.firstChild);
       } else if (!dark && darkModeStylesheet.parentNode) {
         darkModeStylesheet.parentNode.removeChild(darkModeStylesheet);
       }
     }
-
     handleQueryChange() {
       this.setState({
         dark: darkMediaQuery.matches
       });
     }
-
     handleClickTheme() {
       this.setState(state => ({
         dark: !state.dark
       }));
     }
-
     render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(WrappedComponent, _extends({
         onClickTheme: this.handleClickTheme,
         isDark: this.state.dark
       }, this.props));
     }
-
   }
-
   return ThemeComponent;
 };
-
 
 
 /***/ }),
@@ -316,12 +301,12 @@ const ThemeHOC = function ThemeHOC(WrappedComponent) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-const appTarget = document.getElementById('app'); // Remove everything from the target to fix macOS Safari "Save Page As",
+const appTarget = document.getElementById('app');
 
+// Remove everything from the target to fix macOS Safari "Save Page As",
 while (appTarget.firstChild) {
   appTarget.removeChild(appTarget.firstChild);
 }
-
 document.body.classList.add('tw-loaded');
 /* harmony default export */ __webpack_exports__["default"] = (appTarget);
 
@@ -392,7 +377,6 @@ function _extends() { _extends = Object.assign ? Object.assign.bind() : function
 /* eslint-disable react/jsx-no-literals */
 
 document.documentElement.lang = 'en';
-
 const User = _ref => {
   let {
     image,
@@ -413,13 +397,11 @@ const User = _ref => {
     className: _credits_css__WEBPACK_IMPORTED_MODULE_4___default.a.userInfo
   }, text));
 };
-
 User.propTypes = {
   image: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string.isRequired,
   text: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string.isRequired,
   href: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string
 };
-
 const UserList = _ref2 => {
   let {
     users
@@ -430,11 +412,9 @@ const UserList = _ref2 => {
     key: index
   }, data))));
 };
-
 UserList.propTypes = {
   users: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.object)
 };
-
 const Credits = () => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", {
   className: _credits_css__WEBPACK_IMPORTED_MODULE_4___default.a.main
 }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
@@ -458,7 +438,6 @@ const Credits = () => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.
 }, "Donate to support Scratch."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Addons"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(UserList, {
   users: _users__WEBPACK_IMPORTED_MODULE_7__["default"].addonDevelopers
 })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Translators"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "More than 100 people have helped translate TurboWarp and its addons into many languages -- far more than we could hope to list here.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, "Individual contributors are listed in no particular order. The order is randomized each visit."))));
-
 document.body.setAttribute('theme', Object(_lib_tw_theme_hoc_jsx__WEBPACK_IMPORTED_MODULE_5__["getInitialDarkMode"])() ? 'dark' : 'light');
 react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Credits, null), _app_target__WEBPACK_IMPORTED_MODULE_3__["default"]);
 
@@ -491,10 +470,8 @@ const shuffle = list => {
     list[i] = list[random];
     list[random] = tmp;
   }
-
   return list;
 };
-
 const fromHardcoded = _ref => {
   let {
     userId,
@@ -507,7 +484,6 @@ const fromHardcoded = _ref => {
     text: name || username
   };
 };
-
 const addonDevelopers = [{
   userId: '34018398',
   username: 'Jeffalo'
@@ -569,7 +545,8 @@ const addonDevelopers = [{
 }, {
   userId: '64691048',
   username: 'CST1229'
-} // TODO: retronbv is banned?
+}
+// TODO: retronbv is banned?
 ].map(fromHardcoded);
 /* harmony default export */ __webpack_exports__["default"] = ({
   addonDevelopers: shuffle(addonDevelopers)
