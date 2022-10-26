@@ -44,14 +44,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const mapStateToProps = state => ({
   vm: state.scratchGui.vm
 });
-
 const VMBlocks = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps)(_containers_blocks_jsx__WEBPACK_IMPORTED_MODULE_4__["default"]);
 const VMControls = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps)(_containers_controls_jsx__WEBPACK_IMPORTED_MODULE_3__["default"]);
-
 const BlocksOnly = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_gui_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], props, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(VMBlocks, {
   grow: 1,
   options: {
@@ -60,7 +57,6 @@ const BlocksOnly = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___defa
 }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(VMControls, {
   className: _blocks_only_css__WEBPACK_IMPORTED_MODULE_8__["default"].controls
 }));
-
 const App = Object(_lib_app_state_hoc_jsx__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_lib_hash_parser_hoc_jsx__WEBPACK_IMPORTED_MODULE_6__["default"])(BlocksOnly));
 const appTarget = document.createElement('div');
 document.body.appendChild(appTarget);

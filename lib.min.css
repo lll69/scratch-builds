@@ -8361,12 +8361,14 @@ e.g. STAGE_DIMENSION_DEFAULTS in lib/screen-utils.js */
 
 /* in most interfaces, the context menu is always on top */
 
-html,body {
-    background-color: hsl(66, 128, 215);
+body {
+    width: 100vw !important;
+    height: 100vh !important;
+    background-color: hsl(215, 65%, 55%);
 }
 
-[theme='dark'] html,body {
-    background-color: hsl(45, 51, 59);
+body[theme='dark'] {
+    background-color: hsl(214, 13%, 20%) !important;
 }
 
 .gui_page-wrapper_1cgy0 {

@@ -11153,15 +11153,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- // import SentryRRWeb from '@sentry/rrweb';
+
+// import SentryRRWeb from '@sentry/rrweb';
 
 
- // Register "base" page view
 
+// Register "base" page view
 _lib_analytics__WEBPACK_IMPORTED_MODULE_2__["default"].pageview('/');
 _sentry_react__WEBPACK_IMPORTED_MODULE_6__["init"]({
   dsn: 'https://ed881d9f133e457d8cdca25202200c3f@o1098997.ingest.sentry.io/6123390',
-  integrations: [// new SentryRRWeb({
+  integrations: [
+    // new SentryRRWeb({
     //     checkoutEveryNms: 2 * 60 * 1000
     // })
   ],
@@ -11173,20 +11175,15 @@ global.Sentry = _sentry_react__WEBPACK_IMPORTED_MODULE_6__;
 const appTarget = document.createElement('div');
 appTarget.className = _index_css__WEBPACK_IMPORTED_MODULE_8__["default"].app;
 document.body.appendChild(appTarget);
-
 if (Object(_lib_supported_browser__WEBPACK_IMPORTED_MODULE_5__["default"])()) {
   // require needed here to avoid importing unsupported browser-crashing code
   // at the top level
   __webpack_require__(/*! ./render-gui.jsx */ "./src/playground/render-gui.jsx").default(appTarget);
 } else {
   _components_browser_modal_browser_modal_jsx__WEBPACK_IMPORTED_MODULE_4__["default"].setAppElement(appTarget);
-  const WrappedBrowserModalComponent = Object(_lib_app_state_hoc_jsx__WEBPACK_IMPORTED_MODULE_3__["default"])(_components_browser_modal_browser_modal_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], true
-  /* localesOnly */
-  );
-
-  const handleBack = () => {}; // eslint-disable-next-line react/jsx-no-bind
-
-
+  const WrappedBrowserModalComponent = Object(_lib_app_state_hoc_jsx__WEBPACK_IMPORTED_MODULE_3__["default"])(_components_browser_modal_browser_modal_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], true /* localesOnly */);
+  const handleBack = () => {};
+  // eslint-disable-next-line react/jsx-no-bind
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(WrappedBrowserModalComponent, {
     onBack: handleBack
   }), appTarget);
@@ -11220,41 +11217,37 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const onClickLogo = () => {
   /* window.location = 'https://scratch.mit.edu';*/
 };
-
 const handleTelemetryModalCancel = () => {
   Object(_lib_log_js__WEBPACK_IMPORTED_MODULE_6__["default"])('User canceled telemetry modal');
 };
-
 const handleTelemetryModalOptIn = () => {
   Object(_lib_log_js__WEBPACK_IMPORTED_MODULE_6__["default"])('User opted into telemetry');
 };
-
 const handleTelemetryModalOptOut = () => {
   Object(_lib_log_js__WEBPACK_IMPORTED_MODULE_6__["default"])('User opted out of telemetry');
 };
+
 /*
  * Render the GUI playground. This is a separate function because importing anything
  * that instantiates the VM causes unsupported browsers to crash
  * {object} appTarget - the DOM element to render to
  */
-
-
 /* harmony default export */ __webpack_exports__["default"] = (appTarget => {
-  _containers_gui_jsx__WEBPACK_IMPORTED_MODULE_4__["default"].setAppElement(appTarget); // note that redux's 'compose' function is just being used as a general utility to make
+  _containers_gui_jsx__WEBPACK_IMPORTED_MODULE_4__["default"].setAppElement(appTarget);
+
+  // note that redux's 'compose' function is just being used as a general utility to make
   // the hierarchy of HOC constructor calls clearer here; it has nothing to do with redux's
   // ability to compose reducers.
+  const WrappedGui = Object(redux__WEBPACK_IMPORTED_MODULE_2__["compose"])(_lib_app_state_hoc_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], _lib_hash_parser_hoc_jsx__WEBPACK_IMPORTED_MODULE_5__["default"])(_containers_gui_jsx__WEBPACK_IMPORTED_MODULE_4__["default"]);
 
-  const WrappedGui = Object(redux__WEBPACK_IMPORTED_MODULE_2__["compose"])(_lib_app_state_hoc_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], _lib_hash_parser_hoc_jsx__WEBPACK_IMPORTED_MODULE_5__["default"])(_containers_gui_jsx__WEBPACK_IMPORTED_MODULE_4__["default"]); // TODO a hack for testing the backpack, allow backpack host to be set by url param
-
+  // TODO a hack for testing the backpack, allow backpack host to be set by url param
   const backpackHostMatches = window.location.href.match(/[?&]backpack_host=([^&]*)&?/);
   const backpackHost = backpackHostMatches ? backpackHostMatches[1] : null;
   const scratchDesktopMatches = window.location.href.match(/[?&]isScratchDesktop=([^&]+)/);
   let simulateScratchDesktop;
-
   if (scratchDesktopMatches) {
     try {
       // parse 'true' into `true`, 'false' into `false`, etc.
@@ -11265,10 +11258,9 @@ const handleTelemetryModalOptOut = () => {
       simulateScratchDesktop = scratchDesktopMatches[1];
     }
   }
-
   if (false) {}
-
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( // important: this is checking whether `simulateScratchDesktop` is truthy, not just defined!
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(
+  // important: this is checking whether `simulateScratchDesktop` is truthy, not just defined!
   simulateScratchDesktop ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(WrappedGui, {
     canEditTitle: true,
     isScratchDesktop: true,

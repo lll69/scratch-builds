@@ -51,10 +51,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 if (false) {}
-
-
 
 const Player = _ref => {
   let {
@@ -73,25 +70,22 @@ const Player = _ref => {
     projectId: projectId
   }));
 };
-
 Player.propTypes = {
   isPlayerOnly: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
   onSeeInside: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
   projectId: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string
 };
-
 const mapStateToProps = state => ({
   isPlayerOnly: state.scratchGui.mode.isPlayerOnly
 });
-
 const mapDispatchToProps = dispatch => ({
   onSeeInside: () => dispatch(Object(_reducers_mode__WEBPACK_IMPORTED_MODULE_10__["setPlayer"])(false))
 });
+const ConnectedPlayer = Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["connect"])(mapStateToProps, mapDispatchToProps)(Player);
 
-const ConnectedPlayer = Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["connect"])(mapStateToProps, mapDispatchToProps)(Player); // note that redux's 'compose' function is just being used as a general utility to make
+// note that redux's 'compose' function is just being used as a general utility to make
 // the hierarchy of HOC constructor calls clearer here; it has nothing to do with redux's
 // ability to compose reducers.
-
 const WrappedPlayer = Object(redux__WEBPACK_IMPORTED_MODULE_5__["compose"])(_lib_app_state_hoc_jsx__WEBPACK_IMPORTED_MODULE_9__["default"], _lib_hash_parser_hoc_jsx__WEBPACK_IMPORTED_MODULE_8__["default"])(ConnectedPlayer);
 const appTarget = document.createElement('div');
 document.body.appendChild(appTarget);

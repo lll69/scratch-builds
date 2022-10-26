@@ -24,7 +24,6 @@ __webpack_require__.r(__webpack_exports__);
 
 const WrappedGui = Object(_lib_app_state_hoc_jsx__WEBPACK_IMPORTED_MODULE_4__["default"])(Object(_lib_hash_parser_hoc_jsx__WEBPACK_IMPORTED_MODULE_3__["default"])(_containers_gui_jsx__WEBPACK_IMPORTED_MODULE_2__["default"]));
 const DEFAULT_PROJECT_ID = '10015059';
-
 class Player extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
   constructor(props) {
     super(props);
@@ -33,25 +32,20 @@ class Player extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       projectId: window.location.hash.substring(1) || DEFAULT_PROJECT_ID
     };
   }
-
   componentDidMount() {
     window.addEventListener('hashchange', this.updateProject);
-
     if (!window.location.hash.substring(1)) {
       window.location.hash = DEFAULT_PROJECT_ID;
     }
   }
-
   componentWillUnmount() {
     window.addEventListener('hashchange', this.updateProject);
   }
-
   updateProject() {
     this.setState({
       projectId: window.location.hash.substring(1)
     });
   }
-
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       style: {
@@ -69,9 +63,7 @@ class Player extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       width: "485"
     }));
   }
-
 }
-
 const appTarget = document.createElement('div');
 document.body.appendChild(appTarget);
 react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Player, null), appTarget);
