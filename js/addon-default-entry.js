@@ -291,49 +291,22 @@ const resources = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _block_duplicate_module_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../block-duplicate/module.js */ "./src/addons/addons/block-duplicate/module.js");
+
 /* harmony default export */ __webpack_exports__["default"] = (async function ({
   addon,
   global,
   console
 }) {
-  const ScratchBlocks = await addon.tab.traps.getBlockly();
-  let ctrlKeyPressed = false;
-  document.addEventListener("mousedown", function (e) {
-    ctrlKeyPressed = e.ctrlKey || e.metaKey;
-  }, {
-    capture: true
-  }); // https://github.com/LLK/scratch-blocks/blob/912b8cc728bea8fd91af85078c64fcdbfe21c87a/core/gesture.js#L454
-
-  const originalStartDraggingBlock = ScratchBlocks.Gesture.prototype.startDraggingBlock_;
-
-  ScratchBlocks.Gesture.prototype.startDraggingBlock_ = function (...args) {
-    if (!addon.self.disabled) {
-      // Scratch uses fake mouse events to implement right click > duplicate
-      // This has no connection to the block-duplicate addon.
-      const isDuplicate = !(this.mostRecentEvent_ instanceof MouseEvent);
-      const block = this.targetBlock_;
-      const invert = addon.settings.get("invertDrag") && !isDuplicate && block.getParent();
-      const isShadow = block.isShadow();
-
-      if (ctrlKeyPressed === !invert && !isShadow) {
-        if (!ScratchBlocks.Events.getGroup()) {
-          ScratchBlocks.Events.setGroup(true);
-        }
-
-        if (isDuplicate) {
-          const nextBlock = block.getNextBlock();
-
-          if (nextBlock) {
-            nextBlock.dispose();
-          }
-        }
-
-        block.unplug(true);
-      }
-    }
-
-    return originalStartDraggingBlock.call(this, ...args);
+  const update = () => {
+    _block_duplicate_module_js__WEBPACK_IMPORTED_MODULE_0__["setCherryPicking"](!addon.self.disabled, addon.settings.get("invertDrag"));
   };
+
+  addon.self.addEventListener("disabled", update);
+  addon.self.addEventListener("reenabled", update);
+  addon.settings.addEventListener("change", update);
+  update();
+  _block_duplicate_module_js__WEBPACK_IMPORTED_MODULE_0__["load"](addon);
 });
 
 /***/ }),
@@ -357,6 +330,110 @@ const resources = {
 
 /***/ }),
 
+/***/ "./src/addons/addons/block-duplicate/module.js":
+/*!*****************************************************!*\
+  !*** ./src/addons/addons/block-duplicate/module.js ***!
+  \*****************************************************/
+/*! exports provided: setCherryPicking, setDuplication, load */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setCherryPicking", function() { return setCherryPicking; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setDuplication", function() { return setDuplication; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "load", function() { return load; });
+let enableCherryPicking = false;
+let invertCherryPicking = false;
+function setCherryPicking(newEnabled, newInverted) {
+  enableCherryPicking = newEnabled;
+  invertCherryPicking = newInverted;
+}
+let enableDuplication = false;
+function setDuplication(newEnabled) {
+  enableDuplication = newEnabled;
+} // mostRecentEvent_ is sometimes a fake event, so we can't rely on reading its properties.
+
+let ctrlOrMetaPressed = false;
+let altPressed = false;
+document.addEventListener("mousedown", function (e) {
+  ctrlOrMetaPressed = e.ctrlKey || e.metaKey;
+  altPressed = e.altKey;
+}, {
+  capture: true
+});
+let loaded = false;
+async function load(addon) {
+  if (loaded) {
+    return;
+  }
+
+  loaded = true;
+  const ScratchBlocks = await addon.tab.traps.getBlockly(); // https://github.com/LLK/scratch-blocks/blob/912b8cc728bea8fd91af85078c64fcdbfe21c87a/core/gesture.js#L454
+
+  const originalStartDraggingBlock = ScratchBlocks.Gesture.prototype.startDraggingBlock_;
+
+  ScratchBlocks.Gesture.prototype.startDraggingBlock_ = function (...args) {
+    let block = this.targetBlock_; // Scratch uses fake mouse events to implement right click > duplicate
+
+    const isRightClickDuplicate = !(this.mostRecentEvent_ instanceof MouseEvent);
+    const isDuplicating = enableDuplication && altPressed && !isRightClickDuplicate && !this.flyout_ && !this.shouldDuplicateOnDrag_ && this.targetBlock_.type !== "procedures_definition";
+    const isCherryPickingInverted = invertCherryPicking && !isRightClickDuplicate && block.getParent();
+    const isCherryPicking = isDuplicating ? ctrlOrMetaPressed : enableCherryPicking && ctrlOrMetaPressed === !isCherryPickingInverted && !block.isShadow();
+
+    if (isDuplicating || isCherryPicking) {
+      if (!ScratchBlocks.Events.getGroup()) {
+        // Scratch will disable grouping on its own later.
+        ScratchBlocks.Events.setGroup(true);
+      }
+    }
+
+    if (isDuplicating) {
+      // Based on https://github.com/LLK/scratch-blocks/blob/feda366947432b9d82a4f212f43ff6d4ab6f252f/core/scratch_blocks_utils.js#L171
+      // Setting this.shouldDuplicateOnDrag_ = true does NOT work because it doesn't call changeObscuredShadowIds
+      this.startWorkspace_.setResizesEnabled(false);
+      ScratchBlocks.Events.disable();
+      let newBlock;
+
+      try {
+        const xmlBlock = ScratchBlocks.Xml.blockToDom(block);
+        newBlock = ScratchBlocks.Xml.domToBlock(xmlBlock, this.startWorkspace_);
+        ScratchBlocks.scratchBlocksUtils.changeObscuredShadowIds(newBlock);
+        const xy = block.getRelativeToSurfaceXY();
+        newBlock.moveBy(xy.x, xy.y);
+      } catch (e) {
+        console.error(e);
+      }
+
+      ScratchBlocks.Events.enable();
+
+      if (newBlock) {
+        block = newBlock;
+        this.targetBlock_ = newBlock;
+
+        if (ScratchBlocks.Events.isEnabled()) {
+          ScratchBlocks.Events.fire(new ScratchBlocks.Events.BlockCreate(newBlock));
+        }
+      }
+    }
+
+    if (isCherryPicking) {
+      if (isRightClickDuplicate || isDuplicating) {
+        const nextBlock = block.getNextBlock();
+
+        if (nextBlock) {
+          nextBlock.dispose();
+        }
+      }
+
+      block.unplug(true);
+    }
+
+    return originalStartDraggingBlock.call(this, ...args);
+  };
+}
+
+/***/ }),
+
 /***/ "./src/addons/addons/block-duplicate/userscript.js":
 /*!*********************************************************!*\
   !*** ./src/addons/addons/block-duplicate/userscript.js ***!
@@ -366,58 +443,21 @@ const resources = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _module_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./module.js */ "./src/addons/addons/block-duplicate/module.js");
+
 /* harmony default export */ __webpack_exports__["default"] = (async function ({
   addon,
   global,
   console
 }) {
-  const ScratchBlocks = await addon.tab.traps.getBlockly();
-  const originalStartDraggingBlock = ScratchBlocks.Gesture.prototype.startDraggingBlock_; // https://github.com/LLK/scratch-blocks/blob/e86f115457006d1cde83baa23eaaf1ee16d315f5/core/gesture.js#L454
-
-  ScratchBlocks.Gesture.prototype.startDraggingBlock_ = function (...args) {
-    if (!this.flyout_ && !this.shouldDuplicateOnDrag_ && this.targetBlock_.type !== "procedures_definition" && this.mostRecentEvent_.altKey && !addon.self.disabled) {
-      // Scratch will reset these when the drag ends
-      if (!ScratchBlocks.Events.getGroup()) {
-        ScratchBlocks.Events.setGroup(true);
-      }
-
-      this.startWorkspace_.setResizesEnabled(false); // Based on https://github.com/LLK/scratch-blocks/blob/feda366947432b9d82a4f212f43ff6d4ab6f252f/core/scratch_blocks_utils.js#L171
-      // Setting this.shouldDuplicateOnDrag_ = true does NOT work because it doesn't call changeObscuredShadowIds
-
-      ScratchBlocks.Events.disable();
-      let newBlock;
-
-      try {
-        const xmlBlock = ScratchBlocks.Xml.blockToDom(this.targetBlock_);
-        newBlock = ScratchBlocks.Xml.domToBlock(xmlBlock, this.startWorkspace_);
-        ScratchBlocks.scratchBlocksUtils.changeObscuredShadowIds(newBlock);
-        const xy = this.targetBlock_.getRelativeToSurfaceXY();
-        newBlock.moveBy(xy.x, xy.y);
-
-        if (this.mostRecentEvent_.ctrlKey || this.mostRecentEvent_.metaKey) {
-          const nextBlock = newBlock.getNextBlock();
-
-          if (nextBlock) {
-            nextBlock.dispose();
-          }
-        }
-      } catch (e) {
-        console.error(e);
-      }
-
-      ScratchBlocks.Events.enable();
-
-      if (newBlock) {
-        this.targetBlock_ = newBlock;
-
-        if (ScratchBlocks.Events.isEnabled()) {
-          ScratchBlocks.Events.fire(new ScratchBlocks.Events.BlockCreate(newBlock));
-        }
-      }
-    }
-
-    return originalStartDraggingBlock.call(this, ...args);
+  const update = () => {
+    _module_js__WEBPACK_IMPORTED_MODULE_0__["setDuplication"](!addon.self.disabled);
   };
+
+  addon.self.addEventListener("disabled", update);
+  addon.self.addEventListener("reenabled", update);
+  update();
+  _module_js__WEBPACK_IMPORTED_MODULE_0__["load"](addon);
 });
 
 /***/ }),

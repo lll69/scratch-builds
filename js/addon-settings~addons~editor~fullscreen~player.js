@@ -3299,7 +3299,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! exports provided: commit, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"commit\":\"684f0f2\"}");
+module.exports = JSON.parse("{\"commit\":\"007cacd\"}");
 
 /***/ }),
 
@@ -3636,8 +3636,19 @@ class SettingsStore extends _event_target__WEBPACK_IMPORTED_MODULE_2__["default"
           throw new Error('Setting value is invalid.');
         }
       } else if (settingObject.type === 'color') {
-        if (typeof value !== 'string' || !/^#[0-9a-f]{6}$/i.test(value)) {
-          throw new Error('Setting value is invalid.');
+        if (typeof value !== 'string') {
+          throw new Error('Color value is not a string.');
+        } // Remove alpha channel from colors like #012345ff
+        // We don't support transparency yet, but settings imported from Scratch Addons
+        // might contain transparency.
+
+
+        if (value.length === 9) {
+          value = value.substring(0, 7);
+        }
+
+        if (!/^#[0-9a-f]{6}$/i.test(value)) {
+          throw new Error('Color value is invalid format.');
         }
       } else if (settingObject.type === 'select') {
         if (!settingObject.potentialValues.some(potentialValue => potentialValue.id === value)) {

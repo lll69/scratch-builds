@@ -3969,11 +3969,13 @@ const SelectionHandle = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__
 }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_box_box_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
   className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(_audio_trimmer_css__WEBPACK_IMPORTED_MODULE_4___default.a.trimHandle, _audio_trimmer_css__WEBPACK_IMPORTED_MODULE_4___default.a.topTrimHandle)
 }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-  src: _icon_handle_svg__WEBPACK_IMPORTED_MODULE_5___default.a
+  src: _icon_handle_svg__WEBPACK_IMPORTED_MODULE_5___default.a,
+  draggable: false
 })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_box_box_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
   className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(_audio_trimmer_css__WEBPACK_IMPORTED_MODULE_4___default.a.trimHandle, _audio_trimmer_css__WEBPACK_IMPORTED_MODULE_4___default.a.bottomTrimHandle)
 }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-  src: _icon_handle_svg__WEBPACK_IMPORTED_MODULE_5___default.a
+  src: _icon_handle_svg__WEBPACK_IMPORTED_MODULE_5___default.a,
+  draggable: false
 })));
 
 SelectionHandle.propTypes = {
@@ -18500,16 +18502,12 @@ class AudioTrimmer extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Componen
     this.containerSize = this.containerElement.getBoundingClientRect().width;
     this.trimStartDragRecognizer.start(e);
     this.initialTrim = this.props.trimStart;
-    e.stopPropagation();
-    e.preventDefault();
   }
 
   handleTrimEndMouseDown(e) {
     this.containerSize = this.containerElement.getBoundingClientRect().width;
     this.trimEndDragRecognizer.start(e);
     this.initialTrim = this.props.trimEnd;
-    e.stopPropagation();
-    e.preventDefault();
   }
 
   storeRef(el) {
@@ -34570,6 +34568,18 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_0__["defineMessages"
     "id": "gui.opcodeLabels.answer",
     "defaultMessage": "answer"
   },
+  sensing_mousedown: {
+    "id": "tw.opcode.mousedown",
+    "defaultMessage": "mouse down?"
+  },
+  sensing_mousex: {
+    "id": "tw.opcode.mousex",
+    "defaultMessage": "mouse x"
+  },
+  sensing_mousey: {
+    "id": "tw.opcode.mousey",
+    "defaultMessage": "mouse y"
+  },
   sensing_loudness: {
     "id": "gui.opcodeLabels.loudness",
     "defaultMessage": "loudness"
@@ -34609,6 +34619,10 @@ const messages = Object(react_intl__WEBPACK_IMPORTED_MODULE_0__["defineMessages"
   sensing_timer: {
     "id": "gui.opcodeLabels.timer",
     "defaultMessage": "timer"
+  },
+  sensing_dayssince2000: {
+    "id": "tw.opcode.2000",
+    "defaultMessage": "days since 2000"
   }
 });
 
@@ -34669,6 +34683,15 @@ class OpcodeLabels {
       sensing_answer: {
         category: 'sensing'
       },
+      sensing_mousedown: {
+        category: 'sensing'
+      },
+      sensing_mousex: {
+        category: 'sensing'
+      },
+      sensing_mousey: {
+        category: 'sensing'
+      },
       sensing_loudness: {
         category: 'sensing'
       },
@@ -34679,6 +34702,9 @@ class OpcodeLabels {
         category: 'sensing'
       },
       sensing_timer: {
+        category: 'sensing'
+      },
+      sensing_dayssince2000: {
         category: 'sensing'
       }
     }; // Initialize opcodeMap with default strings
@@ -34745,6 +34771,12 @@ class OpcodeLabels {
 
     this._opcodeMap.sensing_answer.labelFn = () => this._translator(messages.sensing_answer);
 
+    this._opcodeMap.sensing_mousedown.labelFn = () => this._translator(messages.sensing_mousedown);
+
+    this._opcodeMap.sensing_mousex.labelFn = () => this._translator(messages.sensing_mousex);
+
+    this._opcodeMap.sensing_mousey.labelFn = () => this._translator(messages.sensing_mousey);
+
     this._opcodeMap.sensing_loudness.labelFn = () => this._translator(messages.sensing_loudness);
 
     this._opcodeMap.sensing_username.labelFn = () => this._translator(messages.sensing_username);
@@ -34775,6 +34807,8 @@ class OpcodeLabels {
     };
 
     this._opcodeMap.sensing_timer.labelFn = () => this._translator(messages.sensing_timer);
+
+    this._opcodeMap.sensing_dayssince2000.labelFn = () => this._translator(messages.sensing_dayssince2000);
   }
   /**
    * Return the label for an opcode

@@ -3362,11 +3362,25 @@ class Interface extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_tw_project_input_project_input_jsx__WEBPACK_IMPORTED_MODULE_20__["default"], null)), ( // eslint-disable-next-line max-len
     projectId === '0' || description.instructions === 'unshared' || description.credits === 'unshared') && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
       className: _interface_css__WEBPACK_IMPORTED_MODULE_30___default.a.unsharedUpdate
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("i", null, 'Updated June 1, 2022')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, 'Unshared projects will no longer be accessible using just their project ID **at some point in the future** due to upcoming Scratch API changes.'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, 'Instead, you can either share the project or save the project to your computer (File > Save to your computer) and load the file instead.'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, 'For more information, visit: ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("a", {
-      href: "https://docs.turbowarp.org/unshared-projects",
-      target: "_blank",
-      rel: "noopener noreferrer"
-    }, 'https://docs.turbowarp.org/unshared-projects')), (description.instructions === 'unshared' || description.credits === 'unshared') && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, 'If this project was recently shared, this message may incorrectly appear for up to an hour.')), hasCloudVariables && projectId !== '0' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_5__["FormattedMessage"] // eslint-disable-next-line max-len
+    , {
+      defaultMessage: "Unshared projects will no longer be accessible using just their project ID at some point in the future due to upcoming Scratch API changes.",
+      id: "tw.unshared.1"
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_5__["FormattedMessage"], {
+      defaultMessage: "For more information, visit: {link}",
+      id: "tw.unshared.2",
+      values: {
+        link: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("a", {
+          href: "https://docs.turbowarp.org/unshared-projects",
+          target: "_blank",
+          rel: "noopener noreferrer"
+        }, 'https://docs.turbowarp.org/unshared-projects')
+      }
+    })), (description.instructions === 'unshared' || description.credits === 'unshared') && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_5__["FormattedMessage"] // eslint-disable-next-line max-len
+    , {
+      defaultMessage: "If the project was shared recently, this message may appear incorrectly for a few minutes.",
+      id: "tw.unshared.cache"
+    }))), hasCloudVariables && projectId !== '0' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
       className: _interface_css__WEBPACK_IMPORTED_MODULE_30___default.a.section
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_tw_cloud_variable_badge_cloud_variable_badge_jsx__WEBPACK_IMPORTED_MODULE_25__["default"], null)), description.instructions || description.credits ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
       className: _interface_css__WEBPACK_IMPORTED_MODULE_30___default.a.section
